@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "assets" / "data"
+DATA_DIR = ROOT / "assets" / "data" / "raw"
 OUTPUT_DIR = DATA_DIR / "processed"
 
 # Keep this map explicit: filenames are part of the provenance contract.
@@ -131,7 +131,7 @@ def discover_inputs() -> list[tuple[Path, int, int]]:
         raise PrepError("Missing required input file(s): " + ", ".join(missing))
 
     # Reject case variants and alternate teamratings CSV names that could make a
-    # target season ambiguous, while ignoring unrelated CSVs in assets/data.
+    # target season ambiguous, while ignoring unrelated CSVs in assets/data/raw
     expected_lower = {name.lower(): name for name in FILE_SEASONS}
     candidates = [
         path for path in DATA_DIR.iterdir()
