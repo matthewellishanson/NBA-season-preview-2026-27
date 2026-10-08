@@ -1,0 +1,139 @@
+<!doctype html>
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2026–27 NBA Preview · Hanson Hoops · Prototype</title>
+
+<meta name="description" content="A design prototype for Hanson Hoops' 30-team NBA preview, using Matt Hanson's provisional power rankings.">
+
+<style>
+:root{--purple:#7c3aed;--ink:#171326;--muted:#686574;--line:#e5e2ed;--paper:#fff;--bg:#f7f7fa;--radius:12px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}button,select{font:inherit}a{color:inherit}button,a,summary,select{touch-action:manipulation}a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid var(--purple);outline-offset:4px}.skip{position:absolute;left:16px;top:-70px;background:#fff;padding:12px;z-index:9}.skip:focus{top:10px}.masthead{background:#171326;color:white;border-bottom:4px solid var(--purple)}.mast-inner{max-width:1280px;margin:auto;padding:17px 32px;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-weight:850;font-size:22px;letter-spacing:-1px;text-decoration:none}.brand span{color:#b694ff}.mast-label{font-size:14px;color:#d3cedf}.layout{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;padding:40px 32px 70px}.sidebar{align-self:start;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;scrollbar-width:thin}.small-label{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;font-weight:800;color:var(--muted)}.sidebar h2{font-size:18px;margin:4px 0 16px}.team-links{list-style:none;padding:0;margin:0}.team-links a{display:grid;grid-template-columns:26px 1fr;gap:7px;text-decoration:none;font-size:14px;line-height:1.4;padding:9px 8px;border-radius:5px}.team-links a:hover,.team-links a.active{background:#eee8fc;color:#5522ae}.team-links .num{font-variant-numeric:tabular-nums;color:#8b8597}.hero{padding:2px 0 30px;border-bottom:1px solid var(--line);margin-bottom:25px}.hero .small-label{color:var(--purple)}h1{font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-2.8px;max-width:700px;margin:14px 0 18px;font-weight:850}h1 em{font-style:normal;color:var(--purple)}.dek{font-size:18px;max-width:620px;color:var(--muted);margin:0 0 20px}.byline{display:flex;gap:12px;flex-wrap:wrap;font-size:14px}.byline strong{font-weight:750}.byline span{color:var(--muted)}.prototype-note{border-left:3px solid #b099d7;background:#f0ecf8;color:#5f5470;font-size:14px;padding:10px 14px;margin-top:22px}.tools{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 16px}.tools p{margin:0;color:var(--muted);font-size:14px}.quiet-button{background:transparent;border:1px solid #d5cfdf;border-radius:6px;padding:6px 12px;color:#53476a;font-size:14px;cursor:pointer}.quiet-button:hover{background:#eee8fc}.mobile-jump{display:none}.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;scroll-margin-top:20px}.team-card[open]{border-color:#c5b0ea;box-shadow:0 8px 26px #24123608}.team-card summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:42px 58px minmax(0,1fr) 30px;gap:16px;padding:24px 25px;border-left:5px solid var(--team);align-items:center}.team-card summary::-webkit-details-marker{display:none}.team-card summary:hover{background:#fcfbff}.rank{font-size:31px;letter-spacing:-1px;line-height:1;font-weight:750;color:#9d97aa;font-variant-numeric:tabular-nums}.team-card:nth-child(-n+3) .rank{color:#4f2b84}.badge{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--team);color:#fff;font-size:14px;font-weight:850;letter-spacing:.5px;border:4px solid white;box-shadow:0 0 0 1px var(--line)}.identity h2{margin:0;font-size:24px;font-weight:800;line-height:1.2;letter-spacing:-.65px}.subhead{margin:5px 0 9px;color:var(--muted);font-size:15px}.subhead.pending{font-style:italic;color:#8a8295}.stat-strip{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#777080;line-height:1.45}.stat-strip b{color:#51465f;font-weight:600}.chevron{display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;width:29px;height:29px;font-size:21px;color:var(--purple);line-height:1}.chevron:before{content:'+'}.team-card[open] .chevron:before{content:'−'}.team-body{border-top:1px solid var(--line);padding:28px 34px 32px}.section-kicker{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--team);margin:0 0 15px}.story-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.75fr);gap:32px}.story h3{font-size:25px;line-height:1.25;letter-spacing:-.7px;margin:0 0 14px}.story p{font:18px/1.8 Georgia,"Times New Roman",serif;margin:0 0 16px;color:#46404d}.draft-text{border-left:2px solid #e7e0ef;padding-left:16px}.draft-text p{font:16px/1.7 system-ui,sans-serif;color:#817889}.graphic{margin:0;background:#f8f7fb;border:1px solid var(--line);border-radius:8px;padding:20px;align-self:start}.graphic h3{font-size:17px;margin:0 0 12px;line-height:1.4}.graphic-space{min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#eae5f2 40px);border:1px dashed #d4c9e2;border-radius:5px;text-align:center;color:#93839e;padding:20px}.graphic-space strong{font-size:16px;font-weight:600;background:#f8f7fb;padding:0 8px}.graphic-space span{font-size:13px;background:#f8f7fb;padding:0 8px}.graphic figcaption{margin-top:14px;font-size:14px;color:#6d617a}.source-note{display:block;font-size:12px;margin-top:8px;color:#8c8098}.watch{border-top:1px solid var(--line);padding-top:20px;margin-top:22px;display:flex;gap:14px;align-items:baseline}.watch strong{font-size:14px;white-space:nowrap;color:#58377b}.watch p{font-size:15px;margin:0;color:#7c7287}.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:18px;color:var(--muted);font-size:13px}.empty-stats{color:#958c9f}.team-links a.active .num{color:var(--purple)}
+@media(max-width:1050px){.layout{grid-template-columns:180px minmax(0,1fr);gap:28px;padding:30px 24px}.story-layout{grid-template-columns:1fr}.graphic-space{min-height:180px}.team-card summary{gap:11px;padding:22px 18px;grid-template-columns:35px 48px minmax(0,1fr) 26px}.badge{width:46px;height:46px}.team-body{padding:25px}.identity h2{font-size:22px}.stat-strip{gap:9px 16px}}
+@media(max-width:760px){.mast-inner{padding:14px 18px}.mast-label{font-size:12px}.layout{display:block;padding:28px 16px 50px}.sidebar{display:none}h1{font-size:43px;letter-spacing:-1.8px}.hero{padding-bottom:22px}.dek{font-size:16px}.mobile-jump{display:block;margin:20px 0 16px}.mobile-jump label{display:block;font-size:14px;font-weight:650;margin-bottom:6px}.mobile-jump select{width:100%;min-height:45px;border:1px solid #d5cfdf;border-radius:6px;background:white;padding:9px;color:var(--ink)}.team-card summary{grid-template-columns:28px 40px minmax(0,1fr) 24px;gap:9px;padding:19px 12px;border-left-width:4px}.rank{font-size:24px}.badge{height:38px;width:38px;font-size:11px;border-width:2px}.identity h2{font-size:19px;letter-spacing:-.4px}.subhead{font-size:14px;margin-bottom:7px}.stat-strip{font-size:12px;gap:4px 12px}.chevron{width:24px;height:24px;font-size:18px}.team-body{padding:22px 18px}.story h3{font-size:23px}.watch{display:block}.watch p{margin-top:7px}.tools p{font-size:13px}.quiet-button{font-size:13px}.prototype-note{font-size:13px}.story p{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body><a class="skip" href="#main">Skip to previews</a>
+<header class="masthead"><div class="mast-inner"><a class="brand" href="#main">HANSON<span> HOOPS</span></a><span class="mast-label">NBA · 2026–27</span></div></header>
+<div class="layout"><aside class="sidebar" aria-label="Power rankings"><div class="small-label">The field</div><h2>All 30 teams</h2><ol class="team-links" id="team-links"></ol></aside>
+<main id="main"><header class="hero"><div class="small-label">The season preview</div><h1>Thirty teams.<br><em>One new season.</em></h1><p class="dek">The questions, players, and numbers that will shape 2026–27. Team by team, in Matt Hanson's power-ranking order.</p><div class="byline"><strong>By Matt Hanson</strong><span>2026–27 NBA preview</span></div><div class="prototype-note"><strong>Design prototype.</strong> Rankings supplied Oct. 6; provisional. Editorial copy, records, projections, and graphics are pending. Abbreviation badges reserve space for team logos.</div></header>
+<div class="mobile-jump"><label for="jump">Jump to a team</label><select id="jump"><option value="">Choose a team</option></select></div>
+<div class="tools"><p>Power rankings · Open any team to read</p><button class="quiet-button" id="close-all" type="button">Collapse all</button></div>
+<div id="cards"></div><footer class="footer">Hanson Hoops · 2026–27 preseason package · Prototype for editorial review</footer></main></div>
+<script>
+const teams=[{"name": "San Antonio Spurs", "code": "SAS", "color": "#637281", "slug": "spurs", "powerRank": 1, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Oklahoma City Thunder", "code": "OKC", "color": "#007ac1", "slug": "thunder", "powerRank": 2, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "New York Knicks", "code": "NYK", "color": "#006bb6", "slug": "knicks", "powerRank": 3, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Philadelphia 76ers", "code": "PHI", "color": "#006bb6", "slug": "sixers", "powerRank": 4, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Minnesota Timberwolves", "code": "MIN", "color": "#236192", "slug": "timberwolves", "powerRank": 5, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Denver Nuggets", "code": "DEN", "color": "#0e2240", "slug": "nuggets", "powerRank": 6, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Detroit Pistons", "code": "DET", "color": "#c8102e", "slug": "pistons", "powerRank": 7, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Cleveland Cavaliers", "code": "CLE", "color": "#860038", "slug": "cavaliers", "powerRank": 8, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Houston Rockets", "code": "HOU", "color": "#ce1141", "slug": "rockets", "powerRank": 9, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Boston Celtics", "code": "BOS", "color": "#007a33", "slug": "celtics", "powerRank": 10, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Toronto Raptors", "code": "TOR", "color": "#ce1141", "slug": "raptors", "powerRank": 11, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Indiana Pacers", "code": "IND", "color": "#002d62", "slug": "pacers", "powerRank": 12, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Los Angeles Lakers", "code": "LAL", "color": "#552583", "slug": "lakers", "powerRank": 13, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Miami Heat", "code": "MIA", "color": "#98002e", "slug": "heat", "powerRank": 14, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Atlanta Hawks", "code": "ATL", "color": "#c8102e", "slug": "hawks", "powerRank": 15, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Charlotte Hornets", "code": "CHA", "color": "#00788c", "slug": "hornets", "powerRank": 16, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Washington Wizards", "code": "WAS", "color": "#002b5c", "slug": "wizards", "powerRank": 17, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Orlando Magic", "code": "ORL", "color": "#0077c0", "slug": "magic", "powerRank": 18, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Dallas Mavericks", "code": "DAL", "color": "#00538c", "slug": "mavericks", "powerRank": 19, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Utah Jazz", "code": "UTA", "color": "#5f259f", "slug": "jazz", "powerRank": 20, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Phoenix Suns", "code": "PHX", "color": "#a64417", "slug": "suns", "powerRank": 21, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Golden State Warriors", "code": "GSW", "color": "#1d428a", "slug": "warriors", "powerRank": 22, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Portland Trail Blazers", "code": "POR", "color": "#c52d36", "slug": "trail-blazers", "powerRank": 23, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Memphis Grizzlies", "code": "MEM", "color": "#5d76a9", "slug": "grizzlies", "powerRank": 24, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Los Angeles Clippers", "code": "LAC", "color": "#c8102e", "slug": "clippers", "powerRank": 25, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "New Orleans Pelicans", "code": "NOP", "color": "#0c2340", "slug": "pelicans", "powerRank": 26, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Brooklyn Nets", "code": "BKN", "color": "#303030", "slug": "nets", "powerRank": 27, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Chicago Bulls", "code": "CHI", "color": "#ce1141", "slug": "bulls", "powerRank": 28, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Milwaukee Bucks", "code": "MIL", "color": "#00471b", "slug": "bucks", "powerRank": 29, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}, {"name": "Sacramento Kings", "code": "SAC", "color": "#5a2d81", "slug": "kings", "powerRank": 30, "status": "outline", "thesis": "", "previousRecord": null, "projectedWins": null, "charts": []}];
+const ordered = [...teams].sort((a, b) => a.powerRank - b.powerRank);
+
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+	'&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'"': '&quot;',
+	"'": '&#39;'
+}[character]));
+
+const cards = document.getElementById('cards');
+cards.innerHTML = ordered.map((team) => `
+	<details class="team-card" id="team-${team.slug}" style="--team:${team.color}">
+		<summary>
+			<span class="rank" aria-label="Power rank ${team.powerRank}">${String(team.powerRank).padStart(2, '0')}</span>
+			<span class="badge" aria-hidden="true">${team.code}</span>
+			<div class="identity">
+				<h2>${escapeHtml(team.name)}</h2>
+				<p class="subhead pending">The team’s central question goes here</p>
+				<div class="stat-strip">
+					<span>2025–26 <b class="empty-stats">Record pending</b></span>
+					<span>Projected wins <b class="empty-stats">TBD</b></span>
+				</div>
+			</div>
+			<span class="chevron" aria-hidden="true"></span>
+		</summary>
+		<div class="team-body">
+			<p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
+			<div class="story-layout">
+				<article class="story">
+					<h3>The argument, in about 500 words.</h3>
+					<p>This space will hold your ${escapeHtml(team.name)} preview. The finished article will read as continuous prose, with graphics placed where they support the argument.</p>
+					<div class="draft-text">
+						<p>Opening: establish the team’s central question.</p>
+						<p>Development: explain the offseason changes and the evidence that matters most.</p>
+						<p>Outlook: connect those findings to your expectations for the coming season.</p>
+					</div>
+				</article>
+				<figure class="graphic">
+					<h3>One essential graphic</h3>
+					<div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
+						<strong>Dataset and chart pending</strong>
+						<span>Static image or interactive chart</span>
+					</div>
+					<figcaption>
+						A short takeaway will explain what this graphic adds to the preview.
+						<span class="source-note">Source · Season/date range · Sample/filter · Retrieved date</span>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="watch">
+				<strong>What to watch</strong>
+				<p>A specific development that could change your assessment of this team.</p>
+			</div>
+		</div>
+	</details>
+`).join('');
+
+document.getElementById('team-links').innerHTML = ordered.map((team) => `
+	<li>
+		<a href="#team-${team.slug}">
+			<span class="num">${team.powerRank}</span>
+			<span>${escapeHtml(team.name)}</span>
+		</a>
+	</li>
+`).join('');
+
+document.getElementById('jump').innerHTML += [...teams]
+	.sort((a, b) => a.name.localeCompare(b.name))
+	.map((team) => `<option value="team-${team.slug}">${escapeHtml(team.name)} · #${team.powerRank}</option>`)
+	.join('');
+
+function openHash() {
+	const id = location.hash.slice(1);
+	const element = document.getElementById(id);
+	if (!element || !element.matches('details')) return;
+
+	element.open = true;
+	document.querySelectorAll('.team-links a').forEach((link) => {
+		link.classList.toggle('active', link.hash === location.hash);
+	});
+	document.getElementById('jump').value = id;
+	requestAnimationFrame(() => element.scrollIntoView({
+		block: 'start',
+		behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth'
+	}));
+}
+
+addEventListener('hashchange', openHash);
+document.getElementById('jump').addEventListener('change', (event) => {
+	if (!event.target.value) return;
+
+	const hash = `#${event.target.value}`;
+	if (location.hash === hash) openHash();
+	else location.hash = hash;
+});
+
+document.querySelectorAll('.team-links a').forEach((link) => {
+	link.addEventListener('click', () => {
+		if (link.hash === location.hash) openHash();
+	});
+});
+
+document.getElementById('close-all').addEventListener('click', () => {
+	document.querySelectorAll('details[open]').forEach((details) => {
+		details.open = false;
+	});
+	document.querySelectorAll('.team-links a').forEach((link) => {
+		link.classList.remove('active');
+	});
+	document.getElementById('jump').value = '';
+
+	if (location.hash.startsWith('#team-')) {
+		history.replaceState(null, '', location.pathname + location.search);
+	}
+});
+
+if (location.hash) openHash();
+</script></body></html>
