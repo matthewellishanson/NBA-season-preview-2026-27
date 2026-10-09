@@ -1,0 +1,465 @@
+.story-layout--chart {
+  grid-template-columns: minmax(0, 46rem);
+}
+
+.team-history-chart {
+  --chart-accent: #002b5c;
+  --chart-pink: #ffb7c5;
+  --chart-negative: #c8102e;
+  margin: 30px 0 4px;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid #ded9e7;
+  border-top: 4px solid var(--chart-accent);
+  border-radius: 10px;
+  background: #fffafb;
+  color: #171326;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.ratings-chart__header {
+  max-width: 760px;
+}
+
+.ratings-chart__eyebrow {
+  margin: 0 0 6px;
+  color: var(--chart-accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.ratings-chart__title {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.16;
+  letter-spacing: -0.8px;
+}
+
+.ratings-chart__intro {
+  margin: 9px 0 0;
+  color: #686574;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ratings-chart__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 8px;
+  padding: 0;
+  border: 0;
+}
+
+.ratings-chart__controls legend {
+  width: 100%;
+  margin-bottom: 2px;
+  color: #686574;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.ratings-chart__metric-button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #cbc5d5;
+  border-radius: 999px;
+  background: #fff;
+  color: #4e4859;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ratings-chart__metric-button:hover {
+  border-color: var(--chart-accent);
+  color: var(--chart-accent);
+}
+
+.ratings-chart__metric-button[aria-pressed="true"] {
+  border-color: var(--chart-accent);
+  background: var(--chart-pink);
+  color: var(--chart-accent);
+}
+
+.ratings-chart__metric-button:focus-visible,
+.ratings-chart__table-toggle:focus-visible {
+  outline: 3px solid #a9bad0;
+  outline-offset: 3px;
+}
+
+.ratings-chart__panel {
+  margin-top: 16px;
+}
+
+.ratings-chart__metric-heading {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.ratings-chart__metric-note {
+  min-height: 22px;
+  margin: 4px 0 8px;
+  color: #686574;
+  font-size: 13px;
+}
+
+.ratings-chart__inspection-detail {
+  margin: 10px 0;
+  padding: 8px 11px;
+  border-left: 3px solid var(--chart-accent);
+  background: #fff0f3;
+  color: var(--chart-accent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+
+.ratings-chart__plot {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #e5e2ed;
+  border-radius: 7px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ratings-chart__plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.ratings-chart__grid,
+.ratings-chart__season-grid {
+  stroke: #ece9f1;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ratings-chart__axis,
+.ratings-chart__rank-tick {
+  stroke: #aaa4b3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ratings-chart__tick,
+.ratings-chart__rank-tick-label,
+.ratings-chart__season-label {
+  fill: #746f7c;
+  font-size: 11px;
+}
+
+.ratings-chart__rank-axis,
+.ratings-chart__rank-tick {
+  stroke: var(--chart-accent);
+}
+
+.ratings-chart__rank-tick-label {
+  fill: var(--chart-accent);
+  font-weight: 700;
+}
+
+.ratings-chart__season-label {
+  font-weight: 650;
+}
+
+.ratings-chart__plot-subtitle,
+.ratings-chart__axis-label,
+.ratings-chart__legend-label {
+  fill: #746f7c;
+  font-size: 11px;
+}
+
+.ratings-chart__axis-label {
+  fill: var(--chart-accent);
+  font-weight: 800;
+}
+
+.ratings-chart__rank-axis-label {
+  fill: #596a7d;
+}
+
+.ratings-chart__legend-label {
+  fill: var(--chart-accent);
+  font-weight: 750;
+}
+
+.ratings-chart__legend-actual,
+.ratings-chart__legend-rank {
+  fill: none;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.ratings-chart__legend-actual {
+  stroke: var(--chart-accent);
+}
+
+.ratings-chart__legend-rank {
+  stroke: var(--chart-pink);
+  stroke-dasharray: 6 4;
+}
+
+.ratings-chart__line {
+  fill: none;
+  stroke: var(--chart-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ratings-chart__rank-line {
+  fill: none;
+  stroke: var(--chart-pink);
+  stroke-width: 3;
+  stroke-dasharray: 7 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ratings-chart__point {
+  fill: #fff;
+  stroke: var(--chart-accent);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ratings-chart__rank-point {
+  fill: var(--chart-pink);
+  stroke: var(--chart-accent);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ratings-chart__legend-point {
+  stroke-width: 1.75;
+}
+
+.ratings-chart__point--positive {
+  fill: var(--chart-accent);
+}
+
+.ratings-chart__point--negative {
+  fill: var(--chart-negative);
+  stroke: var(--chart-negative);
+}
+
+.ratings-chart__value-label,
+.ratings-chart__rank-label {
+  fill: var(--chart-accent);
+  font-size: 11px;
+  font-weight: 750;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.ratings-chart__value-label--positive {
+  fill: var(--chart-accent);
+}
+
+.ratings-chart__value-label--negative {
+  fill: var(--chart-negative);
+}
+
+.ratings-chart__reference {
+  stroke: #91899e;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.ratings-chart__reference-label {
+  fill: #6a6472;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ratings-chart__inspection {
+  cursor: pointer;
+  outline: none;
+}
+
+.ratings-chart__inspection-hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+}
+
+.ratings-chart__inspection.is-active .ratings-chart__inspection-hit {
+  fill: rgb(255 183 197 / 12%);
+}
+
+.ratings-chart__inspection:focus .ratings-chart__inspection-hit {
+  stroke: var(--chart-accent);
+  stroke-dasharray: 4 3;
+}
+
+.ratings-chart__table-details {
+  margin-top: 16px;
+  border-top: 1px solid #e5e2ed;
+}
+
+.ratings-chart__table-toggle {
+  width: fit-content;
+  padding: 13px 2px 5px;
+  color: var(--chart-accent);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.team-card .ratings-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  padding: 13px 2px 5px;
+  border-left: 0;
+  background: transparent;
+  list-style: none;
+}
+
+.team-card .ratings-chart__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ratings-chart__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.ratings-chart__table-details[open] .ratings-chart__table-toggle::before {
+  content: "\25BE";
+}
+
+.ratings-chart__table-wrap {
+  max-width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.ratings-chart__table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ratings-chart__table caption {
+  padding: 0 0 8px;
+  color: #686574;
+  text-align: left;
+}
+
+.ratings-chart__table th,
+.ratings-chart__table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ece9f1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ratings-chart__table th:first-child,
+.ratings-chart__table td:first-child {
+  text-align: left;
+}
+
+.ratings-chart__table thead th {
+  background: #f2f0f6;
+  color: #514b59;
+  font-weight: 800;
+}
+
+.ratings-chart__notes {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e2ed;
+  color: #736d7b;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ratings-chart__notes p {
+  margin: 2px 0;
+}
+
+.ratings-chart__status {
+  margin: 0;
+  padding: 24px;
+  border: 1px dashed #cfc8d8;
+  border-radius: 6px;
+  background: #fff;
+  color: #686574;
+  font-size: 14px;
+}
+
+.ratings-chart__status--error {
+  border-color: #d7a7ae;
+  background: #fff8f8;
+  color: #7d2634;
+}
+
+@media (max-width: 600px) {
+  .team-history-chart {
+    margin-right: -6px;
+    margin-left: -6px;
+    padding: 16px 10px;
+  }
+
+  .ratings-chart__controls {
+    gap: 6px;
+  }
+
+  .ratings-chart__metric-button {
+    flex: 1 1 calc(50% - 6px);
+    padding: 8px 9px;
+  }
+
+  .ratings-chart__metric-note {
+    min-height: 40px;
+  }
+
+  .ratings-chart__tick,
+  .ratings-chart__rank-tick-label,
+  .ratings-chart__value-label,
+  .ratings-chart__rank-label {
+    font-size: 10px;
+  }
+
+  .ratings-chart__season-label {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ratings-chart__metric-button,
+  .ratings-chart__plot * {
+    scroll-behavior: auto;
+    transition: none !important;
+    animation: none !important;
+  }
+}
