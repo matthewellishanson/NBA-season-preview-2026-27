@@ -11,6 +11,7 @@
       content="A design prototype for Hanson Hoops' 30-team NBA preview, using Matt Hanson's provisional power rankings."
     />
     <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="assets/css/wemby-unicorn-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1034,7 +1035,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : ""}">
+              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : ""}">
                 <article class="story">
                   <h3>The argument, in about 500 words.</h3>
                   <p>This space will hold your ${escapeHtml(team.name)} preview. The finished article will read as continuous prose, with graphics placed where they support the argument.</p>
@@ -1044,7 +1045,43 @@
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
                 </article>
-                ${team.slug === "wizards" ? "" : `<figure class="graphic">
+                ${team.slug === "wizards" ? "" : team.slug === "spurs" ? `
+                <figure
+                  class="wemby-unicorn"
+                  data-wemby-unicorn-chart
+                  data-source="assets/data/processed/wembanyama-unicorn-2025-26.csv"
+                  aria-busy="true"
+                >
+                  <header class="wemby-unicorn__header">
+                    <div>
+                      <span class="wemby-unicorn__fiesta-stripe" aria-hidden="true"><i></i><i></i><i></i></span>
+                      <p class="wemby-unicorn__eyebrow">Spurs context · 2025–26 regular season</p>
+                      <h3 class="wemby-unicorn__title">Wembanyama’s Unicorn Case</h3>
+                      <p class="wemby-unicorn__dek">2025–26 regular season · Players with at least 1,500 minutes</p>
+                    </div>
+                    <aside class="wemby-unicorn__spotlight" aria-label="Victor Wembanyama's plotted values">
+                      <strong class="wemby-unicorn__spotlight-name">Victor Wembanyama</strong>
+                      <span class="wemby-unicorn__spotlight-values">
+                        <span>41.2 PTS/100</span><span>4.2 DBPM</span>
+                        <span>9.4% BLK</span><span>62.6% TS</span>
+                      </span>
+                    </aside>
+                  </header>
+                  <div class="wemby-unicorn__keys" aria-label="Chart keys"></div>
+                  <div class="wemby-unicorn__chart-shell">
+                    <p class="wemby-unicorn__status">Loading the qualified player comparison…</p>
+                  </div>
+                  <p class="wemby-unicorn__inspection" aria-live="polite">Focus, hover, or tap a bubble for exact player values.</p>
+                  <details class="wemby-unicorn__table-details">
+                    <summary class="wemby-unicorn__table-toggle">View accessible data table</summary>
+                    <div class="wemby-unicorn__table-wrap"></div>
+                  </details>
+                  <figcaption class="wemby-unicorn__notes">
+                    <p><strong>Population:</strong> 163 NBA players with at least 1,500 regular-season minutes in 2025–26. Traded players appear once as combined-team rows.</p>
+                    <p><strong>Source and method:</strong> Basketball Reference Per 100 Possessions and Advanced tables, adapted from the READiscover league file. PTS/100 is the provider’s per-possession statistic—not a per-48 conversion. DBPM is a box-score-based defensive estimate, not a direct measure of defense. BLK% estimates the share of opponent two-point attempts blocked while the player was on the floor.</p>
+                  </figcaption>
+                  <noscript><p class="wemby-unicorn__status wemby-unicorn__status--error">This comparison chart requires JavaScript. The source values remain available in the downloadable CSV.</p></noscript>
+                </figure>` : `<figure class="graphic">
                   <h3>One essential graphic</h3>
                   <div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
                     <strong>Dataset and chart pending</strong>
@@ -1155,6 +1192,8 @@
 
       if (location.hash) openHash();
     </script>
+    <script src="assets/vendor/d3/d3.v7.9.0.min.js"></script>
+    <script src="assets/js/wemby-unicorn-chart.js"></script>
     <script src="assets/js/team-ratings-chart.js"></script>
   </body>
 </html>
