@@ -1,29 +1,29 @@
-(function initializeWembyUnicornModule() {
+(function initializeWembyCareerChartModule() {
   "use strict";
 
   const d3 = window.d3;
-  const MIN_MINUTES = 1500;
-  const WEMBY_ID = "wembavi01";
-  const COMPARISON_IDS = new Set([
-    WEMBY_ID,
-    "gilgesh01",
-    "jokicni01",
-    "mobleev01",
-    "thompau01",
-  ]);
-  const SHORT_LABELS = {
-    wembavi01: "Wembanyama",
-    gilgesh01: "Gilgeous-Alexander",
-    jokicni01: "Jokić",
-    mobleev01: "Mobley",
-    thompau01: "A. Thompson",
+  const EXPECTED_SEASONS = ["2023-24", "2024-25", "2025-26"];
+  const EXPECTED = {
+    pointsPer100: [34.3, 35.3, 41.2],
+    tsPlus: [97, 103, 108],
+    turnoversPer100: [5.9, 4.7, 4.0],
+    assistedTwo: [0.728, 0.703, 0.647],
+    assistedThree: [0.797, 0.859, 0.893],
   };
-  const EXPECTED_WEMBY = {
-    pointsPer100: 41.2,
-    dbpm: 4.2,
-    blockPct: 9.4,
-    trueShootingPct: 0.626,
+  const COLORS = {
+    teal: "#00b2a9",
+    pink: "#ef426f",
+    orange: "#ff8200",
+    silver: "#8a8d8f",
+    black: "#161b1e",
   };
+  const SHOT_ZONES = [
+    { key: "shotShare0to3", accuracy: "shotAccuracy0to3", label: "0–3 ft", color: COLORS.teal },
+    { key: "shotShare3to10", accuracy: "shotAccuracy3to10", label: "3–10 ft", color: COLORS.pink },
+    { key: "shotShare10to16", accuracy: "shotAccuracy10to16", label: "10–16 ft", color: COLORS.orange },
+    { key: "shotShare16to3p", accuracy: "shotAccuracy16to3p", label: "16 ft–3P", color: COLORS.silver },
+    { key: "shotShare3p", accuracy: "shotAccuracy3p", label: "3P", color: COLORS.black },
+  ];
   let instanceCount = 0;
 
   function escapeHtml(value) {
@@ -36,124 +36,83 @@
     })[character]);
   }
 
+  function number(row, field) {
+    const value = Number(row[field]);
+    if (!Number.isFinite(value)) throw new Error(`Invalid value for ${field}.`);
+    return value;
+  }
+
   function parseRow(row) {
     return {
-      playerId: row.player_id?.trim() || "",
-      player: row.player?.trim() || "",
-      team: row.team?.trim() || "",
       season: row.season?.trim() || "",
-      minutes: Number(row.minutes),
-      pointsPer100: Number(row.points_per_100),
-      dbpm: Number(row.dbpm),
-      blockPct: Number(row.block_pct),
-      trueShootingPct: Number(row.true_shooting_pct),
-      position: row.position?.trim() || "",
+      age: number(row, "age"),
+      games: number(row, "games"),
+      minutes: number(row, "minutes"),
+      pointsPer100: number(row, "p100_pts"),
+      tsPlus: number(row, "league_relative_ts_index"),
+      turnoversPer100: number(row, "p100_tov"),
+      averageShotDistance: number(row, "shooting_average_distance_ft"),
+      freeThrowAttemptRate: number(row, "adv_free_throw_attempt_rate"),
+      shotShare0to3: number(row, "shooting_attempt_share_0_3_ft"),
+      shotShare3to10: number(row, "shooting_attempt_share_3_10_ft"),
+      shotShare10to16: number(row, "shooting_attempt_share_10_16_ft"),
+      shotShare16to3p: number(row, "shooting_attempt_share_16_ft_to_three"),
+      shotShare3p: number(row, "shooting_attempt_share_three_p"),
+      shotShareTotal: number(row, "derived_shot_zone_attempt_share_total"),
+      shotAccuracy0to3: number(row, "shooting_accuracy_0_3_ft"),
+      shotAccuracy3to10: number(row, "shooting_accuracy_3_10_ft"),
+      shotAccuracy10to16: number(row, "shooting_accuracy_10_16_ft"),
+      shotAccuracy16to3p: number(row, "shooting_accuracy_16_ft_to_three"),
+      shotAccuracy3p: number(row, "shooting_accuracy_three_p"),
+      assistedTwo: number(row, "shooting_assisted_share_made_two_p"),
+      unassistedTwo: number(row, "derived_unassisted_share_made_two_p"),
+      assistedThree: number(row, "shooting_assisted_share_made_three_p"),
+      unassistedThree: number(row, "derived_unassisted_share_made_three_p"),
     };
   }
 
   function validateRows(rows) {
-    if (!rows.length) throw new Error("The dataset is empty.");
-
-    const numericFields = ["minutes", "pointsPer100", "dbpm", "blockPct", "trueShootingPct"];
-    const identities = new Set();
-    rows.forEach((row) => {
-      if (!row.playerId || !row.player || !row.team) throw new Error("A player identity is incomplete.");
-      if (identities.has(row.playerId)) throw new Error("The dataset contains duplicate players.");
-      identities.add(row.playerId);
-      if (row.season !== "2025-26") throw new Error("The dataset includes an unexpected season.");
-      if (row.minutes < MIN_MINUTES) throw new Error("The dataset includes an unqualified player.");
-      if (numericFields.some((field) => !Number.isFinite(row[field]))) {
-        throw new Error("The dataset includes an invalid statistical value.");
-      }
+    if (rows.length !== 3) throw new Error("Expected exactly three career seasons.");
+    rows.forEach((row, index) => {
+      if (row.season !== EXPECTED_SEASONS[index]) throw new Error("Career seasons are missing or out of order.");
+      Object.entries(EXPECTED).forEach(([field, expected]) => {
+        if (Math.abs(row[field] - expected[index]) > 1e-9) {
+          throw new Error(`${row.season} ${field} conflicts with the verified source.`);
+        }
+      });
     });
-
-    const wemby = rows.find((row) => row.playerId === WEMBY_ID);
-    if (!wemby) throw new Error("Victor Wembanyama is missing from the dataset.");
-    Object.entries(EXPECTED_WEMBY).forEach(([field, expected]) => {
-      if (Math.abs(wemby[field] - expected) > 1e-9) {
-        throw new Error(`Victor Wembanyama's ${field} value conflicts with the verified source.`);
-      }
-    });
-  }
-
-  function paddedDomain(values, minimumPadding) {
-    const [minimum, maximum] = d3.extent(values);
-    const padding = Math.max((maximum - minimum) * 0.07, minimumPadding);
-    return [minimum - padding, maximum + padding];
   }
 
   function percent(value) {
     return `${(value * 100).toFixed(1)}%`;
   }
 
-  function playerDescription(row) {
-    return `${row.player}, ${row.team}: ${row.pointsPer100.toFixed(1)} points per 100 possessions, ${row.dbpm.toFixed(1)} defensive box plus-minus, ${row.blockPct.toFixed(1)} percent block rate, ${percent(row.trueShootingPct)} true shooting.`;
+  function shortSeason(season) {
+    return season.replace("20", "").replace("-20", "–");
   }
 
-  function resolveLabelPositions(labelRows, xScale, yScale, radiusScale, plotBounds, narrow) {
-    const labels = labelRows.map((row) => {
-      const pointX = xScale(row.pointsPer100);
-      const pointY = yScale(row.dbpm);
-      const radius = radiusScale(row.blockPct);
-      const name = narrow ? SHORT_LABELS[row.playerId] : row.player;
-      const estimatedWidth = name.length * (narrow ? 5.8 : 6.4);
-      const useLeft = pointX + radius + 12 + estimatedWidth > plotBounds.right;
-      const x = useLeft ? pointX - radius - 10 : pointX + radius + 10;
-      return {
-        row,
-        name,
-        pointX,
-        pointY,
-        x,
-        y: pointY,
-        anchor: useLeft ? "end" : "start",
-        left: useLeft ? x - estimatedWidth : x,
-        right: useLeft ? x : x + estimatedWidth,
-        fixed: row.playerId === WEMBY_ID,
-      };
-    });
-
-    for (let iteration = 0; iteration < 80; iteration += 1) {
-      for (let firstIndex = 0; firstIndex < labels.length; firstIndex += 1) {
-        for (let secondIndex = firstIndex + 1; secondIndex < labels.length; secondIndex += 1) {
-          const first = labels[firstIndex];
-          const second = labels[secondIndex];
-          const horizontalOverlap = first.left - 8 < second.right && first.right + 8 > second.left;
-          const verticalDistance = Math.abs(first.y - second.y);
-          if (!horizontalOverlap || verticalDistance >= 20) continue;
-
-          const direction = first.y <= second.y ? -1 : 1;
-          const shift = (20 - verticalDistance) / 2 + 0.35;
-          if (!first.fixed) first.y += direction * shift;
-          if (!second.fixed) second.y -= direction * shift;
-          if (first.fixed && !second.fixed) second.y -= direction * shift;
-          if (second.fixed && !first.fixed) first.y += direction * shift;
-        }
-      }
-      labels.forEach((label) => {
-        label.y = Math.max(plotBounds.top + 8, Math.min(plotBounds.bottom - 8, label.y));
-      });
-    }
-
-    return labels;
+  function paddedDomain(values, minimumPadding) {
+    const [minimum, maximum] = d3.extent(values);
+    const padding = Math.max((maximum - minimum) * 0.2, minimumPadding);
+    return [minimum - padding, maximum + padding];
   }
 
-  class WembyUnicornChart {
+  class WembyCareerChart {
     constructor(root) {
       this.root = root;
-      this.instanceId = `wemby-unicorn-${++instanceCount}`;
+      this.instanceId = `wemby-career-${++instanceCount}`;
       this.rows = [];
+      this.activeView = "trajectory";
       this.loadPromise = null;
       this.lastWidth = 0;
       this.renderQueued = false;
-      this.pinnedPlayerId = null;
-      this.activePlayerId = null;
-      this.reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
       this.chartShell = root.querySelector(".wemby-unicorn__chart-shell");
       this.status = root.querySelector(".wemby-unicorn__status");
-      this.keys = root.querySelector(".wemby-unicorn__keys");
-      this.tableWrap = root.querySelector(".wemby-unicorn__table-wrap");
+      this.samples = root.querySelector(".wemby-unicorn__samples");
       this.inspection = root.querySelector(".wemby-unicorn__inspection");
+      this.tableWrap = root.querySelector(".wemby-unicorn__table-wrap");
+      this.buttons = [...root.querySelectorAll("[data-wemby-view]")];
+      this.buttons.forEach((button) => button.addEventListener("click", () => this.setView(button.dataset.wembyView)));
       this.resizeObserver = new ResizeObserver(() => this.queueRender());
       this.resizeObserver.observe(this.chartShell);
     }
@@ -166,17 +125,33 @@
           validateRows(rows);
           this.rows = rows;
           this.root.setAttribute("aria-busy", "false");
-          this.renderKeys();
+          this.renderSamples();
           this.renderTable();
           this.render(true);
         })
         .catch((error) => {
-          console.error("Wembanyama chart data error:", error);
+          console.error("Wembanyama career chart data error:", error);
           this.root.setAttribute("aria-busy", "false");
           this.status.className = "wemby-unicorn__status wemby-unicorn__status--error";
-          this.status.textContent = "The player comparison data could not be displayed. Please try reloading the page.";
+          this.status.textContent = "The career data could not be displayed. Please try reloading the page.";
         });
       return this.loadPromise;
+    }
+
+    setView(nextView) {
+      if (!new Set(["trajectory", "shots", "creation"]).has(nextView)) return;
+      this.activeView = nextView;
+      this.buttons.forEach((button) => {
+        const active = button.dataset.wembyView === nextView;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      this.inspection.textContent = nextView === "trajectory"
+        ? "Three supplied season values are connected directly; no smoothing or extrapolation is applied."
+        : nextView === "shots"
+          ? "Focus or tap a shot-zone segment for its attempt share and zone accuracy."
+          : "The denominator is made baskets of each type; focus or tap a segment for its share.";
+      this.render(true);
     }
 
     queueRender() {
@@ -189,314 +164,258 @@
       });
     }
 
-    renderKeys() {
-      const [minimumTs, maximumTs] = d3.extent(this.rows, (row) => row.trueShootingPct);
-      const middleTs = (minimumTs + maximumTs) / 2;
-      const maximumBlockPct = d3.max(this.rows, (row) => row.blockPct);
-      const colorScale = d3.scaleLinear()
-        .domain([minimumTs, maximumTs])
-        .range(["#dfe5e8", "#1d2429"])
-        .interpolate(d3.interpolateRgb.gamma(2.2));
-      const gradientId = `${this.instanceId}-ts-gradient`;
-      const legendValues = [2, 6, maximumBlockPct];
-      const legendRadius = (value) => 15 * Math.sqrt(value / maximumBlockPct);
-      const circleXs = [28, 103, 196];
-
-      this.keys.innerHTML = `
-        <div class="wemby-unicorn__key">
-          <span class="wemby-unicorn__key-title">Color · True shooting percentage</span>
-          <svg class="wemby-unicorn__color-ramp" viewBox="0 0 190 10" role="img" aria-label="True shooting percentage from ${percent(minimumTs)} to ${percent(maximumTs)}">
-            <defs>
-              <linearGradient id="${gradientId}" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="${colorScale(minimumTs)}"></stop>
-                <stop offset="100%" stop-color="${colorScale(maximumTs)}"></stop>
-              </linearGradient>
-            </defs>
-            <rect width="190" height="10" rx="5" fill="url(#${gradientId})"></rect>
-          </svg>
-          <span class="wemby-unicorn__color-ticks"><span>${percent(minimumTs)}</span><span>${percent(middleTs)}</span><span>${percent(maximumTs)}</span></span>
-        </div>
-        <div class="wemby-unicorn__key">
-          <span class="wemby-unicorn__key-title">Bubble area · Block percentage</span>
-          <svg class="wemby-unicorn__size-key" viewBox="0 0 230 48" role="img" aria-label="Bubble area examples for block percentage">
-            ${legendValues.map((value, index) => `<circle cx="${circleXs[index]}" cy="17" r="${legendRadius(value).toFixed(2)}"></circle><text x="${circleXs[index]}" y="46">${value.toFixed(1)}%</text>`).join("")}
-          </svg>
-        </div>`;
+    renderSamples() {
+      this.samples.innerHTML = this.rows.map((row) => `<span><strong>${escapeHtml(shortSeason(row.season))}</strong>${row.games} G · ${row.minutes.toLocaleString("en-US")} MP</span>`).join("");
     }
 
     renderTable() {
-      const sortedRows = [...this.rows].sort((a, b) => d3.descending(a.pointsPer100, b.pointsPer100));
       this.tableWrap.innerHTML = `
         <table class="wemby-unicorn__table">
-          <caption class="wemby-unicorn__visually-hidden">All ${sortedRows.length} qualified players and the values plotted in the Wembanyama unicorn chart</caption>
-          <thead><tr><th scope="col">Player</th><th scope="col">Team</th><th scope="col">Minutes</th><th scope="col">PTS/100</th><th scope="col">DBPM</th><th scope="col">BLK%</th><th scope="col">TS%</th></tr></thead>
-          <tbody>${sortedRows.map((row) => `
-            <tr${row.playerId === WEMBY_ID ? " data-wemby-row" : ""}>
-              <th scope="row">${escapeHtml(row.player)}</th>
-              <td>${escapeHtml(row.team)}</td>
-              <td>${row.minutes.toLocaleString("en-US")}</td>
-              <td>${row.pointsPer100.toFixed(1)}</td>
-              <td>${row.dbpm.toFixed(1)}</td>
-              <td>${row.blockPct.toFixed(1)}%</td>
-              <td>${percent(row.trueShootingPct)}</td>
-            </tr>`).join("")}</tbody>
+          <caption class="wemby-unicorn__visually-hidden">Victor Wembanyama career trajectory, shot selection, zone accuracy and assisted basket shares</caption>
+          <thead><tr>
+            <th scope="col">Season</th><th scope="col">Age</th><th scope="col">G</th><th scope="col">MP</th>
+            <th scope="col">PTS/100</th><th scope="col">TS+</th><th scope="col">TOV/100</th>
+            <th scope="col">Avg dist.</th><th scope="col">FTA/FGA</th>
+            ${SHOT_ZONES.map((zone) => `<th scope="col">${zone.label} share</th>`).join("")}
+            ${SHOT_ZONES.map((zone) => `<th scope="col">${zone.label} FG%</th>`).join("")}
+            <th scope="col">Made 2P assisted</th><th scope="col">Made 2P unassisted</th>
+            <th scope="col">Made 3P assisted</th><th scope="col">Made 3P unassisted</th>
+          </tr></thead>
+          <tbody>${this.rows.map((row) => `<tr>
+            <th scope="row">${escapeHtml(row.season)}</th><td>${row.age}</td><td>${row.games}</td><td>${row.minutes.toLocaleString("en-US")}</td>
+            <td>${row.pointsPer100.toFixed(1)}</td><td>${row.tsPlus.toFixed(0)}</td><td>${row.turnoversPer100.toFixed(1)}</td>
+            <td>${row.averageShotDistance.toFixed(1)} ft</td><td>${row.freeThrowAttemptRate.toFixed(3)}</td>
+            ${SHOT_ZONES.map((zone) => `<td>${percent(row[zone.key])}</td>`).join("")}
+            ${SHOT_ZONES.map((zone) => `<td>${percent(row[zone.accuracy])}</td>`).join("")}
+            <td>${percent(row.assistedTwo)}</td><td>${percent(row.unassistedTwo)}</td>
+            <td>${percent(row.assistedThree)}</td><td>${percent(row.unassistedThree)}</td>
+          </tr>`).join("")}</tbody>
         </table>`;
     }
 
-    render(force = false) {
-      const measuredWidth = Math.floor(this.chartShell.getBoundingClientRect().width);
-      if (measuredWidth <= 0) return;
-      if (!force && measuredWidth === this.lastWidth) return;
-      this.lastWidth = measuredWidth;
-      const narrow = measuredWidth < 560;
-      const width = Math.max(296, measuredWidth);
-      const height = narrow ? 570 : 540;
-      const margin = narrow
-        ? { top: 22, right: 14, bottom: 82, left: 52 }
-        : { top: 22, right: 28, bottom: 72, left: 66 };
-      const plotBounds = {
-        left: margin.left,
-        right: width - margin.right,
-        top: margin.top,
-        bottom: height - margin.bottom,
-      };
-
+    createSvg(title, description, width, height) {
       this.chartShell.replaceChildren();
-      const tooltip = document.createElement("div");
-      tooltip.className = "wemby-unicorn__tooltip";
-      tooltip.hidden = true;
-      tooltip.id = `${this.instanceId}-tooltip`;
-      this.chartShell.append(tooltip);
-      this.tooltip = tooltip;
-
-      const svg = d3.select(this.chartShell)
-        .append("svg")
+      const svg = d3.select(this.chartShell).append("svg")
         .attr("class", "wemby-unicorn__svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("role", "img")
         .attr("aria-labelledby", `${this.instanceId}-title ${this.instanceId}-description`);
-      svg.append("title")
-        .attr("id", `${this.instanceId}-title`)
-        .text("Wembanyama's Unicorn Case");
-      svg.append("desc")
-        .attr("id", `${this.instanceId}-description`)
-        .text(`Scatter plot of ${this.rows.length} NBA players with at least 1,500 minutes in 2025-26. Horizontal position is points per 100 possessions, vertical position is defensive box plus-minus, color is true shooting percentage, and bubble area is block percentage. Victor Wembanyama is highlighted.`);
+      svg.append("title").attr("id", `${this.instanceId}-title`).text(title);
+      svg.append("desc").attr("id", `${this.instanceId}-description`).text(description);
+      return svg;
+    }
 
-      const clipId = `${this.instanceId}-plot-clip`;
-      svg.append("defs")
-        .append("clipPath")
-        .attr("id", clipId)
-        .append("rect")
-        .attr("x", plotBounds.left)
-        .attr("y", plotBounds.top)
-        .attr("width", plotBounds.right - plotBounds.left)
-        .attr("height", plotBounds.bottom - plotBounds.top);
-
-      const xScale = d3.scaleLinear()
-        .domain(paddedDomain(this.rows.map((row) => row.pointsPer100), 0.8))
-        .nice()
-        .range([plotBounds.left, plotBounds.right]);
-      const yScale = d3.scaleLinear()
-        .domain(paddedDomain(this.rows.map((row) => row.dbpm), 0.35))
-        .nice()
-        .range([plotBounds.bottom, plotBounds.top]);
-      const [minimumTs, maximumTs] = d3.extent(this.rows, (row) => row.trueShootingPct);
-      const colorScale = d3.scaleLinear()
-        .domain([minimumTs, maximumTs])
-        .range(["#dfe5e8", "#1d2429"])
-        .interpolate(d3.interpolateRgb.gamma(2.2));
-      const maximumBlockPct = d3.max(this.rows, (row) => row.blockPct);
-      const maximumRadius = narrow ? 12.5 : 16;
-      const radiusScale = (value) => maximumRadius * Math.sqrt(value / maximumBlockPct);
-
-      const xTicks = xScale.ticks(narrow ? 5 : 8);
-      const yTicks = yScale.ticks(narrow ? 6 : 8);
-      const grid = svg.append("g").attr("class", "wemby-unicorn__grid");
-      grid.selectAll("line.x-grid")
-        .data(xTicks)
-        .join("line")
-        .attr("x1", (tick) => xScale(tick))
-        .attr("x2", (tick) => xScale(tick))
-        .attr("y1", plotBounds.top)
-        .attr("y2", plotBounds.bottom);
-      grid.selectAll("line.y-grid")
-        .data(yTicks)
-        .join("line")
-        .attr("x1", plotBounds.left)
-        .attr("x2", plotBounds.right)
-        .attr("y1", (tick) => yScale(tick))
-        .attr("y2", (tick) => yScale(tick));
-      if (yScale.domain()[0] <= 0 && yScale.domain()[1] >= 0) {
-        svg.append("line")
-          .attr("class", "wemby-unicorn__zero-line")
-          .attr("x1", plotBounds.left)
-          .attr("x2", plotBounds.right)
-          .attr("y1", yScale(0))
-          .attr("y2", yScale(0));
-      }
-
-      svg.append("g")
-        .attr("class", "wemby-unicorn__axis")
-        .attr("transform", `translate(0,${plotBounds.bottom})`)
-        .call(d3.axisBottom(xScale).ticks(narrow ? 5 : 8).tickSizeOuter(0));
-      svg.append("g")
-        .attr("class", "wemby-unicorn__axis")
-        .attr("transform", `translate(${plotBounds.left},0)`)
-        .call(d3.axisLeft(yScale).ticks(narrow ? 6 : 8).tickSizeOuter(0));
-      svg.append("text")
-        .attr("class", "wemby-unicorn__axis-title")
-        .attr("x", (plotBounds.left + plotBounds.right) / 2)
-        .attr("y", height - 18)
-        .attr("text-anchor", "middle")
-        .text("Points per 100 possessions");
-      svg.append("text")
-        .attr("class", "wemby-unicorn__axis-title")
-        .attr("transform", `translate(15 ${(plotBounds.top + plotBounds.bottom) / 2}) rotate(-90)`)
-        .attr("text-anchor", "middle")
-        .text("Defensive box plus/minus (DBPM)");
-      svg.append("text")
-        .attr("class", "wemby-unicorn__axis-note")
-        .attr("x", plotBounds.left)
-        .attr("y", height - 47)
-        .text("DBPM is a box-score-based defensive estimate.");
-
-      const orderedRows = [...this.rows].sort((a, b) => {
-        if (a.playerId === WEMBY_ID) return 1;
-        if (b.playerId === WEMBY_ID) return -1;
-        return Number(COMPARISON_IDS.has(a.playerId)) - Number(COMPARISON_IDS.has(b.playerId));
-      });
-      const pointsLayer = svg.append("g").attr("clip-path", `url(#${clipId})`);
-      pointsLayer.selectAll("circle.wemby-unicorn__point")
-        .data(orderedRows, (row) => row.playerId)
-        .join("circle")
-        .attr("class", (row) => `wemby-unicorn__point${row.playerId === WEMBY_ID ? " wemby-unicorn__point--wemby" : COMPARISON_IDS.has(row.playerId) ? " wemby-unicorn__point--comparison" : ""}`)
-        .attr("cx", (row) => xScale(row.pointsPer100))
-        .attr("cy", (row) => yScale(row.dbpm))
-        .attr("r", (row) => radiusScale(row.blockPct))
-        .attr("fill", (row) => colorScale(row.trueShootingPct))
-        .attr("fill-opacity", (row) => COMPARISON_IDS.has(row.playerId) ? 1 : 0.72)
-        .attr("stroke", (row) => COMPARISON_IDS.has(row.playerId) ? null : "rgba(15, 20, 23, 0.28)")
-        .attr("stroke-width", (row) => COMPARISON_IDS.has(row.playerId) ? null : 0.8);
-
-      const wemby = this.rows.find((row) => row.playerId === WEMBY_ID);
-      const wembyX = xScale(wemby.pointsPer100);
-      const wembyY = yScale(wemby.dbpm);
-      const wembyRadius = radiusScale(wemby.blockPct);
-      const highlightLayer = svg.append("g")
-        .attr("class", "wemby-unicorn__highlight")
-        .attr("aria-hidden", "true")
-        .attr("transform", `translate(${wembyX},${wembyY})`);
-      highlightLayer.append("circle")
-        .attr("class", "wemby-unicorn__highlight-gap")
-        .attr("r", wembyRadius + 3);
-      highlightLayer.append("circle")
-        .attr("class", "wemby-unicorn__highlight-ring")
-        .attr("r", wembyRadius + 6);
-
-      const labelRows = this.rows.filter((row) => COMPARISON_IDS.has(row.playerId));
-      const labels = resolveLabelPositions(labelRows, xScale, yScale, radiusScale, plotBounds, narrow);
-      const labelsLayer = svg.append("g").attr("aria-hidden", "true");
-      labelsLayer.selectAll("line")
-        .data(labels)
-        .join("line")
-        .attr("class", (label) => `wemby-unicorn__label-line${label.row.playerId === WEMBY_ID ? " wemby-unicorn__label-line--wemby" : ""}`)
-        .attr("x1", (label) => label.pointX)
-        .attr("y1", (label) => label.pointY)
-        .attr("x2", (label) => label.x + (label.anchor === "start" ? -3 : 3))
-        .attr("y2", (label) => label.y);
-      labelsLayer.selectAll("text")
-        .data(labels)
-        .join("text")
-        .attr("class", (label) => `wemby-unicorn__label${label.row.playerId === WEMBY_ID ? " wemby-unicorn__label--wemby" : ""}`)
-        .attr("x", (label) => label.x)
-        .attr("y", (label) => label.y + 4)
-        .attr("text-anchor", (label) => label.anchor)
-        .text((label) => label.name);
-
-      const hitLayer = svg.append("g");
-      hitLayer.selectAll("circle")
-        .data(orderedRows, (row) => row.playerId)
-        .join("circle")
-        .attr("class", "wemby-unicorn__hit-target")
-        .attr("cx", (row) => xScale(row.pointsPer100))
-        .attr("cy", (row) => yScale(row.dbpm))
-        .attr("r", (row) => Math.max(17, radiusScale(row.blockPct) + 5))
-        .attr("fill", "transparent")
-        .attr("stroke", "transparent")
-        .attr("tabindex", 0)
-        .attr("role", "button")
-        .attr("aria-label", playerDescription)
-        .attr("aria-describedby", `${this.instanceId}-inspection`)
-        .on("pointerenter", (event, row) => this.activate(row, event.currentTarget, width, height))
-        .on("pointerleave", (event, row) => {
-          if (this.pinnedPlayerId !== row.playerId) this.deactivate();
-        })
-        .on("focus", (event, row) => this.activate(row, event.currentTarget, width, height))
-        .on("blur", (event, row) => {
-          if (this.pinnedPlayerId !== row.playerId) this.deactivate();
-        })
-        .on("click", (event, row) => {
-          event.preventDefault();
-          this.pinnedPlayerId = this.pinnedPlayerId === row.playerId ? null : row.playerId;
-          if (this.pinnedPlayerId) this.activate(row, event.currentTarget, width, height);
-          else this.deactivate();
-        })
-        .on("keydown", (event, row) => {
+    bindInspection(selection, describe) {
+      selection.attr("tabindex", 0).attr("role", "button").attr("aria-label", describe)
+        .on("focus pointerenter", (_, datum) => { this.inspection.textContent = describe(datum); })
+        .on("click", function focusMark(event) { event.preventDefault(); this.focus(); })
+        .on("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            this.pinnedPlayerId = this.pinnedPlayerId === row.playerId ? null : row.playerId;
-            if (this.pinnedPlayerId) this.activate(row, event.currentTarget, width, height);
-            else this.deactivate();
-          } else if (event.key === "Escape") {
-            this.pinnedPlayerId = null;
-            this.deactivate();
-            event.currentTarget.blur();
+            event.currentTarget.focus();
           }
         });
+    }
 
-      this.svgNode = svg.node();
-      this.inspection.id = `${this.instanceId}-inspection`;
+    render(force = false) {
+      const measuredWidth = Math.floor(this.chartShell.getBoundingClientRect().width);
+      if (!this.rows.length || measuredWidth <= 0) return;
+      if (!force && measuredWidth === this.lastWidth) return;
+      this.lastWidth = measuredWidth;
+      if (this.activeView === "shots") this.renderShots(measuredWidth);
+      else if (this.activeView === "creation") this.renderCreation(measuredWidth);
+      else this.renderTrajectory(measuredWidth);
       this.status = null;
     }
 
-    activate(row, target, viewBoxWidth, viewBoxHeight) {
-      this.activePlayerId = row.playerId;
-      const cx = Number(target.getAttribute("cx"));
-      const cy = Number(target.getAttribute("cy"));
-      const svgBox = this.svgNode.getBoundingClientRect();
-      const shellBox = this.chartShell.getBoundingClientRect();
-      const left = ((cx / viewBoxWidth) * svgBox.width) + svgBox.left - shellBox.left;
-      const top = ((cy / viewBoxHeight) * svgBox.height) + svgBox.top - shellBox.top;
-      this.tooltip.innerHTML = `<strong>${escapeHtml(row.player)}</strong><span>${escapeHtml(row.team)} · ${row.minutes.toLocaleString("en-US")} minutes</span><span>${row.pointsPer100.toFixed(1)} PTS/100 · ${row.dbpm.toFixed(1)} DBPM</span><span>${row.blockPct.toFixed(1)}% BLK · ${percent(row.trueShootingPct)} TS</span>`;
-      this.tooltip.hidden = false;
-      this.tooltip.style.left = `${Math.max(0, Math.min(shellBox.width - 220, left))}px`;
-      this.tooltip.style.top = `${Math.max(30, Math.min(shellBox.height - 30, top))}px`;
-      this.inspection.textContent = playerDescription(row);
+    renderTrajectory(width) {
+      const narrow = width < 620;
+      const height = narrow ? 690 : 330;
+      const svg = this.createSvg(
+        "Victor Wembanyama's three-season career trajectory",
+        "Three panels show points per 100 possessions rising from 34.3 to 41.2, TS+ rising from 97 to 108 around a league-average reference of 100, and turnovers per 100 possessions falling from 5.9 to 4.0.",
+        width, height,
+      );
+      const metrics = [
+        { key: "pointsPer100", title: "Points per 100 possessions", color: COLORS.teal, digits: 1, padding: 1 },
+        { key: "tsPlus", title: "TS+ · 100 is league average", color: COLORS.pink, digits: 0, padding: 2 },
+        { key: "turnoversPer100", title: "Turnovers per 100 possessions", color: COLORS.orange, digits: 1, padding: 0.4 },
+      ];
+      const outer = narrow ? { left: 52, right: 14, top: 18, bottom: 28, gap: 24 } : { left: 48, right: 10, top: 24, bottom: 42, gap: 24 };
+      const panelWidth = narrow ? width - outer.left - outer.right : (width - outer.left - outer.right - outer.gap * 2) / 3;
+      const panelHeight = narrow ? 186 : height - outer.top - outer.bottom;
+
+      metrics.forEach((metric, metricIndex) => {
+        const panelX = narrow ? outer.left : outer.left + metricIndex * (panelWidth + outer.gap);
+        const panelY = narrow ? outer.top + metricIndex * (panelHeight + outer.gap) : outer.top;
+        const chartTop = panelY + 34;
+        const chartBottom = panelY + panelHeight - 30;
+        const x = d3.scalePoint().domain(EXPECTED_SEASONS).range([panelX + 8, panelX + panelWidth - 8]);
+        const y = d3.scaleLinear().domain(paddedDomain(this.rows.map((row) => row[metric.key]), metric.padding)).nice().range([chartBottom, chartTop]);
+        const panel = svg.append("g");
+        panel.append("text").attr("class", "wemby-unicorn__panel-title").attr("x", panelX).attr("y", panelY + 12).text(metric.title);
+        const axis = panel.append("g").attr("class", "wemby-unicorn__mini-axis").attr("transform", `translate(${panelX},0)`)
+          .call(d3.axisLeft(y).ticks(4).tickSize(-panelWidth).tickFormat((value) => value.toFixed(metric.digits)));
+        axis.selectAll(".tick").filter((value) => y(value) < chartTop || y(value) > chartBottom).remove();
+        if (metric.key === "tsPlus") {
+          panel.append("line").attr("class", "wemby-unicorn__reference-line").attr("x1", panelX).attr("x2", panelX + panelWidth).attr("y1", y(100)).attr("y2", y(100));
+          panel.append("text").attr("class", "wemby-unicorn__reference-label").attr("x", panelX + panelWidth).attr("y", y(100) - 5).attr("text-anchor", "end").text("League average");
+        }
+        panel.append("path").datum(this.rows).attr("class", "wemby-unicorn__metric-line").attr("stroke", metric.color)
+          .attr("d", d3.line().x((row) => x(row.season)).y((row) => y(row[metric.key])));
+        const marks = panel.selectAll(`.metric-${metricIndex}`).data(this.rows).join("circle")
+          .attr("class", "wemby-unicorn__metric-point").attr("cx", (row) => x(row.season)).attr("cy", (row) => y(row[metric.key])).attr("r", 5.5).attr("fill", metric.color);
+        this.bindInspection(marks, (row) => `${row.season}: ${row[metric.key].toFixed(metric.digits)} ${metric.title.toLowerCase()}.`);
+        panel.selectAll(`.value-${metricIndex}`).data(this.rows).join("text").attr("class", "wemby-unicorn__direct-value")
+          .attr("x", (row) => x(row.season)).attr("y", (row) => y(row[metric.key]) - 11).attr("text-anchor", "middle").text((row) => row[metric.key].toFixed(metric.digits));
+        panel.selectAll(`.season-${metricIndex}`).data(this.rows).join("text").attr("class", "wemby-unicorn__season-label")
+          .attr("x", (row) => x(row.season)).attr("y", chartBottom + 22).attr("text-anchor", "middle").text((row) => shortSeason(row.season));
+      });
     }
 
-    deactivate() {
-      this.activePlayerId = null;
-      this.tooltip.hidden = true;
-      this.inspection.textContent = "Focus, hover, or tap a bubble for exact player values.";
+    renderLegend(svg, items, x, y, availableWidth) {
+      let cursorX = x;
+      let cursorY = y;
+      items.forEach((item) => {
+        const itemWidth = Math.max(70, item.label.length * 6.4 + 24);
+        if (cursorX + itemWidth > availableWidth) { cursorX = x; cursorY += 22; }
+        svg.append("rect").attr("x", cursorX).attr("y", cursorY - 9).attr("width", 12).attr("height", 12).attr("rx", 2).attr("fill", item.color);
+        svg.append("text").attr("class", "wemby-unicorn__legend-label").attr("x", cursorX + 18).attr("y", cursorY + 1).text(item.label);
+        cursorX += itemWidth;
+      });
+      return cursorY;
+    }
+
+    renderShots(width) {
+      const narrow = width < 620;
+      const height = narrow ? 520 : 355;
+      const svg = this.createSvg(
+        "Victor Wembanyama shot selection by season",
+        "Three stacked bars show source-rounded field-goal attempt shares from five mutually exclusive distance zones. The 2024-25 shares total 100.1 percent and are not normalized.",
+        width, height,
+      );
+      svg.append("text").attr("class", "wemby-unicorn__view-title").attr("x", 10).attr("y", 22).text("Shot selection by distance");
+      const shotNote = svg.append("text").attr("class", "wemby-unicorn__view-note").attr("x", 10).attr("y", 42);
+      if (narrow) {
+        shotNote.append("tspan").attr("x", 10).text("Share of field-goal attempts · Source-rounded");
+        shotNote.append("tspan").attr("x", 10).attr("dy", 13).text("values shown without normalization");
+      } else {
+        shotNote.text("Share of field-goal attempts · Source-rounded values shown without normalization");
+      }
+      const legendBottom = this.renderLegend(svg, SHOT_ZONES, 10, narrow ? 82 : 68, width - 8);
+      const left = narrow ? 58 : 76;
+      const right = narrow ? 10 : 175;
+      const plotRight = width - right;
+      const plotWidth = plotRight - left;
+      const x = d3.scaleLinear().domain([0, 1.001]).range([left, plotRight]);
+      const rowStart = Math.max(140, legendBottom + 48);
+      const rowGap = narrow ? 105 : 74;
+      const barHeight = narrow ? 30 : 34;
+      this.rows.forEach((row, rowIndex) => {
+        const y = rowStart + rowIndex * rowGap;
+        svg.append("text").attr("class", "wemby-unicorn__bar-season").attr("x", left - 10).attr("y", y + barHeight / 2 + 4).attr("text-anchor", "end").text(shortSeason(row.season));
+        svg.append("rect").attr("class", "wemby-unicorn__bar-outline").attr("x", left).attr("y", y).attr("width", plotWidth).attr("height", barHeight).attr("rx", 4);
+        let cumulative = 0;
+        SHOT_ZONES.forEach((zone) => {
+          const value = row[zone.key];
+          const segmentWidth = x(cumulative + value) - x(cumulative);
+          const segment = svg.append("rect").datum({ row, zone, value }).attr("class", "wemby-unicorn__bar-segment")
+            .attr("x", x(cumulative)).attr("y", y).attr("width", Math.max(0, segmentWidth)).attr("height", barHeight).attr("fill", zone.color);
+          this.bindInspection(segment, ({ row: datumRow, zone: datumZone, value: datumValue }) => `${datumRow.season}, ${datumZone.label}: ${percent(datumValue)} of field-goal attempts; ${percent(datumRow[datumZone.accuracy])} field-goal accuracy.`);
+          if (segmentWidth >= 34) {
+            svg.append("text").attr("class", `wemby-unicorn__segment-value${zone.color === COLORS.silver ? " is-dark" : ""}`)
+              .attr("x", x(cumulative) + segmentWidth / 2).attr("y", y + barHeight / 2 + 4).attr("text-anchor", "middle").text(percent(value));
+          }
+          cumulative += value;
+        });
+        const noteX = narrow ? plotRight : plotRight + 14;
+        const noteY = narrow ? y - 10 : y + 12;
+        svg.append("text").attr("class", "wemby-unicorn__bar-note").attr("x", noteX).attr("y", noteY).attr("text-anchor", narrow ? "end" : "start")
+          .text(`Avg ${row.averageShotDistance.toFixed(1)} ft · FTA/FGA ${row.freeThrowAttemptRate.toFixed(3)}`);
+        if (!narrow) svg.append("text").attr("class", "wemby-unicorn__bar-total").attr("x", plotRight + 14).attr("y", y + 29).text(`Supplied total ${percent(row.shotShareTotal)}`);
+      });
+      const roundingNote = svg.append("text").attr("class", "wemby-unicorn__rounding-note").attr("x", left).attr("y", height - (narrow ? 28 : 18));
+      if (narrow) {
+        roundingNote.append("tspan").attr("x", left).text("2024–25 totals 100.1% because each zone");
+        roundingNote.append("tspan").attr("x", left).attr("dy", 12).text("is rounded independently.");
+      } else {
+        roundingNote.text("The 2024–25 source shares total 100.1% because each zone is rounded independently.");
+      }
+    }
+
+    renderCreation(width) {
+      const narrow = width < 620;
+      const height = narrow ? 620 : 390;
+      const svg = this.createSvg(
+        "More unassisted twos, more assisted threes",
+        "Two panels use 100 percent stacked bars to show assisted and unassisted shares of made two-pointers and made three-pointers over Victor Wembanyama's first three seasons.",
+        width, height,
+      );
+      const creationTitle = svg.append("text").attr("class", "wemby-unicorn__view-title").attr("x", 10).attr("y", 22);
+      if (narrow) {
+        creationTitle.append("tspan").attr("x", 10).text("More unassisted twos,");
+        creationTitle.append("tspan").attr("x", 10).attr("dy", 18).text("more assisted threes");
+      } else {
+        creationTitle.text("More unassisted twos, more assisted threes");
+      }
+      const denominatorNote = svg.append("text").attr("class", "wemby-unicorn__view-note").attr("x", 10).attr("y", narrow ? 60 : 43);
+      if (narrow) {
+        denominatorNote.append("tspan").attr("x", 10).text("Denominator: made baskets of each type—not shot");
+        denominatorNote.append("tspan").attr("x", 10).attr("dy", 13).text("attempts or play types.");
+      } else {
+        denominatorNote.text("Denominator: made baskets of each type—not shot attempts or play types.");
+      }
+      this.renderLegend(svg, [{ label: "Assisted", color: COLORS.teal }, { label: "Unassisted", color: COLORS.pink }], 10, narrow ? 100 : 69, width - 8);
+      const gap = 30;
+      const margin = { left: narrow ? 58 : 62, right: 12, top: narrow ? 142 : 105 };
+      const panelWidth = narrow ? width - margin.left - margin.right : (width - margin.left - margin.right - gap) / 2;
+      const panelHeight = narrow ? 205 : height - margin.top - 22;
+      const panels = [
+        { title: "Made 2-pointers", assisted: "assistedTwo", unassisted: "unassistedTwo", direct: "unassistedTwo", change: "+8.1 percentage points unassisted" },
+        { title: "Made 3-pointers", assisted: "assistedThree", unassisted: "unassistedThree", direct: "assistedThree", change: "+9.6 percentage points assisted" },
+      ];
+      panels.forEach((panel, panelIndex) => {
+        const panelX = narrow ? margin.left : margin.left + panelIndex * (panelWidth + gap);
+        const panelY = narrow ? margin.top + panelIndex * (panelHeight + 30) : margin.top;
+        const x = d3.scaleLinear().domain([0, 1]).range([panelX, panelX + panelWidth]);
+        svg.append("text").attr("class", "wemby-unicorn__panel-title").attr("x", panelX).attr("y", panelY).text(panel.title);
+        svg.append("text").attr("class", "wemby-unicorn__change-note")
+          .attr("x", narrow ? panelX : panelX + panelWidth)
+          .attr("y", narrow ? panelY + 16 : panelY)
+          .attr("text-anchor", narrow ? "start" : "end")
+          .text(panel.change);
+        this.rows.forEach((row, rowIndex) => {
+          const y = panelY + (narrow ? 42 : 32) + rowIndex * 51;
+          const assisted = row[panel.assisted];
+          const unassisted = row[panel.unassisted];
+          svg.append("text").attr("class", "wemby-unicorn__bar-season").attr("x", panelX - 9).attr("y", y + 19).attr("text-anchor", "end").text(shortSeason(row.season));
+          const assistedSegment = svg.append("rect").datum({ row, type: "Assisted", value: assisted, basket: panel.title }).attr("class", "wemby-unicorn__bar-segment")
+            .attr("x", x(0)).attr("y", y).attr("width", x(assisted) - x(0)).attr("height", 30).attr("fill", COLORS.teal);
+          const unassistedSegment = svg.append("rect").datum({ row, type: "Unassisted", value: unassisted, basket: panel.title }).attr("class", "wemby-unicorn__bar-segment")
+            .attr("x", x(assisted)).attr("y", y).attr("width", x(1) - x(assisted)).attr("height", 30).attr("fill", COLORS.pink);
+          this.bindInspection(assistedSegment, (datum) => `${datum.row.season}, ${datum.basket}: ${percent(datum.value)} assisted.`);
+          this.bindInspection(unassistedSegment, (datum) => `${datum.row.season}, ${datum.basket}: ${percent(datum.value)} unassisted.`);
+          const directValue = row[panel.direct];
+          const directCenter = panel.direct === panel.assisted ? assisted / 2 : assisted + unassisted / 2;
+          svg.append("text").attr("class", "wemby-unicorn__creation-value").attr("x", x(directCenter)).attr("y", y + 19).attr("text-anchor", "middle").text(percent(directValue));
+        });
+      });
     }
   }
 
   function initializeCharts() {
     if (!d3) {
-      document.querySelectorAll("[data-wemby-unicorn-chart]").forEach((root) => {
+      document.querySelectorAll("[data-wemby-career-chart]").forEach((root) => {
         const status = root.querySelector(".wemby-unicorn__status");
         status.className = "wemby-unicorn__status wemby-unicorn__status--error";
         status.textContent = "The chart library could not be loaded. Please try reloading the page.";
       });
       return;
     }
-
-    document.querySelectorAll("[data-wemby-unicorn-chart]").forEach((root) => {
-      const chart = new WembyUnicornChart(root);
+    document.querySelectorAll("[data-wemby-career-chart]").forEach((root) => {
+      const chart = new WembyCareerChart(root);
       const card = root.closest("details");
-      const loadWhenVisible = () => {
-        if (!card || card.open) requestAnimationFrame(() => chart.load());
-      };
+      const loadWhenVisible = () => { if (!card || card.open) requestAnimationFrame(() => chart.load()); };
       if (card) card.addEventListener("toggle", loadWhenVisible);
       loadWhenVisible();
     });

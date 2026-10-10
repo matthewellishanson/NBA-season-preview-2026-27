@@ -1047,7 +1047,7 @@
                 </article>
                 ${team.slug === "wizards" ? "" : team.slug === "spurs" ? `
                 <figure
-                  class="wemby-unicorn"
+                  class="wemby-unicorn wemby-unicorn--scatter"
                   data-wemby-unicorn-chart
                   data-source="assets/data/processed/wembanyama-unicorn-2025-26.csv"
                   aria-busy="true"
@@ -1080,7 +1080,41 @@
                     <p><strong>Population:</strong> 163 NBA players with at least 1,500 regular-season minutes in 2025–26. Traded players appear once as combined-team rows.</p>
                     <p><strong>Source and method:</strong> Basketball Reference Per 100 Possessions and Advanced tables, adapted from the READiscover league file. PTS/100 is the provider’s per-possession statistic—not a per-48 conversion. DBPM is a box-score-based defensive estimate, not a direct measure of defense. BLK% estimates the share of opponent two-point attempts blocked while the player was on the floor.</p>
                   </figcaption>
-                  <noscript><p class="wemby-unicorn__status wemby-unicorn__status--error">This comparison chart requires JavaScript. The source values remain available in the downloadable CSV.</p></noscript>
+                  <noscript><p class="wemby-unicorn__status wemby-unicorn__status--error">This comparison chart requires JavaScript. The normalized source values remain available in the processed CSV.</p></noscript>
+                </figure>
+                <figure
+                  class="wemby-unicorn wemby-unicorn--career"
+                  data-wemby-career-chart
+                  data-source="assets/data/processed/wembanyama-career-2023-2026.csv"
+                  aria-busy="true"
+                >
+                  <header class="wemby-unicorn__header">
+                    <div>
+                      <span class="wemby-unicorn__fiesta-stripe" aria-hidden="true"><i></i><i></i><i></i></span>
+                      <p class="wemby-unicorn__eyebrow">Spurs context · Career development</p>
+                      <h3 class="wemby-unicorn__title">Wembanyama’s three-season development</h3>
+                      <p class="wemby-unicorn__dek">Three regular seasons, shown without smoothing or extrapolation.</p>
+                    </div>
+                    <aside class="wemby-unicorn__samples" aria-label="Season games and minutes"></aside>
+                  </header>
+                  <div class="wemby-unicorn__view-controls" role="group" aria-label="Choose Wembanyama career chart view">
+                    <button type="button" class="wemby-unicorn__view-button is-active" data-wemby-view="trajectory" aria-pressed="true">Career trajectory</button>
+                    <button type="button" class="wemby-unicorn__view-button" data-wemby-view="shots" aria-pressed="false">Shot selection</button>
+                    <button type="button" class="wemby-unicorn__view-button" data-wemby-view="creation" aria-pressed="false">How baskets are created</button>
+                  </div>
+                  <div class="wemby-unicorn__chart-shell">
+                    <p class="wemby-unicorn__status">Loading Wembanyama’s career data…</p>
+                  </div>
+                  <p class="wemby-unicorn__inspection" aria-live="polite">Choose a view; focus or tap chart marks for their supplied values.</p>
+                  <details class="wemby-unicorn__table-details">
+                    <summary class="wemby-unicorn__table-toggle">View accessible data table</summary>
+                    <div class="wemby-unicorn__table-wrap"></div>
+                  </details>
+                  <figcaption class="wemby-unicorn__notes">
+                    <p><strong>Source:</strong> Basketball Reference Advanced, Per 100 Possessions, Adjusted Shooting, Shooting and Play-by-Play tables, 2023–24 through 2025–26 regular seasons.</p>
+                    <p><strong>Method:</strong> TS+ is relative to league-average true shooting, where 100 is league average; 108 means 108% of league average, not eight percentage points above it. Shot-zone shares are displayed as supplied and are not normalized; rounding makes the 2024–25 shares total 100.1%.</p>
+                  </figcaption>
+                  <noscript><p class="wemby-unicorn__status wemby-unicorn__status--error">This career chart requires JavaScript. The normalized source values remain available in the processed CSV.</p></noscript>
                 </figure>` : `<figure class="graphic">
                   <h3>One essential graphic</h3>
                   <div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
@@ -1193,6 +1227,7 @@
       if (location.hash) openHash();
     </script>
     <script src="assets/vendor/d3/d3.v7.9.0.min.js"></script>
+    <script src="assets/js/wemby-unicorn-scatter.js"></script>
     <script src="assets/js/wemby-unicorn-chart.js"></script>
     <script src="assets/js/team-ratings-chart.js"></script>
   </body>
