@@ -112,6 +112,7 @@
       this.inspection = root.querySelector(".wemby-unicorn__inspection");
       this.tableWrap = root.querySelector(".wemby-unicorn__table-wrap");
       this.buttons = [...root.querySelectorAll("[data-wemby-view]")];
+      this.methodNotes = [...root.querySelectorAll("[data-wemby-method]")];
       this.buttons.forEach((button) => button.addEventListener("click", () => this.setView(button.dataset.wembyView)));
       this.resizeObserver = new ResizeObserver(() => this.queueRender());
       this.resizeObserver.observe(this.chartShell);
@@ -141,6 +142,7 @@
     setView(nextView) {
       if (!new Set(["trajectory", "shots", "creation"]).has(nextView)) return;
       this.activeView = nextView;
+      this.root.dataset.activeView = nextView;
       this.buttons.forEach((button) => {
         const active = button.dataset.wembyView === nextView;
         button.classList.toggle("is-active", active);
@@ -151,6 +153,7 @@
         : nextView === "shots"
           ? "Focus or tap a shot-zone segment for its attempt share and zone accuracy."
           : "The denominator is made baskets of each type; focus or tap a segment for its share.";
+      this.methodNotes.forEach((note) => { note.hidden = note.dataset.wembyMethod !== nextView; });
       this.render(true);
     }
 
@@ -241,7 +244,7 @@
         { key: "tsPlus", title: "TS+ · 100 is league average", color: COLORS.pink, digits: 0, padding: 2 },
         { key: "turnoversPer100", title: "Turnovers per 100 possessions", color: COLORS.orange, digits: 1, padding: 0.4 },
       ];
-      const outer = narrow ? { left: 52, right: 14, top: 18, bottom: 28, gap: 24 } : { left: 48, right: 10, top: 24, bottom: 42, gap: 24 };
+      const outer = narrow ? { left: 52, right: 14, top: 18, bottom: 28, gap: 24 } : { left: 48, right: 10, top: 24, bottom: 42, gap: 40 };
       const panelWidth = narrow ? width - outer.left - outer.right : (width - outer.left - outer.right - outer.gap * 2) / 3;
       const panelHeight = narrow ? 186 : height - outer.top - outer.bottom;
 
@@ -323,7 +326,7 @@
             .attr("x", x(cumulative)).attr("y", y).attr("width", Math.max(0, segmentWidth)).attr("height", barHeight).attr("fill", zone.color);
           this.bindInspection(segment, ({ row: datumRow, zone: datumZone, value: datumValue }) => `${datumRow.season}, ${datumZone.label}: ${percent(datumValue)} of field-goal attempts; ${percent(datumRow[datumZone.accuracy])} field-goal accuracy.`);
           if (segmentWidth >= 34) {
-            svg.append("text").attr("class", `wemby-unicorn__segment-value${zone.color === COLORS.silver ? " is-dark" : ""}`)
+            svg.append("text").attr("class", `wemby-unicorn__segment-value${zone.color === COLORS.black ? "" : " is-dark"}`)
               .attr("x", x(cumulative) + segmentWidth / 2).attr("y", y + barHeight / 2 + 4).attr("text-anchor", "middle").text(percent(value));
           }
           cumulative += value;
@@ -345,7 +348,7 @@
 
     renderCreation(width) {
       const narrow = width < 620;
-      const height = narrow ? 620 : 390;
+      const height = narrow ? 550 : 300;
       const svg = this.createSvg(
         "More unassisted twos, more assisted threes",
         "Two panels use 100 percent stacked bars to show assisted and unassisted shares of made two-pointers and made three-pointers over Victor Wembanyama's first three seasons.",
@@ -366,17 +369,22 @@
         denominatorNote.text("Denominator: made baskets of each type—not shot attempts or play types.");
       }
       this.renderLegend(svg, [{ label: "Assisted", color: COLORS.teal }, { label: "Unassisted", color: COLORS.pink }], 10, narrow ? 100 : 69, width - 8);
-      const gap = 30;
-      const margin = { left: narrow ? 58 : 62, right: 12, top: narrow ? 142 : 105 };
-      const panelWidth = narrow ? width - margin.left - margin.right : (width - margin.left - margin.right - gap) / 2;
-      const panelHeight = narrow ? 205 : height - margin.top - 22;
+      const gap = narrow ? 22 : 64;
+      const labelGutter = narrow ? 0 : 54;
+      const margin = { left: narrow ? 58 : 12, right: 12, top: narrow ? 142 : 105 };
+      const panelWidth = narrow
+        ? width - margin.left - margin.right
+        : (width - margin.left - margin.right - gap - labelGutter * 2) / 2;
+      const panelHeight = narrow ? 195 : height - margin.top - 14;
       const panels = [
         { title: "Made 2-pointers", assisted: "assistedTwo", unassisted: "unassistedTwo", direct: "unassistedTwo", change: "+8.1 percentage points unassisted" },
         { title: "Made 3-pointers", assisted: "assistedThree", unassisted: "unassistedThree", direct: "assistedThree", change: "+9.6 percentage points assisted" },
       ];
       panels.forEach((panel, panelIndex) => {
-        const panelX = narrow ? margin.left : margin.left + panelIndex * (panelWidth + gap);
-        const panelY = narrow ? margin.top + panelIndex * (panelHeight + 30) : margin.top;
+        const panelX = narrow
+          ? margin.left
+          : margin.left + labelGutter + panelIndex * (panelWidth + gap + labelGutter);
+        const panelY = narrow ? margin.top + panelIndex * (panelHeight + gap) : margin.top;
         const x = d3.scaleLinear().domain([0, 1]).range([panelX, panelX + panelWidth]);
         svg.append("text").attr("class", "wemby-unicorn__panel-title").attr("x", panelX).attr("y", panelY).text(panel.title);
         svg.append("text").attr("class", "wemby-unicorn__change-note")

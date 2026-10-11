@@ -145,6 +145,7 @@
 .wemby-unicorn__metric-point:focus-visible { outline: 3px solid rgba(0, 178, 169, 0.38); outline-offset: 2px; }
 
 .wemby-unicorn__chart-shell { position: relative; min-height: 330px; margin-top: 12px; overflow: hidden; border-top: 1px solid #e3e7e9; }
+.wemby-unicorn--career .wemby-unicorn__chart-shell { min-height: 0; }
 .wemby-unicorn__status { display: grid; min-height: 300px; place-items: center; margin: 0; padding: 28px; color: var(--wemby-muted); text-align: center; }
 .wemby-unicorn__status--error { margin-top: 12px; min-height: 160px; border: 1px dashed #a65050; border-radius: 8px; background: #fff7f7; color: #792d2d; }
 .wemby-unicorn__svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -206,8 +207,8 @@
 .wemby-unicorn__legend-label { fill: #4d595f; font: 700 10px/1 system-ui, sans-serif; }
 .wemby-unicorn__bar-outline { fill: #f2f4f5; stroke: #cfd6d9; stroke-width: 1; }
 .wemby-unicorn__bar-segment { cursor: pointer; stroke: #fff; stroke-width: 1; shape-rendering: crispEdges; }
-.wemby-unicorn__segment-value,
-.wemby-unicorn__creation-value { fill: #fff; font: 850 9.5px/1 system-ui, sans-serif; pointer-events: none; }
+.wemby-unicorn__segment-value { fill: #fff; font: 850 9.5px/1 system-ui, sans-serif; pointer-events: none; }
+.wemby-unicorn__creation-value { fill: var(--wemby-ink); font: 850 9.5px/1 system-ui, sans-serif; pointer-events: none; }
 .wemby-unicorn__segment-value.is-dark { fill: var(--wemby-ink); }
 .wemby-unicorn__bar-note,
 .wemby-unicorn__bar-total,
@@ -269,7 +270,7 @@
   .wemby-unicorn__samples span:last-child { border-right: 0; }
   .wemby-unicorn__view-controls { display: grid; width: 100%; grid-template-columns: 1fr; }
   .team-card .wemby-unicorn__view-button { width: 100%; min-height: 44px; text-align: left; }
-  .wemby-unicorn__chart-shell { min-height: 520px; }
+  .wemby-unicorn--career .wemby-unicorn__chart-shell { min-height: 0; }
   .wemby-unicorn__panel-title { font-size: 11px; }
   .wemby-unicorn__view-note { font-size: 10px; }
   .wemby-unicorn__rounding-note { font-size: 9px; }

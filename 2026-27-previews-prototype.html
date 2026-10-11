@@ -210,6 +210,16 @@
         color: var(--muted);
         font-size: 14px;
       }
+      .team-stats-source {
+        margin: -7px 0 17px;
+        color: #82798b;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .team-stats-source a {
+        color: var(--purple);
+        text-underline-offset: 2px;
+      }
       .quiet-button {
         background: transparent;
         border: 1px solid #d5cfdf;
@@ -297,15 +307,28 @@
       }
       .stat-strip {
         display: flex;
-        gap: 18px;
+        column-gap: 8px;
+        row-gap: 4px;
         flex-wrap: wrap;
         font-size: 13px;
         color: #777080;
         line-height: 1.45;
+        font-variant-numeric: tabular-nums;
       }
-      .stat-strip b {
+      .stat-strip__group {
+        display: inline-flex;
+        align-items: baseline;
+        white-space: nowrap;
+      }
+      .stat-strip__group:not(:last-child)::after {
+        content: "|";
+        margin-left: 8px;
+        color: #bbb4c1;
+        font-weight: 400;
+      }
+      .stat-strip strong {
         color: #51465f;
-        font-weight: 600;
+        font-weight: 750;
       }
       .chevron {
         display: grid;
@@ -355,6 +378,15 @@
           serif;
         margin: 0 0 16px;
         color: #46404d;
+      }
+      .team-card .story a {
+        color: var(--purple);
+        text-decoration-color: color-mix(in srgb, var(--purple) 55%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .team-card .story a:hover {
+        text-decoration-thickness: 2px;
       }
       .draft-text {
         border-left: 2px solid #e7e0ef;
@@ -440,9 +472,6 @@
         color: var(--muted);
         font-size: 13px;
       }
-      .empty-stats {
-        color: #958c9f;
-      }
       .team-links a.active .num {
         color: var(--purple);
       }
@@ -475,7 +504,7 @@
           font-size: 22px;
         }
         .stat-strip {
-          gap: 9px 16px;
+          column-gap: 7px;
         }
       }
       /* Mobile layout */
@@ -547,7 +576,10 @@
         }
         .stat-strip {
           font-size: 12px;
-          gap: 4px 12px;
+          column-gap: 6px;
+        }
+        .stat-strip__group:not(:last-child)::after {
+          margin-left: 6px;
         }
         .chevron {
           width: 24px;
@@ -613,7 +645,7 @@
           <div class="byline"><strong>By Matt Hanson</strong><span>2026–27 NBA preview</span></div>
           <div class="prototype-note">
             <strong>Design prototype.</strong> Rankings supplied Oct. 6; provisional. Editorial
-            copy, records, projections, and graphics are pending. Abbreviation badges reserve space
+            copy, projections, and graphics are pending. Abbreviation badges reserve space
             for team logos.
           </div>
         </header>
@@ -627,12 +659,16 @@
           <p>Power rankings · Open any team to read</p>
           <button class="quiet-button" id="close-all" type="button">Collapse all</button>
         </div>
+        <p class="team-stats-source">
+          2025–26 regular season. Ratings and league-wide ranks: <a href="https://www.basketball-reference.com/leagues/NBA_2026_ratings.html">Basketball Reference</a>; final conference order: <a href="https://www.nba.com/standings?Season=2025-26">NBA.com</a>. Lower defensive rating is better.
+        </p>
         <div id="cards"></div>
         <footer class="footer">
           Hanson Hoops · 2026–27 preseason package · Prototype for editorial review
         </footer>
       </main>
     </div>
+    <script src="assets/data/processed/team-header-2025-26.js"></script>
     <script>
       // Team metadata: edit powerRank to change publication order.
       const teams = [
@@ -1014,6 +1050,41 @@
             })[character],
         );
 
+      const ordinal = (value) => {
+        const number = Number(value);
+        const lastTwo = number % 100;
+        if (lastTwo >= 11 && lastTwo <= 13) return `${number}th`;
+        return `${number}${({ 1: "st", 2: "nd", 3: "rd" })[number % 10] || "th"}`;
+      };
+
+      const formatRating = (value, signed = false) => {
+        const number = Number(value);
+        const rounded = (Math.sign(number) * Math.round((Math.abs(number) + 1e-9) * 10)) / 10;
+        const normalized = Object.is(rounded, -0) || Math.abs(rounded) < 0.05 ? 0 : rounded;
+        const formatted = normalized.toFixed(1);
+        return signed && normalized > 0 ? `+${formatted}` : formatted;
+      };
+
+      const headerDataset = window.TEAM_HEADER_DATA_2025_26;
+      const teamHeaderByCode = headerDataset?.season === "2025-26" ? headerDataset.teams : {};
+      if (!headerDataset || headerDataset.season !== "2025-26") {
+        console.warn("The 2025-26 team header data could not be loaded; card navigation remains available.");
+      }
+
+      const renderTeamStats = (team) => {
+        const stats = teamHeaderByCode?.[team.code];
+        if (!stats || stats.slug !== team.slug) {
+          return '<span class="stat-strip__group">2025–26 stats unavailable</span>';
+        }
+        return `
+          <span class="stat-strip__group">2025–26: ${stats.wins}–${stats.losses}</span>
+          <span class="stat-strip__group">${ordinal(stats.conference_position)} in ${stats.conference}</span>
+          <span class="stat-strip__group"><strong>OffRtg:</strong>&nbsp;${formatRating(stats.ortg)} (${ordinal(stats.ortg_rank)})</span>
+          <span class="stat-strip__group"><strong>DefRtg:</strong>&nbsp;${formatRating(stats.drtg)} (${ordinal(stats.drtg_rank)})</span>
+          <span class="stat-strip__group"><strong>NetRtg:</strong>&nbsp;${formatRating(stats.netrtg, true)} (${ordinal(stats.netrtg_rank)})</span>
+        `;
+      };
+
       // Shared markup for each expandable team preview.
       const cards = document.getElementById("cards");
       cards.innerHTML = ordered
@@ -1026,9 +1097,8 @@
               <div class="identity">
                 <h2>${escapeHtml(team.name)}</h2>
                 <p class="subhead pending">The team’s central question goes here</p>
-                <div class="stat-strip">
-                  <span>2025–26 <b class="empty-stats">Record pending</b></span>
-                  <span>Projected wins <b class="empty-stats">TBD</b></span>
+                <div class="stat-strip" aria-label="${escapeHtml(team.name)} 2025–26 regular-season statistics">
+                  ${renderTeamStats(team)}
                 </div>
               </div>
               <span class="chevron" aria-hidden="true"></span>
@@ -1036,6 +1106,13 @@
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
               <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : ""}">
+                ${team.slug === "spurs" ? `
+                <article class="story story--spurs">
+                  <p>Last year, I felt somewhat bold in <a href="https://matthewellishanson.github.io/hanson-hoops/2025-26-team-previews.html#team-spurs">suggesting that the Spurs might make a premature run to the Finals</a> even with their three best players all under 22. That was mostly tied to the possibility of a midseason trade for Giannis Antetokounmpo, which never happened. Yet there they were this summer, falling just three wins shy of a title many expected this young core, led by French force of nature Victor Wembanyama, to contend for eventually — but few anticipated so soon.</p>
+                  <p>Wembanyama may have already claimed the crown as the best player in the world in just his second full NBA season, dominating on both ends in astonishing fashion while leading this storied franchise to its first Finals since its 2014 championship.</p>
+                  <p>It’s tricky to know where to begin unpacking just how unusually dominant Wemby has been through only three seasons (one of which ended midway through due to an ominous blood clot in his shoulder, which one has to hope is behind him now). How about this for starters: Only four times in NBA history has a player recorded at least 150 blocks, 150 assists and 100 made 3-pointers in a single season, and he’s responsible for three of those.</p>
+                  <p>Or this: <a href="https://www.nba.com/news/victor-wembanyama-stats-through-100-games?utm_source=chatgpt.com">according to Associated Press reporting published on NBA.com</a>, the 7-foot-4 (officially, though many, myself included, suspect a few more inches off the books) wunderkind made 25 more threes in his first 100 NBA games (225) than Stephen Curry did in his first 100 (200), while also blocking more shots in those games (366) than anyone in recorded NBA history except two shot-blocking legends, Manute Bol (425) and David Robinson (383). And indeed, Wembanyama has led the NBA in block percentage every season he’s played, boasting one of the highest career block rates in NBA history at 9.9% (dating back to 1973-74, when blocks were first recorded as an official NBA statistic).</p>
+                </article>` : `
                 <article class="story">
                   <h3>The argument, in about 500 words.</h3>
                   <p>This space will hold your ${escapeHtml(team.name)} preview. The finished article will read as continuous prose, with graphics placed where they support the argument.</p>
@@ -1044,7 +1121,7 @@
                     <p>Development: explain the offseason changes and the evidence that matters most.</p>
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
-                </article>
+                </article>`}
                 ${team.slug === "wizards" ? "" : team.slug === "spurs" ? `
                 <figure
                   class="wemby-unicorn wemby-unicorn--scatter"
@@ -1085,6 +1162,7 @@
                 <figure
                   class="wemby-unicorn wemby-unicorn--career"
                   data-wemby-career-chart
+                  data-active-view="trajectory"
                   data-source="assets/data/processed/wembanyama-career-2023-2026.csv"
                   aria-busy="true"
                 >
@@ -1093,7 +1171,7 @@
                       <span class="wemby-unicorn__fiesta-stripe" aria-hidden="true"><i></i><i></i><i></i></span>
                       <p class="wemby-unicorn__eyebrow">Spurs context · Career development</p>
                       <h3 class="wemby-unicorn__title">Wembanyama’s three-season development</h3>
-                      <p class="wemby-unicorn__dek">Three regular seasons, shown without smoothing or extrapolation.</p>
+                      <p class="wemby-unicorn__dek">More scoring, greater efficiency and fewer turnovers over three seasons.</p>
                     </div>
                     <aside class="wemby-unicorn__samples" aria-label="Season games and minutes"></aside>
                   </header>
@@ -1112,10 +1190,20 @@
                   </details>
                   <figcaption class="wemby-unicorn__notes">
                     <p><strong>Source:</strong> Basketball Reference Advanced, Per 100 Possessions, Adjusted Shooting, Shooting and Play-by-Play tables, 2023–24 through 2025–26 regular seasons.</p>
-                    <p><strong>Method:</strong> TS+ is relative to league-average true shooting, where 100 is league average; 108 means 108% of league average, not eight percentage points above it. Shot-zone shares are displayed as supplied and are not normalized; rounding makes the 2024–25 shares total 100.1%.</p>
+                    <p data-wemby-method="trajectory"><strong>Method:</strong> TS+ is relative to league-average true shooting, where 100 is league average; 108 means 108% of league average, not eight percentage points above it.</p>
+                    <p data-wemby-method="shots" hidden><strong>Method:</strong> Shot-zone shares are displayed as supplied and are not normalized; rounding makes the 2024–25 shares total 100.1%.</p>
+                    <p data-wemby-method="creation" hidden><strong>Method:</strong> Assisted shares use made baskets of each type as the denominator. Unassisted share is derived as one minus assisted share.</p>
                   </figcaption>
                   <noscript><p class="wemby-unicorn__status wemby-unicorn__status--error">This career chart requires JavaScript. The normalized source values remain available in the processed CSV.</p></noscript>
-                </figure>` : `<figure class="graphic">
+                </figure>
+                <article class="story story--spurs story--spurs-continuation">
+                  <p>With numbers like those and an otherworldly combination of size, length, mobility, coordination and skill — plus perhaps the most underrated aspects of his greatness, his intelligence and already <a href="https://www.espn.com/nba/story/_/id/46521426/spurs-victor-wembanyama-summer-transformation">legendary competitive drive</a> — Wembanyama may have the highest ceiling of any young superstar we’ve ever seen. He’s simultaneously two of the rarest, most valuable commodities in basketball: a perennial favorite for Defensive Player of the Year who can also be his team’s primary offensive creator; and, even rarer, a young talent with a <em>realistic</em> shot at being the <em>actual GOAT</em>, barring health issues or a dramatic regression from what he’s shown through his first three seasons. He alone makes this Spurs team a contender this season and for many seasons to come.</p>
+                  <p>But this loaded team is so much more than the product of one truly generational superstar. Across the three losing seasons before last year’s breakout campaign, the Spurs maximized their window in the draft lottery, starting with Wembanyama first overall in 2023, then securing their backcourt for years to come by grabbing big, athletic combo guards in the top five of the following two drafts.</p>
+                  <p>Alongside former Sacramento Kings star De’Aaron Fox, acquired at the trade deadline in February 2025, the dynamic duo of Stephon Castle and Dylan Harper rounds out a seriously gifted guard rotation that gives opponents fits on both ends of the court. They feast on the panic sown by Wembanyama’s dominant two-way presence, applying ferocious ball pressure and supplying the explosive, skilled playmaking that helps ease Wemby’s offensive burden.</p>
+                  <p>The resulting roster brings a bounty of youth, athleticism, tenacity, defense and playmaking that is quickly closing the gap between San Antonio and its Western Conference rival Oklahoma City, in both depth and potential to dominate the rest of this decade. The Spurs proved that much during their frighteningly premature run through the West last postseason, before their youth and inexperience were exposed by the seasoned star power of the eventual champion New York Knicks, who pounced on those gaps en route to a 4-1 Finals victory.</p>
+                  <p>But one thing was clear even as the Spurs’ season finally unraveled just shy of the finish line: Last season’s breakout title run was just the beginning of what this team has in store for the league. That looming threat helps explain why most Western Conference rivals seemed to either take intentional steps back this offseason or make Hail Mary moves to keep up with the top of the conference.</p>
+                  <p>With new acquisitions like veteran swingman Tobias Harris and a pair of rookie bigs taken in the draft — I’ve got my eye on Jayden Quaintance’s long-term ceiling beside Wemby — and everyone else from last year’s team back and healthy to start the new season, it really feels like the Spurs may get that ring this time around.</p>
+                </article>` : `<figure class="graphic">
                   <h3>One essential graphic</h3>
                   <div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
                     <strong>Dataset and chart pending</strong>
@@ -1142,10 +1230,10 @@
                   </noscript>
                 </section>
               ` : ""}
-              <div class="watch">
+              ${team.slug === "spurs" ? "" : `<div class="watch">
                 <strong>What to watch</strong>
                 <p>A specific development that could change your assessment of this team.</p>
-              </div>
+              </div>`}
             </div>
           </details>
 `,
