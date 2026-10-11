@@ -1,0 +1,396 @@
+.story-layout--nuggets {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.94fr);
+  align-items: start;
+}
+
+.story--nuggets-intro,
+.story--nuggets-conclusion {
+  grid-column: 1 / -1;
+  max-width: 46rem;
+}
+
+.story--nuggets-decision {
+  grid-column: 1;
+}
+
+.jokic-on-off {
+  --jokic-navy: #0e2240;
+  --jokic-neutral: #68717b;
+  --jokic-gold: #fdb927;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #d9dde2;
+  border-top: 4px solid var(--jokic-navy);
+  border-radius: 9px;
+  background: #fbfcfd;
+  color: #171326;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.jokic-on-off__eyebrow {
+  margin: 0 0 5px;
+  color: var(--jokic-navy);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.jokic-on-off__title {
+  margin: 0;
+  font-size: clamp(20px, 2.4vw, 27px);
+  line-height: 1.15;
+  letter-spacing: -0.55px;
+}
+
+.jokic-on-off__subtitle {
+  margin: 8px 0 0;
+  color: #626873;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.jokic-on-off__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  margin: 14px 0 10px;
+  color: #414954;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.jokic-on-off__key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.jokic-on-off__key-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.jokic-on-off__key-dot--on {
+  background: var(--jokic-navy);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--jokic-navy);
+}
+
+.jokic-on-off__key-dot--off {
+  background: #fff;
+  border: 2px solid var(--jokic-neutral);
+}
+
+.jokic-on-off__inspection {
+  min-height: 42px;
+  margin: 0 0 8px;
+  padding: 7px 9px;
+  border-left: 3px solid var(--jokic-gold);
+  background: #f1f4f7;
+  color: var(--jokic-navy);
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.jokic-on-off__plot {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-top: 1px solid #e0e4e8;
+}
+
+.jokic-on-off__plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.jokic-on-off__axis,
+.jokic-on-off__grid,
+.jokic-on-off__connector {
+  vector-effect: non-scaling-stroke;
+}
+
+.jokic-on-off__axis {
+  stroke: #aeb5bd;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.jokic-on-off__grid {
+  stroke: #e7eaee;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.jokic-on-off__connector {
+  stroke: #aeb5bd;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.jokic-on-off__axis-label,
+.jokic-on-off__gap-heading {
+  fill: #53606d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+}
+
+.jokic-on-off__gap-heading {
+  fill: var(--jokic-navy);
+  letter-spacing: 0.55px;
+}
+
+.jokic-on-off__tick {
+  fill: #6a737d;
+  font-size: 10px;
+}
+
+.jokic-on-off__season {
+  fill: #505963;
+  font-size: 10.5px;
+  font-weight: 750;
+}
+
+.jokic-on-off__dot {
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.jokic-on-off__mark--on .jokic-on-off__dot {
+  fill: var(--jokic-navy);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.jokic-on-off__mark--off .jokic-on-off__dot {
+  fill: #fff;
+  stroke: var(--jokic-neutral);
+  stroke-width: 2.5;
+}
+
+.jokic-on-off__hit {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: all;
+}
+
+.jokic-on-off__selection-ring {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.jokic-on-off__mark {
+  cursor: pointer;
+  outline: none;
+}
+
+.jokic-on-off__mark:focus .jokic-on-off__selection-ring,
+.jokic-on-off__mark.is-active .jokic-on-off__selection-ring {
+  fill: rgb(253 185 39 / 10%);
+  stroke: var(--jokic-navy);
+  stroke-dasharray: 2.5 2;
+}
+
+.jokic-on-off__value,
+.jokic-on-off__gap {
+  font-size: 10.5px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: #fbfcfd;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.jokic-on-off__value--on,
+.jokic-on-off__gap {
+  fill: var(--jokic-navy);
+}
+
+.jokic-on-off__value--off {
+  fill: #555f69;
+}
+
+.jokic-on-off__table-details {
+  margin-top: 6px;
+  border-top: 1px solid #e0e4e8;
+}
+
+.team-card .jokic-on-off__table-toggle {
+  display: block;
+  width: fit-content;
+  padding: 11px 1px 4px;
+  border-left: 0;
+  background: transparent;
+  color: var(--jokic-navy);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 780;
+  list-style: none;
+}
+
+.team-card .jokic-on-off__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.jokic-on-off__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.jokic-on-off__table-details[open] .jokic-on-off__table-toggle::before {
+  content: "\25BE";
+}
+
+.jokic-on-off__table-toggle:focus-visible,
+.jokic-on-off__table a:focus-visible {
+  outline: 3px solid #8ca4bf;
+  outline-offset: 2px;
+}
+
+.jokic-on-off__table-wrap {
+  width: 100%;
+  margin-top: 7px;
+}
+
+.jokic-on-off__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #fff;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.jokic-on-off__table caption {
+  padding: 0 0 7px;
+  color: #626873;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.jokic-on-off__table th,
+.jokic-on-off__table td {
+  padding: 6px 3px;
+  border-bottom: 1px solid #e6e9ec;
+  line-height: 1.25;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.jokic-on-off__table th:first-child,
+.jokic-on-off__table td:first-child {
+  width: 19%;
+  text-align: left;
+}
+
+.jokic-on-off__table thead th {
+  background: #edf1f4;
+  color: #404b57;
+  font-weight: 800;
+  vertical-align: bottom;
+}
+
+.jokic-on-off__table a {
+  color: var(--jokic-navy);
+  text-underline-offset: 2px;
+}
+
+.jokic-on-off__notes {
+  margin-top: 13px;
+  padding-top: 11px;
+  border-top: 1px solid #e0e4e8;
+  color: #626873;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.jokic-on-off__status {
+  margin: 10px 0;
+  padding: 18px 12px;
+  border: 1px dashed #c7cdd3;
+  border-radius: 5px;
+  background: #fff;
+  color: #626873;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.jokic-on-off__status--error {
+  border-color: #d7a7ae;
+  background: #fff8f8;
+  color: #7d2634;
+}
+
+@media (max-width: 1050px) {
+  .story-layout--nuggets {
+    grid-template-columns: 1fr;
+  }
+
+  .jokic-on-off {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 600px) {
+  .jokic-on-off {
+    padding: 14px 10px;
+  }
+
+  .jokic-on-off__title {
+    font-size: 21px;
+  }
+
+  .jokic-on-off__key {
+    gap: 5px 12px;
+  }
+
+  .jokic-on-off__inspection {
+    min-height: 54px;
+  }
+
+  .jokic-on-off__axis-label,
+  .jokic-on-off__gap-heading,
+  .jokic-on-off__tick,
+  .jokic-on-off__season,
+  .jokic-on-off__value,
+  .jokic-on-off__gap {
+    font-size: 9.5px;
+  }
+
+  .jokic-on-off__table {
+    font-size: 9.5px;
+  }
+
+  .jokic-on-off__table th,
+  .jokic-on-off__table td {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jokic-on-off *,
+  .jokic-on-off *::before,
+  .jokic-on-off *::after {
+    scroll-behavior: auto;
+    transition: none !important;
+    animation: none !important;
+  }
+}

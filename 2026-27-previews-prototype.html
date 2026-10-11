@@ -12,6 +12,7 @@
     />
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="assets/css/wemby-unicorn-chart.css" />
+    <link rel="stylesheet" href="assets/css/jokic-on-off-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1105,13 +1106,24 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : ""}">
+              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : ""}">
                 ${team.slug === "spurs" ? `
                 <article class="story story--spurs">
                   <p>Last year, I felt somewhat bold in <a href="https://matthewellishanson.github.io/hanson-hoops/2025-26-team-previews.html#team-spurs">suggesting that the Spurs might make a premature run to the Finals</a> even with their three best players all under 22. That was mostly tied to the possibility of a midseason trade for Giannis Antetokounmpo, which never happened. Yet there they were this summer, falling just three wins shy of a title many expected this young core, led by French force of nature Victor Wembanyama, to contend for eventually — but few anticipated so soon.</p>
                   <p>Wembanyama may have already claimed the crown as the best player in the world in just his second full NBA season, dominating on both ends in astonishing fashion while leading this storied franchise to its first Finals since its 2014 championship.</p>
                   <p>It’s tricky to know where to begin unpacking just how unusually dominant Wemby has been through only three seasons (one of which ended midway through due to an ominous blood clot in his shoulder, which one has to hope is behind him now). How about this for starters: Only four times in NBA history has a player recorded at least 150 blocks, 150 assists and 100 made 3-pointers in a single season, and he’s responsible for three of those.</p>
                   <p>Or this: <a href="https://www.nba.com/news/victor-wembanyama-stats-through-100-games?utm_source=chatgpt.com">according to Associated Press reporting published on NBA.com</a>, the 7-foot-4 (officially, though many, myself included, suspect a few more inches off the books) wunderkind made 25 more threes in his first 100 NBA games (225) than Stephen Curry did in his first 100 (200), while also blocking more shots in those games (366) than anyone in recorded NBA history except two shot-blocking legends, Manute Bol (425) and David Robinson (383). And indeed, Wembanyama has led the NBA in block percentage every season he’s played, boasting one of the highest career block rates in NBA history at 9.9% (dating back to 1973-74, when blocks were first recorded as an official NBA statistic).</p>
+                </article>` : team.slug === "nuggets" ? `
+                <article class="story story--nuggets story--nuggets-intro">
+                  <p>It’s been a golden era for this franchise since three-time MVP Nikola Jokic emerged as the most efficient and dominant offensive force of this era of NBA basketball, a crown I’d argue he’s held in a vise grip from sometime in the late 2010s all the way through to the start of this new 2026-27 season. As he moves through his early 30s and toward the twilight of his NBA prime, Jokic remains as dominant as ever and as complete an offensive creator as I’ve seen in my lifetime, ranking among the best in NBA history by almost any measure you might pick on that end of the floor.</p>
+                  <p>But while Jokic himself shows no signs of slowing down from age or mileage, and looks poised for another wildly productive and efficient campaign this coming season, the foundation around him that helped deliver the Nuggets’ first title in 2023 is starting to show some concerning cracks.</p>
+                  <p>Chief among the worrisome signs surrounding the Serbian sensation’s supporting cast is the health of his perfect frontcourt partner, Aaron Gordon. Gordon began last season like a man possessed, continuing the greatly improved outside shooting he showed in 2024-25 while still holding up as the team’s only reliable lockdown defender, and really Denver’s only option for guarding other teams’ best players. He even dropped a career-high 50 points on a wildly efficient 17-of-21 shooting from the field, including 10-of-11 from three, against Golden State in October. But then his injury luck turned south, and with it so did the Nuggets’ season.</p>
+                  <p>How Gordon returns to the court after missing 38 regular-season games through the heart of last season due to recurring right hamstring strains will be the most important variable in deciding Denver’s destiny this season. He’s nearly as important to this team’s title hopes as Jokic himself. If he’s healthy, a healthy Jamal Murray and another typically outstanding Jokic season could be enough to get them back to the Finals, regardless of how the other pieces in this rotation play out.</p>
+                </article>
+                <article class="story story--nuggets story--nuggets-decision">
+                  <p>One new face joining this familiar core, whose main pieces have been together for most of this decade, is veteran midrange iso assassin DeMar DeRozan. He’ll also play a pivotal role in how far this team can go this season. He’s not the athlete or even the peak primary scorer he once was, but as a scorer, he’s still pretty reliable as a creator, even at 37 and entering his 18th NBA season.</p>
+                  <p>DeRozan’s isolation-heavy, methodical midrange scoring feels like something that could be at odds with Jokic’s selfless, fluid offensive style, a potential sticking point that could interrupt the constant ball movement and off-ball player movement that style demands from Jokic’s teammates. But on the other hand, this has long felt like a team in desperate need of bench scoring to ease the burden on Jokic to play every minute he can to keep up with deeper Western Conference rivals in the regular season and especially during the postseason.</p>
+                  <p>So even if DeRozan chafes at times playing next to Jokic as a player not known for off-ball movement or scoring in the flow of an offense like Denver’s — and I do think there will be nights when this duo looks pretty awkward playing together — the upside of having him on this team for those precarious minutes when Jokic goes to the bench for a breath or two is still promising enough to suggest he’ll make this team better, whether or not he finds chemistry with Jokic and the other starters.</p>
                 </article>` : `
                 <article class="story">
                   <h3>The argument, in about 500 words.</h3>
@@ -1203,6 +1215,37 @@
                   <p>The resulting roster brings a bounty of youth, athleticism, tenacity, defense and playmaking that is quickly closing the gap between San Antonio and its Western Conference rival Oklahoma City, in both depth and potential to dominate the rest of this decade. The Spurs proved that much during their frighteningly premature run through the West last postseason, before their youth and inexperience were exposed by the seasoned star power of the eventual champion New York Knicks, who pounced on those gaps en route to a 4-1 Finals victory.</p>
                   <p>But one thing was clear even as the Spurs’ season finally unraveled just shy of the finish line: Last season’s breakout title run was just the beginning of what this team has in store for the league. That looming threat helps explain why most Western Conference rivals seemed to either take intentional steps back this offseason or make Hail Mary moves to keep up with the top of the conference.</p>
                   <p>With new acquisitions like veteran swingman Tobias Harris and a pair of rookie bigs taken in the draft — I’ve got my eye on Jayden Quaintance’s long-term ceiling beside Wemby — and everyone else from last year’s team back and healthy to start the new season, it really feels like the Spurs may get that ring this time around.</p>
+                </article>` : team.slug === "nuggets" ? `
+                <figure
+                  class="jokic-on-off"
+                  data-jokic-on-off-chart
+                  data-source="assets/data/raw/jokic-on-off-2021-2026.csv"
+                  aria-busy="true"
+                  aria-labelledby="jokic-on-off-title"
+                >
+                  <header class="jokic-on-off__header">
+                    <p class="jokic-on-off__eyebrow">Nuggets context · Regular season</p>
+                    <h3 class="jokic-on-off__title" id="jokic-on-off-title">Denver’s offense with and without Jokic</h3>
+                    <p class="jokic-on-off__subtitle">The offensive gap persists, even as the minutes without Jokic improved in 2025–26.</p>
+                  </header>
+                  <div class="jokic-on-off__key" aria-label="Chart key">
+                    <span><i class="jokic-on-off__key-dot jokic-on-off__key-dot--on" aria-hidden="true"></i>Jokic on court</span>
+                    <span><i class="jokic-on-off__key-dot jokic-on-off__key-dot--off" aria-hidden="true"></i>Jokic off court</span>
+                  </div>
+                  <p class="jokic-on-off__inspection" aria-live="polite">Open this team card to load Jokic’s on/off values.</p>
+                  <div class="jokic-on-off__plot">
+                    <p class="jokic-on-off__status">Loading Jokic on/off ratings…</p>
+                  </div>
+                  <details class="jokic-on-off__table-details">
+                    <summary class="jokic-on-off__table-toggle">View accessible data table</summary>
+                    <div class="jokic-on-off__table-wrap"></div>
+                  </details>
+                  <figcaption class="jokic-on-off__notes">Source: Basketball Reference, regular-season on/off tables. Ratings describe Denver’s lineups with and without Jokic; they do not isolate individual causal impact. Off-court minutes are not necessarily all-bench lineups.</figcaption>
+                  <noscript><p class="jokic-on-off__status jokic-on-off__status--error">This chart requires JavaScript. The source values remain available in the raw CSV.</p></noscript>
+                </figure>
+                <article class="story story--nuggets story--nuggets-conclusion">
+                  <p>With Gordon’s durability and long-term health more questionable than ever heading into his 13th season, and Jokic’s other co-star Murray bringing quite a lot of health baggage of his own even after a full and productive season last year, there’s a sort of wait-and-see air around this team going into the new season. As great as Jokic is, the cast around him remains overly reliant on less-than-reliable health and production from those two co-stars, which is why Denver isn’t higher in my rankings. It doesn’t help that they also lost the real standout from the stretch last season when Gordon was out, after trading breakout contributor Peyton Watson to Cleveland in the offseason.</p>
+                  <p>But if things go their way, this team might also find its way back to the NBA Finals, and I wouldn’t put it past Jokic, even at 31, to give us and Denver another truly dominant postseason run all the way to a second ring. With injury luck and more of Jokic being unstoppable as a top-five offense unto himself, perhaps there’s still a bit more gold jewelry to be mined from these Nuggets.</p>
                 </article>` : `<figure class="graphic">
                   <h3>One essential graphic</h3>
                   <div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
@@ -1318,5 +1361,6 @@
     <script src="assets/js/wemby-unicorn-scatter.js"></script>
     <script src="assets/js/wemby-unicorn-chart.js"></script>
     <script src="assets/js/team-ratings-chart.js"></script>
+    <script src="assets/js/jokic-on-off-chart.js"></script>
   </body>
 </html>
