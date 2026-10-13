@@ -13,6 +13,8 @@
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="assets/css/wemby-unicorn-chart.css" />
     <link rel="stylesheet" href="assets/css/jokic-on-off-chart.css" />
+    <link rel="stylesheet" href="assets/css/maxey-career-chart.css" />
+    <link rel="stylesheet" href="assets/css/clutch-shooting-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1106,7 +1108,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : ""}">
+              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "knicks" ? " story-layout--knicks" : ""}">
                 ${team.slug === "spurs" ? `
                 <article class="story story--spurs">
                   <p>Last year, I felt somewhat bold in <a href="https://matthewellishanson.github.io/hanson-hoops/2025-26-team-previews.html#team-spurs">suggesting that the Spurs might make a premature run to the Finals</a> even with their three best players all under 22. That was mostly tied to the possibility of a midseason trade for Giannis Antetokounmpo, which never happened. Yet there they were this summer, falling just three wins shy of a title many expected this young core, led by French force of nature Victor Wembanyama, to contend for eventually — but few anticipated so soon.</p>
@@ -1124,6 +1126,21 @@
                   <p>One new face joining this familiar core, whose main pieces have been together for most of this decade, is veteran midrange iso assassin DeMar DeRozan. He’ll also play a pivotal role in how far this team can go this season. He’s not the athlete or even the peak primary scorer he once was, but as a scorer, he’s still pretty reliable as a creator, even at 37 and entering his 18th NBA season.</p>
                   <p>DeRozan’s isolation-heavy, methodical midrange scoring feels like something that could be at odds with Jokic’s selfless, fluid offensive style, a potential sticking point that could interrupt the constant ball movement and off-ball player movement that style demands from Jokic’s teammates. But on the other hand, this has long felt like a team in desperate need of bench scoring to ease the burden on Jokic to play every minute he can to keep up with deeper Western Conference rivals in the regular season and especially during the postseason.</p>
                   <p>So even if DeRozan chafes at times playing next to Jokic as a player not known for off-ball movement or scoring in the flow of an offense like Denver’s — and I do think there will be nights when this duo looks pretty awkward playing together — the upside of having him on this team for those precarious minutes when Jokic goes to the bench for a breath or two is still promising enough to suggest he’ll make this team better, whether or not he finds chemistry with Jokic and the other starters.</p>
+                </article>` : team.slug === "sixers" ? `
+                <article class="story story--sixers">
+                  <p>Even at 41 years old and heading into his incredible 24th NBA season, LeBron James still has the cachet to turn any team that signs him into a title contender overnight, at least in the eyes of many NBA fans and media members. Just the fact that his production in his 23rd season was good enough to carry that level of hype and excitement from his old team, the Los Angeles Lakers, to his new team, the Philadelphia 76ers, is itself an incredible accomplishment for a player who just keeps adding to his case as the greatest in NBA history.</p>
+                  <p>With that said, and with all due respect to both the preexisting Sixers roster and their other, potentially more impactful offseason acquisition, Jaylen Brown, I’m not quite as bullish on Philadelphia’s championship chances as many seem to be.</p>
+                  <p>And Brown, dealt in a stunning trade between historic Eastern Conference rivals, from the Boston Celtics, where he won a championship and Finals MVP, to their longtime division foes in Philly, may ultimately be the one who takes Philadelphia beyond the second round — something more than a decade of “trusting the process” has still not managed to deliver.</p>
+                  <p>Brown and LeBron will be great additions to a Sixers team already rich in star talent and championship upside, rounding out a starting lineup that includes two legitimate superstars in Tyrese Maxey and 2022-23 MVP Joel Embiid, along with a possible superstar-in-training in high-flying second-year guard VJ Edgecombe, coming off an outstanding rookie campaign in which he finished third in Rookie of the Year voting.</p>
+                  <p>So yes, I agree that, if healthy, this starting five could be frighteningly dominant, possibly enough to seriously contend for a title this season. But “if” and “healthy” are the two eternal sticking points for this franchise, the kryptonite of the whole “Trust the Process” era of Sixers basketball — and, tragically, <a href="https://www.foxsports.com/nba/joel-embiid-player-injuries">even more so for Embiid in particular</a>.</p>
+                  <p>His career began with two lost seasons because of foot injuries, and the interruptions have never really stopped. More recently, Embiid played just 39 regular-season games in 2023-24, 19 in 2024-25 and 38 last season: 96 appearances out of a possible 246 over the three campaigns since his MVP season. The scoring talent has remained immense, but Philadelphia has too often been left hoping its franchise player can make it to the postseason, then hoping he can get through it with enough of his body intact to play like himself. Injuries don’t explain every playoff disappointment, but they’ve repeatedly complicated his chances to turn MVP-level talent into a deep postseason run. And with his three-year, roughly $193 million extension beginning this season and carrying a player option for 2028-29, the Sixers’ financial commitment stretches into his mid-30s even as his availability grows harder to count on.</p>
+                  <p>Beyond Embiid’s health concerns, James himself needs more games and possessions off than he once did to sustain his health and energy through the regular season and playoffs. The upshot is a LeBron who is hardly the defensive asset he once was, and probably closer to a liability at this point in his career. He’s still astoundingly athletic for a man who recently shared NBA minutes with his son, but there’s not enough left in the tank these days for consistent regular-season defensive effort. Last season began with him sidelined by sciatica, another reminder of the physical demands of playing this many minutes, in this many games, well into his 40s.</p>
+                  <p>Between James’ age and unprecedented career workload and Embiid’s endless injury risks, one has to balance this team’s ceiling against its considerably lower floor should the Sixers run into bad injury luck once again. Even if Embiid and James avoid significant injuries through the regular season and postseason, I’d be surprised to see either exceed 60 regular-season games — and in Embiid’s case, I’d probably bet on no more than 45.</p>
+                  <p>In light of those durability worries around Philly’s veteran stars, much of their Finals hopes in 2026-27 will hinge on the other three starters. Maxey, Brown and Edgecombe will each have their own challenges and opportunities to step up whenever James, Embiid or both have to sit out stretches of the season because of injuries or load management.</p>
+                  <p>Maxey is the clear favorite to lead this offense, even when Embiid and James are both active. He’s coming off a career year as the Sixers’ primary creator and go-to scorer, continuing to cement his place among the league’s best scoring guards with a career-best 28.3 points per game while also leading the NBA in minutes per game. An efficient and electrifying three-level scorer who plays on and off the ball faster than almost any of his peers, Maxey has also continuously improved his playmaking and defense during his ascent to superstar status. He’ll need to sustain that trajectory and consistency as Philadelphia’s primary offensive creator, even if all his co-stars manage to stay available throughout the regular season and playoffs.</p>
+                </article>` : team.slug === "knicks" ? `
+                <article class="story story--knicks story--knicks-intro">
+                  <p>The Knicks were the team of destiny last season, the cardiac kids who broke the basketball capital’s 53-year NBA title drought in thrilling fashion. Led by Finals MVP and New York’s favorite son, Jalen Brunson, these Knicks gave their millions of starved but <a href="https://www.nytimes.com/athletic/7312778/2026/05/27/sidetalk-knicks-fans-pandemonium-viral-creators/">always spirited fans (to put it mildly)</a> a title run for the ages, full of heart-stopping comebacks and late-game heroics, in the process uniting the nation’s largest and most diverse metropolis in a way not seen since September 2001.</p>
                 </article>` : `
                 <article class="story">
                   <h3>The argument, in about 500 words.</h3>
@@ -1134,7 +1151,100 @@
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
                 </article>`}
-                ${team.slug === "wizards" ? "" : team.slug === "spurs" ? `
+                ${team.slug === "sixers" ? `
+                <figure
+                  class="maxey-career"
+                  data-maxey-career-chart
+                  data-source="assets/data/processed/maxey-career-trajectory.csv"
+                  aria-busy="true"
+                  aria-labelledby="maxey-career-title"
+                >
+                  <header class="maxey-career__header">
+                    <p class="maxey-career__eyebrow">76ers context · Regular-season career</p>
+                    <h3 class="maxey-career__title" id="maxey-career-title">Tyrese Maxey’s expanding offensive role</h3>
+                    <p class="maxey-career__subtitle">Scoring, playmaking and efficiency across his NBA career</p>
+                  </header>
+                  <div class="maxey-career__plot">
+                    <p class="maxey-career__status">Loading Maxey’s career trajectory…</p>
+                  </div>
+                  <p class="maxey-career__inspection" aria-live="polite">Focus, hover, or tap a season point for its value, games, minutes, age, and usage.</p>
+                  <details class="maxey-career__table-details">
+                    <summary class="maxey-career__table-toggle">View accessible career data table</summary>
+                    <div class="maxey-career__table-wrap"></div>
+                  </details>
+                  <figcaption class="maxey-career__notes">
+                    <p><strong>Source:</strong> Basketball Reference Per 100 Possessions and Advanced tables, completed NBA regular seasons from 2020–21 through 2025–26.</p>
+                    <p><strong>Method:</strong> PTS and AST are Basketball Reference’s supplied per-100-possession rates. True shooting percentage accounts for two-pointers, three-pointers and free throws; it is not field-goal percentage. Points are connected directly, without smoothing, forecasting or extrapolation.</p>
+                  </figcaption>
+                  <noscript><p class="maxey-career__status maxey-career__status--error">This chart requires JavaScript. The normalized values remain available in the processed CSV.</p></noscript>
+                </figure>
+                <article class="story story--sixers story--sixers-continuation">
+                  <p>Brown faces his own challenges alongside the chance to shine as a two-way star for his new team. It could be a difficult adjustment to slide in next to this many stars with their own needs for the ball and their own superstar shot diets, after finally getting to lead a team in Boston. He even somewhat infamously called last season his favorite during a Twitch stream just days after the Celtics’ season ended in a first-round upset by none other than the Sixers themselves.</p>
+                  <p>Those comments became another talking point in the turbulent final months of Brown’s accomplished tenure in Boston, before his former coach, current Celtics president of basketball operations Brad Stevens, stunned the basketball world by dealing him to a division rival for an aging Paul George and draft picks. Whatever you make of the awkward split between Brown and Boston, the basketball adjustment is real: Brown goes from leading Boston’s offense to finding his place among several established creators in Philadelphia. How readily those stars balance their individual strengths with the needs of the group will be worth watching.</p>
+                  <p>Finally, there’s the budding star in Edgecombe, whose developmental arc in year two could help swing this season toward a title run or away from one. He’s been a fantastic fit next to Maxey as the franchise’s backcourt of the future, and their scoring averages already added up to 44.3 points per game last season, showing that this pairing could help Philadelphia win here and now. If he pops and makes a leap to stardom, or close to it — he might be the biggest beneficiary of the talent Philadelphia’s revamped front office brought in this summer — then watch out for this Sixers team after all.</p>
+                  <p>A lot has to go right for a franchise that hasn’t exactly had the best luck throughout its “Process” era, but even a few of the usual injuries won’t necessarily derail these talented Sixers. Will any of it finally get them beyond the second round? Who knows. But one thing’s for sure: Philadelphia will be a must-watch team all season long.</p>
+                </article>` : team.slug === "knicks" ? `
+                <figure
+                  class="clutch-shooting"
+                  data-clutch-shooting-chart
+                  data-active-view="playoffs"
+                  data-source="assets/data/processed/clutch-shooting-leaders-1997-2026.csv"
+                  aria-busy="true"
+                  aria-labelledby="clutch-shooting-title"
+                >
+                  <header class="clutch-shooting__header">
+                    <div>
+                      <p class="clutch-shooting__eyebrow">Knicks context · 1996–97 through 2025–26</p>
+                      <h3 class="clutch-shooting__title" id="clutch-shooting-title">Brunson among the clutch-shooting leaders</h3>
+                      <p class="clutch-shooting__subtitle">25 qualifying players · Minimum 100 clutch attempts</p>
+                      <p class="clutch-shooting__filter">Fourth quarter/OT · Final five minutes · Score within five points</p>
+                    </div>
+                    <aside class="clutch-shooting__callout" aria-live="polite" aria-label="Jalen Brunson’s values in the selected view">
+                      <strong>Jalen Brunson · Playoffs</strong>
+                      <span><b>49.2%</b> eFG</span>
+                      <span><b>130</b> attempts</span>
+                      <span><b>78.6%</b> of made baskets unassisted</span>
+                    </aside>
+                  </header>
+                  <div class="clutch-shooting__toolbar">
+                    <div class="clutch-shooting__view-controls" role="group" aria-label="Choose clutch-shooting view">
+                      <button type="button" class="clutch-shooting__view-button is-active" data-clutch-view="playoffs" aria-pressed="true">Playoffs</button>
+                      <button type="button" class="clutch-shooting__view-button" data-clutch-view="regular_season" aria-pressed="false">Regular season</button>
+                    </div>
+                    <p class="clutch-shooting__scale-note">Axis scales change between views.</p>
+                  </div>
+                  <div class="clutch-shooting__plot">
+                    <p class="clutch-shooting__status">Loading clutch-shooting leaders…</p>
+                  </div>
+                  <p class="clutch-shooting__inspection" aria-live="polite">Open this team card to load the selected players.</p>
+                  <details class="clutch-shooting__table-details">
+                    <summary class="clutch-shooting__table-toggle">View accessible 25-player data table</summary>
+                    <div class="clutch-shooting__table-wrap"></div>
+                  </details>
+                  <figcaption class="clutch-shooting__methodology">
+                    <h4>Methodology</h4>
+                    <ul>
+                      <li><strong>Source:</strong> Basketball Reference Stathead shooting query.</li>
+                      <li><strong>Coverage:</strong> 1996–97 through 2025–26.</li>
+                      <li><strong>Filters:</strong> fourth quarter or overtime; 0:00–5:00 remaining; scoring margin from −5 to +5.</li>
+                      <li>Top 25 by eFG% among players meeting each view’s attempt minimum: 100 FGA in the playoffs and 300 FGA in the regular season. The regular-season view uses the top 25 from the first 100 results in the supplied paginated export, not the complete qualifying population.</li>
+                      <li>Older players’ totals cover only the included seasons.</li>
+                      <li>eFG% accounts for three-point value but excludes free throws.</li>
+                      <li>Shooting efficiency is not a complete measure of clutch performance.</li>
+                      <li>The toggle uses different populations and qualification thresholds.</li>
+                      <li>Small differences in observed percentages do not establish clear differences in underlying ability.</li>
+                    </ul>
+                  </figcaption>
+                  <noscript><p class="clutch-shooting__status clutch-shooting__status--error">This chart requires JavaScript. The normalized values remain available in the processed CSV.</p></noscript>
+                </figure>
+                <article class="story story--knicks story--knicks-continuation">
+                  <p>But when the last shred of orange and blue confetti had been swept off Manhattan’s streets and the party finally faded into the offseason, the Knicks and their fans faced a new and unfamiliar challenge. With the title they’d waited so long for at last in hand, could they defend it in 2026-27?</p>
+                  <p>I wouldn’t bet on it, given the talent, youth and depth of the two powerhouses most likely to await them if they find their way back to the NBA Finals. Like most of the NBA media and, whether they’d admit it or not, probably the vast majority of fans too, I view Oklahoma City Thunder and the Knicks’ 2026 Finals opponents, the San Antonio Spurs, as head and shoulders above the defending champs and the rest of the league. The championship futures market reflects that separation: on the ESPN board cited here, Oklahoma City and San Antonio are co-favorites at +270, while New York sits well behind them at +900, among the next-shortest prices to win the 2027 title. Losing critical rim protector and beast on the boards Mitchell Robinson to division rival Boston in free agency didn’t help New York’s case, either.</p>
+                  <p>But nothing is guaranteed in this league, and both of New York’s chief championship rivals are in the Western Conference, out of the Knicks’ path until a potential Finals matchup. There’s also the physical toll either might absorb getting past the other <em>before</em> a hypothetical showdown with New York. With that in mind, I wouldn’t rule out a Knicks repeat in June.</p>
+                  <p>They bring back their entire star-studded starting lineup, all still in their NBA primes and healthy to start the new season, with a chance to build on the chemistry they found last postseason. With the exception of Robinson and a more marginal member of their title-winning rotation, Jeremy Sochan, the Knicks also return the bulk of a bench that played a major role in their championship run. Better yet, they added veteran two-time All-Star Andre Drummond to help fill the void left by Robinson, while 2023 NBA Finals standout Bruce Brown is competing for a roster spot and could provide another useful piece.</p>
+                  <p>There’s plenty to like here, even with the Knicks sitting a considerable distance behind the Thunder and Spurs in the preseason title market. At the very least, there’s a strong chance they’ll return to the Eastern Conference finals for a third straight year, barring injuries, off-court issues or earlier-than-expected age-related decline from any of their core veteran stars. And despite trailing by double digits in every Finals game they played – they really did earn that comeback Knicks rep – this was by no means a fluky champion. New York blitzed their opponents throughout their run, going 16–3 with a cumulative +283 point differential, the highest single-postseason total in NBA history, according to NBA game notes.</p>
+                  <p>But no matter what happens in 2026-27, these Knicks will always be legends in the city, minted icons who brought its most beloved but befuddled team to the promised land after decades of dysfunction. It’s the kind of achievement that makes whatever follows almost irrelevant for a fan base, and those good vibes will carry well into this season and beyond. Repeat or not, this team will always be champs in their city.</p>
+                </article>` : team.slug === "wizards" ? "" : team.slug === "spurs" ? `
                 <figure
                   class="wemby-unicorn wemby-unicorn--scatter"
                   data-wemby-unicorn-chart
@@ -1273,7 +1383,7 @@
                   </noscript>
                 </section>
               ` : ""}
-              ${team.slug === "spurs" ? "" : `<div class="watch">
+              ${team.slug === "spurs" || team.slug === "knicks" ? "" : `<div class="watch">
                 <strong>What to watch</strong>
                 <p>A specific development that could change your assessment of this team.</p>
               </div>`}
@@ -1362,5 +1472,7 @@
     <script src="assets/js/wemby-unicorn-chart.js"></script>
     <script src="assets/js/team-ratings-chart.js"></script>
     <script src="assets/js/jokic-on-off-chart.js"></script>
+    <script src="assets/js/maxey-career-chart.js"></script>
+    <script src="assets/js/clutch-shooting-chart.js"></script>
   </body>
 </html>

@@ -1,0 +1,136 @@
+.maxey-career {
+  --maxey-blue: #006bb6;
+  --maxey-blue-dark: #004b80;
+  --maxey-red: #ed174c;
+  --maxey-ink: #17212b;
+  --maxey-muted: #5d6975;
+  --maxey-grid: #d9e0e6;
+  width: 100%;
+  margin: 0;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid #dbe2e8;
+  border-top: 5px solid var(--maxey-blue);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--maxey-ink);
+  box-shadow: 0 8px 24px rgba(20, 36, 50, 0.07);
+}
+
+.story-layout.story-layout--maxey { grid-template-columns: minmax(0, 1fr); }
+.maxey-career__header { max-width: 780px; }
+.maxey-career__eyebrow {
+  margin: 0 0 7px;
+  color: var(--maxey-red);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .maxey-career__title {
+  margin: 0;
+  color: var(--maxey-ink);
+  font: 850 clamp(1.15rem, 2.3vw, 1.65rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.maxey-career__subtitle {
+  margin: 8px 0 0;
+  color: var(--maxey-muted);
+  font: 500 0.86rem/1.45 system-ui, sans-serif;
+}
+.maxey-career__plot { position: relative; min-height: 340px; margin-top: 18px; border-top: 1px solid #e2e7eb; }
+.maxey-career__status { display: grid; min-height: 330px; place-items: center; margin: 0; padding: 24px; color: var(--maxey-muted); text-align: center; }
+.maxey-career__status--error { min-height: 180px; margin-top: 14px; border: 1px dashed #a94444; border-radius: 8px; background: #fff7f7; color: #782f2f; }
+.maxey-career__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.maxey-career__panel-title { fill: var(--maxey-ink); font: 850 12px/1 system-ui, sans-serif; }
+.maxey-career__panel-unit { fill: var(--maxey-muted); font: 10px/1 system-ui, sans-serif; }
+.maxey-career__grid line { stroke: var(--maxey-grid); stroke-width: 1; shape-rendering: crispEdges; }
+.maxey-career__axis path { display: none; }
+.maxey-career__axis line { stroke: #aab5be; }
+.maxey-career__axis text { fill: #596671; font: 9.5px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.maxey-career__line { fill: none; stroke: var(--maxey-blue); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.maxey-career__point { fill: var(--maxey-red); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.maxey-career__point--latest { fill: var(--maxey-blue-dark); }
+.maxey-career__hit { cursor: pointer; fill: transparent; outline: none; }
+.maxey-career__hit:focus-visible { stroke: var(--maxey-blue-dark); stroke-width: 3; }
+.maxey-career__value {
+  fill: var(--maxey-ink);
+  font: 850 9.5px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+}
+.maxey-career__value--latest { fill: var(--maxey-blue-dark); font-size: 10.5px; }
+.maxey-career__inspection {
+  min-height: 2.9em;
+  margin: 2px 0 0;
+  padding: 9px 11px;
+  border-left: 4px solid var(--maxey-red);
+  background: #f5f8fa;
+  color: #44515c;
+  font: 600 0.74rem/1.45 system-ui, sans-serif;
+}
+.maxey-career__tooltip {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  max-width: min(250px, calc(100% - 16px));
+  padding: 9px 11px;
+  border-radius: 7px;
+  background: rgba(18, 31, 42, 0.97);
+  color: #fff;
+  font: 600 0.7rem/1.45 system-ui, sans-serif;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 10px));
+  box-shadow: 0 8px 22px rgba(18, 31, 42, 0.2);
+}
+.maxey-career__tooltip[hidden] { display: none; }
+.maxey-career__tooltip strong { display: block; font-weight: 850; }
+.maxey-career__table-details { margin-top: 14px; border-top: 1px solid #dce3e8; }
+.team-card .maxey-career__table-toggle {
+  display: block;
+  width: fit-content;
+  padding: 12px 2px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--maxey-blue-dark);
+  cursor: pointer;
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+  list-style: none;
+}
+.team-card .maxey-career__table-toggle:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.maxey-career__table-toggle::-webkit-details-marker { display: none; }
+.maxey-career__table-toggle::before { content: "\25B8"; display: inline-block; margin-right: 6px; }
+.maxey-career__table-details[open] .maxey-career__table-toggle::before { content: "\25BE"; }
+.maxey-career__table-wrap { margin-top: 8px; border: 1px solid #dce3e8; border-radius: 7px; overflow: hidden; }
+.maxey-career__table { width: 100%; border-collapse: collapse; font: 600 0.68rem/1.35 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.maxey-career__table th,
+.maxey-career__table td { padding: 8px 7px; border-bottom: 1px solid #e5eaee; text-align: right; }
+.maxey-career__table thead th { background: #edf3f7; color: #253541; font-weight: 850; }
+.maxey-career__table th:first-child,
+.maxey-career__table td:first-child { text-align: left; }
+.maxey-career__table tbody tr:last-child > * { border-bottom: 0; }
+.maxey-career__notes { margin-top: 13px; color: #5a6670; font: 500 0.71rem/1.55 system-ui, sans-serif; }
+.maxey-career__notes p { margin: 5px 0 0; }
+.maxey-career__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 700px) {
+  .maxey-career { margin-inline: -6px; width: calc(100% + 12px); padding: 17px 12px; }
+  .maxey-career__plot { min-height: 760px; }
+  .maxey-career__inspection { min-height: 4.9em; }
+  .maxey-career__table-wrap { border: 0; overflow: visible; }
+  .maxey-career__table,
+  .maxey-career__table tbody { display: block; }
+  .maxey-career__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .maxey-career__table tr { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 10px; border: 1px solid #dce3e8; border-radius: 7px; overflow: hidden; }
+  .maxey-career__table th,
+  .maxey-career__table td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 7px 9px; text-align: right; }
+  .maxey-career__table th:first-child { grid-column: 1 / -1; background: #edf3f7; text-align: left; }
+  .maxey-career__table td::before { content: attr(data-label); color: #62717c; font-weight: 700; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maxey-career *,
+  .maxey-career *::before,
+  .maxey-career *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
