@@ -5,15 +5,33 @@
 .team-history-chart {
   --chart-accent: #002b5c;
   --chart-pink: #ffb7c5;
+  --chart-rank: var(--chart-pink);
+  --chart-rank-ink: var(--chart-accent);
   --chart-negative: #c8102e;
+  --chart-section-bg: #fffafb;
+  --chart-section-border: #ded9e7;
+  --chart-control-selected-bg: var(--chart-pink);
+  --chart-callout-bg: #fff0f3;
+  --chart-season-active-bg: rgb(255 183 197 / 12%);
+  --chart-focus-ring: #a9bad0;
+  --chart-plot-bg: #fff;
   margin: 30px 0 4px;
   padding: clamp(18px, 3vw, 30px);
-  border: 1px solid #ded9e7;
+  border: 1px solid var(--chart-section-border);
   border-top: 4px solid var(--chart-accent);
   border-radius: 10px;
-  background: #fffafb;
+  background: var(--chart-section-bg);
   color: #171326;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.team-history-chart[data-team-theme="kings"] {
+  --chart-section-bg: #f0e4f7;
+  --chart-section-border: #c3a3d8;
+  --chart-control-selected-bg: #cfa6e5;
+  --chart-callout-bg: #e0c8ee;
+  --chart-season-active-bg: rgb(90 45 129 / 14%);
+  --chart-focus-ring: #6f4a8f;
 }
 
 .ratings-chart__header {
@@ -81,13 +99,13 @@
 
 .ratings-chart__metric-button[aria-pressed="true"] {
   border-color: var(--chart-accent);
-  background: var(--chart-pink);
+  background: var(--chart-control-selected-bg);
   color: var(--chart-accent);
 }
 
 .ratings-chart__metric-button:focus-visible,
 .ratings-chart__table-toggle:focus-visible {
-  outline: 3px solid #a9bad0;
+  outline: 3px solid var(--chart-focus-ring);
   outline-offset: 3px;
 }
 
@@ -112,7 +130,7 @@
   margin: 10px 0;
   padding: 8px 11px;
   border-left: 3px solid var(--chart-accent);
-  background: #fff0f3;
+  background: var(--chart-callout-bg);
   color: var(--chart-accent);
   font-size: 13px;
   font-weight: 700;
@@ -120,12 +138,19 @@
   font-variant-numeric: tabular-nums;
 }
 
+.ratings-chart__scale-note {
+  margin: 0 0 8px;
+  color: #686574;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .ratings-chart__plot {
   width: 100%;
   min-width: 0;
   border: 1px solid #e5e2ed;
   border-radius: 7px;
-  background: #fff;
+  background: var(--chart-plot-bg);
   overflow: hidden;
 }
 
@@ -160,11 +185,11 @@
 
 .ratings-chart__rank-axis,
 .ratings-chart__rank-tick {
-  stroke: var(--chart-accent);
+  stroke: var(--chart-rank-ink);
 }
 
 .ratings-chart__rank-tick-label {
-  fill: var(--chart-accent);
+  fill: var(--chart-rank-ink);
   font-weight: 700;
 }
 
@@ -185,12 +210,16 @@
 }
 
 .ratings-chart__rank-axis-label {
-  fill: #596a7d;
+  fill: var(--chart-rank-ink);
 }
 
 .ratings-chart__legend-label {
   fill: var(--chart-accent);
   font-weight: 750;
+}
+
+.ratings-chart__legend-label--rank {
+  fill: var(--chart-rank-ink);
 }
 
 .ratings-chart__legend-actual,
@@ -205,7 +234,7 @@
 }
 
 .ratings-chart__legend-rank {
-  stroke: var(--chart-pink);
+  stroke: var(--chart-rank);
   stroke-dasharray: 6 4;
 }
 
@@ -221,7 +250,7 @@
 
 .ratings-chart__rank-line {
   fill: none;
-  stroke: var(--chart-pink);
+  stroke: var(--chart-rank);
   stroke-width: 3;
   stroke-dasharray: 7 5;
   stroke-linecap: round;
@@ -239,8 +268,8 @@
 }
 
 .ratings-chart__rank-point {
-  fill: var(--chart-pink);
-  stroke: var(--chart-accent);
+  fill: var(--chart-rank);
+  stroke: var(--chart-rank-ink);
   stroke-width: 1.75;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
@@ -280,6 +309,10 @@
   fill: var(--chart-negative);
 }
 
+.ratings-chart__rank-label {
+  fill: var(--chart-rank-ink);
+}
+
 .ratings-chart__reference {
   stroke: #91899e;
   stroke-width: 1.5;
@@ -291,6 +324,31 @@
   fill: #6a6472;
   font-size: 10px;
   font-weight: 700;
+}
+
+.ratings-chart__annotation-band {
+  fill: var(--chart-accent);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.ratings-chart__annotation-line {
+  stroke: var(--chart-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ratings-chart__annotation-label {
+  fill: var(--chart-accent);
+  font-size: 11px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+  pointer-events: none;
 }
 
 .ratings-chart__inspection {
@@ -307,7 +365,7 @@
 }
 
 .ratings-chart__inspection.is-active .ratings-chart__inspection-hit {
-  fill: rgb(255 183 197 / 12%);
+  fill: var(--chart-season-active-bg);
 }
 
 .ratings-chart__inspection:focus .ratings-chart__inspection-hit {
@@ -451,6 +509,10 @@
   }
 
   .ratings-chart__season-label {
+    font-size: 10px;
+  }
+
+  .ratings-chart__annotation-label {
     font-size: 10px;
   }
 }

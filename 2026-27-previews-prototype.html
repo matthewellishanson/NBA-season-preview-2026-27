@@ -368,6 +368,9 @@
         grid-template-columns: minmax(0, 1fr) minmax(230px, 0.75fr);
         gap: 32px;
       }
+      .story-layout--continuation {
+        margin-top: 30px;
+      }
       .story h3 {
         font-size: 25px;
         line-height: 1.25;
@@ -1108,7 +1111,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "knicks" ? " story-layout--knicks" : ""}">
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "knicks" ? " story-layout--knicks" : ""}">
                 ${team.slug === "spurs" ? `
                 <article class="story story--spurs">
                   <p>Last year, I felt somewhat bold in <a href="https://matthewellishanson.github.io/hanson-hoops/2025-26-team-previews.html#team-spurs">suggesting that the Spurs might make a premature run to the Finals</a> even with their three best players all under 22. That was mostly tied to the possibility of a midseason trade for Giannis Antetokounmpo, which never happened. Yet there they were this summer, falling just three wins shy of a title many expected this young core, led by French force of nature Victor Wembanyama, to contend for eventually — but few anticipated so soon.</p>
@@ -1244,6 +1247,11 @@
                   <p>They bring back their entire star-studded starting lineup, all still in their NBA primes and healthy to start the new season, with a chance to build on the chemistry they found last postseason. With the exception of Robinson and a more marginal member of their title-winning rotation, Jeremy Sochan, the Knicks also return the bulk of a bench that played a major role in their championship run. Better yet, they added veteran two-time All-Star Andre Drummond to help fill the void left by Robinson, while 2023 NBA Finals standout Bruce Brown is competing for a roster spot and could provide another useful piece.</p>
                   <p>There’s plenty to like here, even with the Knicks sitting a considerable distance behind the Thunder and Spurs in the preseason title market. At the very least, there’s a strong chance they’ll return to the Eastern Conference finals for a third straight year, barring injuries, off-court issues or earlier-than-expected age-related decline from any of their core veteran stars. And despite trailing by double digits in every Finals game they played – they really did earn that comeback Knicks rep – this was by no means a fluky champion. New York blitzed their opponents throughout their run, going 16–3 with a cumulative +283 point differential, the highest single-postseason total in NBA history, according to NBA game notes.</p>
                   <p>But no matter what happens in 2026-27, these Knicks will always be legends in the city, minted icons who brought its most beloved but befuddled team to the promised land after decades of dysfunction. It’s the kind of achievement that makes whatever follows almost irrelevant for a fan base, and those good vibes will carry well into this season and beyond. Repeat or not, this team will always be champs in their city.</p>
+                </article>` : team.slug === "kings" ? `
+                <article class="story story--kings story--kings-intro">
+                  <p>In a year that projects to be unusually short on potential tanking teams, the Sacramento Kings should be one of the few candidates to aim low in the standings in hopes of landing high in the 2027 draft. But most seasons, what this franchise should do and what it actually does have a funny way of being two very different things.</p>
+                  <p>Let’s start with the positives, if only to be kind to any poor, traumatized Kings fans who may be reading this.</p>
+                  <p>There are some quality prospects amid all the organizational malpractice that created this inauspicious and random roster, along with a pair of veteran stars whose trade value remains one of the central questions for the Kings’ 2026-27 season and perhaps their future beyond it.</p>
                 </article>` : team.slug === "wizards" ? "" : team.slug === "spurs" ? `
                 <figure
                   class="wemby-unicorn wemby-unicorn--scatter"
@@ -1368,13 +1376,21 @@
                   </figcaption>
                 </figure>`}
               </div>
-              ${team.slug === "wizards" ? `
+              ${team.slug === "wizards" || team.slug === "kings" ? `
                 <section
                   class="team-history-chart"
                   data-team-ratings-chart
                   data-team-name="${escapeHtml(team.name)}"
+                  data-team-theme="${team.slug}"
                   data-accent="${team.color}"
                   data-source="assets/data/processed/team-ratings-2016-2026.csv"
+                  ${team.slug === "kings" ? `data-title="Sacramento’s breakthrough—and what followed"
+                  data-subtitle="Regular-season record and team ratings, 2016–17 through 2025–26."
+                  data-initial-metric="net"
+                  data-rank-accent="#605b66"
+                  data-positive-color-name="Purple"
+                  data-annotation-season="2022-23"
+                  data-annotation-label="Light the Beam: playoff return"` : ""}
                   aria-label="${escapeHtml(team.name)} historical ratings chart"
                 >
                   <p class="ratings-chart__status">Open this team card to load historical ratings.</p>
@@ -1382,6 +1398,25 @@
                     <p class="ratings-chart__status ratings-chart__status--error">This historical chart requires JavaScript.</p>
                   </noscript>
                 </section>
+              ` : ""}
+              ${team.slug === "kings" ? `
+                <div class="story-layout story-layout--chart story-layout--continuation">
+                  <article class="story story--kings story--kings-continuation">
+                    <p>On the young-talent side, there’s actually a good deal to be optimistic about, with promising prospects sprinkled among Sacramento’s confused cast of trade-bait stars, underwhelming former lottery picks and other NBA free-agent detritus (welcome back, Elfrid Payton and Ben Simmons). Maxime Raynaud, the Big Baguette — an actual nickname listed on Basketball Reference, so I have to call him this now — emerged as found gold from the 2025 draft, averaging 12.5 points and 7.5 rebounds per game as a rookie. He was one of the few bright spots in a hugely disappointing 2025-26 season for the franchise and its fans. The Kings’ other draft pick, Nique Clifford, also showed promise and staying power despite somewhat underwhelming stats in his first season out of Colorado State.</p>
+                    <p>But arguably the most tantalizing piece of Sacramento’s ongoing rebuild has yet to play a regular-season NBA game. That potential foundation for a brighter future in Sac-town is the diminutive but dynamic, score-first point guard Darius Acuff Jr., whom the Kings jumped at the chance to take with the seventh pick in this summer’s draft. Acuff put on quite a show in his one-and-done season at Arkansas, averaging 23.5 points and 6.4 assists per game and dropping a 49-point masterpiece against conference rival Alabama in February.</p>
+                    <p>Acuff’s game is explosive but refined, a potent blend of finesse and freaky athleticism enhanced by a strong feel for the game and excellent court vision, even if he more often than not looked for his own shot before setting up his teammates. Despite his lack of size, he was tenacious in getting to the basket and finishing in traffic all season long, and should adjust better than most 6-foot-2 guards to the challenges of scoring over NBA length and size.</p>
+                    <p>But there’s not much room for error when you’re as small as Acuff is and teams keep punishing smaller guards defensively, particularly in the postseason. To make matters worse, he comes into the league projected to be among the worst defenders in his draft class, having shown little in the way of effort or instincts on that end in his one season with the Razorbacks.</p>
+                    <p>I want to believe he can shore up that Achilles’ heel enough to shine on the other end. But after losing a bunch on all the Rob Dillingham stock I bought when my Timberwolves acquired him on draft night in 2024 — just one recent example among many small guards left behind in this NBA decade — I’m not so sure even a talent like Acuff can still become a star in today’s league. I sure hope I’m wrong, though, because he’s so fun to watch, and the Kings desperately need a young star for their fan base to rally around.</p>
+                    <p>Now, about those two veteran stars Sacramento should be hoping to trade this season. The easier of the two to get good value for will be All-Star center Domantas Sabonis, who has thrived in the regular season with his unique blend of power and playmaking on offense, but wilted in the Kings’ lone playoff series in more than 15 years, when they fell at home in Game 7 to Bay Area rival Golden State.</p>
+                    <p>Sabonis’ defensive limitations have been overblown in discussions of his trade value and his viability as a franchise centerpiece, in my opinion, but admittedly he’s no Rudy Gobert or Victor Wembanyama. Teams will need rim protection and defensive insurance around him to make a trade a good proposition, complicating his market even as his former co-star from that “Light the Beam” playoff team, De’Aaron Fox, has already found a new home in San Antonio.</p>
+                    <p>Still, I’m pretty high on Sabonis as a valuable winning player and secondary star in the right system, surrounded by personnel who can cover for his defensive weaknesses and compensate for his limitations as a floor spacer. If the Kings really decide to seek a good return for their star center, I’m confident they’ll find a contender, or an aspirational one, willing to part with quality assets to add him.</p>
+                    <p>I can’t say the same for their other, seemingly more disgruntled veteran star, shooting guard Zach LaVine. His scoring has rarely coincided with sustained team success, and his appeal to a contender depends on whether that scoring justifies his salary and the compromises elsewhere in its roster. At roughly $49 million this season, that’s a difficult proposition, even with an expiring contract.</p>
+                    <p>As he moves through his 30s, LaVine might simply be too expensive for what he can bring a team trying to compete for a championship, leaving the Kings struggling to find a return worth making a trade for. I still like watching him, empty stats or not, and hope he finds a way to be more conducive to winning, or at least a path to a team that better fits whatever it is he wants. Because judging by what I’ve seen of him in the Kings games I’ve watched, this ain’t it.</p>
+                    <p>Ultimately, though, a successful Sacramento season will come down to how well the Kings develop and integrate their young talent, particularly whether their hopes for Acuff as a future star translate into real NBA promise. Priority number one should be giving him enough reps to gauge his viability as a foundational player, with special attention to how defensively playable he can become in a league that continues to punish small guards and weak links on that end.</p>
+                    <p>Just as important will be positioning the franchise for another high draft pick in a season <a href="https://www.espn.com/nba/story/_/id/50079138/nba-new-lottery-rules-tanking-predictions">when far fewer NBA teams than usual seem to be eyeing the lottery</a>. But the league’s new rules complicate the familiar race to the bottom: The three worst teams will have lower odds of landing the No. 1 pick than the next seven eligible teams, so finishing last won’t mean securing the best chance at the top prize.</p>
+                    <p>If the Kings can develop what they have, recover useful assets for their veterans and give themselves a chance to add another foundational prospect, this season can be a valuable step forward. Assuming, of course, the organization finally agrees on which direction forward is.</p>
+                  </article>
+                </div>
               ` : ""}
               ${team.slug === "spurs" || team.slug === "knicks" ? "" : `<div class="watch">
                 <strong>What to watch</strong>

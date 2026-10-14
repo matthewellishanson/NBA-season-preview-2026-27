@@ -9,7 +9,7 @@
       plotTitle: "Actual win percentage",
       axisLabel: "Win percentage",
       tableValue: "Win percentage",
-      note: "Win percentage accounts for unequal season lengths; the reference line marks .500. Solid actual values use the left axis and dashed ranks use the right axis, so crossings do not mean equal values.",
+      note: "Win percentage accounts for unequal season lengths; the reference line marks .500.",
       axis: (value) => `${Math.round(value * 100)}%`,
       point: (row) => `${row.wins}\u2013${row.losses}`,
       table: (row) => `${(Number(row.win_pct) * 100).toFixed(1)}%`,
@@ -25,7 +25,7 @@
       plotTitle: "Actual offensive rating",
       axisLabel: "Points scored / 100 · higher is better",
       tableValue: "Points scored per 100 possessions",
-      note: "Offensive rating is points scored per 100 possessions; higher values are better. Actual values and ranks use independent axes, so crossings do not mean equal values.",
+      note: "Offensive rating is points scored per 100 possessions; higher values are better.",
       axis: formatRoundedTick,
       point: (row) => Number(row.ortg).toFixed(1),
       table: (row) => Number(row.ortg).toFixed(2),
@@ -37,7 +37,7 @@
       plotTitle: "Actual defensive rating",
       axisLabel: "Points allowed / 100 · lower is better",
       tableValue: "Points allowed per 100 possessions",
-      note: "Defensive rating is points allowed per 100 possessions; lower values rise on the left axis. Actual values and ranks use independent axes, so crossings do not mean equal values.",
+      note: "Defensive rating is points allowed per 100 possessions; lower values rise on the left axis.",
       axis: formatRoundedTick,
       point: (row) => Number(row.drtg).toFixed(1),
       table: (row) => Number(row.drtg).toFixed(2),
@@ -50,7 +50,7 @@
       plotTitle: "Actual net rating",
       axisLabel: "Net rating / 100 · higher is better",
       tableValue: "Points per 100 possessions",
-      note: "Net rating is point differential per 100 possessions. Navy is positive, red is negative, and the reference line marks zero. Independent axes mean crossings do not indicate equal values.",
+      note: "Net rating is point differential per 100 possessions; the reference line marks zero.",
       axis: formatSignedTick,
       point: (row) => formatSigned(Number(row.netrtg), 1),
       table: (row) => formatSigned(Number(row.netrtg), 2),
@@ -99,6 +99,10 @@
     const [start, end] = season.split("-");
     if (abbreviated) return `\u2019${start.slice(2)}`;
     return `${start.slice(2)}\u2013${end}`;
+  }
+
+  function possessive(name) {
+    return /s$/i.test(name) ? `${name}\u2019` : `${name}\u2019s`;
   }
 
   function parseCsv(text) {
@@ -178,7 +182,7 @@
     }
 
     const required = [
-      "wins", "losses", "win_pct", "record_rank", "ortg", "ortg_rank",
+      "wins", "losses", "games", "win_pct", "record_rank", "ortg", "ortg_rank",
       "drtg", "drtg_rank", "netrtg", "netrtg_rank",
     ];
     rows.forEach((row) => {
@@ -193,6 +197,11 @@
           throw new Error(`Invalid leaguewide rank in ${field} for ${teamName}, ${row.season}.`);
         }
       });
+      const games = Number(row.games);
+      const calculatedWinPct = Number(row.wins) / games;
+      if (Number(row.wins) + Number(row.losses) !== games || Math.abs(Number(row.win_pct) - calculatedWinPct) > 0.000001) {
+        throw new Error(`Record fields are inconsistent for ${teamName}, ${row.season}.`);
+      }
     });
     return rows;
   }
@@ -202,8 +211,16 @@
       this.root = root;
       this.teamName = options.teamName;
       this.accent = options.accent || "#002b5c";
+      this.rankAccent = options.rankAccent || "";
+      this.positiveColorName = options.positiveColorName || "Team-color";
       this.rows = validateTeamRows(options.data, this.teamName);
-      this.selectedMetric = "record";
+      this.title = options.title || "";
+      this.subtitle = options.subtitle || "";
+      this.annotation = options.annotation && this.rows.some((row) => row.season === options.annotation.season)
+        ? options.annotation
+        : null;
+      this.selectedMetric = METRICS[options.initialMetric] ? options.initialMetric : "record";
+      this.inspectedIndex = this.rows.length - 1;
       this.instanceId = `team-ratings-${++instanceCount}`;
       this.lastWidth = 0;
       this.resizeFrame = 0;
@@ -212,12 +229,18 @@
 
     build() {
       const displayName = this.teamName === "Washington Wizards" ? "Washington" : this.teamName;
+      const title = this.title || `${possessive(displayName)} decade in the standings and efficiency rankings`;
+      const subtitle = this.subtitle || "Regular-season record and team ratings, 2016\u201317 through 2025\u201326.";
       this.root.style.setProperty("--chart-accent", this.accent);
+      if (this.rankAccent) {
+        this.root.style.setProperty("--chart-rank", this.rankAccent);
+        this.root.style.setProperty("--chart-rank-ink", this.rankAccent);
+      }
       this.root.innerHTML = `
         <header class="ratings-chart__header">
           <p class="ratings-chart__eyebrow">Ten-season trend</p>
-          <h3 class="ratings-chart__title" id="${this.instanceId}-title">${escapeHtml(displayName)}'s decade in the standings and efficiency rankings</h3>
-          <p class="ratings-chart__intro">The solid actual-value line and dashed league-rank line share one plot area but use independent left and right scales. Their crossings do not indicate equal values.</p>
+          <h3 class="ratings-chart__title" id="${this.instanceId}-title">${escapeHtml(title)}</h3>
+          <p class="ratings-chart__intro">${escapeHtml(subtitle)}</p>
         </header>
         <fieldset class="ratings-chart__controls" aria-label="Choose a metric">
           <legend>Metric</legend>
@@ -232,6 +255,7 @@
           <h4 class="ratings-chart__metric-heading" id="${this.instanceId}-metric-heading"></h4>
           <p class="ratings-chart__metric-note"></p>
           <p class="ratings-chart__inspection-detail" id="${this.instanceId}-inspection" aria-live="polite"></p>
+          <p class="ratings-chart__scale-note">Actual values use the left axis; league ranks use the right axis. Line crossings do not compare equal values.</p>
           <div class="ratings-chart__plot"></div>
           <details class="ratings-chart__table-details">
             <summary class="ratings-chart__table-toggle">View accessible data table</summary>
@@ -295,13 +319,15 @@
         button.setAttribute("aria-pressed", String(button.dataset.metric === this.selectedMetric));
       });
       this.heading.textContent = metric.button;
-      this.metricNote.textContent = metric.note;
+      this.metricNote.textContent = this.selectedMetric === "net"
+        ? `${metric.note} ${this.positiveColorName} dots are positive; red dots are negative.`
+        : metric.note;
       this.renderTable(metric);
       if (width <= 0) return;
       if (!force && width === this.lastWidth) return;
       this.lastWidth = width;
       this.plot.innerHTML = this.buildSvg(metric, width);
-      this.showInspection(this.rows.length - 1);
+      this.showInspection(this.inspectedIndex);
     }
 
     activateInspection(event) {
@@ -314,6 +340,7 @@
       const row = this.rows[index];
       const metric = METRICS[this.selectedMetric];
       if (!row || !metric) return;
+      this.inspectedIndex = index;
       const actual = this.selectedMetric === "record"
         ? `${row.wins}\u2013${row.losses} (${metric.table(row)})`
         : `${metric.table(row)} ${metric.tableValue.toLowerCase()}`;
@@ -328,13 +355,17 @@
     buildSvg(metric, measuredWidth) {
       const width = Math.max(280, measuredWidth);
       const narrow = width < 520;
-      const height = narrow ? 408 : 396;
+      const annotationIndex = this.annotation
+        ? this.rows.findIndex((row) => row.season === this.annotation.season)
+        : -1;
+      const annotationOffset = annotationIndex >= 0 ? 28 : 0;
+      const height = (narrow ? 408 : 396) + annotationOffset;
       const left = narrow ? 48 : 58;
       const right = narrow ? 47 : 68;
       const plotRight = width - right;
       const plotWidth = plotRight - left;
-      const plotTop = narrow ? 112 : 88;
-      const plotBottom = narrow ? 342 : 332;
+      const plotTop = (narrow ? 112 : 88) + annotationOffset;
+      const plotBottom = (narrow ? 342 : 332) + annotationOffset;
       const values = this.rows.map((row) => Number(row[metric.valueField]));
       const bounds = metric.fixedBounds
         ? { min: metric.fixedBounds[0], max: metric.fixedBounds[1], ticks: metric.ticks }
@@ -353,17 +384,24 @@
       const boundedLabelY = (value) => Math.max(plotTop + 13, Math.min(plotBottom - 6, value));
       const labelAnchor = (index) => index === 0 ? "start" : index === this.rows.length - 1 ? "end" : "middle";
       const labelX = (index) => x(index) + (index === 0 ? 6 : index === this.rows.length - 1 ? -6 : 0);
+      const valueLabelX = (index) => index === annotationIndex ? x(index) - 8 : labelX(index);
+      const valueLabelAnchor = (index) => index === annotationIndex ? "end" : labelAnchor(index);
+      const rankLabelX = (index) => index === annotationIndex ? x(index) + 8 : labelX(index);
+      const rankLabelAnchor = (index) => index === annotationIndex ? "start" : labelAnchor(index);
       const labeledIndexes = new Set(narrow ? [0, 3, 6, 9] : this.rows.map((_, index) => index));
       const actualLabelY = actualPoints.map(([, pointY]) => boundedLabelY(
         pointY - plotTop < 20 ? pointY + 18 : pointY - 10,
       ));
       const rankLabelY = rankPoints.map(([, pointY], index) => {
         if (!labeledIndexes.has(index)) return null;
-        const candidates = [boundedLabelY(pointY - 11), boundedLabelY(pointY + 19)];
-        const best = candidates.sort(
-          (first, second) => Math.abs(second - actualLabelY[index]) - Math.abs(first - actualLabelY[index]),
-        )[0];
-        return Math.abs(best - actualLabelY[index]) >= 16 ? best : null;
+        const isAnnotatedSeason = index === annotationIndex;
+        const candidates = (isAnnotatedSeason ? [-20, 30, -40, 48, 60] : [-18, 26, -36, 42])
+          .map((offset) => boundedLabelY(pointY + offset))
+          .filter((candidate, candidateIndex, all) => all.indexOf(candidate) === candidateIndex);
+        return candidates.find((candidate) => (
+          Math.abs(candidate - actualLabelY[index]) >= (isAnnotatedSeason ? 24 : 18)
+          && Math.abs(candidate - pointY) >= 15
+        )) ?? null;
       });
       const diamondPoints = (pointX, pointY, size = 5) => [
         `${pointX},${pointY - size}`,
@@ -374,18 +412,34 @@
       const inspectionActual = (row) => this.selectedMetric === "record"
         ? `${row.wins}\u2013${row.losses}, ${metric.table(row)}`
         : `${metric.table(row)} ${metric.tableValue.toLowerCase()}`;
+      const seasonZone = (index) => ({
+        left: index === 0 ? left : (x(index - 1) + x(index)) / 2,
+        right: index === this.rows.length - 1 ? plotRight : (x(index) + x(index + 1)) / 2,
+      });
       const inspectionZones = this.rows.map((row, index) => {
-        const zoneLeft = index === 0 ? left : (x(index - 1) + x(index)) / 2;
-        const zoneRight = index === this.rows.length - 1 ? plotRight : (x(index) + x(index + 1)) / 2;
+        const zone = seasonZone(index);
         return `
           <g class="ratings-chart__inspection" data-season-index="${index}" tabindex="0" role="button"
             aria-pressed="false" aria-describedby="${this.instanceId}-inspection"
             aria-label="${escapeXml(`${row.season}: ${inspectionActual(row)}; league rank No. ${row[metric.rankField]}`)}">
-            <rect class="ratings-chart__inspection-hit" x="${zoneLeft}" y="${plotTop}"
-              width="${zoneRight - zoneLeft}" height="${plotBottom - plotTop}"></rect>
+            <rect class="ratings-chart__inspection-hit" x="${zone.left}" y="${plotTop}"
+              width="${zone.right - zone.left}" height="${plotBottom - plotTop}"></rect>
           </g>
         `;
       }).join("");
+      const annotation = annotationIndex < 0 ? "" : (() => {
+        const zone = seasonZone(annotationIndex);
+        return `
+          <g class="ratings-chart__annotation" aria-label="${escapeXml(`${this.annotation.season}: ${this.annotation.label}`)}">
+            <rect class="ratings-chart__annotation-band" x="${zone.left}" y="${plotTop}"
+              width="${zone.right - zone.left}" height="${plotBottom - plotTop}"></rect>
+            <line class="ratings-chart__annotation-line" x1="${x(annotationIndex)}" x2="${x(annotationIndex)}"
+              y1="${plotTop}" y2="${plotBottom}"></line>
+            <text class="ratings-chart__annotation-label" x="${x(annotationIndex)}" y="${plotTop - 10}"
+              text-anchor="middle">${escapeXml(this.annotation.label)}</text>
+          </g>
+        `;
+      })();
 
       const legend = narrow ? `
         <line class="ratings-chart__legend-actual" x1="${left}" x2="${left + 27}" y1="20" y2="20"></line>
@@ -393,14 +447,14 @@
         <text class="ratings-chart__legend-label" x="${left + 36}" y="24">Actual value — left axis</text>
         <line class="ratings-chart__legend-rank" x1="${left}" x2="${left + 27}" y1="46" y2="46"></line>
         <polygon class="ratings-chart__rank-point ratings-chart__legend-point" points="${diamondPoints(left + 13.5, 46, 4)}"></polygon>
-        <text class="ratings-chart__legend-label" x="${left + 36}" y="50">League rank — right axis</text>
+        <text class="ratings-chart__legend-label ratings-chart__legend-label--rank" x="${left + 36}" y="50">League rank — right axis</text>
       ` : `
         <line class="ratings-chart__legend-actual" x1="${left}" x2="${left + 28}" y1="23" y2="23"></line>
         <circle class="ratings-chart__point ratings-chart__legend-point" cx="${left + 14}" cy="23" r="4"></circle>
         <text class="ratings-chart__legend-label" x="${left + 38}" y="27">Actual value — left axis</text>
         <line class="ratings-chart__legend-rank" x1="${left + 220}" x2="${left + 248}" y1="23" y2="23"></line>
         <polygon class="ratings-chart__rank-point ratings-chart__legend-point" points="${diamondPoints(left + 234, 23, 4)}"></polygon>
-        <text class="ratings-chart__legend-label" x="${left + 258}" y="27">League rank — right axis</text>
+        <text class="ratings-chart__legend-label ratings-chart__legend-label--rank" x="${left + 258}" y="27">League rank — right axis</text>
       `;
 
       const actualGrid = bounds.ticks.map((tick) => {
@@ -440,8 +494,8 @@
           <circle class="ratings-chart__point${netClass}" cx="${actualPoints[index][0]}" cy="${actualPoints[index][1]}" r="4.5">
             <title>${escapeXml(`${row.season}: ${label}`)}</title>
           </circle>
-          ${labeledIndexes.has(index) ? `<text class="ratings-chart__value-label${labelClass}" x="${labelX(index)}"
-            y="${actualLabelY[index]}" text-anchor="${labelAnchor(index)}">${escapeXml(label)}</text>` : ""}
+          ${labeledIndexes.has(index) ? `<text class="ratings-chart__value-label${labelClass}" data-label-season="${row.season}"
+            x="${valueLabelX(index)}" y="${actualLabelY[index]}" text-anchor="${valueLabelAnchor(index)}">${escapeXml(label)}</text>` : ""}
         `;
       }).join("");
       const rankMarks = this.rows.map((row, index) => {
@@ -451,18 +505,19 @@
           <polygon class="ratings-chart__rank-point" points="${diamondPoints(rankPoints[index][0], rankPoints[index][1])}">
             <title>${escapeXml(`${row.season}: No. ${rank}`)}</title>
           </polygon>
-          ${rankLabelY[index] === null ? "" : `<text class="ratings-chart__rank-label" x="${labelX(index)}"
-            y="${rankLabelY[index]}" text-anchor="${labelAnchor(index)}">${plottedRank}</text>`}
+          ${rankLabelY[index] === null ? "" : `<text class="ratings-chart__rank-label" data-label-season="${row.season}"
+            x="${rankLabelX(index)}" y="${rankLabelY[index]}" text-anchor="${rankLabelAnchor(index)}">${plottedRank}</text>`}
         `;
       }).join("");
 
       return `
         <svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${this.instanceId}-svg-title ${this.instanceId}-svg-desc">
           <title id="${this.instanceId}-svg-title">${escapeXml(`${this.teamName} ${metric.button.toLowerCase()}, 2016-17 through 2025-26`)}</title>
-          <desc id="${this.instanceId}-svg-desc">One shared plot shows ${escapeXml(metric.plotTitle.toLowerCase())} as a solid navy line using the left axis and leaguewide rank as a dashed pink line using the independent right axis. Rank 1 is at the top and rank 30 at the bottom. Crossings do not indicate equal values. Focus or select a season for exact details.</desc>
+          <desc id="${this.instanceId}-svg-desc">One shared plot shows ${escapeXml(metric.plotTitle.toLowerCase())} as a solid team-color line using the left axis and leaguewide rank as a dashed line using the independent right axis. Rank 1 is at the top and rank 30 at the bottom. Crossings do not indicate equal values.${this.annotation ? ` ${escapeXml(this.annotation.season)} is highlighted: ${escapeXml(this.annotation.label)}.` : ""} Focus or select a season for exact details.</desc>
           ${legend}
           <text class="ratings-chart__axis-label" x="${left}" y="${narrow ? 78 : 67}">${escapeXml(metric.axisLabel)}</text>
           <text class="ratings-chart__axis-label ratings-chart__rank-axis-label" x="${plotRight}" y="${narrow ? 97 : 67}" text-anchor="end">League rank · 1 is best</text>
+          ${annotation}
           ${actualGrid}
           ${seasonGrid}
           ${reference}
@@ -514,6 +569,7 @@
   async function loadChart(root) {
     if (root.dataset.chartMounted === "true") return;
     root.dataset.chartMounted = "true";
+    root.setAttribute("aria-busy", "true");
     root.innerHTML = '<p class="ratings-chart__status">Loading historical team ratings\u2026</p>';
     try {
       const response = await fetch(root.dataset.source, { cache: "no-store" });
@@ -523,8 +579,19 @@
         teamName: root.dataset.teamName,
         data,
         accent: root.dataset.accent,
+        rankAccent: root.dataset.rankAccent,
+        positiveColorName: root.dataset.positiveColorName,
+        title: root.dataset.title,
+        subtitle: root.dataset.subtitle,
+        initialMetric: root.dataset.initialMetric,
+        annotation: root.dataset.annotationSeason && root.dataset.annotationLabel ? {
+          season: root.dataset.annotationSeason,
+          label: root.dataset.annotationLabel,
+        } : null,
       });
+      root.setAttribute("aria-busy", "false");
     } catch (error) {
+      root.setAttribute("aria-busy", "false");
       root.innerHTML = `
         <p class="ratings-chart__status ratings-chart__status--error">
           Historical team ratings are unavailable. Serve this repository over HTTP and reload the page; see the README for the local preview command.
