@@ -1,0 +1,542 @@
+{
+  "ATL": {
+    "name": "Hawks",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#E03A3E",
+      "secondary": "#C1D32F",
+      "surface": "#FBE7E8",
+      "surface-strong": "#F8D0D1",
+      "ink": "#8E1820",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#EC898B",
+      "focus": "#20212B"
+    }
+  },
+  "BOS": {
+    "name": "Celtics",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#007A33",
+      "secondary": "#BA9653",
+      "surface": "#E0EFE7",
+      "surface-strong": "#C2DFCE",
+      "ink": "#005724",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#66AF85",
+      "focus": "#20212B"
+    }
+  },
+  "BKN": {
+    "name": "Nets",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#444444",
+      "secondary": "#777777",
+      "surface": "#E9E9E9",
+      "surface-strong": "#D2D2D2",
+      "ink": "#222222",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#8F8F8F",
+      "focus": "#20212B"
+    }
+  },
+  "CHA": {
+    "name": "Hornets",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#00788C",
+      "secondary": "#1D1160",
+      "surface": "#E0EFF1",
+      "surface-strong": "#C2DFE3",
+      "ink": "#005D6D",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#66AEBA",
+      "focus": "#20212B"
+    }
+  },
+  "CHI": {
+    "name": "Bulls",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#CE1141",
+      "secondary": "#222222",
+      "surface": "#F9E2E8",
+      "surface-strong": "#F3C6D1",
+      "ink": "#A00D32",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#E2708D",
+      "focus": "#20212B"
+    }
+  },
+  "CLE": {
+    "name": "Cavaliers",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#860038",
+      "secondary": "#FDBB30",
+      "surface": "#F0E0E7",
+      "surface-strong": "#E2C2CF",
+      "ink": "#68002B",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#B66688",
+      "focus": "#20212B"
+    }
+  },
+  "DAL": {
+    "name": "Mavericks",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#00538C",
+      "secondary": "#B8C4CA",
+      "surface": "#E0EAF1",
+      "surface-strong": "#C2D6E3",
+      "ink": "#00426F",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#6698BA",
+      "focus": "#20212B"
+    }
+  },
+  "DEN": {
+    "name": "Nuggets",
+    "status": "reference",
+    "tokens": {
+      "identity": "#FEC524",
+      "secondary": "#0E2240",
+      "surface": "#FFF8E5",
+      "surface-strong": "#FFF1CA",
+      "ink": "#765400",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#FEDC7C",
+      "focus": "#20212B"
+    }
+  },
+  "DET": {
+    "name": "Pistons",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#C8102E",
+      "secondary": "#1D42BA",
+      "surface": "#F8E2E6",
+      "surface-strong": "#F2C6CD",
+      "ink": "#A30D25",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#DE7082",
+      "focus": "#20212B"
+    }
+  },
+  "GSW": {
+    "name": "Warriors",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#FFC72C",
+      "secondary": "#1D428A",
+      "surface": "#FFF8E6",
+      "surface-strong": "#FFF2CC",
+      "ink": "#765600",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#FFDD80",
+      "focus": "#20212B"
+    }
+  },
+  "HOU": {
+    "name": "Rockets",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#CE1141",
+      "secondary": "#333333",
+      "surface": "#F9E2E8",
+      "surface-strong": "#F3C6D1",
+      "ink": "#A00D32",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#E2708D",
+      "focus": "#20212B"
+    }
+  },
+  "IND": {
+    "name": "Pacers",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#FDBB30",
+      "secondary": "#002D62",
+      "surface": "#FFF7E6",
+      "surface-strong": "#FFEFCD",
+      "ink": "#785400",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#FED683",
+      "focus": "#20212B"
+    }
+  },
+  "LAC": {
+    "name": "Clippers",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#C8102E",
+      "secondary": "#1D428A",
+      "surface": "#F8E2E6",
+      "surface-strong": "#F2C6CD",
+      "ink": "#A30D25",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#DE7082",
+      "focus": "#20212B"
+    }
+  },
+  "LAL": {
+    "name": "Lakers",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#552583",
+      "secondary": "#FDB927",
+      "surface": "#EBE5F0",
+      "surface-strong": "#D6CBE1",
+      "ink": "#552583",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#997CB5",
+      "focus": "#20212B"
+    }
+  },
+  "MEM": {
+    "name": "Grizzlies",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#5D76A9",
+      "secondary": "#12173F",
+      "surface": "#ECEFF5",
+      "surface-strong": "#D8DEEA",
+      "ink": "#354C79",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#9EADCB",
+      "focus": "#20212B"
+    }
+  },
+  "MIA": {
+    "name": "Heat",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#98002E",
+      "secondary": "#F9A01B",
+      "surface": "#F3E0E6",
+      "surface-strong": "#E6C2CD",
+      "ink": "#800027",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#C16682",
+      "focus": "#20212B"
+    }
+  },
+  "MIL": {
+    "name": "Bucks",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#00471B",
+      "secondary": "#EEE1C6",
+      "surface": "#E0E9E4",
+      "surface-strong": "#C2D3C8",
+      "ink": "#00471B",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#669176",
+      "focus": "#20212B"
+    }
+  },
+  "MIN": {
+    "name": "Timberwolves",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#236192",
+      "secondary": "#78BE20",
+      "surface": "#E5ECF2",
+      "surface-strong": "#CAD9E5",
+      "ink": "#19496E",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#7BA0BE",
+      "focus": "#20212B"
+    }
+  },
+  "NOP": {
+    "name": "Pelicans",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#B4975A",
+      "secondary": "#0C2340",
+      "surface": "#F6F3EB",
+      "surface-strong": "#EDE6D7",
+      "ink": "#69522A",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#D2C19C",
+      "focus": "#20212B"
+    }
+  },
+  "NYK": {
+    "name": "Knicks",
+    "status": "reference",
+    "tokens": {
+      "identity": "#F58426",
+      "secondary": "#006BB6",
+      "surface": "#FEF0E5",
+      "surface-strong": "#FDE1CB",
+      "ink": "#9B4300",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#F9B57D",
+      "focus": "#20212B"
+    }
+  },
+  "OKC": {
+    "name": "Thunder",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#007AC1",
+      "secondary": "#EF3B24",
+      "surface": "#E0EFF8",
+      "surface-strong": "#C2DFF0",
+      "ink": "#005C91",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#66AFDA",
+      "focus": "#20212B"
+    }
+  },
+  "ORL": {
+    "name": "Magic",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#0077C0",
+      "secondary": "#838B8F",
+      "surface": "#E0EFF7",
+      "surface-strong": "#C2DEF0",
+      "ink": "#005B93",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#66ADD9",
+      "focus": "#20212B"
+    }
+  },
+  "PHI": {
+    "name": "76ers",
+    "status": "reference",
+    "tokens": {
+      "identity": "#006BB6",
+      "secondary": "#ED174C",
+      "surface": "#E0EDF6",
+      "surface-strong": "#C2DBED",
+      "ink": "#00558F",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#66A6D3",
+      "focus": "#20212B"
+    }
+  },
+  "PHX": {
+    "name": "Suns",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#E56020",
+      "secondary": "#1D1160",
+      "surface": "#FCECE4",
+      "surface-strong": "#F9D9C9",
+      "ink": "#9E3B0A",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#EFA079",
+      "focus": "#20212B"
+    }
+  },
+  "POR": {
+    "name": "Trail Blazers",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#E03A3E",
+      "secondary": "#222222",
+      "surface": "#FBE7E8",
+      "surface-strong": "#F8D0D1",
+      "ink": "#A22125",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#EC898B",
+      "focus": "#20212B"
+    }
+  },
+  "SAC": {
+    "name": "Kings",
+    "status": "reference",
+    "tokens": {
+      "identity": "#5A2D81",
+      "secondary": "#63707C",
+      "surface": "#EBE6F0",
+      "surface-strong": "#D7CDE1",
+      "ink": "#5A2D81",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#9C81B3",
+      "focus": "#20212B"
+    }
+  },
+  "SAS": {
+    "name": "Spurs",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#A8ADB4",
+      "secondary": "#222222",
+      "surface": "#F5F5F6",
+      "surface-strong": "#EAEBED",
+      "ink": "#454D57",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#CBCED2",
+      "focus": "#20212B"
+    }
+  },
+  "TOR": {
+    "name": "Raptors",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#CE1141",
+      "secondary": "#222222",
+      "surface": "#F9E2E8",
+      "surface-strong": "#F3C6D1",
+      "ink": "#A00D32",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#E2708D",
+      "focus": "#20212B"
+    }
+  },
+  "UTA": {
+    "name": "Jazz",
+    "status": "initial-project-assignment",
+    "tokens": {
+      "identity": "#6B4C9A",
+      "secondary": "#99C8DF",
+      "surface": "#EDEAF3",
+      "surface-strong": "#DBD4E7",
+      "ink": "#503775",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#A694C2",
+      "focus": "#20212B"
+    }
+  },
+  "WAS": {
+    "name": "Wizards",
+    "status": "reference",
+    "tokens": {
+      "identity": "#E75C83",
+      "secondary": "#002B5C",
+      "surface": "#FCEBF0",
+      "surface-strong": "#F9D8E1",
+      "ink": "#002B5C",
+      "text": "#20212B",
+      "muted": "#4C5260",
+      "plot": "#FFFFFF",
+      "comparison": "#565B65",
+      "negative": "#B80E32",
+      "border": "#F19DB5",
+      "focus": "#20212B"
+    }
+  }
+}

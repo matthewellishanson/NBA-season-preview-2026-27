@@ -1,0 +1,470 @@
+/* Project palette choices; see ColorPolicy.md. Surface colors are opaque. */
+
+[data-team-theme="ATL"] {
+  --team-identity: #E03A3E;
+  --team-secondary: #C1D32F;
+  --team-surface: #FBE7E8;
+  --team-surface-strong: #F8D0D1;
+  --team-ink: #8E1820;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #EC898B;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="BOS"] {
+  --team-identity: #007A33;
+  --team-secondary: #BA9653;
+  --team-surface: #E0EFE7;
+  --team-surface-strong: #C2DFCE;
+  --team-ink: #005724;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #66AF85;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="BKN"] {
+  --team-identity: #444444;
+  --team-secondary: #777777;
+  --team-surface: #E9E9E9;
+  --team-surface-strong: #D2D2D2;
+  --team-ink: #222222;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #8F8F8F;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="CHA"] {
+  --team-identity: #00788C;
+  --team-secondary: #1D1160;
+  --team-surface: #E0EFF1;
+  --team-surface-strong: #C2DFE3;
+  --team-ink: #005D6D;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #66AEBA;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="CHI"] {
+  --team-identity: #CE1141;
+  --team-secondary: #222222;
+  --team-surface: #F9E2E8;
+  --team-surface-strong: #F3C6D1;
+  --team-ink: #A00D32;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #E2708D;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="CLE"] {
+  --team-identity: #860038;
+  --team-secondary: #FDBB30;
+  --team-surface: #F0E0E7;
+  --team-surface-strong: #E2C2CF;
+  --team-ink: #68002B;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #B66688;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="DAL"] {
+  --team-identity: #00538C;
+  --team-secondary: #B8C4CA;
+  --team-surface: #E0EAF1;
+  --team-surface-strong: #C2D6E3;
+  --team-ink: #00426F;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #6698BA;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="DEN"] {
+  --team-identity: #FEC524;
+  --team-secondary: #0E2240;
+  --team-surface: #FFF8E5;
+  --team-surface-strong: #FFF1CA;
+  --team-ink: #765400;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #FEDC7C;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="DET"] {
+  --team-identity: #C8102E;
+  --team-secondary: #1D42BA;
+  --team-surface: #F8E2E6;
+  --team-surface-strong: #F2C6CD;
+  --team-ink: #A30D25;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #DE7082;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="GSW"] {
+  --team-identity: #FFC72C;
+  --team-secondary: #1D428A;
+  --team-surface: #FFF8E6;
+  --team-surface-strong: #FFF2CC;
+  --team-ink: #765600;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #FFDD80;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="HOU"] {
+  --team-identity: #CE1141;
+  --team-secondary: #333333;
+  --team-surface: #F9E2E8;
+  --team-surface-strong: #F3C6D1;
+  --team-ink: #A00D32;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #E2708D;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="IND"] {
+  --team-identity: #FDBB30;
+  --team-secondary: #002D62;
+  --team-surface: #FFF7E6;
+  --team-surface-strong: #FFEFCD;
+  --team-ink: #785400;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #FED683;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="LAC"] {
+  --team-identity: #C8102E;
+  --team-secondary: #1D428A;
+  --team-surface: #F8E2E6;
+  --team-surface-strong: #F2C6CD;
+  --team-ink: #A30D25;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #DE7082;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="LAL"] {
+  --team-identity: #552583;
+  --team-secondary: #FDB927;
+  --team-surface: #EBE5F0;
+  --team-surface-strong: #D6CBE1;
+  --team-ink: #552583;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #997CB5;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="MEM"] {
+  --team-identity: #5D76A9;
+  --team-secondary: #12173F;
+  --team-surface: #ECEFF5;
+  --team-surface-strong: #D8DEEA;
+  --team-ink: #354C79;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #9EADCB;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="MIA"] {
+  --team-identity: #98002E;
+  --team-secondary: #F9A01B;
+  --team-surface: #F3E0E6;
+  --team-surface-strong: #E6C2CD;
+  --team-ink: #800027;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #C16682;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="MIL"] {
+  --team-identity: #00471B;
+  --team-secondary: #EEE1C6;
+  --team-surface: #E0E9E4;
+  --team-surface-strong: #C2D3C8;
+  --team-ink: #00471B;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #669176;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="MIN"] {
+  --team-identity: #236192;
+  --team-secondary: #78BE20;
+  --team-surface: #E5ECF2;
+  --team-surface-strong: #CAD9E5;
+  --team-ink: #19496E;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #7BA0BE;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="NOP"] {
+  --team-identity: #B4975A;
+  --team-secondary: #0C2340;
+  --team-surface: #F6F3EB;
+  --team-surface-strong: #EDE6D7;
+  --team-ink: #69522A;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #D2C19C;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="NYK"] {
+  --team-identity: #F58426;
+  --team-secondary: #006BB6;
+  --team-surface: #FEF0E5;
+  --team-surface-strong: #FDE1CB;
+  --team-ink: #9B4300;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #F9B57D;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="OKC"] {
+  --team-identity: #007AC1;
+  --team-secondary: #EF3B24;
+  --team-surface: #E0EFF8;
+  --team-surface-strong: #C2DFF0;
+  --team-ink: #005C91;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #66AFDA;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="ORL"] {
+  --team-identity: #0077C0;
+  --team-secondary: #838B8F;
+  --team-surface: #E0EFF7;
+  --team-surface-strong: #C2DEF0;
+  --team-ink: #005B93;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #66ADD9;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="PHI"] {
+  --team-identity: #006BB6;
+  --team-secondary: #ED174C;
+  --team-surface: #E0EDF6;
+  --team-surface-strong: #C2DBED;
+  --team-ink: #00558F;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #66A6D3;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="PHX"] {
+  --team-identity: #E56020;
+  --team-secondary: #1D1160;
+  --team-surface: #FCECE4;
+  --team-surface-strong: #F9D9C9;
+  --team-ink: #9E3B0A;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #EFA079;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="POR"] {
+  --team-identity: #E03A3E;
+  --team-secondary: #222222;
+  --team-surface: #FBE7E8;
+  --team-surface-strong: #F8D0D1;
+  --team-ink: #A22125;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #EC898B;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="SAC"] {
+  --team-identity: #5A2D81;
+  --team-secondary: #63707C;
+  --team-surface: #EBE6F0;
+  --team-surface-strong: #D7CDE1;
+  --team-ink: #5A2D81;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #9C81B3;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="SAS"] {
+  --team-identity: #A8ADB4;
+  --team-secondary: #222222;
+  --team-surface: #F5F5F6;
+  --team-surface-strong: #EAEBED;
+  --team-ink: #454D57;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #CBCED2;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="TOR"] {
+  --team-identity: #CE1141;
+  --team-secondary: #222222;
+  --team-surface: #F9E2E8;
+  --team-surface-strong: #F3C6D1;
+  --team-ink: #A00D32;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #E2708D;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="UTA"] {
+  --team-identity: #6B4C9A;
+  --team-secondary: #99C8DF;
+  --team-surface: #EDEAF3;
+  --team-surface-strong: #DBD4E7;
+  --team-ink: #503775;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #A694C2;
+  --team-focus: #20212B;
+}
+
+[data-team-theme="WAS"] {
+  --team-identity: #E75C83;
+  --team-secondary: #002B5C;
+  --team-surface: #FCEBF0;
+  --team-surface-strong: #F9D8E1;
+  --team-ink: #002B5C;
+  --team-text: #20212B;
+  --team-muted: #4C5260;
+  --team-plot: #FFFFFF;
+  --team-comparison: #565B65;
+  --team-negative: #B80E32;
+  --team-border: #F19DB5;
+  --team-focus: #20212B;
+}
+
+
+/* Apply these hooks to actual component roots during integration. */
+.team-graphic-region, .team-graphic {
+ background: var(--team-surface, #F3F3F6); color: var(--team-text, #20212B);
+ border: 1px solid var(--team-border, #777); border-top: 4px solid var(--team-ink, #333);
+ border-radius: 12px; padding: clamp(18px, 3vw, 30px); min-width: 0;
+}
+.team-graphic-region .team-graphic { border-top-width: 1px; }
+.team-graphic__title, .team-graphic__kicker, .team-graphic__link { color: var(--team-ink); }
+.team-graphic__note { color: var(--team-muted); }
+.team-graphic__controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.team-graphic__button { background: var(--team-plot); color: var(--team-ink); border: 1px solid var(--team-ink); border-radius: 999px; padding: 10px 16px; min-height: 44px; font: inherit; font-weight: 700; }
+.team-graphic__button[aria-pressed="true"] { background: var(--team-surface-strong); }
+.team-graphic__callout { background: var(--team-surface-strong); color: var(--team-ink); border-left: 4px solid var(--team-ink); padding: 14px; margin: 16px 0; }
+.team-graphic__plot { background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 8px; padding: 16px; min-width: 0; }
+.team-graphic__button:focus-visible, .team-graphic__link:focus-visible { outline: 3px solid var(--team-focus); outline-offset: 3px; }
+.team-graphic__table { color: var(--team-text); background: var(--team-plot); }
+.team-graphic__table th { background: var(--team-surface-strong); }
