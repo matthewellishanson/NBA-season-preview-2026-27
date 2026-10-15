@@ -1,0 +1,327 @@
+.story-layout.story-layout--celtics { grid-template-columns: minmax(0, 1fr); }
+
+.celtics-wings {
+  --celtics-brown: #006b2d;
+  --celtics-tatum: #81510b;
+  --celtics-george: #4355a5;
+  width: 100%;
+  margin: 8px 0 0;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border-color: var(--team-border);
+  border-top-color: var(--team-ink);
+  box-shadow: 0 10px 28px rgba(0, 87, 36, 0.09);
+}
+
+.celtics-wings__header { max-width: 800px; }
+.celtics-wings__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .celtics-wings__title {
+  margin: 0;
+  color: var(--team-ink);
+  font: 850 clamp(1.25rem, 2.6vw, 1.85rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.celtics-wings__subtitle {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 600 0.88rem/1.45 system-ui, sans-serif;
+}
+.celtics-wings__controls { margin-top: 18px; }
+.celtics-wings__button { cursor: pointer; }
+.celtics-wings__button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--team-ink);
+  box-shadow: inset 0 0 0 1px var(--team-ink);
+}
+.celtics-wings__button:focus-visible,
+.team-card .celtics-wings__table-toggle:focus-visible,
+.team-card .celtics-wings__methodology > summary:focus-visible {
+  outline: 3px solid var(--team-focus);
+  outline-offset: 3px;
+}
+
+.celtics-wings__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 20px;
+  margin-top: 17px;
+  color: var(--team-text);
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+}
+.celtics-wings__legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.celtics-wings__legend-item i {
+  position: relative;
+  display: inline-block;
+  width: 29px;
+  height: 12px;
+  color: currentColor;
+}
+.celtics-wings__legend-item i::before {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 29px;
+  border-top: 3px solid currentColor;
+  content: "";
+}
+.celtics-wings__legend-item i::after {
+  position: absolute;
+  top: 2px;
+  left: 11px;
+  width: 7px;
+  height: 7px;
+  background: var(--team-plot);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+.celtics-wings__legend-item--brown { color: var(--celtics-brown); }
+.celtics-wings__legend-item--tatum { color: var(--celtics-tatum); }
+.celtics-wings__legend-item--tatum i::before { border-top-style: dashed; }
+.celtics-wings__legend-item--tatum i::after { border-radius: 0; transform: rotate(45deg); }
+.celtics-wings__legend-item--george { color: var(--celtics-george); }
+.celtics-wings__legend-item--george i::before { border-top-style: dotted; }
+.celtics-wings__legend-item--george i::after { border-radius: 0; }
+
+.celtics-wings__context {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 16px;
+}
+.celtics-wings__context p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  margin: 0;
+  padding: 11px 13px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-left: 4px solid var(--team-ink);
+  border-radius: 7px;
+  font: 600 0.71rem/1.45 system-ui, sans-serif;
+}
+.celtics-wings__context strong { color: var(--team-ink); font-size: 0.76rem; }
+.celtics-wings__context small { color: var(--team-muted); font: inherit; }
+.celtics-wings__sample-callout { background: var(--team-surface-strong) !important; }
+.celtics-wings__sample-callout span { color: var(--team-ink); font-size: 1rem; font-weight: 900; }
+
+.celtics-wings__plot {
+  position: relative;
+  min-height: 285px;
+  margin-top: 18px;
+  padding: 12px;
+  overflow: hidden;
+}
+.celtics-wings__status {
+  display: grid;
+  min-height: 255px;
+  margin: 0;
+  place-items: center;
+  color: var(--team-muted);
+  text-align: center;
+}
+.celtics-wings__status--error {
+  min-height: 170px;
+  padding: 22px;
+  color: #721c24;
+  background: #fff7f7;
+  border: 1px dashed #a94444;
+  border-radius: 7px;
+}
+.celtics-wings__panels { display: grid; gap: 16px; min-width: 0; }
+.celtics-wings__panels--availability { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.celtics-wings__panels--offense { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.celtics-wings__panel {
+  min-width: 0;
+  margin: 0;
+  padding: 9px 8px 5px;
+  background: #fff;
+  border: 1px solid #d6e3dc;
+  border-radius: 7px;
+}
+.celtics-wings__panel h4 {
+  margin: 0 0 1px;
+  color: var(--team-ink);
+  font: 850 0.78rem/1.25 system-ui, sans-serif;
+}
+.celtics-wings__panel-unit {
+  margin: 0;
+  color: var(--team-muted);
+  font: 600 0.63rem/1.35 system-ui, sans-serif;
+}
+.celtics-wings__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.celtics-wings__grid line { stroke: #dbe4df; stroke-width: 1; shape-rendering: crispEdges; }
+.celtics-wings__axis path { display: none; }
+.celtics-wings__axis line { stroke: #94a79d; shape-rendering: crispEdges; }
+.celtics-wings__axis text {
+  fill: #4c5b53;
+  font: 9.5px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.celtics-wings__axis-label { fill: #435149; font: 750 9.5px/1 system-ui, sans-serif; }
+.celtics-wings__line {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.celtics-wings__line--brown { stroke: var(--celtics-brown); }
+.celtics-wings__line--tatum { stroke: var(--celtics-tatum); stroke-dasharray: 7 4; }
+.celtics-wings__line--george { stroke: var(--celtics-george); stroke-dasharray: 2 4; }
+.celtics-wings__point { stroke-width: 1.8; vector-effect: non-scaling-stroke; }
+.celtics-wings__point--brown { fill: #fff; stroke: var(--celtics-brown); }
+.celtics-wings__point--tatum { fill: #fff; stroke: var(--celtics-tatum); }
+.celtics-wings__point--george { fill: #fff; stroke: var(--celtics-george); }
+.celtics-wings__point.is-selected { stroke-width: 3.2; }
+.celtics-wings__short-sample {
+  fill: none;
+  stroke: var(--celtics-tatum);
+  stroke-width: 2;
+  stroke-dasharray: 2 2;
+  vector-effect: non-scaling-stroke;
+}
+.celtics-wings__season-guide {
+  stroke: var(--team-ink);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+  opacity: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+.celtics-wings__season-hit { fill: transparent; cursor: pointer; }
+.celtics-wings__season-hit:focus-visible {
+  fill: rgba(0, 87, 36, 0.08);
+  stroke: var(--team-focus);
+  stroke-width: 2.5;
+  outline: none;
+}
+.celtics-wings__season-hit.is-selected { fill: rgba(0, 87, 36, 0.035); }
+
+.celtics-wings__inspection {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.28fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 13px;
+  padding: 13px;
+  color: var(--team-text);
+  background: var(--team-surface-strong);
+  border: 1px solid var(--team-border);
+  border-left: 5px solid var(--team-ink);
+  border-radius: 8px;
+}
+.celtics-wings__inspection-heading p {
+  margin: 0;
+  color: var(--team-muted);
+  font: 800 0.64rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.team-card .celtics-wings__inspection-heading h4 {
+  margin: 3px 0 0;
+  color: var(--team-ink);
+  font: 900 1.08rem/1.2 system-ui, sans-serif;
+}
+.celtics-wings__inspection-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.celtics-wings__inspection-card {
+  min-width: 0;
+  padding: 9px 10px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 6px;
+  font: 600 0.67rem/1.42 system-ui, sans-serif;
+}
+.celtics-wings__inspection-card strong { display: block; margin-bottom: 2px; color: var(--team-text); font-size: 0.75rem; }
+.celtics-wings__inspection-card span { display: block; color: var(--team-muted); }
+.celtics-wings__inspection-card b { color: var(--team-ink); font-weight: 850; }
+
+.celtics-wings__table-details { margin-top: 14px; border-top: 1px solid var(--team-border); }
+.team-card .celtics-wings__table-toggle,
+.team-card .celtics-wings__methodology > summary {
+  display: block;
+  width: fit-content;
+  padding: 12px 2px 4px;
+  color: var(--team-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+  list-style: none;
+}
+.team-card .celtics-wings__table-toggle:hover,
+.team-card .celtics-wings__methodology > summary:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.celtics-wings__table-toggle::-webkit-details-marker,
+.celtics-wings__methodology > summary::-webkit-details-marker { display: none; }
+.celtics-wings__table-toggle::before,
+.celtics-wings__methodology > summary::before { display: inline-block; margin-right: 6px; content: "\25B8"; }
+.celtics-wings__table-details[open] .celtics-wings__table-toggle::before,
+.celtics-wings__methodology[open] > summary::before { content: "\25BE"; }
+.celtics-wings__table-wrap {
+  max-width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+  background: var(--team-plot);
+}
+.celtics-wings__table { width: 100%; min-width: 1090px; border-collapse: collapse; color: var(--team-text); font: 600 0.66rem/1.35 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.celtics-wings__table th,
+.celtics-wings__table td { padding: 7px 6px; border-bottom: 1px solid #dde5e0; text-align: right; white-space: nowrap; }
+.celtics-wings__table thead th { position: sticky; top: 0; z-index: 1; color: var(--team-ink); background: var(--team-surface-strong); font-weight: 850; }
+.celtics-wings__table th:first-child,
+.celtics-wings__table td:first-child,
+.celtics-wings__table th:nth-child(2),
+.celtics-wings__table td:nth-child(2) { text-align: left; }
+.celtics-wings__table-group th { color: var(--team-ink); background: #edf5f0; font-weight: 900; text-align: left !important; }
+.celtics-wings__table tbody:last-child tr:last-child > * { border-bottom: 0; }
+.celtics-wings__table abbr { text-decoration-style: dotted; text-underline-offset: 2px; }
+.celtics-wings__notes { margin-top: 13px; color: var(--team-muted); font: 500 0.72rem/1.55 system-ui, sans-serif; }
+.celtics-wings__notes > p { margin: 0; }
+.celtics-wings__methodology { margin-top: 5px; }
+.celtics-wings__methodology > div { max-width: 870px; padding: 2px 12px 3px; border-left: 3px solid var(--team-border); }
+.celtics-wings__methodology p { margin: 7px 0; }
+.celtics-wings__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  .celtics-wings__panels--availability,
+  .celtics-wings__panels--offense { grid-template-columns: 1fr; }
+  .celtics-wings__context { grid-template-columns: 1fr; }
+  .celtics-wings__inspection { grid-template-columns: 1fr; }
+  .celtics-wings__inspection-values { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .celtics-wings { width: calc(100% + 12px); margin-inline: -6px; padding: 17px 11px; }
+  .celtics-wings__controls { display: grid; grid-template-columns: 1fr; }
+  .celtics-wings__button { width: 100%; min-height: 46px; }
+  .celtics-wings__plot { padding: 8px 5px; }
+  .celtics-wings__panels { gap: 12px; }
+  .celtics-wings__panel { padding-inline: 4px; }
+  .celtics-wings__table-wrap { overflow: visible; border: 0; background: transparent; }
+  .celtics-wings__table { display: block; min-width: 0; }
+  .celtics-wings__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .celtics-wings__table tbody { display: block; margin-top: 13px; }
+  .celtics-wings__table-group { display: block; }
+  .celtics-wings__table-group th { display: block; padding: 9px 10px; border: 1px solid var(--team-border); border-radius: 6px; }
+  .celtics-wings__table-data-row { display: grid; grid-template-columns: 1fr 1fr; margin-top: 8px; overflow: hidden; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+  .celtics-wings__table-data-row th,
+  .celtics-wings__table-data-row td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; padding: 7px 8px; text-align: right !important; white-space: normal; }
+  .celtics-wings__table-data-row th:first-child,
+  .celtics-wings__table-data-row td:nth-child(2) { grid-column: span 1; }
+  .celtics-wings__table-data-row th::before,
+  .celtics-wings__table-data-row td::before { color: var(--team-muted); content: attr(data-label); font-weight: 700; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celtics-wings *,
+  .celtics-wings *::before,
+  .celtics-wings *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
