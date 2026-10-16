@@ -219,6 +219,10 @@ async function run() {
       });
       const context = root.querySelector('.celtics-wings__context').textContent.replace(/\\s+/g, ' ').trim();
       const inspection = root.querySelector('.celtics-wings__inspection-values').textContent.replace(/\\s+/g, ' ').trim();
+      const intro = root.parentElement.querySelector('.story--celtics-intro');
+      const continuation = root.parentElement.querySelector('.story--celtics-continuation');
+      const introParagraphs = [...(intro?.querySelectorAll(':scope > p') || [])];
+      const continuationParagraphs = [...(continuation?.querySelectorAll(':scope > p') || [])];
       const style = getComputedStyle(root);
       return {
         busy: root.getAttribute('aria-busy'),
@@ -239,6 +243,14 @@ async function run() {
         identity: style.getPropertyValue('--team-identity').trim(),
         surface: style.getPropertyValue('--team-surface').trim(),
         selectedButtons: root.querySelectorAll('[data-celtics-view][aria-pressed="true"]').length,
+        storyPlacement: {
+          introParagraphs: introParagraphs.length,
+          continuationParagraphs: continuationParagraphs.length,
+          chartFollowsIntro: intro?.nextElementSibling === root,
+          continuationFollowsChart: root.nextElementSibling === continuation,
+          paulGeorgeLeadIn: introParagraphs.at(-1)?.textContent.includes('Paul George, the veteran star wing') || false,
+          responsibilityLeadOut: continuationParagraphs[0]?.textContent.startsWith('That responsibility will fall') || false,
+        },
       };
     })()`);
     assert(initial.busy === "false", "Chart remained aria-busy after load.");
@@ -254,6 +266,9 @@ async function run() {
     assert(initial.domains.games[0] === 0 && initial.domains.games[1] === 82, "Games domain was not exactly 0-82.");
     assert(initial.identity.toLowerCase() === "#007a33" && initial.surface.toLowerCase() === "#e0efe7", "Celtics theme tokens were not inherited.");
     assert(initial.selectedButtons === 1, "View controls did not expose exactly one selected state.");
+    assert(initial.storyPlacement.introParagraphs === 6 && initial.storyPlacement.continuationParagraphs === 5, "Celtics story did not contain the expected 11 paragraphs.");
+    assert(initial.storyPlacement.chartFollowsIntro && initial.storyPlacement.continuationFollowsChart, "Celtics chart was not placed between the intended story paragraphs.");
+    assert(initial.storyPlacement.paulGeorgeLeadIn && initial.storyPlacement.responsibilityLeadOut, "Celtics chart did not follow the Paul George paragraph at the intended narrative break.");
     await captureElement(client, "celtics-wings-desktop.png");
 
     const interaction = await evaluate(client, `(async () => {
@@ -382,6 +397,7 @@ async function run() {
 
     console.log("PASS: 15 table rows; 3 availability panels; 4 offensive panels; all plotted coordinates matched normalized data.");
     console.log("PASS: supplied annotations/inspection values, 0-82 games domain, zero-based per-100 domains, and Celtics theme tokens.");
+    console.log("PASS: Celtics story is 6 paragraphs, then the chart after the Paul George paragraph, then 5 paragraphs.");
     console.log("PASS: keyboard and touch selection, view switching, collapse/reopen, resize, 390px stacking, no page overflow, and reduced motion.");
     console.log("PASS: no browser console or runtime errors.");
     console.log("Wrote artifacts/celtics-wings-desktop.png and artifacts/celtics-wings-mobile.png");

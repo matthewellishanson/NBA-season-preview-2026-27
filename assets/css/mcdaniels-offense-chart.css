@@ -1,0 +1,335 @@
+.story-layout.story-layout--timberwolves { grid-template-columns: minmax(0, 1fr); }
+
+.mcdaniels-offense {
+  --mcd-regular: var(--team-ink);
+  --mcd-playoffs: #3d6f0f;
+  width: 100%;
+  margin: 10px 0 2px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border-color: var(--team-border);
+  border-top-color: var(--team-ink);
+  box-shadow: 0 10px 28px rgba(25, 73, 110, 0.1);
+}
+
+.mcdaniels-offense__header { max-width: 850px; }
+.mcdaniels-offense__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .mcdaniels-offense__title {
+  margin: 0;
+  color: var(--team-ink);
+  font: 850 clamp(1.25rem, 2.6vw, 1.85rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.mcdaniels-offense__subtitle {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 600 0.88rem/1.45 system-ui, sans-serif;
+}
+
+.mcdaniels-offense__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 22px;
+  margin-top: 17px;
+  color: var(--team-text);
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+}
+.mcdaniels-offense__legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.mcdaniels-offense__legend-mark { position: relative; display: inline-block; width: 31px; height: 13px; color: currentColor; }
+.mcdaniels-offense__legend-mark::before {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 31px;
+  border-top: 2px solid currentColor;
+  content: "";
+}
+.mcdaniels-offense__legend-mark::after {
+  position: absolute;
+  top: 2px;
+  left: 12px;
+  width: 7px;
+  height: 7px;
+  background: var(--team-plot);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+.mcdaniels-offense__legend-item--regular { color: var(--mcd-regular); }
+.mcdaniels-offense__legend-item--playoffs { color: var(--mcd-playoffs); }
+.mcdaniels-offense__legend-item--playoffs .mcdaniels-offense__legend-mark::before { border-top-style: dashed; }
+.mcdaniels-offense__legend-item--playoffs .mcdaniels-offense__legend-mark::after {
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.mcdaniels-offense__samples {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+.mcdaniels-offense__sample {
+  min-width: 0;
+  margin: 0;
+  padding: 9px 10px;
+  color: var(--team-muted);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-left: 4px solid var(--mcd-playoffs);
+  border-radius: 6px;
+  font: 650 0.68rem/1.35 system-ui, sans-serif;
+}
+.mcdaniels-offense__sample strong { display: block; color: var(--team-ink); font-size: 0.73rem; }
+
+.mcdaniels-offense__plot {
+  position: relative;
+  min-height: 300px;
+  margin-top: 17px;
+  padding: 12px;
+  overflow: hidden;
+}
+.mcdaniels-offense__status {
+  display: grid;
+  min-height: 270px;
+  margin: 0;
+  place-items: center;
+  color: var(--team-muted);
+  font: 650 0.85rem/1.5 system-ui, sans-serif;
+  text-align: center;
+}
+.mcdaniels-offense__status--error {
+  min-height: 170px;
+  padding: 22px;
+  color: #721c24;
+  background: #fff7f7;
+  border: 1px dashed #a94444;
+  border-radius: 7px;
+}
+.mcdaniels-offense__panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+.mcdaniels-offense__panel {
+  min-width: 0;
+  margin: 0;
+  padding: 10px 6px 4px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+}
+.team-card .mcdaniels-offense__panel h4 {
+  min-height: 2.5em;
+  margin: 0 5px 2px;
+  color: var(--team-ink);
+  font: 850 0.78rem/1.25 system-ui, sans-serif;
+}
+.mcdaniels-offense__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.mcdaniels-offense__grid line { stroke: #d7e0e7; stroke-width: 0.75; shape-rendering: crispEdges; }
+.mcdaniels-offense__axis path { display: none; }
+.mcdaniels-offense__axis line { stroke: #8496a5; stroke-width: 0.75; shape-rendering: crispEdges; }
+.mcdaniels-offense__axis text {
+  fill: #4c5b68;
+  font: 10px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.mcdaniels-offense__axis-label { fill: #3f4e5a; font: 750 10.5px/1 system-ui, sans-serif; }
+.mcdaniels-offense__line {
+  fill: none;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.mcdaniels-offense__line--regular { stroke: var(--mcd-regular); }
+.mcdaniels-offense__line--playoffs { stroke: var(--mcd-playoffs); stroke-dasharray: 7 4; }
+.mcdaniels-offense__point { stroke-width: 1.8; vector-effect: non-scaling-stroke; }
+.mcdaniels-offense__point--regular { fill: var(--team-plot); stroke: var(--mcd-regular); }
+.mcdaniels-offense__point--playoffs { fill: var(--team-plot); stroke: var(--mcd-playoffs); }
+.mcdaniels-offense__point.is-selected { fill: var(--team-surface-strong); stroke-width: 3.1; }
+.mcdaniels-offense__season-guide {
+  stroke: var(--team-ink);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+  opacity: 0.42;
+  vector-effect: non-scaling-stroke;
+}
+.mcdaniels-offense__season-hit { fill: transparent; cursor: pointer; touch-action: pan-y; }
+.mcdaniels-offense__season-hit.is-selected { fill: rgba(25, 73, 110, 0.035); }
+.mcdaniels-offense__season-hit:focus-visible {
+  fill: rgba(25, 73, 110, 0.08);
+  stroke: var(--team-focus);
+  stroke-width: 2.5;
+  outline: none;
+}
+
+.mcdaniels-offense__inspection {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.25fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 13px;
+  padding: 13px;
+  color: var(--team-text);
+  background: var(--team-surface-strong);
+  border: 1px solid var(--team-border);
+  border-left: 5px solid var(--team-ink);
+  border-radius: 8px;
+}
+.mcdaniels-offense__inspection-heading p {
+  margin: 0;
+  color: var(--team-muted);
+  font: 800 0.64rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.team-card .mcdaniels-offense__inspection-heading h4 {
+  margin: 3px 0 0;
+  color: var(--team-ink);
+  font: 900 1.08rem/1.2 system-ui, sans-serif;
+}
+.mcdaniels-offense__inspection-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.mcdaniels-offense__inspection-card {
+  min-width: 0;
+  padding: 10px 11px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-top: 4px solid var(--mcd-regular);
+  border-radius: 6px;
+  font: 600 0.68rem/1.48 system-ui, sans-serif;
+}
+.mcdaniels-offense__inspection-card--playoffs { border-top-color: var(--mcd-playoffs); }
+.mcdaniels-offense__inspection-card--missing { border-top-color: var(--team-comparison); }
+.mcdaniels-offense__inspection-card strong { display: block; margin-bottom: 3px; color: var(--team-text); font-size: 0.78rem; }
+.mcdaniels-offense__inspection-card span { display: block; color: var(--team-muted); }
+.mcdaniels-offense__inspection-card b { color: var(--team-ink); font-weight: 850; }
+.mcdaniels-offense__inspection-primary { margin: 3px 0; }
+
+.mcdaniels-offense__takeaway {
+  margin: 14px 0 0;
+  color: var(--team-ink);
+  background: var(--team-surface-strong);
+  border-left-color: var(--team-ink);
+  font: 800 0.85rem/1.5 system-ui, sans-serif;
+}
+.mcdaniels-offense__table-details { margin-top: 14px; border-top: 1px solid var(--team-border); }
+.team-card .mcdaniels-offense__table-toggle,
+.team-card .mcdaniels-offense__methodology > summary {
+  display: block;
+  width: fit-content;
+  padding: 12px 2px 4px;
+  color: var(--team-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+  list-style: none;
+}
+.team-card .mcdaniels-offense__table-toggle:hover,
+.team-card .mcdaniels-offense__methodology > summary:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.mcdaniels-offense__table-toggle::-webkit-details-marker,
+.mcdaniels-offense__methodology > summary::-webkit-details-marker { display: none; }
+.mcdaniels-offense__table-toggle::before,
+.mcdaniels-offense__methodology > summary::before { display: inline-block; margin-right: 6px; content: "\25B8"; }
+.mcdaniels-offense__table-details[open] .mcdaniels-offense__table-toggle::before,
+.mcdaniels-offense__methodology[open] > summary::before { content: "\25BE"; }
+.team-card .mcdaniels-offense__table-toggle:focus-visible,
+.team-card .mcdaniels-offense__methodology > summary:focus-visible {
+  outline: 3px solid var(--team-focus);
+  outline-offset: 3px;
+}
+.mcdaniels-offense__table-wrap {
+  max-width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+}
+.mcdaniels-offense__table {
+  width: 100%;
+  min-width: 1150px;
+  border-collapse: collapse;
+  color: var(--team-text);
+  font: 600 0.66rem/1.35 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.mcdaniels-offense__table th,
+.mcdaniels-offense__table td { padding: 7px 6px; border-bottom: 1px solid #dce4ea; text-align: right; white-space: nowrap; }
+.mcdaniels-offense__table thead th { position: sticky; top: 0; z-index: 1; color: var(--team-ink); background: var(--team-surface-strong); font-weight: 850; }
+.mcdaniels-offense__table th:first-child,
+.mcdaniels-offense__table td:first-child,
+.mcdaniels-offense__table th:nth-child(2),
+.mcdaniels-offense__table td:nth-child(2) { text-align: left; }
+.mcdaniels-offense__table tbody tr:last-child > * { border-bottom: 0; }
+.mcdaniels-offense__notes { margin-top: 13px; color: var(--team-muted); font: 500 0.72rem/1.55 system-ui, sans-serif; }
+.mcdaniels-offense__notes > p { margin: 0; }
+.mcdaniels-offense__methodology { margin-top: 5px; }
+.mcdaniels-offense__methodology > div { max-width: 900px; padding: 2px 12px 3px; border-left: 3px solid var(--team-border); }
+.mcdaniels-offense__methodology p { margin: 7px 0; }
+.mcdaniels-offense__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 880px) {
+  .mcdaniels-offense__panels { grid-template-columns: 1fr; }
+  .mcdaniels-offense__panel h4 { min-height: 0; }
+}
+
+@media (max-width: 620px) {
+  .mcdaniels-offense__samples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mcdaniels-offense__inspection { grid-template-columns: 1fr; }
+  .mcdaniels-offense__inspection-values { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .mcdaniels-offense { width: calc(100% + 12px); margin-inline: -6px; padding: 17px 11px; }
+  .mcdaniels-offense__plot { padding: 8px 5px; }
+  .mcdaniels-offense__panels { gap: 12px; }
+  .mcdaniels-offense__panel { padding-inline: 3px; }
+  .mcdaniels-offense__table-wrap { overflow: visible; border: 0; background: transparent; }
+  .mcdaniels-offense__table { display: block; min-width: 0; }
+  .mcdaniels-offense__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .mcdaniels-offense__table tbody { display: block; }
+  .mcdaniels-offense__table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 9px;
+    overflow: hidden;
+    background: var(--team-plot);
+    border: 1px solid var(--team-border);
+    border-radius: 7px;
+  }
+  .mcdaniels-offense__table-row th,
+  .mcdaniels-offense__table-row td {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 7px 8px;
+    text-align: right !important;
+    white-space: normal;
+  }
+  .mcdaniels-offense__table-row th::before,
+  .mcdaniels-offense__table-row td::before { color: var(--team-muted); content: attr(data-label); font-weight: 700; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcdaniels-offense *,
+  .mcdaniels-offense *::before,
+  .mcdaniels-offense *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
