@@ -1,0 +1,6 @@
+player_id,player_name,season,season_start,season_type,source_team,team_stints,is_combined_total,season_age,games,scheduled_games_reference,games_not_played,starts,minutes_per_game,total_minutes,points_per_game,assists_per_game,points_per_100,assists_per_100,ts_pct,per_game_source_row_id,p100_source_row_id,advanced_source_row_id
+garlada01,Darius Garland,2021-22,2021,regular_season,CLE,,false,22,68,82,14,68,35.7,2430,21.7,8.6,30.3,12.0,0.576,GarlandPerGame.csv:line-4,GarlandP100P.csv:line-4,GarlandAdv.csv:line-4
+garlada01,Darius Garland,2022-23,2022,regular_season,CLE,,false,23,69,82,13,69,35.5,2447,21.6,7.8,30.5,11.0,0.587,GarlandPerGame.csv:line-5,GarlandP100P.csv:line-5,GarlandAdv.csv:line-5
+garlada01,Darius Garland,2023-24,2023,regular_season,CLE,,false,24,57,82,25,57,33.4,1901,18.0,6.5,26.7,9.7,0.560,GarlandPerGame.csv:line-6,GarlandP100P.csv:line-6,GarlandAdv.csv:line-6
+garlada01,Darius Garland,2024-25,2024,regular_season,CLE,,false,25,75,82,7,75,30.7,2301,20.6,6.7,32.3,10.6,0.600,GarlandPerGame.csv:line-7,GarlandP100P.csv:line-7,GarlandAdv.csv:line-7
+garlada01,Darius Garland,2025-26,2025,regular_season,2TM,,true,26,45,82,37,43,29.9,1344,18.8,6.7,30.6,10.9,0.582,GarlandPerGame.csv:line-8,GarlandP100P.csv:line-8,GarlandAdv.csv:line-8

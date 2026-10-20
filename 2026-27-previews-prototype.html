@@ -8,7 +8,7 @@
 
     <meta
       name="description"
-      content="A design prototype for Hanson Hoops' 30-team NBA preview, using Matt Hanson's provisional power rankings."
+      content="30 NBA teams, ranked at the start of the 2026-27 NBA season."
     />
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="assets/css/team-color-policy.css" />
@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="assets/css/edey-memphis-chart.css" />
     <link rel="stylesheet" href="assets/css/kawhi-production-availability.css" />
     <link rel="stylesheet" href="assets/css/kessler-lakers-chart.css" />
+    <link rel="stylesheet" href="assets/css/holmgren-shared-games-chart.css" />
+    <link rel="stylesheet" href="assets/css/garland-clippers-chart.css" />
 
     <style>
       /* Design tokens */
@@ -652,14 +654,11 @@
           <div class="small-label">The season preview</div>
           <h1>Thirty teams.<br /><em>One new season.</em></h1>
           <p class="dek">
-            The questions, players, and numbers that will shape 2026–27. Team by team, in Matt
-            Hanson's power-ranking order.
+            The questions, players, and numbers that will shape the 2026–27 NBA season. Team by team, power ranked, with finished team previews available as of Oct. 20 and more to come.
           </p>
           <div class="byline"><strong>By Matt Hanson</strong><span>2026–27 NBA preview</span></div>
           <div class="prototype-note">
-            <strong>Design prototype.</strong> Rankings supplied Oct. 6; provisional. Editorial
-            copy, projections, and graphics are pending. Abbreviation badges reserve space
-            for team logos.
+            <strong>Editor's Note:</strong> Rankings supplied Oct. 6; provisional. 14 previews written as of Oct. 20, with 16 more to come over the remainder of this first week of the NBA season.
           </div>
         </header>
         <div class="mobile-jump">
@@ -1109,7 +1108,7 @@
               <span class="badge" aria-hidden="true">${team.code}</span>
               <div class="identity">
                 <h2>${escapeHtml(team.name)}</h2>
-                <p class="subhead${team.slug === "raptors" ? "" : " pending"}">${team.slug === "raptors" ? "Can Toronto count on Kawhi Leonard’s availability?" : "The team’s central question goes here"}</p>
+                <p class="subhead${team.slug === "raptors" || team.slug === "thunder" || team.slug === "clippers" ? "" : " pending"}">${team.slug === "raptors" ? "Can Toronto count on Kawhi Leonard’s availability?" : team.slug === "thunder" ? "Can Holmgren hold up against Wembanyama and the Spurs?" : team.slug === "clippers" ? "How much can the Clippers count on Darius Garland?" : "The team’s central question goes here"}</p>
                 <div class="stat-strip" aria-label="${escapeHtml(team.name)} 2025–26 regular-season statistics">
                   ${renderTeamStats(team)}
                 </div>
@@ -1118,7 +1117,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "lakers" ? " story-layout--lakers" : ""}">
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : ""}">
                 ${team.slug === "raptors" ? `
                 <article class="story story--raptors story--raptors-intro">
                   <p>Stop me if you&rsquo;ve heard this one before: the Toronto Raptors had the foundations of a contender in the making, but with the acquisition of superstar forward Kawhi Leonard, they just might now have what it takes to make a run to the NBA Finals.</p>
@@ -1127,6 +1126,14 @@
                   <p>That version of Leonard put together one of the century&rsquo;s best postseason campaigns en route to the championship and his second Finals MVP award, averaging 28.5 points, 9.8 rebounds and 4.2 assists in Toronto&rsquo;s 4-2 Finals win over the last of Golden State&rsquo;s Kevin Durant-era superteams. The Warriors still featured Stephen Curry, Klay Thompson, Draymond Green and Andre Iguodala, although Durant and Thompson suffered devastating, season-ending injuries during the series.</p>
                   <p>Now Leonard joins a team that gave eventual Eastern Conference finalist Cleveland all it could handle in a seven-game first-round battle last spring. Much of Toronto&rsquo;s title outlook hinges on one question: How much of that 2019 version remains? Is there enough left in the tank for this oft-injured, uniquely polarizing, eternally enigmatic superstar to lead another deep postseason run, let alone win a third NBA championship?</p>
                   <p>Given his track record over seven seasons in Los Angeles, where he arguably became <a href="https://bleacherreport.com/articles/10091863-clippers-kawhi-leonard-nbas-load-management-policy-wont-help-me-play-more-games">the face of the league&rsquo;s &ldquo;load management&rdquo; debate</a> while missing huge chunks of regular-season and playoff action, I wouldn&rsquo;t bet on that sort of return to glory. But given the talent he&rsquo;s joining, the competitive promise Toronto showed last season and what Leonard can still produce when healthy, I&rsquo;d hesitate to rule it out. And given his return to Toronto is coming on the heels of his best season in half a decade &ndash; he averaged 27.9 points over 65 games and made All-NBA second team last season &ndash; it may be just the right timing for one last championship-level season for Leonard and this young Raptors squad.</p>
+                </article>` : team.slug === "clippers" ? `
+                <article class="story story--clippers story--clippers-intro">
+                  <p>It&rsquo;s been one helluva summer, in the worst possible way, for the Los Angeles Clippers. Long considered one of the more cursed teams in all of professional sports, this organization seemed to have finally turned the corner toward a brighter future over the last 15 years. Much of that progress came under former Microsoft CEO Steve Ballmer, who bought the team in 2014 amid the controversy and crisis born from then-owner Donald Sterling&rsquo;s infamous racist comments being leaked to the public. Under Ballmer, this franchise continued righting a ship that had long seemed hopelessly lost at sea, stringing together winning seasons and multiple postseason appearances.</p>
+                  <p>But all of that progress began to unravel in September 2025, when journalist Pablo Torre released a major investigative report detailing alleged salary-cap circumvention by the Clippers to pay their franchise star of the 2020s, Kawhi Leonard, more money than the league&rsquo;s restrictions permitted. The details of the financial scandal, which the league ultimately confirmed and severely punished the Clippers organization and Ballmer himself for, are nuanced and complex beyond the scope of this season preview. But suffice it to say, this organization now faces <a href="https://www.si.com/nba/clippers/how-nba-kawhi-leonard-clippers-punishment-compares-other-penalties-sports-history?utm_source=chatgpt.com">one of the harshest punishments in American professional sports history</a>. All for a player in Leonard who gave this franchise precious little postseason success in return for the immense investments, legal and illegal, that it made to acquire and keep him &mdash; and will now spend years paying for.</p>
+                  <p>Long story short, it was a disaster of an offseason for the Clippers, even by Clippers standards. They now face the forfeiture of five first-round selections from 2029 through 2033, a one-year ban for Ballmer and a precarious coming decade for a franchise that had fought so long and so hard to earn legitimacy as the Lakers&rsquo; historically derided and lampooned little brother.</p>
+                  <p>So what remains, now that the punishment has been dealt and the dust has settled, more or less?</p>
+                  <p>Well, not as much as the team and its fans would like, given the steep team-building obstacles that lie ahead. It would be great if this coming era of diminished competitive chances at least began with a solid team this season, but that&rsquo;s far from the case. At best, this Clippers team would be lucky to make the play-in, and given the state of the roster and the mood around the team, even that would feel miraculous.</p>
+                  <p>There&rsquo;s a young star to build around in former Cleveland point guard Darius Garland, if he can avoid further injuries after an early career frequently sidetracked by them. When healthy, he can be as dangerous a scoring point guard as the league has to offer, but it&rsquo;s difficult to count on that kind of health given his injury history, dating back to his freshman year at Vanderbilt, when he played just five games before tearing his meniscus. He&rsquo;s also only 6&rsquo;1&rdquo;, in a league that increasingly demands the utmost perfection from its shortest stars. Even healthy, I&rsquo;m not sold on his ability to lead a contender in this era of the NBA, regardless of how productive he can be &mdash; at least, not without a much stronger supporting cast, &agrave; la Jalen Brunson and the Knicks.</p>
                 </article>` : team.slug === "grizzlies" ? `
                 <article class="story story--grizzlies story--grizzlies-intro">
                   <p>It&rsquo;s a new era for the Memphis Grizzlies after dealing away all three members of their &ldquo;whoop dat&rdquo; big three &mdash; Ja Morant, Jaren Jackson Jr. and Desmond Bane &mdash; in roughly 16 months. But despite sending all that talent and star power out the door, this Memphis squad projects to be a thorn in the side of any opponent who takes it for granted as an easy win on the schedule.</p>
@@ -1157,6 +1164,54 @@
                   <p>Also uncertain going into this win-now season is the fit of Minnesota&rsquo;s new starting power forward, skywalking former Golden State lottery pick Jonathan Kuminga. Kuminga has at times flashed real star potential with his eye-popping leaping ability and streaky inside-outside scoring. But too often, he underwhelmed in meaningful games next to Stephen Curry and Draymond Green, with his Warriors tenure marked by contract disputes and stretches outside head coach Steve Kerr&rsquo;s rotation.</p>
                   <p>His shooting from deep also leaves a lot to be desired, and needs to improve if the Wolves are going to replace the combined spacing and production lost with Reid and Randle. Some of that should be absorbed by Minnesota&rsquo;s greatly improved backcourt, not just from Ball and a more open Edwards, but also from crucial bench contributors like last season&rsquo;s steal-of-a-trade pickup, Ayo Dosunmu, who returned this summer after dropping a career-high 43 points in a critical Game 4 win over Denver in the first round, and postseason breakout Terrence Shannon Jr.</p>
                   <p>Also critical to absorbing what the Wolves gave up in dealing Reid and Randle, and as a potential alternative at power forward if Kuminga doesn&rsquo;t work out, will be Jaden McDaniels. McDaniels really blossomed on offense last year after a career defined by his defense, which remains elite and essential to any success this team hopes to achieve. He&rsquo;ll be another crucial X-factor in Minnesota&rsquo;s title aspirations. Look for a continuation throughout the season of the newfound confidence and scoring punch he showed in the last playoffs.</p>
+                </article>` : team.slug === "thunder" ? `
+                <article class="story story--thunder story--thunder-intro">
+                  <p>What is there to say about this Thunder team that hasn&rsquo;t already been said a hundred times in recent years by fans, coaches, executives, media and so on?</p>
+                  <p>This is a total juggernaut of a professional basketball organization, one that executes its mission from the top &mdash; looking at you, future Hall of Famer and Thunder general manager extraordinaire Sam Presti &mdash; all the way to the very bottom of the roster &mdash; I guess I&rsquo;m looking at you, Nikola Topi&#263;; let&rsquo;s get some minutes this year, huh? &mdash; with a precision other professional franchises, regardless of the sport, can only dream of.</p>
+                  <p>As a result of this excellent top-to-bottom execution, this Thunder roster has come to resemble two or three competitive NBA rotations stacked on top of each other. Even after Presti basically gave away three of his key rotation players in Luguentz Dort, Isaiah Joe and Aaron Wiggins over the summer, I can still count no fewer than 14 legitimate rotation-level guys on this roster entering the 2026-27 season, including multiple untested prospects that I&rsquo;m high on. And one of those dudes happens to be the reigning back-to-back NBA MVP, the incomparable, unflappable scoring machine Shai Gilgeous-Alexander, who&rsquo;s averaged at least 30 points per game in each of the last four seasons and is only headed deeper into his NBA prime.</p>
+                  <p>Between SGA&rsquo;s brilliance, the two-way versatility of his principal co-stars, lanky 7-footer Chet Holmgren and hyper-adaptable forward Jalen Williams, a bench that goes almost 10 deep, a defense that <a href="https://www.nba.com/news/the-athletic-why-the-thunders-dominant-defense-makes-them-historically-great?utm_source=chatgpt.com">flirted with historic levels of dominance</a> last season, a former NBA Coach of the Year running the whole thing, and, of course, a scarcely depleted war chest of picks and prospects that the best GM this league has seen in decades can use to make this team even scarier at any given moment &hellip; I mean, it&rsquo;s hard to see any team outside the San Antonio Spurs and their prodigious superstar Victor Wembanyama having even a fighting chance to knock this Thunder team off this season, barring injuries.</p>
+                  <p>But every Superman has his kryptonite, and this OKC team may have met theirs last season in Wembanyama and his fierce, athletic, young Spurs team. Buoyed by a dominant Western Conference finals performance from Wemby himself, last year&rsquo;s Spurs took down the defending champions on their home court in Oklahoma City, after already stunning the Thunder during the regular season. The edge the Spurs seemed to have over this otherwise nigh-unbeatable Thunder squad can&rsquo;t be easily forgotten or dismissed going into this new campaign, and is the sole reason I&rsquo;m not putting OKC at No. 1 in my preseason power rankings.</p>
+                  <p>In light of those struggles against their rival superteam out West, much of this year&rsquo;s Thunder hopes for another championship will rest on the bony shoulders of Holmgren, who struggled badly in his head-to-head matchups with Wemby, including the decisive Game 7 loss in last year&rsquo;s conference finals. The two seem to really dislike each other, in a nice throwback to old-school NBA player rivalries, but Chet needs to make the competition on the court look more evenly matched.</p>
+                </article>
+                <figure
+                  class="team-graphic holmgren-chart"
+                  data-holmgren-shared-games-chart
+                  data-source="assets/data/processed/holmgren-shared-games.csv"
+                  aria-busy="true"
+                  aria-labelledby="holmgren-chart-title"
+                  aria-describedby="holmgren-chart-description"
+                >
+                  <header class="holmgren-chart__header">
+                    <p class="holmgren-chart__eyebrow">Thunder context &middot; supplied box-score aggregates</p>
+                    <h3 class="holmgren-chart__title" id="holmgren-chart-title">Holmgren&rsquo;s production in games shared with Wembanyama</h3>
+                    <p class="holmgren-chart__subtitle">Per-36 scoring and rebounding plus true shooting; direct labels show every value.</p>
+                    <p class="holmgren-chart__visually-hidden" id="holmgren-chart-description">Three aligned metric panels show Holmgren&rsquo;s 2025-26 full regular season, a supplied eight-game career shared regular-season aggregate and a supplied seven-game postseason shared-game aggregate. The source windows are incompatible and do not establish a same-season decline.</p>
+                    <p class="holmgren-chart__limits"><strong>The requested same-season test is unavailable.</strong> The regular-season matchup file combines 8 shared games across unspecified seasons, while the only baseline is Holmgren&rsquo;s full 2025&ndash;26 season. The postseason file has no other-opponents baseline.</p>
+                  </header>
+                  <div class="holmgren-chart__samples" aria-label="Sample sizes and coverage"></div>
+                  <div class="team-graphic__plot holmgren-chart__plot">
+                    <p class="holmgren-chart__status">Loading Holmgren&rsquo;s supplied-sample profile&hellip;</p>
+                  </div>
+                  <p class="holmgren-chart__takeaway"><strong>Descriptive result:</strong> Holmgren&rsquo;s rates are lower in both supplied shared-game aggregates than in his 2025&ndash;26 full-season line. Because those rows cover different or unspecified time windows, the files do not establish that his production declined against Wembanyama during 2025&ndash;26.</p>
+                  <details class="holmgren-chart__table-details">
+                    <summary class="holmgren-chart__table-toggle">View accessible data table &middot; all three samples</summary>
+                    <div class="holmgren-chart__table-wrap">
+                      <table class="team-graphic__table holmgren-chart__table">
+                        <caption>All values are reconstructed from rounded per-game source averages; total minutes and derived rates are approximate.</caption>
+                        <thead><tr><th scope="col">Sample</th><th scope="col">Coverage</th><th scope="col">G</th><th scope="col">Approx. MP</th><th scope="col">MPG</th><th scope="col">PTS/36</th><th scope="col">REB/36</th><th scope="col">TS%</th></tr></thead>
+                        <tbody class="holmgren-chart__table-body"></tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="holmgren-chart__notes">
+                    <p><strong>Source:</strong> supplied Basketball Reference-style per-game exports. The matchup tables contain one aggregate row for Holmgren and one for Wembanyama, not individual games.</p>
+                    <p><strong>Population limits:</strong> &ldquo;Shared games&rdquo; means games represented for both players in the supplied export. It does not prove shared minutes, possessions with both players on court or a direct defensive assignment. These box scores cannot measure Holmgren&rsquo;s defense against Wembanyama.</p>
+                    <p><strong>Method:</strong> per-36 rates use reconstructed summed production and minutes. TS% = PTS / [2 &times; (FGA + 0.44 &times; FTA)]. Source per-game inputs are rounded to one decimal, so reconstructed totals and derived rates are approximate. <a class="team-graphic__link" href="assets/data/processed/holmgren-shared-games.notes.md">Preparation and provenance notes</a>.</p>
+                  </figcaption>
+                  <noscript><p class="holmgren-chart__status holmgren-chart__status--error">This chart requires JavaScript. The normalized values remain available in <a href="assets/data/processed/holmgren-shared-games.csv">the processed CSV</a>.</p></noscript>
+                </figure>
+                <article class="story story--thunder story--thunder-continuation">
+                  <p>If this Thunder team is going to get back to the Finals this season, then the No. 1 priority is for Holmgren to find a way to hold up against his rival Wemby. As good as this Thunder team is, I have a hard time projecting them past the Spurs if both teams are healthy without a big leap in head-to-head performance from Chet.</p>
                 </article>` : team.slug === "spurs" ? `
                 <article class="story story--spurs">
                   <p>Last year, I felt somewhat bold in <a href="https://matthewellishanson.github.io/hanson-hoops/2025-26-team-previews.html#team-spurs">suggesting that the Spurs might make a premature run to the Finals</a> even with their three best players all under 22. That was mostly tied to the possibility of a midseason trade for Giannis Antetokounmpo, which never happened. Yet there they were this summer, falling just three wins shy of a title many expected this young core, led by French force of nature Victor Wembanyama, to contend for eventually — but few anticipated so soon.</p>
@@ -1223,7 +1278,61 @@
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
                 </article>`}
-                ${team.slug === "raptors" ? `
+                ${team.slug === "clippers" ? `
+                <figure
+                  class="team-graphic garland-chart"
+                  data-garland-clippers-chart
+                  data-source="assets/data/processed/garland-clippers-2021-2026.csv"
+                  aria-busy="true"
+                  aria-labelledby="garland-chart-title"
+                  aria-describedby="garland-chart-description"
+                >
+                  <header class="garland-chart__header">
+                    <p class="garland-chart__eyebrow">Clippers context &middot; Availability and on-court production</p>
+                    <h3 class="garland-chart__title team-graphic__title" id="garland-chart-title">Garland&rsquo;s availability and production</h3>
+                    <p class="garland-chart__subtitle">Regular season, 2021&ndash;22 through 2025&ndash;26</p>
+                    <p class="garland-chart__visually-hidden" id="garland-chart-description">Three vertically aligned panels share a season axis. They show games played, points and assists per 100 possessions on separate scales, and true shooting percentage. All values are directly labeled or listed in the accessible table.</p>
+                    <p class="team-graphic__callout garland-chart__takeaway"><strong>Five-season view:</strong> Garland played between 45 and 75 games. His scoring ranged from 26.7 to 32.3 points per 100 possessions, his playmaking from 9.7 to 12.0 assists per 100, and his true shooting from 56.0% to 60.0%.</p>
+                  </header>
+                  <div class="team-graphic__controls garland-chart__toolbar">
+                    <label class="garland-chart__season-control">Inspect season
+                      <select class="garland-chart__season-select">
+                        <option value="2021-22">2021&ndash;22</option>
+                        <option value="2022-23">2022&ndash;23</option>
+                        <option value="2023-24">2023&ndash;24</option>
+                        <option value="2024-25">2024&ndash;25</option>
+                        <option value="2025-26" selected>2025&ndash;26</option>
+                      </select>
+                    </label>
+                    <p class="garland-chart__key" aria-label="Production series key"><span><i aria-hidden="true"></i>Scoring and TS%</span><span><i class="garland-chart__key-assists" aria-hidden="true"></i>Assists</span></p>
+                  </div>
+                  <div class="team-graphic__plot garland-chart__plot">
+                    <p class="garland-chart__status">Loading Garland&rsquo;s availability and production&hellip;</p>
+                  </div>
+                  <section class="garland-chart__inspection" aria-label="Selected-season details">
+                    <div class="garland-chart__inspection-heading">
+                      <p>Selected season</p>
+                      <h4 class="garland-chart__inspection-title">2025&ndash;26</h4>
+                    </div>
+                    <div class="garland-chart__inspection-values"></div>
+                    <p class="garland-chart__visually-hidden garland-chart__announcement" aria-live="polite"></p>
+                  </section>
+                  <details class="garland-chart__table-details">
+                    <summary class="garland-chart__table-toggle">View accessible five-season data table</summary>
+                    <div class="garland-chart__table-wrap"></div>
+                  </details>
+                  <figcaption class="garland-chart__notes">
+                    <p><strong>Source and coverage:</strong> Supplied Basketball Reference Per Game, Per 100 Possessions and Advanced exports. Five completed regular seasons are shown. The 2025&ndash;26 values use the supplied combined 2TM row; no constituent team-stint rows appear in the inputs.</p>
+                    <p><strong>Method:</strong> Games begin at zero and use the standard 82-game schedule as a reference. &ldquo;Not played&rdquo; is 82 minus appearances and does not assign an injury or any other cause. Points and assists per 100 come directly from the Per 100 file. TS% comes directly from the Advanced file. Per-possession rates describe production while Garland played, not his total contribution across a season.</p>
+                    <p>No compatible local league-average TS% series was available. <a href="assets/data/processed/garland-clippers-2021-2026.notes.md">Preparation and provenance notes</a>.</p>
+                  </figcaption>
+                  <noscript><p class="garland-chart__status garland-chart__status--error">This graphic requires JavaScript. All five records remain available in <a href="assets/data/processed/garland-clippers-2021-2026.csv">the processed CSV</a>.</p></noscript>
+                </figure>
+                <article class="story story--clippers story--clippers-continuation">
+                  <p>There&rsquo;s also another talented young guard whom this front office sure hopes will blossom into a star in his own right. Kansas City native and Illinois super-freshman Keaton Wagler, whom the Clippers took with the fifth pick in this year&rsquo;s draft, will have to share with Garland the hopes of an entire franchise over the next five seasons. He&rsquo;s under a lot of pressure entering the league in this uniquely challenging situation, but he&rsquo;s also talented enough and level-headed enough &mdash; full disclosure: he played on my little brother&rsquo;s AAU teams growing up &mdash; that I&rsquo;m still pretty bullish on his long-term prospects.</p>
+                  <p>Beyond those two, I can&rsquo;t see much to get excited about on this Clippers roster. I don&rsquo;t love the health outlook for newly acquired Brandon Ingram, and I remain skeptical of how far his scoring can carry a team. I feel likewise about the Clippers&rsquo; other veteran big name, Bradley Beal. New pickup Rui Hachimura represents a nice, rare steal from big brother Lakers in free agency, but I can&rsquo;t imagine he&rsquo;ll be able to make much of a difference on this roster.</p>
+                  <p>It&rsquo;s the beginning of another dark age in Clipper land, and unless Garland and Wagler can find magic in the backcourt together, I don&rsquo;t see much changing about that for a good long time.</p>
+                </article>` : team.slug === "raptors" ? `
                 <figure
                   class="team-graphic kawhi-production"
                   data-kawhi-production-chart
@@ -1787,7 +1896,7 @@
                 <article class="story story--nuggets story--nuggets-conclusion">
                   <p>With Gordon’s durability and long-term health more questionable than ever heading into his 13th season, and Jokic’s other co-star Murray bringing quite a lot of health baggage of his own even after a full and productive season last year, there’s a sort of wait-and-see air around this team going into the new season. As great as Jokic is, the cast around him remains overly reliant on less-than-reliable health and production from those two co-stars, which is why Denver isn’t higher in my rankings. It doesn’t help that they also lost the real standout from the stretch last season when Gordon was out, after trading breakout contributor Peyton Watson to Cleveland in the offseason.</p>
                   <p>But if things go their way, this team might also find its way back to the NBA Finals, and I wouldn’t put it past Jokic, even at 31, to give us and Denver another truly dominant postseason run all the way to a second ring. With injury luck and more of Jokic being unstoppable as a top-five offense unto himself, perhaps there’s still a bit more gold jewelry to be mined from these Nuggets.</p>
-                </article>` : `<figure class="graphic">
+                </article>` : team.slug === "thunder" ? "" : `<figure class="graphic">
                   <h3>One essential graphic</h3>
                   <div class="graphic-space" role="img" aria-label="Reserved graphic space; no statistical data shown">
                     <strong>Dataset and chart pending</strong>
@@ -1841,7 +1950,7 @@
                   </article>
                 </div>
               ` : ""}
-              ${team.slug === "spurs" || team.slug === "knicks" || team.slug === "raptors" || team.slug === "lakers" ? "" : `<div class="watch">
+              ${team.slug === "spurs" || team.slug === "thunder" || team.slug === "knicks" || team.slug === "raptors" || team.slug === "clippers" || team.slug === "lakers" ? "" : `<div class="watch">
                 <strong>What to watch</strong>
                 <p>A specific development that could change your assessment of this team.</p>
               </div>`}
@@ -1938,5 +2047,7 @@
     <script src="assets/js/edey-memphis-chart.js"></script>
     <script src="assets/js/kawhi-production-availability.js"></script>
     <script src="assets/js/kessler-lakers-chart.js"></script>
+    <script src="assets/js/holmgren-shared-games-chart.js"></script>
+    <script src="assets/js/garland-clippers-chart.js"></script>
   </body>
 </html>

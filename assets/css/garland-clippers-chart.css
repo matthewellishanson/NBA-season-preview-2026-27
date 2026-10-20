@@ -1,0 +1,185 @@
+.story-layout.story-layout--clippers { grid-template-columns: minmax(0, 1fr); }
+
+.garland-chart {
+  width: 100%;
+  margin: 9px 0 0;
+  padding: 24px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border: 1px solid var(--team-border);
+  border-top: 5px solid var(--team-identity);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(108, 8, 26, 0.1);
+}
+.garland-chart__header { max-width: 850px; }
+.garland-chart__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .garland-chart__title {
+  margin: 0;
+  color: var(--team-ink);
+  font: 850 clamp(1.35rem, 2.8vw, 2rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.garland-chart__subtitle {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 650 0.9rem/1.45 system-ui, sans-serif;
+}
+.garland-chart__takeaway { margin: 16px 0 0; font-size: 0.9rem; line-height: 1.5; }
+.garland-chart__toolbar { align-items: center; justify-content: space-between; margin: 16px 0 12px; }
+.garland-chart__season-control {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--team-ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+.garland-chart__season-select {
+  min-height: 44px;
+  padding: 8px 32px 8px 11px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 6px;
+}
+.garland-chart__season-select:focus-visible,
+.garland-chart__hit:focus-visible,
+.garland-chart__table-toggle:focus-visible,
+.garland-chart__notes a:focus-visible { outline: 3px solid var(--team-focus); outline-offset: 3px; }
+.garland-chart__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 0;
+  color: var(--team-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+.garland-chart__key span { display: inline-flex; align-items: center; gap: 6px; }
+.garland-chart__key i { width: 15px; height: 3px; background: var(--team-ink); border-radius: 2px; }
+.garland-chart__key i.garland-chart__key-assists { background: var(--team-secondary); }
+.garland-chart__plot { display: grid; gap: 12px; padding: 12px; }
+.garland-chart__panel {
+  min-width: 0;
+  padding: 11px 10px 4px;
+  background: var(--team-plot);
+  border: 1px solid color-mix(in srgb, var(--team-border) 70%, white);
+  border-radius: 7px;
+}
+.garland-chart__panel > header { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; margin: 0 5px; }
+.garland-chart__panel h4 { margin: 0; color: var(--team-ink); font: 850 0.94rem/1.3 system-ui, sans-serif; }
+.garland-chart__panel header p { margin: 0; color: var(--team-muted); font: 600 0.69rem/1.35 system-ui, sans-serif; text-align: right; }
+.garland-chart__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.garland-chart__axis text { fill: var(--team-muted); font: 650 10px/1 system-ui, sans-serif; }
+.garland-chart__axis path,
+.garland-chart__axis line { stroke: #90949c; }
+.garland-chart__axis--season text { fill: var(--team-text); font-weight: 800; }
+.garland-chart__axis--season .garland-chart__tick-detail { fill: var(--team-muted); font-size: 8.5px; font-weight: 650; }
+.garland-chart__grid line { stroke: #e1e3e7; stroke-dasharray: 2 3; }
+.garland-chart__reference { stroke: var(--team-comparison); stroke-width: 1.25; stroke-dasharray: 5 4; }
+.garland-chart__reference-label { fill: var(--team-comparison); font: 750 9px/1 system-ui, sans-serif; }
+.garland-chart__bar { fill: var(--team-ink); opacity: 0.86; }
+.garland-chart__line { fill: none; stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; }
+.garland-chart__line--points,
+.garland-chart__line--efficiency { stroke: var(--team-ink); }
+.garland-chart__line--assists { stroke: var(--team-secondary); }
+.garland-chart__point--points,
+.garland-chart__point--efficiency { fill: var(--team-plot); stroke: var(--team-ink); stroke-width: 2.5; }
+.garland-chart__point--assists { fill: var(--team-plot); stroke: var(--team-secondary); stroke-width: 2.5; }
+.garland-chart__band-label { fill: var(--team-text); font: 800 10px/1 system-ui, sans-serif; }
+.garland-chart__value { fill: var(--team-text); font: 850 10px/1 system-ui, sans-serif; paint-order: stroke; stroke: var(--team-plot); stroke-width: 3px; stroke-linejoin: round; }
+.garland-chart__value--assists { fill: var(--team-secondary); }
+.garland-chart__guide { stroke: var(--team-comparison); stroke-width: 1; stroke-dasharray: 3 3; pointer-events: none; opacity: 0.52; }
+.garland-chart__hit { fill: transparent; cursor: pointer; }
+.garland-chart__hit:focus { stroke: var(--team-focus); stroke-width: 2; stroke-dasharray: 4 3; }
+.garland-chart__bar.is-selected { opacity: 1; stroke: var(--team-focus); stroke-width: 2; }
+.garland-chart__point.is-selected { stroke-width: 4; }
+.garland-chart__value.is-selected { font-size: 11px; }
+.garland-chart__inspection {
+  display: grid;
+  grid-template-columns: minmax(118px, 0.25fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--team-surface-strong);
+  border-left: 4px solid var(--team-ink);
+  border-radius: 5px;
+}
+.garland-chart__inspection-heading p { margin: 0; color: var(--team-muted); font-size: 0.69rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.garland-chart__inspection-title { margin: 3px 0 0; color: var(--team-ink); font: 850 1.17rem/1.2 system-ui, sans-serif; }
+.garland-chart__inspection-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px 13px; }
+.garland-chart__inspection-values span { display: grid; gap: 2px; min-width: 0; }
+.garland-chart__inspection-values small { color: var(--team-muted); font-size: 0.67rem; font-weight: 700; }
+.garland-chart__inspection-values strong { color: var(--team-text); font-size: 0.79rem; line-height: 1.35; }
+.garland-chart__table-details { margin-top: 13px; }
+.team-card .garland-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  padding: 10px 0 4px;
+  color: var(--team-ink);
+  border: 0;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+  list-style: none;
+}
+.team-card .garland-chart__table-toggle:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.garland-chart__table-toggle::-webkit-details-marker { display: none; }
+.garland-chart__table-toggle::before { display: inline-block; margin-right: 6px; content: "\25B8"; }
+.garland-chart__table-details[open] .garland-chart__table-toggle::before { content: "\25BE"; }
+.garland-chart__table-wrap { margin-top: 10px; overflow-x: auto; border: 1px solid var(--team-border); border-radius: 6px; }
+.garland-chart__table { width: 100%; min-width: 630px; border-collapse: collapse; font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+.garland-chart__table th,
+.garland-chart__table td { padding: 7px 8px; border-bottom: 1px solid #e3e3e6; text-align: right; white-space: nowrap; }
+.garland-chart__table th:first-child,
+.garland-chart__table td:first-child,
+.garland-chart__table th:nth-child(2),
+.garland-chart__table td:nth-child(2) { text-align: left; }
+.garland-chart__table tbody tr:last-child > * { border-bottom: 0; }
+.garland-chart__notes { margin-top: 15px; color: var(--team-muted); font-size: 0.72rem; line-height: 1.55; }
+.garland-chart__notes p { margin: 7px 0 0; }
+.garland-chart__notes a { color: var(--team-ink); font-weight: 800; }
+.garland-chart__status { margin: 20px; color: var(--team-muted); font-size: 0.85rem; }
+.garland-chart__status--error { color: var(--team-negative); font-weight: 750; }
+.garland-chart__visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 700px) {
+  .garland-chart { padding: 17px 12px; }
+  .garland-chart__toolbar { align-items: flex-start; flex-direction: column; }
+  .garland-chart__panel { padding-inline: 3px; }
+  .garland-chart__panel > header { display: block; margin-inline: 8px; }
+  .garland-chart__panel header p { margin-top: 3px; text-align: left; }
+  .garland-chart__inspection { grid-template-columns: 1fr; }
+  .garland-chart__inspection-values { grid-template-columns: 1fr 1fr; }
+  .garland-chart__table-wrap { overflow: visible; border: 0; background: transparent; }
+  .garland-chart__table { display: block; min-width: 0; }
+  .garland-chart__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .garland-chart__table tbody { display: block; }
+  .garland-chart__table-row { display: grid; grid-template-columns: 1fr; margin-top: 9px; overflow: hidden; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+  .garland-chart__table-row th,
+  .garland-chart__table-row td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; padding: 7px 8px; text-align: right !important; white-space: normal; }
+  .garland-chart__table-row th::before,
+  .garland-chart__table-row td::before { color: var(--team-muted); content: attr(data-label); font-weight: 750; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .garland-chart *,
+  .garland-chart *::before,
+  .garland-chart *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
