@@ -9,4 +9,8 @@ The historical ratings chart loads its generated CSV with `fetch`, so preview th
 & .\.venv\Scripts\python.exe -m http.server 8000
 ```
 
-Then open `http://localhost:8000/2026-27-previews-prototype.html#team-wizards`.
+Then open `http://localhost:8000/2026-27-team-previews.html#team-wizards`.
+
+The release bundle is staged in `dist/2026-27-team-previews/`. See
+[`docs/Publication.md`](docs/Publication.md) for the public path, publication
+manifest, validation command, and the workflow for releasing another preview.
