@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/css/mcdaniels-offense-chart.css" />
     <link rel="stylesheet" href="assets/css/duren-season-comparison.css" />
     <link rel="stylesheet" href="assets/css/edey-memphis-chart.css" />
+    <link rel="stylesheet" href="assets/css/kawhi-production-availability.css" />
+    <link rel="stylesheet" href="assets/css/kessler-lakers-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1107,7 +1109,7 @@
               <span class="badge" aria-hidden="true">${team.code}</span>
               <div class="identity">
                 <h2>${escapeHtml(team.name)}</h2>
-                <p class="subhead pending">The team’s central question goes here</p>
+                <p class="subhead${team.slug === "raptors" ? "" : " pending"}">${team.slug === "raptors" ? "Can Toronto count on Kawhi Leonard’s availability?" : "The team’s central question goes here"}</p>
                 <div class="stat-strip" aria-label="${escapeHtml(team.name)} 2025–26 regular-season statistics">
                   ${renderTeamStats(team)}
                 </div>
@@ -1116,8 +1118,16 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : ""}">
-                ${team.slug === "grizzlies" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "lakers" ? " story-layout--lakers" : ""}">
+                ${team.slug === "raptors" ? `
+                <article class="story story--raptors story--raptors-intro">
+                  <p>Stop me if you&rsquo;ve heard this one before: the Toronto Raptors had the foundations of a contender in the making, but with the acquisition of superstar forward Kawhi Leonard, they just might now have what it takes to make a run to the NBA Finals.</p>
+                  <p>No, it&rsquo;s not 2019 again. Yes, Leonard&rsquo;s disastrous seven-season tenure with the Los Angeles Clippers did happen, and did end in an earthquake of a <a href="https://sports.yahoo.com/nba/article/kawhi-leonard-punishment-investigation-timeline-why-nba-disciplined-clippers-steve-ballmer-over-salary-cap-violations-190220899.html">financial scandal</a> that crippled the Clippers&rsquo; future while leaving the superstar at its center with a comparatively light punishment. And somehow, he&rsquo;s back in Toronto, where he last won an NBA title in June 2019, just before leaving for the Clippers in free agency.</p>
+                  <p>All that happened, along with an entire Raptors rebuilding era from which the team has only recently emerged with real competitive prospects, and yet here we are again: looking at a Toronto team with a chance to contend thanks to the same man who brought the city its first NBA championship during his one-and-done stay in 2018-19.</p>
+                  <p>That version of Leonard put together one of the century&rsquo;s best postseason campaigns en route to the championship and his second Finals MVP award, averaging 28.5 points, 9.8 rebounds and 4.2 assists in Toronto&rsquo;s 4-2 Finals win over the last of Golden State&rsquo;s Kevin Durant-era superteams. The Warriors still featured Stephen Curry, Klay Thompson, Draymond Green and Andre Iguodala, although Durant and Thompson suffered devastating, season-ending injuries during the series.</p>
+                  <p>Now Leonard joins a team that gave eventual Eastern Conference finalist Cleveland all it could handle in a seven-game first-round battle last spring. Much of Toronto&rsquo;s title outlook hinges on one question: How much of that 2019 version remains? Is there enough left in the tank for this oft-injured, uniquely polarizing, eternally enigmatic superstar to lead another deep postseason run, let alone win a third NBA championship?</p>
+                  <p>Given his track record over seven seasons in Los Angeles, where he arguably became <a href="https://bleacherreport.com/articles/10091863-clippers-kawhi-leonard-nbas-load-management-policy-wont-help-me-play-more-games">the face of the league&rsquo;s &ldquo;load management&rdquo; debate</a> while missing huge chunks of regular-season and playoff action, I wouldn&rsquo;t bet on that sort of return to glory. But given the talent he&rsquo;s joining, the competitive promise Toronto showed last season and what Leonard can still produce when healthy, I&rsquo;d hesitate to rule it out. And given his return to Toronto is coming on the heels of his best season in half a decade &ndash; he averaged 27.9 points over 65 games and made All-NBA second team last season &ndash; it may be just the right timing for one last championship-level season for Leonard and this young Raptors squad.</p>
+                </article>` : team.slug === "grizzlies" ? `
                 <article class="story story--grizzlies story--grizzlies-intro">
                   <p>It&rsquo;s a new era for the Memphis Grizzlies after dealing away all three members of their &ldquo;whoop dat&rdquo; big three &mdash; Ja Morant, Jaren Jackson Jr. and Desmond Bane &mdash; in roughly 16 months. But despite sending all that talent and star power out the door, this Memphis squad projects to be a thorn in the side of any opponent who takes it for granted as an easy win on the schedule.</p>
                   <p>A lot of this team&rsquo;s potential rests in two key strengths: its depth and the promise of a young frontcourt led by this summer&rsquo;s third overall pick, Cameron Boozer, and third-year behemoth Zach Edey.</p>
@@ -1194,6 +1204,15 @@
                 </article>` : team.slug === "knicks" ? `
                 <article class="story story--knicks story--knicks-intro">
                   <p>The Knicks were the team of destiny last season, the cardiac kids who broke the basketball capital’s 53-year NBA title drought in thrilling fashion. Led by Finals MVP and New York’s favorite son, Jalen Brunson, these Knicks gave their millions of starved but <a href="https://www.nytimes.com/athletic/7312778/2026/05/27/sidetalk-knicks-fans-pandemonium-viral-creators/">always spirited fans (to put it mildly)</a> a title run for the ages, full of heart-stopping comebacks and late-game heroics, in the process uniting the nation’s largest and most diverse metropolis in a way not seen since September 2001.</p>
+                </article>` : team.slug === "lakers" ? `
+                <article class="story story--lakers story--lakers-intro">
+                  <p>This is a different sort of Los Angeles Lakers team than many of us have become accustomed to seeing. For one, there’s no LeBron James here. There’s still a premier MVP-level superstar at the center of the Laker universe in Luka Dončić, and a capable co-star in undrafted breakout Austin Reaves alongside him in the backcourt. Even so, something feels substantively and stylistically different about this version of the Lakers compared with many of the franchise’s celebrated contenders.</p>
+                  <p>Let’s get the obvious out of the way: This is a conspicuously white Lakers roster, talented enough to give the internet’s “Snowtime Lakers” nickname a chance to stick. But that’s not what feels most unusual about this team.</p>
+                  <p>What feels different, with the possible exception of some of the Kobe-dominated teams of the mid-2000s, is the apparent lack of a cohesive identity beyond Dončić’s heliocentric offensive brilliance and the defensive liabilities that come with it. What is this team built for? What will these Lakers build around, apart from Luka’s heavy offensive usage and frequently costly defensive shortcomings?</p>
+                  <p>The obvious model is the 2024 Western Conference champion Dallas Mavericks, with Reaves replacing Kyrie Irving as Dončić’s backcourt running mate and newly acquired center Walker Kessler anchoring the frontcourt. But those Mavericks surrounded Luka with multiple productive big men and dependable perimeter defenders who could cover for his weaknesses throughout their run through the West. These Lakers have, at best, one proven interior mistake eraser in Kessler and considerably less defensive insurance on the wings. Quentin Grimes helps, but his solid perimeter defense alone won’t cover adequately for both Dončić and Reaves.</p>
+                  <p>Without that supporting structure, I can’t expect much from this team this season unless some big midseason acquisitions are coming. There’s just not enough talent and defensive insurance surrounding its two stars to inspire much confidence in the Lakers’ title chances as things stand.</p>
+                  <p>Moreover, Kessler isn’t a guaranteed long-term answer. He played just five games last season before a shoulder injury ended his campaign, and he arrives after four seasons with Utah teams that never reached the playoffs. His ability to hold up through a meaningful postseason run remains untested.</p>
+                  <p>He could be an ideal frontcourt partner for Dončić and Reaves if he stays healthy and provides enough offensively to complement his defensive strengths. But the combination of injury risk and an unproven playoff fit still leaves me hesitant to bet on him as the Lakers’ long-term solution at center.</p>
                 </article>` : `
                 <article class="story">
                   <h3>The argument, in about 500 words.</h3>
@@ -1204,7 +1223,77 @@
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
                 </article>`}
-                ${team.slug === "grizzlies" ? `
+                ${team.slug === "raptors" ? `
+                <figure
+                  class="team-graphic kawhi-production"
+                  data-kawhi-production-chart
+                  data-source="assets/data/processed/kawhi-leonard-production-availability.csv"
+                  aria-busy="true"
+                  aria-labelledby="kawhi-production-title"
+                  aria-describedby="kawhi-production-description"
+                >
+                  <header class="kawhi-production__header">
+                    <p class="kawhi-production__eyebrow">Raptors context &middot; Production and availability</p>
+                    <h3 class="kawhi-production__title" id="kawhi-production-title">Leonard&rsquo;s scoring rebounded. Can Toronto count on his availability?</h3>
+                    <p class="kawhi-production__subtitle">Regular-season production and appearances, 2018&ndash;19 through 2025&ndash;26</p>
+                    <p class="kawhi-production__visually-hidden" id="kawhi-production-description">Three aligned panels show regular-season games, points per 100 possessions and true shooting percentage. The rate lines break at Leonard&rsquo;s missed 2021&ndash;22 season. Selecting any season updates all panels, a textual inspection and the historical postseason strip.</p>
+                    <p class="team-graphic__callout kawhi-production__latest">2025&ndash;26: 65 games &middot; 43.3 points per 100 &middot; 62.9% TS</p>
+                  </header>
+                  <div class="team-graphic__controls kawhi-production__toolbar">
+                    <label class="kawhi-production__season-control">Inspect season
+                      <select class="kawhi-production__season-select">
+                        <option value="2018-19">2018&ndash;19</option>
+                        <option value="2019-20">2019&ndash;20</option>
+                        <option value="2020-21">2020&ndash;21</option>
+                        <option value="2021-22">2021&ndash;22</option>
+                        <option value="2022-23">2022&ndash;23</option>
+                        <option value="2023-24">2023&ndash;24</option>
+                        <option value="2024-25">2024&ndash;25</option>
+                        <option value="2025-26" selected>2025&ndash;26</option>
+                      </select>
+                    </label>
+                    <p class="kawhi-production__tenure-key" aria-label="Team-tenure context"><span>2018&ndash;19 &middot; Toronto championship season</span><span>2019&ndash;20 to 2025&ndash;26 &middot; Clippers tenure</span></p>
+                  </div>
+                  <div class="team-graphic__plot kawhi-production__plot">
+                    <p class="kawhi-production__status">Loading Leonard&rsquo;s production and availability&hellip;</p>
+                  </div>
+                  <p class="kawhi-production__schedule-note"><strong>Games are raw appearance totals.</strong> Team season lengths differed in the shortened 2019&ndash;20 and 2020&ndash;21 seasons; these bars are not availability percentages and do not use an assumed 82-game denominator.</p>
+                  <section class="kawhi-production__inspection" aria-label="Selected-season inspection">
+                    <div class="kawhi-production__inspection-heading">
+                      <p>Selected season</p>
+                      <h4 class="kawhi-production__inspection-title">2025&ndash;26</h4>
+                    </div>
+                    <div class="kawhi-production__inspection-values"></div>
+                    <p class="kawhi-production__visually-hidden kawhi-production__inspection-announcement" aria-live="polite"></p>
+                  </section>
+                  <section class="kawhi-production__playoffs" aria-labelledby="kawhi-playoff-title">
+                    <h4 class="kawhi-production__playoff-title" id="kawhi-playoff-title">Postseason appearances &middot; supplied records through 2024&ndash;25</h4>
+                    <p class="kawhi-production__playoff-explainer">Games and total minutes are shown. Playoff appearance totals depend on both participation and how far the team advanced; they are not availability percentages.</p>
+                    <div class="kawhi-production__playoff-list" aria-label="Historical playoff appearances"></div>
+                  </section>
+                  <details class="kawhi-production__table-details">
+                    <summary class="kawhi-production__table-toggle">View accessible regular-season and postseason data table</summary>
+                    <div class="kawhi-production__table-wrap"></div>
+                  </details>
+                  <figcaption class="kawhi-production__notes">
+                    <p><strong>Source and coverage:</strong> Supplied Basketball Reference exports. The main chart covers regular seasons 2018&ndash;19 through 2025&ndash;26. Postseason source coverage stops at 2024&ndash;25.</p>
+                    <details class="kawhi-production__methodology">
+                      <summary>Method and limitations</summary>
+                      <div>
+                        <p>Per-100 rates adjust for pace and playing time. TS% includes free throws and is not adjusted for league scoring context.</p>
+                        <p>Games played alone does not identify injuries or load management. Production rates do not establish defensive quality or forecast health. No individual ORtg or DRtg is used as an on-court team rating.</p>
+                      </div>
+                    </details>
+                  </figcaption>
+                  <noscript><p class="kawhi-production__status kawhi-production__status--error">This chart requires JavaScript. All normalized records remain available in <a href="assets/data/processed/kawhi-leonard-production-availability.csv">the processed CSV</a>.</p></noscript>
+                </figure>
+                <article class="story story--raptors story--raptors-continuation">
+                  <p>Take his new co-star, 2021 lottery pick and franchise centerpiece Scottie Barnes. Up to this point, Barnes has often felt like a mysterious commodity: hard to categorize and tricky to project, an undeniable talent whose balanced skills and numbers offered little indication of a single dominant dimension around which he could build a superstar&rsquo;s game.</p>
+                  <p>As a primary star, a jack-of-all-trades player like Barnes sometimes felt ill-suited to lead Toronto into championship contention, even allowing for generous growth in his all-around game. But next to Leonard, he looks much more like a championship-caliber co-star, the kind who glues everything together while leading a top defense and playing second option to a healthy Kawhi&rsquo;s primary scoring threat.</p>
+                  <p>Barnes isn&rsquo;t the only promising piece already in place. Standout tertiary scorer RJ Barrett, coming off arguably his best season as a pro with his hometown team, joins Immanuel Quickley, Collin Murray-Boyles, Jamal Shead, Jakob Poeltl and Ja&rsquo;Kobe Walter in a deep, balanced group that helped Toronto return to the playoffs as the fifth seed.</p>
+                  <p>Look for a sophomore leap from Murray-Boyles, barring injury, and potentially an even bigger step from Walter in year three. All could benefit enormously from a healthy Leonard alongside them. And if the two-time Finals MVP encounters more injury trouble, I think that group is experienced, talented and gritty enough to hold the fort through a temporary absence.</p>
+                  <p>It could still be a disaster, especially if Leonard can&rsquo;t stay available when Toronto needs him most. Age-related decline is another concern for a player who turns 36 next June, on top of everything his body has already endured. But if he&rsquo;s healthy at the right points of this Raptors season, especially in the playoffs, Leonard could make Toronto a serious threat to reach the NBA Finals out of a very competitive Eastern Conference.</p>
+                </article>` : team.slug === "grizzlies" ? `
                 <figure
                   class="edey-package team-graphic"
                   data-edey-memphis-chart
@@ -1458,6 +1547,66 @@
                   <p>They bring back their entire star-studded starting lineup, all still in their NBA primes and healthy to start the new season, with a chance to build on the chemistry they found last postseason. With the exception of Robinson and a more marginal member of their title-winning rotation, Jeremy Sochan, the Knicks also return the bulk of a bench that played a major role in their championship run. Better yet, they added veteran two-time All-Star Andre Drummond to help fill the void left by Robinson, while 2023 NBA Finals standout Bruce Brown is competing for a roster spot and could provide another useful piece.</p>
                   <p>There’s plenty to like here, even with the Knicks sitting a considerable distance behind the Thunder and Spurs in the preseason title market. At the very least, there’s a strong chance they’ll return to the Eastern Conference finals for a third straight year, barring injuries, off-court issues or earlier-than-expected age-related decline from any of their core veteran stars. And despite trailing by double digits in every Finals game they played – they really did earn that comeback Knicks rep – this was by no means a fluky champion. New York blitzed their opponents throughout their run, going 16–3 with a cumulative +283 point differential, the highest single-postseason total in NBA history, according to NBA game notes.</p>
                   <p>But no matter what happens in 2026-27, these Knicks will always be legends in the city, minted icons who brought its most beloved but befuddled team to the promised land after decades of dysfunction. It’s the kind of achievement that makes whatever follows almost irrelevant for a fan base, and those good vibes will carry well into this season and beyond. Repeat or not, this team will always be champs in their city.</p>
+                </article>` : team.slug === "lakers" ? `
+                <figure
+                  class="team-graphic kessler-chart"
+                  data-kessler-lakers-chart
+                  data-source="assets/data/processed/kessler-lakers-2022-2026.csv"
+                  aria-busy="true"
+                  aria-labelledby="kessler-chart-title"
+                  aria-describedby="kessler-chart-description"
+                >
+                  <header class="kessler-chart__header">
+                    <p class="kessler-chart__eyebrow">Lakers context &middot; Utah regular seasons</p>
+                    <h3 class="kessler-chart__title" id="kessler-chart-title">Kessler&rsquo;s interior production comes with an availability question</h3>
+                    <p class="kessler-chart__subtitle">Regular-season appearances, offensive rebounding and shot-blocking, 2022&ndash;23 through 2025&ndash;26</p>
+                    <p class="kessler-chart__visually-hidden" id="kessler-chart-description">Three aligned panels show games played, offensive rebound percentage and block percentage across four Utah seasons. Selecting a season updates every panel and the inspection strip. The 2025&ndash;26 five-game, 154-minute warning remains visible for every selection.</p>
+                    <p class="team-graphic__callout kessler-chart__sample-warning"><strong>2025&ndash;26 limited sample: 5 games &middot; 154 minutes</strong><span><i class="kessler-chart__sample-symbol" aria-hidden="true"></i> Outlined marks identify the five-game sample; connected rates are retained but do not establish a durable trend.</span></p>
+                  </header>
+                  <div class="team-graphic__controls kessler-chart__toolbar">
+                    <label class="kessler-chart__season-control">Inspect selected season
+                      <select class="kessler-chart__season-select">
+                        <option value="2022-23">2022&ndash;23</option>
+                        <option value="2023-24">2023&ndash;24</option>
+                        <option value="2024-25" selected>2024&ndash;25</option>
+                        <option value="2025-26">2025&ndash;26 &middot; 5 games</option>
+                      </select>
+                    </label>
+                    <p class="kessler-chart__key"><i class="kessler-chart__sample-symbol" aria-hidden="true"></i> Outlined 2025&ndash;26 marks = 5 games &middot; 154 minutes</p>
+                  </div>
+                  <div class="team-graphic__plot kessler-chart__plot">
+                    <p class="kessler-chart__status">Loading Kessler&rsquo;s regular-season profile&hellip;</p>
+                  </div>
+                  <section class="kessler-chart__inspection" aria-label="Selected-season inspection">
+                    <div class="kessler-chart__inspection-heading">
+                      <p>Selected season</p>
+                      <h4 class="kessler-chart__inspection-title">2024&ndash;25</h4>
+                    </div>
+                    <div class="kessler-chart__inspection-values"></div>
+                    <p class="kessler-chart__visually-hidden kessler-chart__announcement" aria-live="polite"></p>
+                  </section>
+                  <section class="kessler-chart__table-section" aria-labelledby="kessler-chart-table-title">
+                    <h4 class="kessler-chart__table-title" id="kessler-chart-table-title">All four Utah regular seasons</h4>
+                    <div class="kessler-chart__table-wrap">
+                      <table class="kessler-chart__table team-graphic__table">
+                        <caption>Walker Kessler&rsquo;s complete supplied regular-season sample. The 2025&ndash;26 row contains five games and 154 minutes.</caption>
+                        <thead><tr><th scope="col">Season</th><th scope="col">Team</th><th scope="col">G</th><th scope="col">MP</th><th scope="col">MPG</th><th scope="col">Age</th><th scope="col">ORB%</th><th scope="col">BLK%</th><th scope="col">RPG</th><th scope="col">BPG</th><th scope="col">TS%</th></tr></thead>
+                        <tbody class="kessler-chart__table-body"></tbody>
+                      </table>
+                    </div>
+                  </section>
+                  <figcaption class="kessler-chart__notes">
+                    <p><strong>Source:</strong> Supplied Basketball Reference regular-season exports. Historical production is from Utah; the Lakers are Kessler&rsquo;s new team.</p>
+                    <p>ORB% estimates the share of available offensive rebounds collected while playing. BLK% estimates the share of opponent two-point attempts blocked while playing, not overall defensive effectiveness. Games played does not identify why games were missed.</p>
+                    <p>The 2025&ndash;26 rates cover only five games and 154 minutes. These figures do not establish playoff effectiveness or forecast health or production in Los Angeles. <a class="team-graphic__link" href="assets/data/processed/kessler-lakers-2022-2026.notes.md">Preparation and provenance notes</a>.</p>
+                  </figcaption>
+                  <noscript><p class="kessler-chart__status kessler-chart__status--error">This chart requires JavaScript. All four normalized records remain available in <a href="assets/data/processed/kessler-lakers-2022-2026.csv">the processed CSV</a>.</p></noscript>
+                </figure>
+                <article class="story story--lakers story--lakers-continuation">
+                  <p>There are some appealing new faces besides Kessler. I like Collin Sexton as another backcourt scoring option after Luke Kennard’s departure to Phoenix, and love the additions of former Sixers guard Grimes and Raptors reserve Sandro Mamukelashvili.</p>
+                  <p>Mamu, in particular, feels like an ideal fit alongside Kessler, Reaves and Dončić as a bench scorer and occasional closing frontcourt option, although I’ve always liked him more than most.</p>
+                  <p>But those additions don’t do enough to resolve my biggest concern: whether this rotation can defend well enough around its two franchise stars to survive a playoff series against the West’s best teams. Too much seems to depend on Kessler staying healthy and cleaning up whatever gets past the perimeter.</p>
+                  <p>That’s why I struggle to imagine these Lakers getting beyond the first round without some savvy moves between now and the postseason. Dončić may even play his way to his first MVP award — long overdue, in my opinion — and that still might not be enough to take his team deep into the playoffs.</p>
                 </article>` : team.slug === "kings" ? `
                 <article class="story story--kings story--kings-intro">
                   <p>In a year that projects to be unusually short on potential tanking teams, the Sacramento Kings should be one of the few candidates to aim low in the standings in hopes of landing high in the 2027 draft. But most seasons, what this franchise should do and what it actually does have a funny way of being two very different things.</p>
@@ -1692,7 +1841,7 @@
                   </article>
                 </div>
               ` : ""}
-              ${team.slug === "spurs" || team.slug === "knicks" ? "" : `<div class="watch">
+              ${team.slug === "spurs" || team.slug === "knicks" || team.slug === "raptors" || team.slug === "lakers" ? "" : `<div class="watch">
                 <strong>What to watch</strong>
                 <p>A specific development that could change your assessment of this team.</p>
               </div>`}
@@ -1787,5 +1936,7 @@
     <script src="assets/js/mcdaniels-offense-chart.js"></script>
     <script src="assets/js/duren-season-comparison.js"></script>
     <script src="assets/js/edey-memphis-chart.js"></script>
+    <script src="assets/js/kawhi-production-availability.js"></script>
+    <script src="assets/js/kessler-lakers-chart.js"></script>
   </body>
 </html>

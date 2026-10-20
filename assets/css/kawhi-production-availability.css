@@ -1,0 +1,293 @@
+.story-layout.story-layout--raptors { grid-template-columns: minmax(0, 1fr); }
+
+.kawhi-production {
+  width: 100%;
+  min-width: 0;
+  margin: 10px 0 2px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border-color: var(--team-border);
+  border-top-color: var(--team-ink);
+  box-shadow: 0 10px 28px rgba(160, 13, 50, 0.11);
+}
+.kawhi-production__header { max-width: 940px; }
+.kawhi-production__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .kawhi-production__title {
+  max-width: 820px;
+  margin: 0;
+  color: var(--team-ink);
+  font: 900 clamp(1.3rem, 2.7vw, 1.95rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.038em;
+}
+.kawhi-production__subtitle {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 650 0.88rem/1.45 system-ui, sans-serif;
+}
+.kawhi-production__latest {
+  display: inline-block;
+  margin: 15px 0 0;
+  color: var(--team-ink);
+  background: var(--team-surface-strong);
+  border-left-color: var(--team-ink);
+  font: 850 0.83rem/1.45 system-ui, sans-serif;
+}
+.kawhi-production__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 10px 18px;
+  margin-top: 15px;
+}
+.kawhi-production__season-control { display: grid; gap: 4px; color: var(--team-ink); font: 800 0.71rem/1.3 system-ui, sans-serif; }
+.kawhi-production__season-select {
+  min-width: 150px;
+  min-height: 44px;
+  padding: 8px 34px 8px 12px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-ink);
+  border-radius: 7px;
+  font: 750 0.82rem/1.2 system-ui, sans-serif;
+}
+.kawhi-production__season-select:focus-visible,
+.team-card .kawhi-production__playoff-item:focus-visible,
+.team-card .kawhi-production__table-toggle:focus-visible,
+.team-card .kawhi-production__methodology > summary:focus-visible {
+  outline: 3px solid var(--team-focus);
+  outline-offset: 3px;
+}
+.kawhi-production__tenure-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  color: var(--team-muted);
+  font: 750 0.7rem/1.3 system-ui, sans-serif;
+}
+.kawhi-production__tenure-key span {
+  padding: 6px 9px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 999px;
+}
+.kawhi-production__tenure-key span:first-child { color: var(--team-ink); background: var(--team-surface-strong); font-weight: 850; }
+.kawhi-production__plot {
+  position: relative;
+  min-width: 0;
+  min-height: 320px;
+  margin-top: 11px;
+  padding: 11px;
+  overflow: hidden;
+}
+.kawhi-production__status {
+  display: grid;
+  min-height: 295px;
+  margin: 0;
+  place-items: center;
+  color: var(--team-muted);
+  font: 650 0.85rem/1.5 system-ui, sans-serif;
+  text-align: center;
+}
+.kawhi-production__status--error {
+  min-height: 170px;
+  padding: 22px;
+  color: #721c24;
+  background: #fff7f7;
+  border: 1px dashed #a94444;
+  border-radius: 7px;
+}
+.kawhi-production__panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; min-width: 0; }
+.kawhi-production__panel {
+  min-width: 0;
+  padding: 10px 5px 3px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 8px;
+}
+.team-card .kawhi-production__panel h4 {
+  min-height: 2.5em;
+  margin: 0 5px 2px;
+  color: var(--team-ink);
+  font: 850 0.78rem/1.25 system-ui, sans-serif;
+}
+.kawhi-production__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.kawhi-production__grid line { stroke: #e3d6da; stroke-width: 0.8; shape-rendering: crispEdges; }
+.kawhi-production__grid path,
+.kawhi-production__axis path { display: none; }
+.kawhi-production__axis line { stroke: #806d74; stroke-width: 0.75; shape-rendering: crispEdges; }
+.kawhi-production__axis text {
+  fill: var(--team-muted);
+  font: 9.5px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.kawhi-production__axis-label { fill: var(--team-muted); font: 750 10px/1 system-ui, sans-serif; }
+.kawhi-production__championship-band { fill: var(--team-surface-strong); opacity: 0.62; }
+.kawhi-production__tenure-divider { stroke: var(--team-border); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.kawhi-production__bar { fill: var(--team-ink); opacity: 0.84; }
+.kawhi-production__bar.is-championship { fill: var(--team-secondary); }
+.kawhi-production__bar.is-selected { opacity: 1; stroke: var(--team-secondary); stroke-width: 2; }
+.kawhi-production__line {
+  fill: none;
+  stroke: var(--team-ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.kawhi-production__point { fill: var(--team-plot); stroke: var(--team-ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.kawhi-production__point.is-championship { stroke: var(--team-secondary); stroke-width: 2.6; }
+.kawhi-production__point.is-selected { fill: var(--team-surface-strong); stroke: var(--team-secondary); stroke-width: 3.2; }
+.kawhi-production__direct-value { fill: var(--team-ink); font: 900 10px/1 system-ui, sans-serif; paint-order: stroke; stroke: var(--team-plot); stroke-width: 3px; stroke-linejoin: round; }
+.kawhi-production__missed-label { fill: var(--team-muted); font: 800 8.5px/1 system-ui, sans-serif; }
+.kawhi-production__season-guide { stroke: var(--team-ink); stroke-width: 1.25; stroke-dasharray: 3 3; opacity: 0.5; vector-effect: non-scaling-stroke; }
+.kawhi-production__season-hit { fill: transparent; cursor: pointer; touch-action: pan-y; }
+.kawhi-production__season-hit.is-selected { fill: transparent; }
+.kawhi-production__season-hit:focus-visible { fill: transparent; stroke: var(--team-focus); stroke-width: 2.5; outline: none; }
+.kawhi-production__schedule-note {
+  margin: 9px 2px 0;
+  color: var(--team-muted);
+  font: 600 0.69rem/1.45 system-ui, sans-serif;
+}
+.kawhi-production__inspection {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.22fr) minmax(0, 1fr);
+  gap: 11px;
+  margin-top: 13px;
+  padding: 13px;
+  background: var(--team-surface-strong);
+  border: 1px solid var(--team-border);
+  border-left: 5px solid var(--team-ink);
+  border-radius: 8px;
+}
+.kawhi-production__inspection-heading p { margin: 0; color: var(--team-muted); font: 800 0.64rem/1.2 system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+.team-card .kawhi-production__inspection-title { margin: 3px 0 0; color: var(--team-ink); font: 900 1.08rem/1.2 system-ui, sans-serif; }
+.kawhi-production__inspection-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.kawhi-production__inspection-card {
+  min-width: 0;
+  padding: 10px 11px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-top: 4px solid var(--team-ink);
+  border-radius: 6px;
+  font: 600 0.69rem/1.5 system-ui, sans-serif;
+}
+.kawhi-production__inspection-card--postseason { border-top-color: var(--team-secondary); }
+.kawhi-production__inspection-card--missing { border-top-color: var(--team-comparison); }
+.kawhi-production__inspection-card strong { display: block; margin-bottom: 3px; color: var(--team-text); font-size: 0.78rem; }
+.kawhi-production__inspection-card span { display: block; color: var(--team-muted); }
+.kawhi-production__inspection-card b { color: var(--team-ink); font-weight: 850; }
+.kawhi-production__small-sample { display: inline-block; margin-left: 5px; padding: 2px 5px; color: var(--team-ink); background: var(--team-surface-strong); border-radius: 3px; font: 850 0.62rem/1.2 system-ui, sans-serif; font-style: normal; }
+.kawhi-production__playoffs { margin-top: 17px; padding-top: 15px; border-top: 2px solid var(--team-border); }
+.team-card .kawhi-production__playoff-title { margin: 0; color: var(--team-ink); font: 900 0.94rem/1.3 system-ui, sans-serif; }
+.kawhi-production__playoff-explainer { margin: 5px 0 0; color: var(--team-muted); font: 600 0.7rem/1.45 system-ui, sans-serif; }
+.kawhi-production__playoff-list { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.team-card .kawhi-production__playoff-item {
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  min-width: 0;
+  min-height: 81px;
+  padding: 8px 7px;
+  color: var(--team-muted);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-top: 4px solid var(--team-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font: 650 0.64rem/1.35 system-ui, sans-serif;
+  text-align: left;
+}
+.team-card .kawhi-production__playoff-item:hover { background: var(--team-surface-strong); }
+.team-card .kawhi-production__playoff-item.is-selected { background: var(--team-surface-strong); border-color: var(--team-ink); }
+.team-card .kawhi-production__playoff-item.is-missing { border-top-color: var(--team-comparison); }
+.team-card .kawhi-production__playoff-item.is-two-game { border-width: 2px; border-top-width: 5px; }
+.kawhi-production__playoff-season { color: var(--team-ink); font-weight: 900; }
+.kawhi-production__playoff-item b { color: var(--team-text); }
+.kawhi-production__playoff-item em { color: var(--team-ink); font-size: 0.61rem; font-style: normal; font-weight: 900; text-transform: uppercase; }
+.kawhi-production__playoff-missing { font-size: 0.6rem; line-height: 1.3; }
+.kawhi-production__table-details { margin-top: 15px; border-top: 1px solid var(--team-border); }
+.team-card .kawhi-production__table-toggle,
+.team-card .kawhi-production__methodology > summary {
+  display: block;
+  width: fit-content;
+  padding: 12px 2px 4px;
+  color: var(--team-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: 800 0.76rem/1.3 system-ui, sans-serif;
+  list-style: none;
+}
+.team-card .kawhi-production__table-toggle:hover,
+.team-card .kawhi-production__methodology > summary:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.kawhi-production__table-toggle::-webkit-details-marker,
+.kawhi-production__methodology > summary::-webkit-details-marker { display: none; }
+.kawhi-production__table-toggle::before,
+.kawhi-production__methodology > summary::before { display: inline-block; margin-right: 6px; content: "\25B8"; }
+.kawhi-production__table-details[open] .kawhi-production__table-toggle::before,
+.kawhi-production__methodology[open] > summary::before { content: "\25BE"; }
+.kawhi-production__table-wrap { max-width: 100%; margin-top: 8px; overflow-x: auto; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+.kawhi-production__table { width: 100%; min-width: 1020px; border-collapse: collapse; color: var(--team-text); font: 600 0.65rem/1.35 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.kawhi-production__table caption { padding: 9px; color: var(--team-muted); font-weight: 650; text-align: left; }
+.kawhi-production__table th,
+.kawhi-production__table td { padding: 7px 6px; border-bottom: 1px solid #eadce0; text-align: right; white-space: nowrap; }
+.kawhi-production__table thead th { position: sticky; top: 0; z-index: 1; color: var(--team-ink); background: var(--team-surface-strong); font-weight: 850; }
+.kawhi-production__table th:first-child,
+.kawhi-production__table td:first-child,
+.kawhi-production__table th:nth-child(2),
+.kawhi-production__table td:nth-child(2),
+.kawhi-production__table th:nth-child(4),
+.kawhi-production__table td:nth-child(4) { text-align: left; }
+.kawhi-production__table tbody tr:last-child > * { border-bottom: 0; }
+.kawhi-production__notes { margin-top: 13px; color: var(--team-muted); font: 500 0.72rem/1.55 system-ui, sans-serif; }
+.kawhi-production__notes > p { margin: 0; }
+.kawhi-production__methodology { margin-top: 5px; }
+.kawhi-production__methodology > div { max-width: 920px; padding: 2px 12px 3px; border-left: 3px solid var(--team-border); }
+.kawhi-production__methodology p { margin: 7px 0; }
+.kawhi-production__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 920px) {
+  .kawhi-production__panels { grid-template-columns: 1fr; }
+  .team-card .kawhi-production__panel h4 { min-height: 0; }
+  .kawhi-production__playoff-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .kawhi-production__inspection { grid-template-columns: 1fr; }
+  .kawhi-production__inspection-values { grid-template-columns: 1fr; }
+  .kawhi-production__playoff-list { display: grid; grid-template-columns: 1fr; }
+  .team-card .kawhi-production__playoff-item { grid-template-columns: 74px minmax(0, 1fr) auto; align-items: center; min-height: 0; border-top-width: 1px; border-left: 4px solid var(--team-secondary); }
+  .team-card .kawhi-production__playoff-item.is-missing { border-left-color: var(--team-comparison); }
+  .team-card .kawhi-production__playoff-item.is-two-game { border-width: 2px; border-left-width: 5px; }
+  .kawhi-production__playoff-item em { text-align: right; }
+}
+@media (max-width: 520px) {
+  .kawhi-production { width: calc(100% + 12px); margin-inline: -6px; padding: 17px 11px; }
+  .kawhi-production__plot { padding: 8px 4px; }
+  .kawhi-production__panel { padding-inline: 2px; }
+  .kawhi-production__toolbar { align-items: stretch; }
+  .kawhi-production__season-control { width: 100%; }
+  .kawhi-production__season-select { width: 100%; }
+  .kawhi-production__table-wrap { overflow: visible; border: 0; background: transparent; }
+  .kawhi-production__table { display: block; min-width: 0; }
+  .kawhi-production__table caption { display: block; }
+  .kawhi-production__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .kawhi-production__table tbody { display: block; }
+  .kawhi-production__table-row { display: grid; grid-template-columns: 1fr 1fr; margin-top: 9px; overflow: hidden; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+  .kawhi-production__table-row th,
+  .kawhi-production__table-row td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; padding: 7px 8px; text-align: right !important; white-space: normal; }
+  .kawhi-production__table-row th::before,
+  .kawhi-production__table-row td::before { color: var(--team-muted); content: attr(data-label); font-weight: 700; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kawhi-production *,
+  .kawhi-production *::before,
+  .kawhi-production *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
