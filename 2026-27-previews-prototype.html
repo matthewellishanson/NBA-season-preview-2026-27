@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="assets/css/celtics-wing-comparison.css" />
     <link rel="stylesheet" href="assets/css/mcdaniels-offense-chart.css" />
     <link rel="stylesheet" href="assets/css/duren-season-comparison.css" />
+    <link rel="stylesheet" href="assets/css/edey-memphis-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1115,8 +1116,19 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : ""}">
-                ${team.slug === "timberwolves" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : ""}">
+                ${team.slug === "grizzlies" ? `
+                <article class="story story--grizzlies story--grizzlies-intro">
+                  <p>It&rsquo;s a new era for the Memphis Grizzlies after dealing away all three members of their &ldquo;whoop dat&rdquo; big three &mdash; Ja Morant, Jaren Jackson Jr. and Desmond Bane &mdash; in roughly 16 months. But despite sending all that talent and star power out the door, this Memphis squad projects to be a thorn in the side of any opponent who takes it for granted as an easy win on the schedule.</p>
+                  <p>A lot of this team&rsquo;s potential rests in two key strengths: its depth and the promise of a young frontcourt led by this summer&rsquo;s third overall pick, Cameron Boozer, and third-year behemoth Zach Edey.</p>
+                  <p>Let&rsquo;s start with the depth. There are a ton of quality rotation dudes on this roster, almost more than second-year head coach Tuomas Iisalo will be able to find minutes for. Besides drafting Boozer, the Grizzlies nabbed veteran wing Jerami Grant in the Morant trade with Portland, Pistons standout backup center Isaiah Stewart in a draft-night deal, and recent lottery pick Taylor Hendricks in the Jackson trade with Utah. They even signed another quality center with 3-point range and postseason experience in former Warriors big man Quinten Post.</p>
+                  <p>All these new faces are worthy of playing time on what was already a deep roster, including a decent number of prospects who were competing for minutes last season.</p>
+                  <p>Since Zach Kleiman took charge of basketball operations in 2019, he and his front office have done a remarkable job finding value in the draft and the G League, mining cheap, young talent on the margins throughout the 2020s. The roster already felt oversaturated with prospects who needed playing time, both to develop and for the team to evaluate them as long-term assets, before Kleiman traded his three best players, added more rotation pieces and, most importantly, drafted a player I see as a blue-chip franchise cornerstone in Boozer.</p>
+                  <p>Boozer&rsquo;s road to Memphis has been about as decorated as any lottery prospect&rsquo;s in recent memory. In high school alone, he won four Florida Class 7A state titles and twice earned Gatorade National Player of the Year honors, in 2023 and 2025, before becoming the AP national player of the year as a freshman at Duke. He arrives in Memphis all but assured of a starring role as the new face of the franchise.</p>
+                  <p>Questions about his ceiling persist in scouting circles, as the 6-foot-10 power forward lacks some of the athletic upside of fellow top prospects AJ Dybantsa, Darryn Peterson and Caleb Wilson. But his floor looks as high as any prospect&rsquo;s in this draft outside perhaps Dybantsa&rsquo;s, and if I had to bet my franchise&rsquo;s near-term chances on any of those four, it would undoubtedly be Boozer. His feel for the game, NBA pedigree &mdash; he&rsquo;s the son of former All-Star Carlos Boozer &mdash; and ability to fit into just about any roster and system make him a strong bet for Rookie of the Year, even in a season full of promising candidates.</p>
+                  <p>There&rsquo;s also the tantalizing two-way upside Cedric Coward showed as a rookie. Look for him to take another leap in year two. I know I won&rsquo;t be surprised if we look up in five years and this guy resembles a young Kawhi Leonard, given what I saw from him last season.</p>
+                  <p>But the ultimate barometer of how good this year&rsquo;s Grizzlies can become may be the health and production they get from Edey, who has made a substantial difference in relatively limited playing time over his first two NBA seasons. The 7-foot-4, 300-pound center has struggled to stay on the court, but when active, he&rsquo;s been a dominant force on the offensive glass and a potentially game-changing presence inside.</p>
+                </article>` : team.slug === "timberwolves" ? `
                 <article class="story story--timberwolves story--timberwolves-intro">
                   <p>It&rsquo;s been a whirlwind decade for this Minnesota Timberwolves organization, which spent so much of its first three decades as one of the more consistently laughable, losing franchises in a league that used to have a lot more of those.</p>
                   <p>A 2022 blockbuster trade for controversial veteran star big man and then-three-time Defensive Player of the Year Rudy Gobert cost the Wolves four future first-round picks, a pick swap, newly drafted center Walker Kessler and multiple key contributors from a team that had just made the playoffs. That trade alone represented a sea change and a bold move to win now &mdash; and raised more than a few eyebrows around the league, given the youth of Minnesota&rsquo;s franchise star, Anthony Edwards, and the significant financial investment the team already had in his co-star, Karl-Anthony Towns, who would have to adjust to power forward to make room for Gobert at center.</p>
@@ -1192,7 +1204,63 @@
                     <p>Outlook: connect those findings to your expectations for the coming season.</p>
                   </div>
                 </article>`}
-                ${team.slug === "pistons" ? `
+                ${team.slug === "grizzlies" ? `
+                <figure
+                  class="edey-package team-graphic"
+                  data-edey-memphis-chart
+                  data-peer-source="assets/data/processed/edey-frontcourt-2024-2026.csv"
+                  data-profile-source="assets/data/processed/edey-rank-profile.csv"
+                  data-onoff-source="assets/data/processed/edey-memphis-on-off.csv"
+                  aria-busy="true"
+                  aria-labelledby="edey-package-title"
+                >
+                  <header class="edey-package__header">
+                    <p class="edey-package__eyebrow">Grizzlies context &middot; Edey&rsquo;s first two seasons</p>
+                    <h3 class="edey-package__title" id="edey-package-title">Edey&rsquo;s biggest contributions come around the basket</h3>
+                    <p class="edey-package__subtitle">72 qualifying centers and center/forwards &middot; 2024&ndash;25 and 2025&ndash;26 combined &middot; Minimum 1,000 minutes</p>
+                    <p class="edey-package__sample">Zach Edey &middot; 77 games &middot; 1,700 minutes</p>
+                  </header>
+                  <div class="edey-package__rank-plot team-graphic__plot">
+                    <p class="edey-package__status">Loading Edey&rsquo;s rank profile&hellip;</p>
+                  </div>
+                  <p class="edey-package__inspection" aria-live="polite">Every value and rank is labeled. Focus, hover or tap a marker for a concise reading.</p>
+                  <details class="edey-package__table-details">
+                    <summary class="edey-package__table-toggle">View accessible four-row rank table</summary>
+                    <div class="edey-package__table-wrap edey-package__profile-table-wrap"></div>
+                  </details>
+
+                  <section class="edey-package__companion" aria-labelledby="edey-package-companion-title">
+                    <header class="edey-package__header">
+                      <h3 class="edey-package__companion-title" id="edey-package-companion-title">Memphis rebounded better with Edey on the floor</h3>
+                      <p class="edey-package__subtitle">Team rebounding by season &middot; On-minus-Off changes are percentage points</p>
+                    </header>
+                    <div class="edey-package__legend" aria-label="On and off court marker key">
+                      <span><i aria-hidden="true"></i>On court &middot; circle</span>
+                      <span><i class="edey-package__legend-off" aria-hidden="true"></i>Off court &middot; square</span>
+                    </div>
+                    <div class="edey-package__onoff-plot">
+                      <p class="edey-package__status">Loading Memphis rebounding splits&hellip;</p>
+                    </div>
+                  </section>
+
+                  <section class="edey-package__ratings" aria-labelledby="edey-package-ratings-title">
+                    <h4 class="edey-package__ratings-title" id="edey-package-ratings-title">Team ratings and sample minutes</h4>
+                    <div class="edey-package__ratings-wrap"></div>
+                  </section>
+
+                  <figcaption class="edey-package__notes">
+                    <p><strong>Population:</strong> Combined 2024&ndash;25 and 2025&ndash;26 regular seasons; Stathead&rsquo;s &ldquo;played C or C/F&rdquo; filter; minimum 1,000 total minutes. These are combined player records, not season averages or every NBA big man.</p>
+                    <p><strong>Individual metrics:</strong> ORB% and TRB% estimate shares of available rebounds collected while playing. BLK% estimates the share of opponent two-point attempts blocked; it is not a complete measure of defense. TS% includes free throws. Ranks use supplied rounded values, descending competition rank and shared ranks for ties. Combined rates describe historical production, not a larger-role projection.</p>
+                    <p><strong>On/off context:</strong> Team values come from the Team block of Basketball Reference&rsquo;s Edey on/off tables. They describe Memphis during different minutes with different teammates and opponents; they do not isolate Edey&rsquo;s causal contribution. The 2025&ndash;26 on-court sample is 284 minutes. No two-season rates are pooled without possession and rebound-opportunity denominators.</p>
+                    <p><strong>Source details:</strong> OffRtg is Memphis points scored per 100 possessions; DefRtg is points allowed per 100, using the supplied opponent ORtg. Source net rating is preserved separately and can differ by 0.1 from subtracting displayed rounded ratings. On-court minutes total 1,702 here versus 1,700 in Stathead; the two-minute discrepancy is preserved and its cause is unverified. <a href="assets/data/processed/edey-memphis-prep.notes.md">Preparation and provenance notes</a>.</p>
+                  </figcaption>
+                  <noscript><p class="edey-package__status edey-package__status--error">This graphic requires JavaScript. The validated profile and on/off tables remain available in the processed CSVs.</p></noscript>
+                </figure>
+                <article class="story story--grizzlies story--grizzlies-continuation">
+                  <p>Among the 72 players who met Stathead&rsquo;s center or center/forward filter and played at least 1,000 minutes across the past two regular seasons, Edey ranked fifth in offensive rebound percentage. Memphis also rebounded better at both ends with him on the floor in each season. That&rsquo;s a promising foundation for a player who could help swing this team into play-in contention or higher if he can stay available for a substantial part of 2026-27.</p>
+                  <p>There are other questions, as you&rsquo;d expect from a rebuilding team this young. Who locks down the point guard position, for starters, among Scotty Pippen Jr., former Cavs &mdash; Cleveland and Virginia &mdash; standout Ty Jerome, and perhaps even 2025-26 breakout bench scorer Cam Spencer?</p>
+                  <p>But the biggest questions center on what kind of cohesion this new mix of prospects and budding stars can find in what&rsquo;s likely to be a retooling season. If Boozer, Edey, Coward and others such as GG Jackson and Pippen can find something together, it won&rsquo;t really matter how far they get this season. The campaign will count as a success if, by year&rsquo;s end, these Grizzlies look less like a pool of assets and prospects and more like the foundation of a future contender.</p>
+                </article>` : team.slug === "pistons" ? `
                 <figure
                   class="duren-comparison team-graphic"
                   data-duren-season-comparison
@@ -1718,5 +1786,6 @@
     <script src="assets/js/celtics-wing-comparison.js"></script>
     <script src="assets/js/mcdaniels-offense-chart.js"></script>
     <script src="assets/js/duren-season-comparison.js"></script>
+    <script src="assets/js/edey-memphis-chart.js"></script>
   </body>
 </html>

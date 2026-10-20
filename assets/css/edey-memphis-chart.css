@@ -1,0 +1,225 @@
+.story-layout.story-layout--grizzlies { grid-template-columns: minmax(0, 1fr); }
+
+.edey-package {
+  width: 100%;
+  margin: 10px 0;
+  padding: 25px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border: 1px solid var(--team-border);
+  border-top: 6px solid var(--team-identity);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(18, 23, 63, 0.11);
+}
+.edey-package__header { max-width: 840px; }
+.edey-package__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .edey-package__title,
+.team-card .edey-package__companion-title {
+  margin: 0;
+  color: var(--team-secondary);
+  font: 880 clamp(1.35rem, 3vw, 2rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.edey-package__subtitle {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 650 0.87rem/1.45 system-ui, sans-serif;
+}
+.edey-package__sample {
+  display: inline-flex;
+  margin: 15px 0 0;
+  padding: 8px 11px;
+  color: var(--team-secondary);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-left: 5px solid var(--team-identity);
+  border-radius: 6px;
+  font: 850 0.79rem/1.25 system-ui, sans-serif;
+}
+.edey-package__rank-plot {
+  min-height: 350px;
+  margin-top: 17px;
+  padding: 13px;
+  overflow: hidden;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 8px;
+}
+.edey-package__status {
+  display: grid;
+  min-height: 320px;
+  margin: 0;
+  place-items: center;
+  color: var(--team-muted);
+  text-align: center;
+}
+.edey-package__status--error {
+  min-height: 140px;
+  padding: 22px;
+  color: #721c24;
+  background: #fff7f7;
+  border: 1px dashed #a94444;
+  border-radius: 7px;
+}
+.edey-rank__rows { display: grid; gap: 4px; }
+.edey-rank__row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  padding: 7px 6px;
+  border-radius: 6px;
+}
+.edey-rank__row:focus-within { background: var(--team-surface); }
+.edey-rank__metric strong,
+.edey-rank__metric span { display: block; }
+.edey-rank__metric strong { color: var(--team-secondary); font: 850 0.79rem/1.28 system-ui, sans-serif; }
+.edey-rank__metric span { margin-top: 3px; color: var(--team-muted); font: 700 0.67rem/1.25 system-ui, sans-serif; }
+.edey-rank__track { min-width: 0; }
+.edey-rank__track svg,
+.edey-rank__axis svg { display: block; width: 100%; overflow: visible; }
+.edey-rank__line { stroke: var(--team-border); stroke-width: 6; stroke-linecap: round; }
+.edey-rank__line-strong { stroke: var(--team-identity); stroke-width: 6; stroke-linecap: round; }
+.edey-rank__marker { fill: var(--team-secondary); stroke: var(--team-plot); stroke-width: 3; }
+.edey-rank__hit { fill: transparent; cursor: pointer; }
+.edey-rank__hit:focus-visible { stroke: var(--team-focus); stroke-width: 2.5; outline: none; }
+.edey-rank__label {
+  fill: var(--team-secondary);
+  font: 900 11px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke fill;
+  stroke: var(--team-plot);
+  stroke-linejoin: round;
+  stroke-width: 4px;
+}
+.edey-rank__axis {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  padding: 0 6px 4px;
+}
+.edey-rank__axis-label { color: var(--team-muted); font: 750 0.67rem/1.25 system-ui, sans-serif; }
+.edey-rank__axis .domain { stroke: var(--team-comparison); }
+.edey-rank__axis .tick line { stroke: var(--team-comparison); }
+.edey-rank__axis .tick text { fill: var(--team-muted); font: 10px/1 system-ui, sans-serif; }
+
+.edey-package__inspection {
+  margin: 12px 0 0;
+  padding: 9px 11px;
+  color: var(--team-text);
+  background: var(--team-surface-strong);
+  border-left: 5px solid var(--team-secondary);
+  border-radius: 6px;
+  font: 700 0.75rem/1.45 system-ui, sans-serif;
+}
+.edey-package__table-details { margin-top: 12px; }
+.team-card .edey-package__table-details > .edey-package__table-toggle {
+  display: block;
+  width: fit-content;
+  padding: 5px 0;
+  color: var(--team-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: 850 0.75rem/1.3 system-ui, sans-serif;
+}
+.edey-package__table-toggle:focus-visible { outline: 3px solid var(--team-focus); outline-offset: 3px; }
+.edey-package__table-wrap { max-width: 100%; margin-top: 9px; overflow-x: auto; border: 1px solid var(--team-border); border-radius: 7px; }
+.edey-package__table { width: 100%; border-collapse: collapse; background: var(--team-plot); font: 650 0.72rem/1.35 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.edey-package__table caption { padding: 9px; color: var(--team-muted); text-align: left; }
+.edey-package__table th,
+.edey-package__table td { padding: 8px 9px; border-bottom: 1px solid var(--team-border); text-align: right; }
+.edey-package__table thead th { color: var(--team-secondary); background: var(--team-surface-strong); font-weight: 850; }
+.edey-package__table th:first-child { text-align: left; }
+.edey-package__table tbody tr:last-child > * { border-bottom: 0; }
+
+.edey-package__companion {
+  margin-top: 23px;
+  padding-top: 22px;
+  border-top: 2px solid var(--team-border);
+}
+.team-card .edey-package__companion-title { font-size: clamp(1.18rem, 2.5vw, 1.65rem); }
+.edey-package__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px 21px;
+  margin-top: 14px;
+  color: var(--team-text);
+  font: 800 0.72rem/1.3 system-ui, sans-serif;
+}
+.edey-package__legend span { display: inline-flex; align-items: center; gap: 7px; }
+.edey-package__legend i { display: inline-block; width: 11px; height: 11px; background: var(--team-plot); border: 3px solid var(--team-ink); border-radius: 50%; }
+.edey-package__legend .edey-package__legend-off { border-color: var(--team-comparison); border-radius: 1px; }
+.edey-package__onoff-plot {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  min-height: 285px;
+  margin-top: 14px;
+}
+.edey-onoff__panel { min-width: 0; padding: 12px 8px 5px; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 8px; }
+.team-card .edey-onoff__panel h4 { margin: 0 4px; color: var(--team-secondary); font: 850 0.82rem/1.3 system-ui, sans-serif; }
+.edey-onoff__panel-note { margin: 3px 4px 0; color: var(--team-muted); font: 650 0.64rem/1.35 system-ui, sans-serif; }
+.edey-onoff__panel svg { display: block; width: 100%; overflow: visible; }
+.edey-onoff__grid { stroke: #d9dce4; stroke-width: 1; shape-rendering: crispEdges; }
+.edey-onoff__axis { stroke: var(--team-comparison); shape-rendering: crispEdges; }
+.edey-onoff__tick { fill: var(--team-muted); font: 9.5px/1 system-ui, sans-serif; }
+.edey-onoff__season { fill: var(--team-text); font: 850 10px/1 system-ui, sans-serif; }
+.edey-onoff__minutes { fill: var(--team-muted); font: 700 8.5px/1 system-ui, sans-serif; }
+.edey-onoff__connector { stroke: var(--team-comparison); stroke-width: 2; stroke-linecap: round; opacity: 0.72; }
+.edey-onoff__mark { fill: var(--team-plot); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.edey-onoff__mark--on { stroke: var(--team-ink); }
+.edey-onoff__mark--off { stroke: var(--team-comparison); }
+.edey-onoff__value { font: 900 10px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; paint-order: stroke fill; stroke: var(--team-plot); stroke-width: 4px; }
+.edey-onoff__value--on { fill: var(--team-ink); }
+.edey-onoff__value--off { fill: var(--team-comparison); }
+.edey-onoff__delta { fill: var(--team-secondary); font: 900 9.5px/1 system-ui, sans-serif; }
+.edey-onoff__hit { fill: transparent; cursor: pointer; }
+.edey-onoff__hit:focus-visible { stroke: var(--team-focus); stroke-width: 2.5; outline: none; }
+
+.edey-package__ratings { margin-top: 15px; }
+.team-card .edey-package__ratings-title { margin: 0 0 8px; color: var(--team-secondary); font: 850 0.86rem/1.3 system-ui, sans-serif; }
+.edey-package__ratings-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--team-border); border-radius: 7px; }
+.edey-package__ratings-table { min-width: 790px; }
+.edey-package__ratings-table td[data-sign="positive"] { color: var(--team-ink); font-weight: 850; }
+.edey-package__notes { margin-top: 15px; color: var(--team-muted); font: 560 0.72rem/1.55 system-ui, sans-serif; }
+.edey-package__notes p { margin: 7px 0 0; }
+.edey-package__notes strong { color: var(--team-text); }
+.edey-package__notes a { color: var(--team-ink); font-weight: 800; }
+.edey-package__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 680px) {
+  .edey-rank__row,
+  .edey-rank__axis { grid-template-columns: minmax(155px, 0.42fr) minmax(0, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .edey-package { width: calc(100% + 12px); margin-inline: -6px; padding: 18px 11px; }
+  .edey-package__rank-plot { min-height: 470px; padding: 9px 7px; }
+  .edey-rank__row { grid-template-columns: 1fr; gap: 3px; padding-block: 8px; }
+  .edey-rank__axis { grid-template-columns: 1fr; padding-inline: 6px; }
+  .edey-rank__axis-label { margin-bottom: 1px; }
+  .edey-package__onoff-plot { grid-template-columns: 1fr; min-height: 555px; }
+  .edey-package__ratings-wrap { overflow: visible; border: 0; }
+  .edey-package__ratings-table { display: block; min-width: 0; background: transparent; }
+  .edey-package__ratings-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .edey-package__ratings-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .edey-package__ratings-table tbody { display: block; }
+  .edey-package__ratings-table tr { display: grid; grid-template-columns: 1fr 1fr; margin-top: 9px; overflow: hidden; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+  .edey-package__ratings-table th,
+  .edey-package__ratings-table td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; padding: 7px 8px; text-align: right !important; white-space: normal; }
+  .edey-package__ratings-table th::before,
+  .edey-package__ratings-table td::before { color: var(--team-muted); content: attr(data-label); font-weight: 750; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edey-package *,
+  .edey-package *::before,
+  .edey-package *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

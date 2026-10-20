@@ -1,0 +1,5 @@
+player_id,player_name,metric_key,metric_label,source_value,unit,display_value,rank,rank_display,is_tied,valid_qualifiers,ranking_method
+edeyza01,Zach Edey,orb_pct,Offensive rebound percentage,17.3,percentage_points,17.3%,5,5,false,72,descending_competition_rank_strictly_higher
+edeyza01,Zach Edey,trb_pct,Total rebound percentage,20.9,percentage_points,20.9%,14,14,false,72,descending_competition_rank_strictly_higher
+edeyza01,Zach Edey,blk_pct,Block percentage,5.7,percentage_points,5.7%,16,16,false,72,descending_competition_rank_strictly_higher
+edeyza01,Zach Edey,ts_pct,True shooting percentage,.632,fraction,63.2%,27,27,false,72,descending_competition_rank_strictly_higher

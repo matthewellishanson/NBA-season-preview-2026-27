@@ -1,0 +1,5 @@
+season,split,minutes,team_ortg,opponent_ortg,source_net_rating,team_orb_pct,team_drb_pct,team_trb_pct,team_drtg,source_file,source_line,source_method
+2024-25,on,1418,120.1,114.5,5.7,34.5,77.4,56.5,114.5,edey-memphis-on-off-manual.csv,2,manual_transcription_from_user_supplied_basketball_reference_table
+2024-25,off,2525,117.4,112.9,4.6,25.5,73.5,49.6,112.9,edey-memphis-on-off-manual.csv,3,manual_transcription_from_user_supplied_basketball_reference_table
+2025-26,on,284,115.3,97.6,17.7,28.5,83.2,58.4,97.6,edey-memphis-on-off-manual.csv,4,manual_transcription_from_user_supplied_basketball_reference_table
+2025-26,off,3664,113.7,121.3,-7.7,24.4,69.7,46.5,121.3,edey-memphis-on-off-manual.csv,5,manual_transcription_from_user_supplied_basketball_reference_table
