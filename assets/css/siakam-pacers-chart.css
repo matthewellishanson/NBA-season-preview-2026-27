@@ -1,0 +1,245 @@
+.story-layout.story-layout--pacers {
+  grid-template-columns: 1fr;
+}
+
+.story--pacers,
+.siakam-chart {
+  max-width: 56rem;
+}
+
+.siakam-chart {
+  width: 100%;
+  margin: 10px 0 14px;
+  padding: clamp(18px, 3vw, 28px);
+  background: var(--team-surface);
+  border-color: var(--team-border);
+  border-top-color: var(--team-identity);
+  color: var(--team-text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.siakam-chart__eyebrow {
+  margin: 0 0 5px;
+  color: var(--team-ink);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.siakam-chart__title {
+  margin: 0;
+  color: var(--team-text);
+  font-size: clamp(22px, 3vw, 31px);
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+}
+
+.siakam-chart__subtitle {
+  max-width: 49rem;
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.siakam-chart__annotation {
+  margin: 16px 0;
+  background: var(--team-surface-strong);
+  border-left-color: var(--team-secondary);
+  color: var(--team-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.siakam-chart__panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 11px;
+  background: var(--team-plot);
+  border-color: var(--team-border);
+}
+
+.siakam-chart__panel {
+  min-width: 0;
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--team-plot);
+}
+
+.siakam-chart__panel-title {
+  min-height: 43px;
+  margin: 0;
+  padding: 10px 10px 7px;
+  color: var(--team-text);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.siakam-chart__panel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+  overflow: visible;
+}
+
+.siakam-chart__table-details {
+  margin-top: 13px;
+  border-top: 1px solid var(--team-border);
+}
+
+.team-card .siakam-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  min-height: 44px;
+  padding: 11px 1px 5px;
+  border-left: 0;
+  background: transparent;
+  color: var(--team-ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 780;
+  list-style: none;
+}
+
+.team-card .siakam-chart__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.siakam-chart__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.siakam-chart__table-details[open] .siakam-chart__table-toggle::before {
+  content: "\25BE";
+}
+
+.siakam-chart__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.siakam-chart__table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background: var(--team-plot);
+  color: var(--team-text);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.siakam-chart__table caption {
+  padding: 0 0 7px;
+  color: var(--team-muted);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.siakam-chart__table th,
+.siakam-chart__table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--team-border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.siakam-chart__table th:first-child,
+.siakam-chart__table td:first-child,
+.siakam-chart__table th:nth-child(2),
+.siakam-chart__table td:nth-child(2) {
+  text-align: left;
+}
+
+.siakam-chart__table thead th {
+  background: var(--team-surface-strong);
+  font-weight: 800;
+}
+
+.siakam-chart__table tbody tr:last-child {
+  background: var(--team-surface-strong);
+  font-weight: 750;
+}
+
+.siakam-chart__notes {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--team-border);
+  color: var(--team-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.siakam-chart__notes p {
+  margin: 0 0 5px;
+}
+
+.siakam-chart__notes a {
+  color: var(--team-ink);
+  text-underline-offset: 2px;
+}
+
+.siakam-chart__status {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 24px 12px;
+  color: var(--team-muted);
+  font-size: 12px;
+}
+
+.siakam-chart__status--error {
+  color: var(--team-negative);
+  font-weight: 700;
+}
+
+.siakam-chart__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .siakam-chart {
+    padding: 17px 12px;
+  }
+
+  .siakam-chart__panels {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .siakam-chart__panel-title {
+    min-height: 0;
+    padding-bottom: 0;
+    font-size: 13px;
+  }
+
+  .siakam-chart__panel svg {
+    max-height: 250px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siakam-chart *,
+  .siakam-chart *::before,
+  .siakam-chart *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="assets/css/kessler-lakers-chart.css" />
     <link rel="stylesheet" href="assets/css/holmgren-shared-games-chart.css" />
     <link rel="stylesheet" href="assets/css/garland-clippers-chart.css" />
+    <link rel="stylesheet" href="assets/css/magic-on-off-chart.css" />
+    <link rel="stylesheet" href="assets/css/siakam-pacers-chart.css" />
 
     <style>
       /* Design tokens */
@@ -766,8 +768,8 @@
           <p class="dek" id="rollout-explanation"></p>
           <div class="byline"><strong>By Matt Hanson</strong><span>Hanson Hoops</span></div>
           <div class="release-meta" aria-label="Publication status">
-            <span><strong id="completion-count">14 of 30</strong> previews complete</span>
-            <span>Last updated <time datetime="2026-10-20">October 20, 2026</time></span>
+            <span><strong id="completion-count">16 of 30</strong> previews complete</span>
+            <span>Last updated <time datetime="2026-10-21">October 21, 2026</time></span>
           </div>
           <div class="release-status">
             <strong>Editor's note:</strong> Rankings supplied Oct. 6 and remain provisional while the preview package is published throughout the week.
@@ -954,7 +956,8 @@
           color: "#002d62",
           slug: "pacers",
           powerRank: 12,
-          status: "outline",
+          status: "published",
+          logo: "assets/img/teamlogos/Indiana-Pacers-logo.png",
           thesis: "",
           previousRecord: null,
           projectedWins: null,
@@ -1028,7 +1031,8 @@
           color: "#0077c0",
           slug: "magic",
           powerRank: 18,
-          status: "outline",
+          status: "published",
+          logo: "assets/img/teamlogos/magiclogo.svg",
           thesis: "",
           previousRecord: null,
           projectedWins: null,
@@ -1260,8 +1264,110 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : ""}">
-                ${team.slug === "raptors" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "magic" ? " story-layout--magic" : team.slug === "pacers" ? " story-layout--pacers" : ""}">
+                ${team.slug === "pacers" ? `
+                <article class="story story--pacers">
+                  <p>What a whirlwind 18 months it&rsquo;s been for this Indiana Pacers team. First, they shocked the world by running through the Eastern Conference playoff bracket as a fourth seed that began the calendar year under .500, and even took the eventual champion juggernaut Oklahoma City to a Game 7, only for the Pacers&rsquo; superstar point guard Tyrese Haliburton to tear his Achilles in the first quarter of a devastating loss on the Thunder&rsquo;s floor.</p>
+                  <p>With Haliburton out for the entirety of the following season, Indiana followed its legendary underdog run to the Finals with a 31-win drop last season, finishing 14th in the East with a 19-63 record in a year from hell. And yet, thanks to bad lottery luck combined with a reasonable midseason gamble, the Pacers somehow came out of their suffering with no new cornerstone prospect to show for it. They traded their 2026 first-round pick, protected in the top four and at Nos. 10&ndash;30, for a new frontcourt anchor in the Clippers&rsquo; Ivica Zubac to replace departed longtime Pacers paint staple Myles Turner &mdash; only to lose the pick when it landed fifth in the draft.</p>
+                  <p>But with Haliburton back, his former teammates from the Finals run poised to reap ample benefits from his return and the playmaking juice he brings to this offense, and an improved defensive anchor, rebounder and post-scoring option in Zubac relative to what Turner brought to that Eastern Conference championship team, it&rsquo;s easy to imagine this year as a major comeback season for these Pacers.</p>
+                  <p>For his part, Haliburton has looked every bit his former bouncy, goofy, pass-happy self in these initial preseason appearances, and from what I&rsquo;ve seen, his team has responded in kind. They&rsquo;ve looked like the Pacers that gave the league&rsquo;s preeminent superteam, the Thunder, all they could handle in the Finals less than 18 months ago, or at least a heck of a lot closer to that squad than at any point last season with their star sidelined.</p>
+                  <p>Can a team really drop that far that fast from a Finals run and get back just as quickly? One recent precedent would be Stephen Curry&rsquo;s 2022 title-winning Golden State Warriors, who won their fourth championship after two seasons outside the playoffs, just three years removed from their 2019 Finals defeat at the hands of Toronto. But for this Indiana team to make it back to where we last saw it fully healthy and intact would be an even steeper roller-coaster ride over an even shorter period.</p>
+                  <p>Who knows how far this year&rsquo;s Pacers can get with Haliburton back in the fold and good injury luck, but they should at least be one of the top teams in this loaded Eastern Conference, especially if Haliburton continues to play like his pre-injury self. One potential concern that could make all the difference come playoff time: At 34 and just 6-foot-1, veteran backup point guard and 2025 Finals hero T.J. McConnell began to show his age in his 11th NBA season last year, if not dramatically enough to sound any alarms or prompt the team to move on from him. If he can&rsquo;t be the guy he was two seasons ago, that could be a pretty big problem for this rotation down the stretch.</p>
+                  <p>But there are other pieces of this rotation that continued to play excellently throughout Haliburton&rsquo;s absence and the misery of the team&rsquo;s 2025-26 season, especially his primary co-star and key acquisition ahead of the 2024 trade deadline, Pascal Siakam.</p>
+                </article>
+                <figure
+                  class="team-graphic siakam-chart"
+                  data-siakam-chart
+                  data-source="assets/data/processed/siakam-pacers-career.csv"
+                  aria-busy="true"
+                  aria-labelledby="siakam-chart-title"
+                  aria-describedby="siakam-chart-description"
+                >
+                  <header>
+                    <p class="siakam-chart__eyebrow">Pascal Siakam &middot; Regular season</p>
+                    <h3 class="siakam-chart__title" id="siakam-chart-title">Siakam&rsquo;s production through Indiana&rsquo;s lost season</h3>
+                    <p class="siakam-chart__subtitle">Regular-season scoring, efficiency and availability, 2023-24 to 2025-26</p>
+                    <p class="siakam-chart__visually-hidden" id="siakam-chart-description">Three aligned panels compare Pascal Siakam&rsquo;s points per 100 possessions, true shooting percentage and games played. Every value is directly labeled; team and minutes per game appear below each season.</p>
+                  </header>
+                  <p class="team-graphic__callout siakam-chart__annotation"><strong>2025-26:</strong> Siakam&rsquo;s scoring climbed to a career-high 34.3 points per 100, while his true shooting fell 3.7 percentage points and his games dropped from 78 to 62.</p>
+                  <div class="team-graphic__plot siakam-chart__panels">
+                    <section class="siakam-chart__panel">
+                      <h4 class="siakam-chart__panel-title">Points per 100 possessions</h4>
+                      <svg data-siakam-panel="points"></svg>
+                    </section>
+                    <section class="siakam-chart__panel">
+                      <h4 class="siakam-chart__panel-title">True shooting percentage</h4>
+                      <svg data-siakam-panel="ts"></svg>
+                    </section>
+                    <section class="siakam-chart__panel">
+                      <h4 class="siakam-chart__panel-title">Games played</h4>
+                      <svg data-siakam-panel="games"></svg>
+                    </section>
+                  </div>
+                  <details class="siakam-chart__table-details">
+                    <summary class="siakam-chart__table-toggle">View accessible chart data table</summary>
+                    <div class="siakam-chart__table-wrap">
+                      <table class="team-graphic__table siakam-chart__table">
+                        <caption>Values shown in the three published panels, with minutes per game.</caption>
+                        <thead><tr><th scope="col">Season</th><th scope="col">Team(s)</th><th scope="col">PTS/100</th><th scope="col">TS%</th><th scope="col">Games</th><th scope="col">MPG</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row">2023-24</th><td>TOR/IND</td><td>31.2</td><td>60.1%</td><td>80</td><td>33.2</td></tr>
+                          <tr><th scope="row">2024-25</th><td>IND</td><td>29.8</td><td>59.9%</td><td>78</td><td>32.7</td></tr>
+                          <tr><th scope="row">2025-26</th><td>IND</td><td>34.3</td><td>56.2%</td><td>62</td><td>33.2</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="siakam-chart__notes">
+                    <p><strong>Source:</strong> Basketball Reference player season tables supplied for this project. Points per 100 and TS% are reported directly; games and MPG come from the per-game table.</p>
+                    <p><strong>Note:</strong> 2023-24 is Siakam&rsquo;s combined Toronto/Indiana season. These figures describe outcomes and do not isolate Tyrese Haliburton&rsquo;s effect. <a href="assets/data/processed/siakam-pacers-career.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/siakam-pacers-career.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="siakam-chart__status siakam-chart__status--error">This chart requires JavaScript. The full accessible table and validated CSV are available above.</p></noscript>
+                </figure>
+                <article class="story story--pacers">
+                  <p>Siakam put on a heroic season-long effort amid the clear lack of competitive hope around him, making the All-Star team despite his team&rsquo;s abysmal record and finishing with one of the better seasons of his NBA career. Look for a rejuvenated campaign from him in particular now that he has his running mate and elite playmaking point guard beside him again.</p>
+                </article>` : team.slug === "magic" ? `
+                <article class="story story--magic">
+                  <p>I have long considered this one of the harder teams in this era of the NBA to evaluate, and never more so than heading into this new season. Teeming with talent yet ever underrealizing their potential, this Orlando Magic squad has perplexed me and other fans and pundits for several seasons now, as they continue to project better than they end up playing.</p>
+                  <p>Some of that falls at the feet of departed coach Jamahl Mosley, whose five seasons at the helm helped establish a winning culture for a franchise long in search of one, but hit a wall when it came to translating modest regular-season successes into any real postseason headway.</p>
+                  <p>Now, with Mosley fired — and, somewhat perplexingly, immediately snatched up as the New Orleans Pelicans’ new head coach — in the offseason, the focus of any future blame, should the Magic continue to flounder in the East and fail to advance in the playoffs, can shift squarely onto what I’ve long thought were the two most culpable parties: the team’s young star forwards, Paolo Banchero and Franz Wagner.</p>
+                  <p>Before getting into the blame I think these two should carry into this season and why, let me clarify one thing: I really like both as players and can make a strong case for either as the face of this franchise going forward.</p>
+                  <p>That said, I’m not sure this pairing is ever going to work out the way Orlando’s fans and front office have hoped.</p>
+                  <p>For one, their games overlap considerably, on a team already full of others who play similar positions, creating a massive logjam in the frontcourt and a related dearth of playmaking and shooting in the backcourt around all the Magic forwards and centers.</p>
+                  <p>Some of that improved with the addition of former Grizzlies and TCU Horned Frogs star shooting guard Desmond Bane, who brought much-needed spacing and reliable guard scoring punch to this starting lineup in 2025-26, after the Magic traded a huge chunk of draft assets to acquire him before last season. To a slightly lesser degree, the backcourt issues that have plagued the Magic were also ameliorated by the rise of a potential fourth young star in jumbo point guard Anthony Black, who had something of a breakout season last year in a supporting role amid what was otherwise a pretty disappointing season for Orlando.</p>
+                  <p>But even after the added juice in the backcourt from Bane and Black last season, the Magic continued to struggle with spacing, playmaking and efficient shot creation, through both the regular season and their seven-game first-round loss to the conference’s top-seeded Detroit Pistons. Simply put, I’m still not convinced this team’s two best players consistently bring out the best in each other, more often than I’d like looking better and smoother, at least offensively, with one or even both sitting on the bench.</p>
+                </article>
+                <figure
+                  class="team-graphic magic-on-off"
+                  data-magic-on-off-chart
+                  data-source="assets/data/processed/magic-banchero-wagner-on-off.csv"
+                  aria-busy="true"
+                  aria-labelledby="magic-on-off-title"
+                  aria-describedby="magic-on-off-description"
+                >
+                  <header>
+                    <p class="magic-on-off__eyebrow">PBP Stats selection beginning in 2022-23</p>
+                    <h3 class="magic-on-off__title" id="magic-on-off-title">Orlando’s results with Banchero and Wagner</h3>
+                    <p class="magic-on-off__subtitle">Net rating is point differential per 100 possessions. Lower defensive rating is better.</p>
+                    <p class="magic-on-off__visually-hidden" id="magic-on-off-description">A horizontal diverging bar chart compares Orlando’s net rating in four lineup groups. All groups share a scale from minus eight to plus eight, and each row also lists minutes, offensive rating and defensive rating.</p>
+                  </header>
+                  <div class="magic-on-off__plot">
+                    <p class="magic-on-off__status">Loading Orlando lineup groups…</p>
+                  </div>
+                  <details class="magic-on-off__table-details">
+                    <summary class="magic-on-off__table-toggle">View accessible source data table</summary>
+                    <div class="magic-on-off__table-wrap"></div>
+                  </details>
+                  <figcaption class="magic-on-off__notes">
+                    <p><strong>Method:</strong> Team results during each lineup group’s minutes; differences also reflect teammates, opponents and rotation patterns.</p>
+                    <p><strong>Coverage:</strong> PBP Stats selection beginning in 2022-23. The supplied table does not establish the exact end date or season-type filter.</p>
+                    <p>This pooled table does not isolate either player’s impact or establish whether the pairing can coexist. <a href="assets/data/processed/magic-banchero-wagner-on-off.csv">Chart-ready CSV</a> · <a href="assets/data/processed/magic-banchero-wagner-on-off.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="magic-on-off__status magic-on-off__status--error">This chart requires JavaScript. The validated chart-ready CSV is linked above.</p></noscript>
+                </figure>
+                <article class="story story--magic">
+                  <p>That sounds crazy to say while also defending the talent and production of <em>both</em> those star players, but I really do like the games of both Banchero and Wagner. Both are legit superstar talents, still just 23 and 25, with proven pedigree and winning potential from college and international competition. Both can kind of do it all, but neither has supplied the consistent outside shooting that would make their overlapping games easier to fit together. And both would definitely fetch a nice price in players and/or picks should this front office decide to part with either to prioritize the other.</p>
+                </article>` : team.slug === "raptors" ? `
                 <article class="story story--raptors story--raptors-intro">
                   <p>Stop me if you&rsquo;ve heard this one before: the Toronto Raptors had the foundations of a contender in the making, but with the acquisition of superstar forward Kawhi Leonard, they just might now have what it takes to make a run to the NBA Finals.</p>
                   <p>No, it&rsquo;s not 2019 again. Yes, Leonard&rsquo;s disastrous seven-season tenure with the Los Angeles Clippers did happen, and did end in an earthquake of a <a href="https://sports.yahoo.com/nba/article/kawhi-leonard-punishment-investigation-timeline-why-nba-disciplined-clippers-steve-ballmer-over-salary-cap-violations-190220899.html">financial scandal</a> that crippled the Clippers&rsquo; future while leaving the superstar at its center with a comparatively light punishment. And somehow, he&rsquo;s back in Toronto, where he last won an NBA title in June 2019, just before leaving for the Clippers in free agency.</p>
@@ -2184,5 +2290,7 @@
     <script src="assets/js/kessler-lakers-chart.js"></script>
     <script src="assets/js/holmgren-shared-games-chart.js"></script>
     <script src="assets/js/garland-clippers-chart.js"></script>
+    <script src="assets/js/magic-on-off-chart.js"></script>
+    <script src="assets/js/siakam-pacers-chart.js"></script>
   </body>
 </html>

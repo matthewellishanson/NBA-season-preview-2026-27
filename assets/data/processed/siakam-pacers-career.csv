@@ -1,0 +1,11 @@
+player_id,player_name,season,season_start,source_team_code,team_label,stint_id,stint_scope,league,season_age,games,starts,minutes_per_game,total_minutes,points_per_game,points_per_100,true_shooting_pct,published_comparison,per_game_source_row_id,per_100_source_row_id,advanced_source_row_id
+siakapa01,Pascal Siakam,2016-17,2016,TOR,TOR,TOR,single-team,NBA,22,55,38,15.6,859,4.2,13.5,0.523,false,SiakamPerGameCareer.csv:line-2,SiakamP100PCareer.csv:line-2,SiakamAdvCareer.csv:line-2
+siakapa01,Pascal Siakam,2017-18,2017,TOR,TOR,TOR,single-team,NBA,23,81,5,20.7,1679,7.3,17.3,0.549,false,SiakamPerGameCareer.csv:line-3,SiakamP100PCareer.csv:line-3,SiakamAdvCareer.csv:line-3
+siakapa01,Pascal Siakam,2018-19,2018,TOR,TOR,TOR,single-team,NBA,24,80,79,31.9,2548,16.9,25.5,0.628,false,SiakamPerGameCareer.csv:line-4,SiakamP100PCareer.csv:line-4,SiakamAdvCareer.csv:line-4
+siakapa01,Pascal Siakam,2019-20,2019,TOR,TOR,TOR,single-team,NBA,25,60,60,35.2,2110,22.9,30.9,0.554,false,SiakamPerGameCareer.csv:line-5,SiakamP100PCareer.csv:line-5,SiakamAdvCareer.csv:line-5
+siakapa01,Pascal Siakam,2020-21,2020,TOR,TOR,TOR,single-team,NBA,26,56,56,35.8,2006,21.4,28.9,0.547,false,SiakamPerGameCareer.csv:line-6,SiakamP100PCareer.csv:line-6,SiakamAdvCareer.csv:line-6
+siakapa01,Pascal Siakam,2021-22,2021,TOR,TOR,TOR,single-team,NBA,27,68,68,37.9,2578,22.8,30.1,0.565,false,SiakamPerGameCareer.csv:line-7,SiakamP100PCareer.csv:line-7,SiakamAdvCareer.csv:line-7
+siakapa01,Pascal Siakam,2022-23,2022,TOR,TOR,TOR,single-team,NBA,28,71,71,37.4,2652,24.2,32.1,0.565,false,SiakamPerGameCareer.csv:line-8,SiakamP100PCareer.csv:line-8,SiakamAdvCareer.csv:line-8
+siakapa01,Pascal Siakam,2023-24,2023,2TM,TOR/IND,TOT,combined-season,NBA,29,80,80,33.2,2657,21.7,31.2,0.601,true,SiakamPerGameCareer.csv:line-9,SiakamP100PCareer.csv:line-9,SiakamAdvCareer.csv:line-9
+siakapa01,Pascal Siakam,2024-25,2024,IND,IND,IND,single-team,NBA,30,78,78,32.7,2548,20.2,29.8,0.599,true,SiakamPerGameCareer.csv:line-10,SiakamP100PCareer.csv:line-10,SiakamAdvCareer.csv:line-10
+siakapa01,Pascal Siakam,2025-26,2025,IND,IND,IND,single-team,NBA,31,62,62,33.2,2057,24.0,34.3,0.562,true,SiakamPerGameCareer.csv:line-11,SiakamP100PCareer.csv:line-11,SiakamAdvCareer.csv:line-11

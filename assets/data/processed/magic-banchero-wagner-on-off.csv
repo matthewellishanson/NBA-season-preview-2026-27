@@ -1,0 +1,5 @@
+group_id,group_label,players_on,players_off,minutes,net_rating,offensive_rating,defensive_rating,two_point_fg_pct,three_point_fg_pct,opponent_two_point_fg_pct,opponent_three_point_fg_pct,coverage_label,source_filename,source_row
+both_playing,Both playing,"Franz Wagner, Paolo Banchero",,5340,1.95,112.99,111.04,0.5448,0.3400,0.5409,0.3560,PBP Stats selection beginning in 2022-23,Wagner&Paolo_OnOff_Career.csv,2
+banchero_only,Banchero only,Paolo Banchero,Franz Wagner,2382,-6.45,111.38,117.83,0.5081,0.3594,0.5626,0.3648,PBP Stats selection beginning in 2022-23,Wagner&Paolo_OnOff_Career.csv,3
+wagner_only,Wagner only,Franz Wagner,Paolo Banchero,1947,7.06,118.30,111.24,0.5641,0.3155,0.5366,0.3502,PBP Stats selection beginning in 2022-23,Wagner&Paolo_OnOff_Career.csv,4
+neither_playing,Neither playing,,"Franz Wagner, Paolo Banchero",1128,0.50,109.46,108.96,0.5265,0.3391,0.5405,0.3407,PBP Stats selection beginning in 2022-23,Wagner&Paolo_OnOff_Career.csv,5
