@@ -1,0 +1,302 @@
+.story-layout.story-layout--cavaliers {
+  grid-template-columns: 1fr;
+}
+
+.story--cavaliers,
+.watson-chart {
+  max-width: 56rem;
+}
+
+.watson-chart {
+  width: 100%;
+  margin: 10px 0 14px;
+  padding: clamp(18px, 3vw, 28px);
+  background: var(--team-surface);
+  border-color: var(--team-border);
+  border-top-color: var(--team-identity);
+  color: var(--team-text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.watson-chart__eyebrow {
+  margin: 0 0 5px;
+  color: var(--team-ink);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.watson-chart__title {
+  margin: 0;
+  color: var(--team-text);
+  font-size: clamp(22px, 3vw, 31px);
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+}
+
+.watson-chart__subtitle {
+  max-width: 49rem;
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.watson-chart__takeaway {
+  margin: 16px 0;
+  padding: 12px 14px;
+  background: var(--team-surface-strong);
+  border-left: 4px solid var(--team-secondary);
+  color: var(--team-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.watson-chart__panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 11px;
+  background: var(--team-plot);
+  border-color: var(--team-border);
+}
+
+.watson-chart__panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+  background: var(--team-plot);
+}
+
+.watson-chart__panel-title {
+  min-height: 43px;
+  margin: 0;
+  padding: 10px 10px 7px;
+  color: var(--team-text);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.watson-chart__panel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.watson-chart__latest-band {
+  fill: var(--team-surface-strong);
+}
+
+.watson-chart__gridline {
+  stroke: #d9d8de;
+  stroke-width: 1;
+}
+
+.watson-chart__line {
+  fill: none;
+  stroke: var(--team-ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.watson-chart__mark circle {
+  fill: var(--team-plot);
+  stroke: var(--team-ink);
+  stroke-width: 2.5;
+}
+
+.watson-chart__mark.is-latest circle {
+  fill: var(--team-secondary);
+  stroke: var(--team-ink);
+  stroke-width: 3;
+}
+
+.watson-chart__value {
+  fill: var(--team-text);
+  font-size: 11px;
+  font-weight: 780;
+}
+
+.watson-chart__mark.is-latest .watson-chart__value {
+  fill: var(--team-ink);
+  font-weight: 900;
+}
+
+.watson-chart__y-label {
+  fill: var(--team-muted);
+  font-size: 9.5px;
+}
+
+.watson-chart__season {
+  fill: var(--team-text);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.watson-chart__sample {
+  fill: var(--team-muted);
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.watson-chart__x-label.is-latest .watson-chart__season,
+.watson-chart__x-label.is-latest .watson-chart__sample {
+  fill: var(--team-ink);
+  font-weight: 900;
+}
+
+.watson-chart__table-details {
+  margin-top: 13px;
+  border-top: 1px solid var(--team-border);
+}
+
+.team-card .watson-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  min-height: 44px;
+  padding: 11px 1px 5px;
+  border-left: 0;
+  background: transparent;
+  color: var(--team-ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 780;
+  list-style: none;
+}
+
+.team-card .watson-chart__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.watson-chart__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.watson-chart__table-details[open] .watson-chart__table-toggle::before {
+  content: "\25BE";
+}
+
+.watson-chart__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.watson-chart__table {
+  width: 100%;
+  min-width: 570px;
+  border-collapse: collapse;
+  background: var(--team-plot);
+  color: var(--team-text);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.watson-chart__table caption {
+  padding: 0 0 7px;
+  color: var(--team-muted);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.watson-chart__table th,
+.watson-chart__table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--team-border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.watson-chart__table th:first-child,
+.watson-chart__table td:first-child {
+  text-align: left;
+}
+
+.watson-chart__table thead th {
+  background: var(--team-surface-strong);
+  font-weight: 800;
+}
+
+.watson-chart__table tbody tr:last-child {
+  background: var(--team-surface-strong);
+  color: var(--team-ink);
+  font-weight: 800;
+}
+
+.watson-chart__notes {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--team-border);
+  color: var(--team-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.watson-chart__notes p {
+  margin: 0 0 5px;
+}
+
+.watson-chart__status {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 24px 12px;
+  color: var(--team-muted);
+  font-size: 12px;
+}
+
+.watson-chart__status--error {
+  color: var(--team-negative);
+  font-weight: 700;
+}
+
+.watson-chart__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .watson-chart {
+    padding: 17px 12px;
+  }
+
+  .watson-chart__panels {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .watson-chart__panel-title {
+    min-height: 0;
+    padding-bottom: 0;
+    font-size: 13px;
+  }
+
+  .watson-chart__panel svg {
+    max-height: 286px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watson-chart *,
+  .watson-chart *::before,
+  .watson-chart *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,5 @@
+player_id,player_name,season,season_type,team,league,position,age,games,starts,minutes_per_game,total_minutes,points_per_100,usage_pct,ts_pct,on_court_net_rating,on_off_net_rating,per_game_source_row,per_100_source_row,advanced_source_row,on_off_source_row
+peyton-watson,Peyton Watson,2022-23,regular_season,DEN,NBA,SG,20,23,2,8.1,186,19.7,17.7,.553,-14.5,-18.6,2,2,2,2
+peyton-watson,Peyton Watson,2023-24,regular_season,DEN,NBA,SF,21,80,4,18.6,1488,17.7,16.2,.539,-0.2,-9.2,3,3,3,3
+peyton-watson,Peyton Watson,2024-25,regular_season,DEN,NBA,SF,22,68,18,24.4,1656,16.0,13.9,.564,1.3,-4.6,4,4,4,4
+peyton-watson,Peyton Watson,2025-26,regular_season,DEN,NBA,SF,23,54,40,29.6,1598,24.1,20.6,.594,6.1,1.6,5,5,5,5

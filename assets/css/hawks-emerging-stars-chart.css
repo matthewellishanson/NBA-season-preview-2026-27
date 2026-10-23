@@ -1,0 +1,64 @@
+.story-layout.story-layout--hawks { display: block; }
+
+.hawks-stars {
+  margin: 34px 0;
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--team-border);
+  border-top: 7px solid var(--team-identity);
+  border-radius: 14px;
+  background: var(--team-surface);
+  color: var(--team-text);
+}
+
+.hawks-stars__header { max-width: 760px; }
+.hawks-stars__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.hawks-stars__eyebrow { margin: 0 0 5px; color: var(--team-ink); font-size: 12px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+.hawks-stars__title { margin: 0; color: var(--team-ink); font: 850 clamp(25px, 4vw, 36px)/1.04 Georgia, serif; letter-spacing: -.025em; }
+.hawks-stars__subtitle { margin: 10px 0 0; color: var(--team-muted); }
+.hawks-stars__annotation { margin: 20px 0 0; }
+.hawks-stars__annotation span { display: block; margin-top: 3px; }
+.hawks-stars__status { margin: 22px 0 0; color: var(--team-muted); }
+.hawks-stars__status--error { padding: 12px; border: 1px solid var(--team-negative); color: var(--team-negative); background: var(--team-plot); }
+
+.hawks-stars__players { display: grid; gap: 20px; margin-top: 22px; }
+.hawks-stars__player { min-width: 0; padding: 18px; border: 1px solid var(--team-border); border-radius: 11px; background: var(--team-surface-strong); }
+.hawks-stars__player-header h4 { margin: 0; color: var(--team-ink); font: 850 22px/1.1 Georgia, serif; }
+.hawks-stars__player-header > p { margin: 4px 0 12px; color: var(--team-muted); font-weight: 750; }
+.hawks-stars__samples { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.hawks-stars__samples span { padding: 8px; border-radius: 7px; background: var(--team-plot); color: var(--team-muted); font-size: 11px; line-height: 1.35; text-align: center; }
+.hawks-stars__samples strong { display: block; color: var(--team-text); font-size: 12px; }
+.hawks-stars__samples span:last-child { box-shadow: inset 0 0 0 2px var(--team-secondary); }
+.hawks-stars__panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.hawks-stars__panel { padding: 10px 8px 3px; border-radius: 9px; }
+.hawks-stars__panel h5 { margin: 0 8px; color: var(--team-ink); font-size: 13px; line-height: 1.3; }
+.hawks-stars__panel svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hawks-stars__grid line { stroke: #D8D9DE; stroke-dasharray: 2 3; }
+.hawks-stars__axis { color: var(--team-muted); font: 10px system-ui, sans-serif; }
+.hawks-stars__axis .domain { stroke: var(--team-border); }
+.hawks-stars__line { fill: none; stroke: var(--team-ink); stroke-width: 2.5; }
+.hawks-stars__mark { cursor: pointer; outline: none; }
+.hawks-stars__mark circle { fill: var(--team-plot); stroke: var(--team-ink); stroke-width: 2.5; }
+.hawks-stars__mark.is-latest circle { fill: var(--team-secondary); stroke: var(--team-ink); stroke-width: 3; }
+.hawks-stars__mark:focus-visible circle { stroke: var(--team-focus); stroke-width: 4; }
+.hawks-stars__value { fill: var(--team-text); font: 800 11px system-ui, sans-serif; paint-order: stroke; stroke: var(--team-plot); stroke-width: 4px; stroke-linejoin: round; }
+.hawks-stars__mark.is-latest .hawks-stars__value { fill: var(--team-ink); font-weight: 900; }
+.hawks-stars__inspection { min-height: 24px; margin: 10px 4px 0; color: var(--team-muted); font-size: 12px; }
+.hawks-stars__table-details { margin-top: 18px; }
+.hawks-stars__table-toggle { min-height: 44px; cursor: pointer; color: var(--team-ink); font-weight: 800; }
+.hawks-stars__table-wrap { overflow-x: auto; }
+.hawks-stars__table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.hawks-stars__table th, .hawks-stars__table td { padding: 8px 9px; border: 1px solid var(--team-border); text-align: right; white-space: nowrap; }
+.hawks-stars__table th:first-child, .hawks-stars__table td:nth-child(2) { text-align: left; }
+.hawks-stars__table tr[data-season="2025-26"] { background: var(--team-surface-strong); }
+.hawks-stars__notes { margin-top: 17px; color: var(--team-muted); font-size: 12px; line-height: 1.5; }
+.hawks-stars__notes p { margin: 6px 0; }
+
+@media (max-width: 760px) {
+  .hawks-stars { margin-inline: -10px; padding: 18px 12px; }
+  .hawks-stars__player { padding: 14px 9px; }
+  .hawks-stars__panel-grid { grid-template-columns: 1fr; }
+  .hawks-stars__samples { grid-template-columns: 1fr; }
+  .hawks-stars__samples span { display: flex; justify-content: space-between; gap: 12px; text-align: left; }
+  .hawks-stars__samples strong { display: inline; }
+  .hawks-stars__panel { min-width: 0; }
+}
