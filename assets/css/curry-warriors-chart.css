@@ -1,0 +1,436 @@
+.story-layout.story-layout--warriors {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.story--warriors,
+.curry-chart {
+  max-width: 56rem;
+}
+
+.curry-chart {
+  width: 100%;
+  max-width: 980px;
+  margin: 8px 0 12px;
+  color: var(--team-text);
+}
+
+.curry-chart__eyebrow,
+.curry-chart__title,
+.curry-chart__subtitle,
+.curry-chart__reading,
+.curry-chart__inspection {
+  max-width: 760px;
+}
+
+.curry-chart__eyebrow {
+  margin: 0 0 5px;
+  color: var(--team-ink);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.curry-chart__title {
+  margin: 0;
+  font-size: clamp(22px, 3.2vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.7px;
+}
+
+.curry-chart__subtitle {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.curry-chart__reading {
+  margin: 14px 0 10px;
+  padding: 11px 13px;
+  border-left: 4px solid var(--team-secondary);
+  background: var(--team-surface-strong);
+  color: var(--team-text);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.curry-chart__inspection {
+  min-height: 24px;
+  margin: 0 0 7px;
+  color: var(--team-muted);
+  font-size: 11.5px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.curry-chart__plot {
+  padding: 8px;
+  overflow: hidden;
+}
+
+.curry-chart__panels {
+  display: grid;
+  gap: 18px;
+  align-items: start;
+}
+
+.curry-chart__panel {
+  min-width: 0;
+}
+
+.curry-chart__plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.curry-chart__latest-band {
+  fill: var(--team-surface-strong);
+}
+
+.curry-chart__grid,
+.curry-chart__zero,
+.curry-chart__line,
+.curry-chart__minutes-baseline,
+.curry-chart__dot {
+  vector-effect: non-scaling-stroke;
+}
+
+.curry-chart__grid {
+  stroke: #dfe3e8;
+  stroke-width: 1;
+}
+
+.curry-chart__zero {
+  stroke: var(--team-ink);
+  stroke-width: 2;
+}
+
+.curry-chart__zero-label,
+.curry-chart__axis-title,
+.curry-chart__tick,
+.curry-chart__season,
+.curry-chart__minutes-value,
+.curry-chart__direct-label {
+  paint-order: stroke;
+  stroke: var(--team-plot);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+.curry-chart__zero-label,
+.curry-chart__axis-title {
+  fill: var(--team-ink);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.35px;
+}
+
+.curry-chart__panel-title {
+  fill: var(--team-text);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.15px;
+}
+
+.curry-chart__tick,
+.curry-chart__season {
+  fill: var(--team-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.curry-chart__season.is-latest {
+  fill: var(--team-ink);
+  font-weight: 900;
+}
+
+.curry-chart__line {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.curry-chart__line--off {
+  stroke-dasharray: 7 5;
+  stroke-width: 2.5;
+}
+
+.curry-chart__dot {
+  stroke-width: 2.3;
+}
+
+.curry-chart__dot--on {
+  stroke: var(--team-plot);
+}
+
+.curry-chart__dot--off {
+  fill: var(--team-plot);
+}
+
+.curry-chart__hit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.curry-chart__season-mark {
+  cursor: pointer;
+  outline: none;
+}
+
+.curry-chart__season-mark.is-active .curry-chart__dot,
+.curry-chart__season-mark:focus .curry-chart__dot {
+  stroke-width: 4;
+}
+
+.curry-chart__season-mark.is-active .curry-chart__dot--on,
+.curry-chart__season-mark:focus .curry-chart__dot--on {
+  filter: drop-shadow(0 0 2px var(--team-focus));
+}
+
+.curry-chart__direct-label {
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.curry-chart__minutes-baseline {
+  stroke: var(--team-muted);
+  stroke-width: 1.25;
+}
+
+.curry-chart__minutes-bar {
+  fill: #7890bd;
+}
+
+.curry-chart__minutes-bar.is-latest {
+  fill: var(--team-secondary);
+}
+
+.curry-chart__minutes-value {
+  fill: var(--team-muted);
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.curry-chart__sample-note {
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.curry-chart__details-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.85fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 8px;
+  border-top: 1px solid var(--team-border);
+}
+
+.curry-chart__table-details {
+  min-width: 0;
+}
+
+.curry-chart__methodology {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--team-secondary);
+  background: var(--team-surface-strong);
+  color: var(--team-muted);
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.curry-chart__methodology p {
+  margin: 0;
+}
+
+.curry-chart__methodology-title {
+  margin-bottom: 4px !important;
+  color: var(--team-ink);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.team-card .curry-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  min-height: 44px;
+  padding: 12px 1px 5px;
+  border-left: 0;
+  background: transparent;
+  color: var(--team-ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  list-style: none;
+}
+
+.team-card .curry-chart__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.curry-chart__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.curry-chart__table-details[open] .curry-chart__table-toggle::before {
+  content: "\25BE";
+}
+
+.curry-chart__table-wrap {
+  width: 100%;
+  margin-top: 7px;
+  overflow-x: auto;
+}
+
+.curry-chart__table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: var(--team-plot);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.curry-chart__table caption {
+  padding: 0 0 8px;
+  color: var(--team-muted);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.curry-chart__table th,
+.curry-chart__table td {
+  padding: 7px 6px;
+  border-bottom: 1px solid #e5e2d8;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.curry-chart__table th:first-child,
+.curry-chart__table td:first-child {
+  text-align: left;
+}
+
+.curry-chart__table thead th {
+  color: var(--team-text);
+  font-weight: 850;
+}
+
+.curry-chart__table tr.is-latest {
+  background: var(--team-surface-strong);
+}
+
+.curry-chart__table tr.is-ratings-omitted {
+  color: var(--team-muted);
+  background: #faf9f5;
+}
+
+.curry-chart__notes {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--team-border);
+  color: var(--team-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.curry-chart__notes p {
+  margin: 5px 0;
+}
+
+.curry-chart__status {
+  margin: 8px 0;
+  padding: 18px 12px;
+  border: 1px dashed var(--team-border);
+  border-radius: 5px;
+  background: var(--team-plot);
+  color: var(--team-muted);
+  font-size: 12px;
+}
+
+.curry-chart__status--error {
+  border-color: #d7a7ae;
+  background: #fff8f8;
+  color: #7d2634;
+}
+
+.curry-chart__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .curry-chart {
+    padding: 15px 9px;
+  }
+
+  .curry-chart__plot {
+    padding: 4px 1px;
+  }
+
+  .curry-chart__panels {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .curry-chart__panel + .curry-chart__panel {
+    padding-top: 10px;
+    border-top: 1px solid var(--team-border);
+  }
+
+  .curry-chart__details-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .curry-chart__title {
+    font-size: 22px;
+  }
+
+  .curry-chart__reading {
+    font-size: 12px;
+  }
+
+  .curry-chart__tick,
+  .curry-chart__season,
+  .curry-chart__zero-label,
+  .curry-chart__axis-title,
+  .curry-chart__direct-label {
+    font-size: 8.5px;
+  }
+
+  .curry-chart__panel-title {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curry-chart *,
+  .curry-chart *::before,
+  .curry-chart *::after {
+    scroll-behavior: auto;
+    transition: none !important;
+    animation: none !important;
+  }
+}

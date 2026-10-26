@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="assets/css/siakam-pacers-chart.css" />
     <link rel="stylesheet" href="assets/css/hawks-emerging-stars-chart.css" />
     <link rel="stylesheet" href="assets/css/watson-cavaliers-chart.css" />
+    <link rel="stylesheet" href="assets/css/jazz-charts.css" />
+    <link rel="stylesheet" href="assets/css/curry-warriors-chart.css" />
 
     <style>
       /* Design tokens */
@@ -770,7 +772,7 @@
           <p class="dek" id="rollout-explanation"></p>
           <div class="byline"><strong>By Matt Hanson</strong><span>Hanson Hoops</span></div>
           <div class="release-meta" aria-label="Publication status">
-            <span><strong id="completion-count">18 of 30</strong> previews complete</span>
+            <span><strong id="completion-count">19 of 30</strong> previews complete</span>
             <span>Last updated <time datetime="2026-10-22">October 22, 2026</time></span>
           </div>
           <div class="release-status">
@@ -1060,8 +1062,9 @@
           color: "#5f259f",
           slug: "jazz",
           powerRank: 20,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/Utah-Jazz-logo.svg",
+          thesis: "Blue-chip prospects and established stars give Utah play-in hopes, but perimeter defense and rebounding could delay the climb.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1084,8 +1087,9 @@
           color: "#1d428a",
           slug: "warriors",
           powerRank: 22,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/Golden-State-Warriors-logo.svg",
+          thesis: "Curry remains brilliant, but an aging, thin supporting cast leaves Golden State with only an outside shot at the play-in.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1268,8 +1272,144 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : ""}">
-                ${team.slug === "cavaliers" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : ""}">
+                ${team.slug === "warriors" ? `
+                <article class="story story--warriors story--warriors-intro">
+                  <p>Many of these previews have focused on the dawning of new eras for NBA franchises, but in the Bay Area, we&rsquo;re entering the twilight of a historic and highly accomplished one, as the Golden State Warriors&rsquo; run behind the greatest shooter the game has ever seen, Stephen Curry, nears its end.</p>
+                  <p>It&rsquo;s been a run for the ages for Curry, head coach Steve Kerr and Curry&rsquo;s longtime co-stars Draymond Green, still here, and Klay Thompson, now in Miami. They&rsquo;ve danced and rained threes all over the league for more than a decade, winning four NBA championships along the way.</p>
+                  <p>But Curry is now 38 and Green is 36, and not much remains around them of the talent that sustained their dominant run. I think it&rsquo;s safe to say the championship window of this Curry Warriors dynasty has closed, even as Curry himself continues to strike terror in opposing defenses night after night. He&rsquo;s still incredible to watch and worthy of leading a contender heading into his 18th NBA season, showing remarkably few signs of decline given the miles and injuries he&rsquo;s logged, the energy his unique offensive style demands and his small, wiry build by NBA standards.</p>
+                </article>
+                <figure
+                  class="team-graphic curry-chart"
+                  data-curry-warriors-chart
+                  data-source="assets/data/processed/curry-warriors-on-off-2016-2026.csv"
+                  aria-busy="true"
+                  aria-labelledby="curry-chart-title"
+                  aria-describedby="curry-chart-description"
+                >
+                  <header>
+                    <p class="curry-chart__eyebrow">Warriors offense &middot; Regular season</p>
+                    <h3 class="curry-chart__title team-graphic__title" id="curry-chart-title">Golden State&rsquo;s offense, with and without Curry</h3>
+                    <p class="curry-chart__subtitle">Points per 100 possessions above or below the NBA average</p>
+                    <p class="curry-chart__visually-hidden" id="curry-chart-description">Two coordinated time panels show Golden State&rsquo;s offensive rating relative to each season&rsquo;s NBA average with Curry on court and off court. The left panel covers 2015-16 through 2018-19 and the right covers 2020-21 through 2025-26. Both use identical rating and minutes scales. The excluded 2019-20 season remains documented in the footnote and accessible table.</p>
+                  </header>
+                  <p class="curry-chart__reading">Golden State&rsquo;s offense remained above NBA average with Curry playing in every season shown. Results without him varied considerably.</p>
+                  <p class="curry-chart__inspection" aria-live="polite">Focus or tap a season for exact values; the full data table is available below.</p>
+                  <div class="team-graphic__plot curry-chart__plot">
+                    <p class="curry-chart__status">Loading Curry&rsquo;s on/off offense history&hellip;</p>
+                  </div>
+                  <p class="curry-chart__sample-note">2019&ndash;20 excluded: Curry played only 139 minutes.</p>
+                  <div class="curry-chart__details-row">
+                    <details class="curry-chart__table-details">
+                      <summary class="curry-chart__table-toggle">View accessible chart data table</summary>
+                      <div class="curry-chart__table-wrap"></div>
+                    </details>
+                    <aside class="curry-chart__methodology" aria-label="Chart methodology">
+                      <p class="curry-chart__methodology-title">Methodology</p>
+                      <p>On/off results describe team performance during these minutes, not Curry&rsquo;s isolated effect. Available source notes do not establish whether &ldquo;Curry off court&rdquo; includes games he missed, so the label is not narrowed to bench minutes. Ratings are displayed to one decimal; derived differences use those displayed values and are rounded to one decimal. No possessions, games played or overall team ratings are inferred.</p>
+                    </aside>
+                  </div>
+                  <figcaption class="curry-chart__notes">
+                    <p><strong>Source:</strong> Basketball Reference Curry on/off tables, manually transcribed by the author; NBA baselines from the supplied <code>LeagueAverages_P100P.csv</code>. Team-season source pattern: <code>basketball-reference.com/teams/GSW/{season-ending-year}/on-off/</code>.</p>
+                    <p><a class="team-graphic__link" href="assets/data/processed/curry-warriors-on-off-2016-2026.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/curry-warriors-on-off-2016-2026.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="curry-chart__status curry-chart__status--error">This graphic requires JavaScript. The validated chart-ready CSV and preparation notes are linked above.</p></noscript>
+                </figure>
+                <article class="story story--warriors story--warriors-continuation">
+                  <p>Green, meanwhile, has begun to fade from the generational defensive force and creative frontcourt playmaker he&rsquo;s been throughout the Curry era. Thompson left a few years back, and I don&rsquo;t see enough young talent or flexibility to replenish this aging, thin rotation around its remaining franchise star.</p>
+                  <p>The Warriors have tried in recent seasons to extend the title window into the twilight of their beloved franchise star&rsquo;s career, but the additions of Jimmy Butler and Kristaps Porzi&#326;&#291;is haven&rsquo;t given me much confidence that they&rsquo;ve succeeded. That leaves Curry and Green with a few young players who are nice pieces, but not enough dependable help to change the calculus for this team.</p>
+                  <p>It&rsquo;s beyond the scope of this preview to dissect every decision that brought Golden State here, but the upshot is that the best I can reasonably project for these Warriors is an outside shot at the play-in. The biggest reason to watch remains whatever is left in Curry&rsquo;s tank, and the pleasure of seeing the joyous, creative, chaotic magnificence with which he&rsquo;s played for so long.</p>
+                  <p>If you&rsquo;re looking for something else to get excited about, I like the potential fit and production rookie Yaxel Lendeborg could bring, and love how he&rsquo;s given zero fucks so far in his postgame interviews and <a href="https://bleacherreport.com/articles/25519661-lukas-not-michael-jordan-yaxel-lendeborg-addresses-trash-talk-video-im-not-afraid?utm_source=chatgpt.com">fearless on-court interactions with some of the league&rsquo;s biggest stars</a>. Ahem, Luka, ahem. He doesn&rsquo;t strike me as someone who can substantially change Golden State&rsquo;s chances of competing in the West this year, but he does feel like a much-needed infusion of youth, athleticism and energy into Kerr&rsquo;s veteran rotation. Maybe he&rsquo;ll surprise us and show real star upside, even if that would be more encouraging for the Warriors&rsquo; future than transformative for their present.</p>
+                  <p>It&rsquo;s not easy watching the end approach for a player this great, this fun to watch, this likable &mdash; especially when his own brilliance still feels worthy of a better team around him. But knowing Steph, and the culture he, Green and Kerr have spent so many years cultivating, I can imagine him finding ways to make the ending as fun and positive as any superstar&rsquo;s denouement I&rsquo;ve watched. So here&rsquo;s to the greatness behind us and whatever remains ahead, and let&rsquo;s enjoy what&rsquo;s left of Curry&rsquo;s Warriors journey.</p>
+                </article>` : team.slug === "jazz" ? `
+                <article class="story story--jazz story--jazz-intro">
+                  <p>My preseason pick to ascend from the lottery to the play-in in the West did not look great in its season opener Wednesday against Memphis, losing 123&ndash;103 in a game that exposed some of this Jazz team&rsquo;s biggest weaknesses.</p>
+                  <p>But before we dissect what&rsquo;s still missing, let&rsquo;s consider the bounty of young talent and proven stars Utah has amassed while throwing away the last several seasons in pursuit of a franchise cornerstone.</p>
+                  <p>On that front, Danny Ainge and this Jazz front office may have finally succeeded, drafting Ace Bailey fifth in 2025, followed by the controversial but undeniably gifted Kansas star Darryn Peterson with the second pick this past draft. Both entered the league with some of the highest ceilings in their respective classes, and both have a chance to become All-NBA players under head coach Will Hardy and his staff.</p>
+                  <p>Of course, both also have plenty to figure out before we anoint them as the future of the Utah Jazz.</p>
+                  <p>For much of his rookie season, Bailey looked more like Andrew Wiggins or Jabari Smith Jr. than his peak predraft comparisons to Kevin Durant and Paul George suggested. He&rsquo;ll need more scoring punch off the dribble and better defensive consistency with his long, 6-foot-10 frame to realize his ample potential as a two-way star.</p>
+                  <p>Meanwhile, Peterson&rsquo;s one season as a Jayhawk was a frustrating mix of sensational scoring and interrupted availability, with injuries and recurring cramping keeping him out of games and sidelining him during others. As a KU fan myself, I&rsquo;ll try not to dwell too much on that experience, but it certainly complicated my confidence in projecting his NBA future.</p>
+                  <p>Without those interruptions, I&rsquo;d be dangerously close to calling Peterson the second coming of Kobe Bryant &mdash; a borderline sacrilegious projection, I&rsquo;ll admit. But watch him slither around defenders, soar for slams and sink fadeaway after fadeaway, then tell me you don&rsquo;t see a bit of young Mamba in his game. I do think the drama around his freshman season availability and effort may ultimately go down as a red herring that distracted us from what an elite scoring talent he&rsquo;ll be in the NBA, but I want to see him sustain his availability before feeling safe projecting that kind of destiny.</p>
+                  <p>More immediately, Utah has quietly assembled considerable talent around its two blue-chip prospects.</p>
+                  <p>Emerging star combo guard Keyonte George blossomed into a potent shot creator last season, averaging 23.6 points and 6.1 assists on 45.6/37.1/89.2 shooting splits in his third year. How he and Peterson fit together should have a big impact on the direction of this rebuild. Isaiah Collier, Brice Sensabaugh and Kyle Filipowski have also shown flashes of higher upside than their draft positions suggested, giving Ainge and Hardy several more potential keepers.</p>
+                </article>
+                <figure class="team-graphic jazz-chart jazz-chart--george" data-jazz-george-chart data-source="assets/data/processed/keyonte-george-scoring-2023-2026.csv" aria-busy="true" aria-labelledby="jazz-george-title" aria-describedby="jazz-george-description">
+                  <header>
+                    <p class="jazz-chart__eyebrow">Keyonte George &middot; Utah regular seasons</p>
+                    <h3 class="jazz-chart__title team-graphic__title" id="jazz-george-title">George&rsquo;s third-year scoring leap</h3>
+                    <p class="jazz-chart__subtitle">Scoring production, efficiency and usage across George&rsquo;s first three NBA seasons.</p>
+                    <p class="jazz-chart__visually-hidden" id="jazz-george-description">Three aligned panels share the 2023-24 through 2025-26 season axis. Points per 100 possessions, true shooting percentage and usage percentage use independent labeled scales. Every plotted value is directly labeled.</p>
+                  </header>
+                  <p class="team-graphic__callout jazz-chart__annotation"><strong>Third-year leap:</strong> <span data-jazz-george-annotation-value>33.5 points per 100 possessions, with true shooting up 7.0 percentage points.</span></p>
+                  <div class="team-graphic__plot jazz-chart__panels jazz-chart__panels--three"><p class="jazz-chart__status">Loading George&rsquo;s three Utah seasons&hellip;</p></div>
+                  <details class="jazz-chart__table-details">
+                    <summary class="jazz-chart__table-toggle">View accessible chart data table</summary>
+                    <div class="jazz-chart__table-wrap">
+                      <table class="team-graphic__table jazz-chart__table">
+                        <caption>Utah regular-season values shown in the three panels, with supporting per-game production and workload.</caption>
+                        <thead><tr><th scope="col">Season</th><th scope="col">G</th><th scope="col">MPG</th><th scope="col">PPG</th><th scope="col">APG</th><th scope="col">PTS/100</th><th scope="col">TS%</th><th scope="col">USG%</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row">2023&ndash;24</th><td>75</td><td>27.0</td><td>13.0</td><td>4.4</td><td>23.2</td><td>53.3%</td><td>22.8%</td></tr>
+                          <tr><th scope="row">2024&ndash;25</th><td>67</td><td>31.5</td><td>16.8</td><td>5.6</td><td>25.6</td><td>53.9%</td><td>24.3%</td></tr>
+                          <tr><th scope="row">2025&ndash;26</th><td>54</td><td>33.1</td><td>23.6</td><td>6.1</td><td>33.5</td><td>60.9%</td><td>27.9%</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="jazz-chart__notes">
+                    <p><strong>Source:</strong> Supplied Basketball Reference-style Per Game, Per 100 Possessions and Advanced regular-season tables. TS% is displayed as a percentage after conversion from source fractions.</p>
+                    <p>Each panel uses its own labeled scale. Assists per 100 changed only from 8.6 to 8.7 in the final two seasons. These box-score measures do not establish isolation or playoff shot-creation ability.</p>
+                    <p><a class="team-graphic__link" href="assets/data/processed/keyonte-george-scoring-2023-2026.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/keyonte-george-scoring-2023-2026.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="jazz-chart__status jazz-chart__status--error">This graphic requires JavaScript. The complete values remain available in the accessible table and linked CSV.</p></noscript>
+                </figure>
+                <article class="story story--jazz story--jazz-middle">
+                  <p>But the true test of this year&rsquo;s Jazz will hinge on the chemistry, production and, as always, health of their two established star forwards: Lauri Markkanen and trade-deadline acquisition Jaren Jackson Jr.</p>
+                  <p>At first glance, these two look like an ideal modern frontcourt pairing. Both are mobile, skilled bigs with inside-outside scoring ability. Markkanen is the more perimeter-oriented and offensively efficient of the two, while Jackson&rsquo;s defensive versatility and rim protection earned him the 2022&ndash;23 Defensive Player of the Year award.</p>
+                  <p>It&rsquo;s easy to see why Utah spent some of its considerable stockpile of picks and prospects to bring Jackson in alongside Markkanen. But after sending Walker Kessler to the Lakers over the summer, that pairing faces a more obvious challenge: Who&rsquo;s getting the rebounds?</p>
+                </article>
+                <figure class="team-graphic jazz-chart jazz-chart--rebounding" data-jazz-rebounding-chart data-source="assets/data/processed/markkanen-jackson-rebounding-2022-2026.csv" aria-busy="true" aria-labelledby="jazz-rebounding-title" aria-describedby="jazz-rebounding-description">
+                  <header>
+                    <p class="jazz-chart__eyebrow">Utah frontcourt context &middot; Regular season</p>
+                    <h3 class="jazz-chart__title team-graphic__title" id="jazz-rebounding-title">Who gets the rebounds?</h3>
+                    <p class="jazz-chart__subtitle">Markkanen and Jackson&rsquo;s individual rebounding rates, 2022&ndash;23 to 2025&ndash;26</p>
+                    <p class="jazz-chart__definition">Defensive rebound percentage estimates the share of available defensive rebounds a player collects while on court.</p>
+                    <p class="jazz-chart__visually-hidden" id="jazz-rebounding-description">Two aligned line-and-dot panels show defensive and total rebound percentages for Lauri Markkanen and Jaren Jackson Jr. from 2022-23 through 2025-26. Both players share one scale within each metric, and every value is directly labeled.</p>
+                  </header>
+                  <div class="jazz-chart__key" aria-label="Player key"><span><i class="jazz-chart__key-mark" aria-hidden="true"></i>Lauri Markkanen</span><span><i class="jazz-chart__key-mark jazz-chart__key-mark--jackson" aria-hidden="true"></i>Jaren Jackson Jr.</span></div>
+                  <div class="team-graphic__plot jazz-chart__panels jazz-chart__panels--two"><p class="jazz-chart__status">Loading Markkanen and Jackson&rsquo;s rebounding histories&hellip;</p></div>
+                  <details class="jazz-chart__table-details">
+                    <summary class="jazz-chart__table-toggle">View accessible chart data table</summary>
+                    <div class="jazz-chart__table-wrap">
+                      <table class="team-graphic__table jazz-chart__table">
+                        <caption>Regular-season values shown in both panels. Jackson&rsquo;s 2025-26 row combines his Memphis and Utah production.</caption>
+                        <thead><tr><th scope="col">Player</th><th scope="col">Season</th><th scope="col">Team</th><th scope="col">G</th><th scope="col">MIN</th><th scope="col">DRB%</th><th scope="col">TRB%</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row">Lauri Markkanen</th><td>2022&ndash;23</td><td>UTA</td><td>66</td><td>2,273</td><td>20.7%</td><td>13.6%</td></tr>
+                          <tr><th scope="row">Lauri Markkanen</th><td>2023&ndash;24</td><td>UTA</td><td>55</td><td>1,820</td><td>19.6%</td><td>13.6%</td></tr>
+                          <tr><th scope="row">Lauri Markkanen</th><td>2024&ndash;25</td><td>UTA</td><td>47</td><td>1,476</td><td>14.9%</td><td>10.1%</td></tr>
+                          <tr><th scope="row">Lauri Markkanen</th><td>2025&ndash;26</td><td>UTA</td><td>42</td><td>1,443</td><td>15.7%</td><td>10.8%</td></tr>
+                          <tr><th scope="row">Jaren Jackson Jr.</th><td>2022&ndash;23</td><td>MEM</td><td>63</td><td>1,787</td><td>18.8%</td><td>12.6%</td></tr>
+                          <tr><th scope="row">Jaren Jackson Jr.</th><td>2023&ndash;24</td><td>MEM</td><td>66</td><td>2,124</td><td>15.0%</td><td>9.4%</td></tr>
+                          <tr><th scope="row">Jaren Jackson Jr.</th><td>2024&ndash;25</td><td>MEM</td><td>74</td><td>2,207</td><td>15.5%</td><td>10.0%</td></tr>
+                          <tr><th scope="row">Jaren Jackson Jr.</th><td>2025&ndash;26</td><td>MEM/UTA combined</td><td>48</td><td>1,454</td><td>17.4%</td><td>10.1%</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="jazz-chart__notes">
+                    <p><strong>Source:</strong> Supplied Basketball Reference-style Advanced and Per 100 Possessions regular-season tables. Advanced is the primary source for the plotted rates; games and total minutes come from matching Advanced and Per 100 rows.</p>
+                    <p>These are individual on-court rebound rates; they are not added together and do not measure Markkanen and Jackson in shared lineups. Jackson&rsquo;s 2025&ndash;26 point is combined Memphis/Utah production, not Utah-only performance.</p>
+                    <p><strong>Input note:</strong> The supplied <code>JJJ_PerGame.csv</code> is an exact duplicate of <code>MarkkanenAdv.csv</code> and was excluded. <a class="team-graphic__link" href="assets/data/processed/markkanen-jackson-rebounding-2022-2026.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/markkanen-jackson-rebounding-2022-2026.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="jazz-chart__status jazz-chart__status--error">This graphic requires JavaScript. The complete values remain available in the accessible table and linked CSV.</p></noscript>
+                </figure>
+                <article class="story story--jazz story--jazz-conclusion">
+                  <p>Neither Jackson nor Markkanen has consistently provided the rebounding you might expect from players their size. Without Kessler, Utah will need both to pick up the slack while leaning on veteran center Jusuf Nurki&#263;, who had yet to make his season debut in the opener. That feels like a precarious foundation for a team hoping to climb the standings.</p>
+                  <p>There&rsquo;s also a real concern about the perimeter defense, a weakness Ty Jerome exposed with his 45-point outburst Wednesday. This roster has few proven answers for containing opposing guards at the point of attack, and Jackson can only clean up so much behind them. In a league that keeps getting more dangerous offensively, that deficit can doom an aspiring contender.</p>
+                  <p>Between those defensive questions, the rebounding concerns and the general youth of this rotation, there are enough flies in the ointment to temper expectations. I still think Utah can stay in the play-in hunt, but I won&rsquo;t be surprised if it falls short.</p>
+                  <p>What matters most is that the Jazz finally have enough foundational talent &mdash; both high-upside prospects and established stars &mdash; to inspire optimism beyond the next lottery drawing. After years near the bottom, that alone feels like progress. It takes time to build a contender from ground zero, but the future is finally looking brighter in Utah, even if the climb back into the postseason takes a little longer.</p>
+                </article>` : team.slug === "cavaliers" ? `
                 <article class="story story--cavaliers story--cavaliers-intro">
                   <p>It&rsquo;s rare to have a contender with so much star power and talent that still feels this stagnant in its competitive trajectory, but that&rsquo;s kind of how this Cleveland Cavaliers team feels to me at this point in its journey. A lot of that hinges on the similar feelings I have about its two superstar guards at this point in their journeys, however, and a single season &mdash; or, more specifically, a single solid postseason &mdash; from one or both of James Harden and Donovan Mitchell could change everything about how I and many NBA fans and media perceive them and the Cavs, not to mention greatly improve Cleveland&rsquo;s title chances.</p>
                   <p>As I documented before last postseason, both Harden and Mitchell rank among the most prolific and consistent regular-season scoring guards of their respective generations, and I&rsquo;d expect each to have a strong chance at first-ballot Hall of Fame status one day. But the big caveat for both has long been the gap between their regular-season brilliance and their postseason results. That is especially, painfully true for Harden, now ninth on the NBA&rsquo;s all-time scoring list, whose playoff r&eacute;sum&eacute; features some deep runs but also some of the most disappointing exits of any superstar of his caliber.</p>
@@ -2407,5 +2547,7 @@
     <script src="assets/js/siakam-pacers-chart.js"></script>
     <script src="assets/js/hawks-emerging-stars-chart.js"></script>
     <script src="assets/js/watson-cavaliers-chart.js"></script>
+    <script src="assets/js/jazz-charts.js"></script>
+    <script src="assets/js/curry-warriors-chart.js"></script>
   </body>
 </html>

@@ -52,7 +52,7 @@ await Promise.all([send("Page.enable"), send("Runtime.enable"), send("Network.en
 await send("Network.setCacheDisabled", { cacheDisabled: true });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
 await send("Page.navigate", { url: pageUrl });
-await waitFor(`document.readyState === "complete" && document.querySelectorAll(".team-card").length === 18`);
+await waitFor(`document.readyState === "complete" && document.querySelectorAll(".team-card").length === 20`);
 
 const initial = await evaluate(`(() => ({
   title: document.title,
@@ -151,6 +151,75 @@ const cleveland = await evaluate(`(() => {
   };
 })()`);
 
+const jazz = await evaluate(`(() => {
+  const card = document.querySelector("#team-jazz");
+  const george = card.querySelector("[data-jazz-george-chart]");
+  const rebounds = card.querySelector("[data-jazz-rebounding-chart]");
+  const georgeRows = [...george.querySelectorAll("tbody tr")];
+  const reboundRows = [...rebounds.querySelectorAll("tbody tr")];
+  const storyArticles = [...card.querySelectorAll(".story--jazz")];
+  const storyText = storyArticles.flatMap((article) => [...article.querySelectorAll(":scope > p")].map((p) => p.textContent));
+  const style = getComputedStyle(george);
+  return {
+    georgePanels: george.querySelectorAll(".jazz-chart__panel svg").length,
+    georgeMarks: george.querySelectorAll(".jazz-chart__mark").length,
+    georgeLatest: george.querySelectorAll(".jazz-chart__mark.is-latest").length,
+    georgeValues: georgeRows.map((row) => [row.cells[5].textContent.trim(), row.cells[6].textContent.trim(), row.cells[7].textContent.trim()]),
+    reboundPanels: rebounds.querySelectorAll(".jazz-chart__panel svg").length,
+    reboundMarks: rebounds.querySelectorAll(".jazz-chart__mark").length,
+    reboundSeriesLabels: [...rebounds.querySelectorAll(".jazz-chart__series-label")].map((node) => node.textContent.trim()),
+    reboundValues: reboundRows.map((row) => [row.cells[5].textContent.trim(), row.cells[6].textContent.trim()]),
+    combinedLabel: reboundRows.at(-1).cells[2].textContent.trim(),
+    storyParagraphs: storyText.length,
+    storyGroups: storyArticles.map((article) => article.querySelectorAll(":scope > p").length),
+    georgePlacement: storyArticles[0].nextElementSibling === george && george.nextElementSibling === storyArticles[1],
+    reboundPlacement: storyArticles[1].nextElementSibling === rebounds && rebounds.nextElementSibling === storyArticles[2],
+    correctedTypos: storyText.some((text) => text.includes("fadeaway after fadeaway, then tell me you don’t see")) && !storyText.some((text) => /fadeway|then tell you don.t see/.test(text)),
+    identity: style.getPropertyValue("--team-identity").trim(),
+    surface: style.getPropertyValue("--team-surface").trim(),
+    georgeWidth: Math.round(george.getBoundingClientRect().width),
+    reboundWidth: Math.round(rebounds.getBoundingClientRect().width),
+  };
+})()`);
+
+const warriors = await evaluate(`(() => {
+  const card = document.querySelector("#team-warriors");
+  const root = card.querySelector("[data-curry-warriors-chart]");
+  const rows = [...root.querySelectorAll(".curry-chart__table tbody tr")];
+  const omittedRow = root.querySelector(".curry-chart__table tr.is-ratings-omitted");
+  const panels = [...root.querySelectorAll(".curry-chart__panel")];
+  const style = getComputedStyle(root);
+  const storyArticles = [...card.querySelectorAll(".story--warriors")];
+  return {
+    mounted: root.dataset.chartMounted,
+    svgs: root.querySelectorAll("svg").length,
+    linePaths: root.querySelectorAll(".curry-chart__line").length,
+    marks: root.querySelectorAll(".curry-chart__season-mark").length,
+    bars: root.querySelectorAll(".curry-chart__minutes-bar").length,
+    panelBars: panels.map((panel) => panel.querySelectorAll(".curry-chart__minutes-bar").length),
+    panelSeasons: panels.map((panel) => [...panel.querySelectorAll(".curry-chart__season")].map((node) => node.textContent.trim())),
+    panelSpacing: panels.map((panel) => {
+      const positions = [...panel.querySelectorAll(".curry-chart__season")].map((node) => Number(node.getAttribute("x")));
+      return positions.length > 1 ? positions[1] - positions[0] : 0;
+    }),
+    panelWidths: panels.map((panel) => Math.round(panel.getBoundingClientRect().width)),
+    zeroLines: panels.map((panel) => Number(panel.querySelector(".curry-chart__zero")?.getAttribute("y1"))),
+    rows: rows.length,
+    seasons: rows.map((row) => row.cells[0].textContent.trim()),
+    relative: rows.filter((row) => row.classList.contains("is-ratings-observed")).map((row) => [row.cells[4].textContent.trim(), row.cells[5].textContent.trim(), row.cells[6].textContent.trim()]),
+    onMinutes: rows.map((row) => Number(row.cells[7].textContent.replace(/,/g, ""))),
+    omittedCells: omittedRow ? [...omittedRow.cells].map((cell) => cell.textContent.trim()) : [],
+    sampleNote: root.querySelector(".curry-chart__sample-note")?.textContent.trim(),
+    interpretation: root.querySelector(".curry-chart__reading")?.textContent.trim(),
+    methodology: root.querySelector(".curry-chart__methodology")?.textContent.trim(),
+    storyGroups: storyArticles.map((article) => article.querySelectorAll(":scope > p").length),
+    placement: storyArticles[0].nextElementSibling === root && root.nextElementSibling === storyArticles[1],
+    identity: style.getPropertyValue("--team-identity").trim(),
+    secondary: style.getPropertyValue("--team-secondary").trim(),
+    chartWidth: Math.round(root.getBoundingClientRect().width),
+  };
+})()`);
+
 const desktopShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
 await fs.writeFile(`${outputPrefix}-desktop.png`, Buffer.from(desktopShot.data, "base64"));
 
@@ -167,6 +236,15 @@ const mobile = await evaluate(`(() => ({
   clevelandChartWidth: Math.round(document.querySelector("#team-cavaliers .watson-chart").getBoundingClientRect().width),
   clevelandPanelColumns: getComputedStyle(document.querySelector("#team-cavaliers .watson-chart__panels")).gridTemplateColumns.split(" ").length,
   clevelandTableContained: document.querySelector("#team-cavaliers .watson-chart__table-wrap").scrollWidth > document.querySelector("#team-cavaliers .watson-chart__table-wrap").clientWidth,
+  jazzGeorgeWidth: Math.round(document.querySelector("#team-jazz [data-jazz-george-chart]").getBoundingClientRect().width),
+  jazzGeorgeColumns: getComputedStyle(document.querySelector("#team-jazz .jazz-chart__panels--three")).gridTemplateColumns.split(" ").length,
+  jazzReboundWidth: Math.round(document.querySelector("#team-jazz [data-jazz-rebounding-chart]").getBoundingClientRect().width),
+  jazzReboundColumns: getComputedStyle(document.querySelector("#team-jazz .jazz-chart__panels--two")).gridTemplateColumns.split(" ").length,
+  jazzTableContained: [...document.querySelectorAll("#team-jazz .jazz-chart__table-wrap")].every((wrap) => wrap.scrollWidth > wrap.clientWidth),
+  warriorsChartWidth: Math.round(document.querySelector("#team-warriors .curry-chart").getBoundingClientRect().width),
+  warriorsTableContained: document.querySelector("#team-warriors .curry-chart__table-wrap").scrollWidth > document.querySelector("#team-warriors .curry-chart__table-wrap").clientWidth,
+  warriorsPanelColumns: getComputedStyle(document.querySelector("#team-warriors .curry-chart__panels")).gridTemplateColumns.split(" ").length,
+  warriorsPanelSeasons: [...document.querySelectorAll("#team-warriors .curry-chart__panel")].map((panel) => panel.querySelectorAll(".curry-chart__season").length),
 }))()`);
 const mobileShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
 await fs.writeFile(`${outputPrefix}-mobile.png`, Buffer.from(mobileShot.data, "base64"));
@@ -196,6 +274,18 @@ await evaluate(`document.querySelector("#team-cavaliers").open = true; document.
 await new Promise((resolve) => setTimeout(resolve, 350));
 const clevelandMobileShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
 await fs.writeFile(`${outputPrefix}-cleveland-mobile.png`, Buffer.from(clevelandMobileShot.data, "base64"));
+await evaluate(`document.querySelector("#team-jazz").open = true; document.querySelector("#team-jazz [data-jazz-george-chart]")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 350));
+const jazzGeorgeMobileShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-jazz-george-mobile.png`, Buffer.from(jazzGeorgeMobileShot.data, "base64"));
+await evaluate(`document.querySelector("#team-jazz [data-jazz-rebounding-chart]")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 350));
+const jazzReboundMobileShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-jazz-rebounding-mobile.png`, Buffer.from(jazzReboundMobileShot.data, "base64"));
+await evaluate(`document.querySelector("#team-warriors").open = true; document.querySelector("#team-warriors .curry-chart")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 500));
+const warriorsMobileShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-warriors-mobile.png`, Buffer.from(warriorsMobileShot.data, "base64"));
 
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
 await evaluate(`document.querySelector("#team-magic .magic-on-off")?.scrollIntoView({ block: "start" })`);
@@ -214,6 +304,18 @@ await evaluate(`document.querySelector("#team-cavaliers").open = true; document.
 await new Promise((resolve) => setTimeout(resolve, 500));
 const clevelandDesktopShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
 await fs.writeFile(`${outputPrefix}-cleveland-desktop.png`, Buffer.from(clevelandDesktopShot.data, "base64"));
+await evaluate(`document.querySelector("#team-jazz").open = true; document.querySelector("#team-jazz [data-jazz-george-chart]")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 500));
+const jazzGeorgeDesktopShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-jazz-george-desktop.png`, Buffer.from(jazzGeorgeDesktopShot.data, "base64"));
+await evaluate(`document.querySelector("#team-jazz [data-jazz-rebounding-chart]")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 500));
+const jazzReboundDesktopShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-jazz-rebounding-desktop.png`, Buffer.from(jazzReboundDesktopShot.data, "base64"));
+await evaluate(`document.querySelector("#team-warriors").open = true; document.querySelector("#team-warriors .curry-chart")?.scrollIntoView({ block: "start" })`);
+await new Promise((resolve) => setTimeout(resolve, 500));
+const warriorsDesktopShot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+await fs.writeFile(`${outputPrefix}-warriors-desktop.png`, Buffer.from(warriorsDesktopShot.data, "base64"));
 const clevelandReopen = await evaluate(`(async () => {
   const card = document.querySelector("#team-cavaliers");
   card.open = false;
@@ -231,20 +333,20 @@ const keyboardControl = await evaluate(`(() => {
   return { tag: summary.tagName, focused: document.activeElement === summary, tabIndex: summary.tabIndex };
 })()`);
 
-const report = { pageUrl, initial, expanded, magic, pacers, hawks, cleveland, mobile, clevelandReopen, hashNavigation, keyboardControl, failures };
+const report = { pageUrl, initial, expanded, magic, pacers, hawks, cleveland, jazz, warriors, mobile, clevelandReopen, hashNavigation, keyboardControl, failures };
 console.log(JSON.stringify(report, null, 2));
 
 const expectedRanks = Array.from({ length: 30 }, (_, index) => index + 1);
-const passed = initial.cards === 18
+const passed = initial.cards === 20
   && initial.rankings === 30
-  && initial.completedLinks === 18
-  && initial.upcoming === 12
+  && initial.completedLinks === 20
+  && initial.upcoming === 10
   && initial.logos.every((logo) => logo.loaded)
   && JSON.stringify(initial.ranks) === JSON.stringify(expectedRanks)
   && !initial.draftLanguage
   && !initial.horizontalOverflow
-  && expanded.openCards === 18
-  && expanded.charts >= 21
+  && expanded.openCards === 20
+  && expanded.charts >= 27
   && expanded.chartErrors.length === 0
   && !expanded.horizontalOverflow
   && magic.mounted === "true"
@@ -291,6 +393,49 @@ const passed = initial.cards === 18
   && cleveland.introParagraphs === 8
   && cleveland.continuationParagraphs === 1
   && !cleveland.hasHistoricalPlaceholder
+  && jazz.georgePanels === 3
+  && jazz.georgeMarks === 9
+  && jazz.georgeLatest === 3
+  && JSON.stringify(jazz.georgeValues) === JSON.stringify([["23.2", "53.3%", "22.8%"], ["25.6", "53.9%", "24.3%"], ["33.5", "60.9%", "27.9%"]])
+  && jazz.reboundPanels === 2
+  && jazz.reboundMarks === 16
+  && JSON.stringify(jazz.reboundSeriesLabels) === JSON.stringify(["Markkanen", "Jackson", "Markkanen", "Jackson"])
+  && JSON.stringify(jazz.reboundValues) === JSON.stringify([["20.7%", "13.6%"], ["19.6%", "13.6%"], ["14.9%", "10.1%"], ["15.7%", "10.8%"], ["18.8%", "12.6%"], ["15.0%", "9.4%"], ["15.5%", "10.0%"], ["17.4%", "10.1%"]])
+  && jazz.combinedLabel === "MEM/UTA combined"
+  && jazz.storyParagraphs === 16
+  && JSON.stringify(jazz.storyGroups) === JSON.stringify([9, 3, 4])
+  && jazz.georgePlacement
+  && jazz.reboundPlacement
+  && jazz.correctedTypos
+  && jazz.identity.toLowerCase() === "#6b4c9a"
+  && jazz.surface.toLowerCase() === "#edeaf3"
+  && jazz.georgeWidth >= 700
+  && jazz.reboundWidth >= 700
+  && warriors.mounted === "true"
+  && warriors.svgs === 2
+  && warriors.linePaths === 4
+  && warriors.marks === 10
+  && warriors.bars === 10
+  && JSON.stringify(warriors.panelBars) === JSON.stringify([4, 6])
+  && JSON.stringify(warriors.panelSeasons) === JSON.stringify([["15–16", "16–17", "17–18", "18–19"], ["20–21", "21–22", "22–23", "23–24", "24–25", "25–26"]])
+  && warriors.panelWidths[1] > warriors.panelWidths[0]
+  && Math.abs(warriors.panelSpacing[0] - warriors.panelSpacing[1]) < 2
+  && Math.abs(warriors.zeroLines[0] - warriors.zeroLines[1]) < 0.01
+  && warriors.rows === 11
+  && JSON.stringify(warriors.seasons) === JSON.stringify(["2015-16", "2016-17", "2017-18", "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26"])
+  && JSON.stringify(warriors.relative.at(-1)) === JSON.stringify(["+4.1", "\u22122.9", "+7.0"])
+  && JSON.stringify(warriors.relative[7]) === JSON.stringify(["+4.0", "+1.7", "+2.3"])
+  && warriors.onMinutes[4] === 139
+  && warriors.onMinutes.at(-1) === 1328
+  && JSON.stringify(warriors.omittedCells) === JSON.stringify(["2019-20", "Omitted — small sample", "Omitted — small sample", "110.6", "Not calculated", "Not calculated", "Not calculated", "139", "Not supplied"])
+  && warriors.sampleNote === "2019–20 excluded: Curry played only 139 minutes."
+  && warriors.interpretation === "Golden State’s offense remained above NBA average with Curry playing in every season shown. Results without him varied considerably."
+  && /not Curry.s isolated effect/i.test(warriors.methodology)
+  && JSON.stringify(warriors.storyGroups) === JSON.stringify([3, 5])
+  && warriors.placement
+  && warriors.identity.toLowerCase() === "#ffc72c"
+  && warriors.secondary.toLowerCase() === "#1d428a"
+  && warriors.chartWidth >= 700
   && !mobile.horizontalOverflow
   && mobile.mobileRankingsVisible
   && mobile.hawksChartWidth <= mobile.viewport
@@ -298,6 +443,15 @@ const passed = initial.cards === 18
   && mobile.clevelandChartWidth <= mobile.viewport
   && mobile.clevelandPanelColumns === 1
   && mobile.clevelandTableContained
+  && mobile.jazzGeorgeWidth <= mobile.viewport
+  && mobile.jazzGeorgeColumns === 1
+  && mobile.jazzReboundWidth <= mobile.viewport
+  && mobile.jazzReboundColumns === 1
+  && mobile.jazzTableContained
+  && mobile.warriorsChartWidth <= mobile.viewport
+  && mobile.warriorsTableContained
+  && mobile.warriorsPanelColumns === 1
+  && JSON.stringify(mobile.warriorsPanelSeasons) === JSON.stringify([4, 6])
   && clevelandReopen.initialized === "true"
   && clevelandReopen.panels === 3
   && hashNavigation.hash === "#team-magic"

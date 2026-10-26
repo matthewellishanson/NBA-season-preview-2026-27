@@ -1,0 +1,4 @@
+player_id,player_name,season,season_type,team,games,minutes_per_game,total_minutes,points_per_game,assists_per_game,points_per_100,assists_per_100,ts_pct,usage_pct,per_game_source_row,per_100_source_row,advanced_source_row
+keyonte-george,Keyonte George,2023-24,regular_season,UTA,75,27.0,2023,13.0,4.4,23.2,7.9,.533,22.8,2,2,2
+keyonte-george,Keyonte George,2024-25,regular_season,UTA,67,31.5,2109,16.8,5.6,25.6,8.6,.539,24.3,3,3,3
+keyonte-george,Keyonte George,2025-26,regular_season,UTA,54,33.1,1786,23.6,6.1,33.5,8.7,.609,27.9,4,4,4
