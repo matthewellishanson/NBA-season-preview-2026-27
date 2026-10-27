@@ -3,17 +3,14 @@ import { access, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promise
 import os from "node:os";
 import path from "node:path";
 
-
 const ROOT = path.resolve(import.meta.dirname, "..");
-const URL = process.argv[2] || "http://127.0.0.1:4173/artifacts/nets-rookie-fixture.html";
+const URL = process.argv[2] || "http://127.0.0.1:4173/dist/2026-27-team-previews/#team-nets";
 const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const ARTIFACTS = path.join(ROOT, "artifacts");
-
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
-
 
 class CdpClient {
   constructor(url) {
@@ -22,7 +19,6 @@ class CdpClient {
     this.pending = new Map();
     this.listeners = new Map();
   }
-
   async connect() {
     this.socket = new WebSocket(this.url);
     await new Promise((resolve, reject) => {
@@ -42,7 +38,6 @@ class CdpClient {
       (this.listeners.get(message.method) || []).forEach((callback) => callback(message.params));
     });
   }
-
   send(method, params = {}) {
     const id = ++this.id;
     return new Promise((resolve, reject) => {
@@ -50,7 +45,6 @@ class CdpClient {
       this.socket.send(JSON.stringify({ id, method, params }));
     });
   }
-
   once(method, timeout = 10000) {
     return new Promise((resolve, reject) => {
       const timer = setTimeout(() => reject(new Error(`Timed out waiting for ${method}`)), timeout);
@@ -62,12 +56,8 @@ class CdpClient {
       this.listeners.set(method, [...(this.listeners.get(method) || []), callback]);
     });
   }
-
-  close() {
-    this.socket.close();
-  }
+  close() { this.socket.close(); }
 }
-
 
 async function waitForFile(file, timeout = 10000) {
   const start = Date.now();
@@ -82,188 +72,168 @@ async function waitForFile(file, timeout = 10000) {
   throw new Error(`Timed out waiting for ${file}`);
 }
 
-
 async function evaluate(client, expression) {
-  const result = await client.send("Runtime.evaluate", {
-    expression,
-    awaitPromise: true,
-    returnByValue: true,
-  });
-  if (result.exceptionDetails) {
-    throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
-  }
+  const result = await client.send("Runtime.evaluate", { expression, awaitPromise: true, returnByValue: true });
+  if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
   return result.result.value;
 }
 
-
-async function waitForChart(client) {
+async function waitForCharts(client) {
   await evaluate(client, `new Promise((resolve, reject) => {
     const started = performance.now();
     const check = () => {
-      const root = document.querySelector('[data-nets-rookie-chart]');
-      if (root?.netsRookieComparison?.players.length === 5 && root.getAttribute('aria-busy') === 'false') resolve(true);
-      else if (performance.now() - started > 10000) reject(new Error('Nets chart did not become ready'));
+      const rookie = document.querySelector('[data-nets-rookie-chart]');
+      const mpj = document.querySelector('[data-mpj-brooklyn-chart]');
+      if (rookie?.netsRookieComparison?.players.length === 5 && mpj?.mpjComparison?.rows.length === 2 && rookie.getAttribute('aria-busy') === 'false' && mpj.getAttribute('aria-busy') === 'false') resolve(true);
+      else if (performance.now() - started > 12000) reject(new Error('Brooklyn charts did not become ready'));
       else setTimeout(check, 50);
     };
     check();
   })`);
 }
 
-
-async function captureElement(client, output) {
+async function captureElement(client, selector, output) {
   const clip = await evaluate(client, `(() => {
-    const element = document.querySelector('[data-nets-rookie-chart]');
-    const rect = element.getBoundingClientRect();
+    const rect = document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();
     return { x: rect.left + scrollX, y: rect.top + scrollY, width: rect.width, height: rect.height, scale: 1 };
   })()`);
-  const result = await client.send("Page.captureScreenshot", {
-    format: "png",
-    captureBeyondViewport: true,
-    fromSurface: true,
-    clip,
-  });
+  const result = await client.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, fromSurface: true, clip });
   await writeFile(path.join(ARTIFACTS, output), Buffer.from(result.data, "base64"));
 }
 
-
 async function run() {
-  const production = await readFile(path.join(ROOT, "2026-27-team-previews.html"), "utf8");
-  assert(/name: "Brooklyn Nets",[\s\S]{0,220}?status: "outline"/.test(production), "Brooklyn publication status changed.");
-  assert(production.includes("story--nets-intro") && production.includes("story--nets-continuation"), "Production template is missing the Nets story split.");
-  assert(production.includes("median of 138 qualified rookie player-seasons") && production.includes("48 of those seasons"), "Integrated benchmark labels are incomplete.");
+  const source = await readFile(path.join(ROOT, "2026-27-team-previews.html"), "utf8");
+  const deployable = await readFile(path.join(ROOT, "dist", "2026-27-team-previews", "index.html"), "utf8");
+  assert(source === deployable, "Deployable index.html is not synchronized with the production source.");
+  assert(/name: "Brooklyn Nets",[\s\S]{0,240}?status: "published"[\s\S]{0,100}?logo: "assets\/img\/teamlogos\/nets\.png"/.test(source), "Brooklyn publication state or logo changed.");
+  assert(source.includes("data-mpj-brooklyn-chart") && source.includes("data-nets-rookie-chart"), "Production source is missing a Brooklyn chart.");
 
   await mkdir(ARTIFACTS, { recursive: true });
-  const intro = production.match(/<article class="story story--nets story--nets-intro">[\s\S]*?<\/article>/)?.[0];
-  const figure = production.match(/<figure\s+class="team-graphic nets-rookies"[\s\S]*?<\/figure>/)?.[0];
-  const continuation = production.match(/<article class="story story--nets story--nets-continuation">[\s\S]*?<\/article>/)?.[0];
-  assert(intro && figure && continuation, "Could not extract the integrated Nets story and chart markup.");
-  const fixture = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="../assets/css/team-color-policy.css"><link rel="stylesheet" href="../assets/css/nets-rookie-comparison.css">
-    <style>*{box-sizing:border-box}body{margin:0;background:#f7f7fa;color:#20212b;font:16px/1.6 system-ui,sans-serif}.team-card{display:block;max-width:1120px;margin:20px auto}.story-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}.story p{max-width:760px;margin:0 auto 1em}@media(max-width:560px){.team-card{margin:0;padding:6px}.story p{font-size:15px}}</style>
-    </head><body><details class="team-card" data-team-theme="BKN" open><div class="story-layout story-layout--nets">${intro}${figure.replaceAll('assets/', '../assets/')}${continuation}</div></details>
-    <script src="../assets/vendor/d3/d3.v7.9.0.min.js"></script><script src="../assets/js/nets-rookie-comparison.js"></script></body></html>`;
-  await writeFile(path.join(ARTIFACTS, "nets-rookie-fixture.html"), fixture, "utf8");
-  const profile = await mkdtemp(path.join(os.tmpdir(), "nets-rookies-chrome-"));
+  const profile = await mkdtemp(path.join(os.tmpdir(), "nets-preview-chrome-"));
   const chrome = spawn(CHROME, [
-    "--headless=new",
-    "--in-process-gpu",
-    "--use-angle=swiftshader",
-    "--use-gl=angle",
-    "--disable-gpu-sandbox",
-    "--disable-gpu-shader-disk-cache",
-    "--disable-features=Vulkan,SkiaGraphite",
-    "--no-first-run",
-    "--no-default-browser-check",
-    "--window-size=1280,900",
-    "--remote-debugging-port=0",
-    `--user-data-dir=${profile}`,
-    "about:blank",
+    "--headless=new", "--in-process-gpu", "--use-angle=swiftshader", "--use-gl=angle", "--disable-gpu-sandbox",
+    "--disable-gpu-shader-disk-cache", "--disable-features=Vulkan,SkiaGraphite", "--no-first-run", "--no-default-browser-check",
+    "--window-size=1280,900", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank",
   ], { stdio: "ignore", windowsHide: true });
   let client;
-  const chartErrors = [];
+  const browserErrors = [];
 
   try {
-    const activePortFile = path.join(profile, "DevToolsActivePort");
-    await waitForFile(activePortFile);
-    console.log("Chrome debugging port is ready.");
-    const [port] = (await readFile(activePortFile, "utf8")).trim().split(/\s+/);
+    const portFile = path.join(profile, "DevToolsActivePort");
+    await waitForFile(portFile);
+    const [port] = (await readFile(portFile, "utf8")).trim().split(/\s+/);
     const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
     const page = targets.find((target) => target.type === "page");
     assert(page, "No browser page target was available.");
     client = new CdpClient(page.webSocketDebuggerUrl);
     await client.connect();
-    console.log("Connected to the browser.");
     client.listeners.set("Runtime.consoleAPICalled", [(params) => {
-      const message = params.args.map((arg) => arg.value || arg.description || "").join(" ");
-      if (params.type === "error" && message.includes("Nets rookie")) chartErrors.push(message);
+      if (params.type === "error") browserErrors.push(params.args.map((arg) => arg.value || arg.description || "").join(" "));
     }]);
-    await client.send("Page.enable");
-    await client.send("Runtime.enable");
+    client.listeners.set("Network.loadingFailed", [(params) => browserErrors.push(`Network: ${params.errorText}`)]);
+    await Promise.all([client.send("Page.enable"), client.send("Runtime.enable"), client.send("Network.enable")]);
     const loaded = client.once("Page.loadEventFired");
     await client.send("Page.navigate", { url: URL });
     await loaded;
-    console.log("Prototype page loaded.");
-    await waitForChart(client);
-    console.log("Nets chart is ready.");
+    await waitForCharts(client);
 
     const desktop = await evaluate(client, `(() => {
-      const root = document.querySelector('[data-nets-rookie-chart]');
-      const card = root.closest('details');
-      const intro = root.previousElementSibling;
-      const continuation = root.nextElementSibling;
-      const style = getComputedStyle(root);
-      const comparison = root.netsRookieComparison;
-      const positionErrors = [];
-      root.querySelectorAll('.nets-rookies__row').forEach((rowElement, rowIndex) => {
+      const card = document.querySelector('#team-nets');
+      const rookie = card.querySelector('[data-nets-rookie-chart]');
+      const mpj = card.querySelector('[data-mpj-brooklyn-chart]');
+      const children = [...card.querySelector('.story-layout').children];
+      const rookieData = rookie.netsRookieComparison;
+      const rookiePositionErrors = [];
+      rookie.querySelectorAll('.nets-rookies__row').forEach((rowElement, rowIndex) => {
         rowElement.querySelectorAll('.nets-rookies__metric').forEach((metricElement, metricIndex) => {
-          const row = comparison.players[rowIndex];
-          const metric = comparison.metrics[metricIndex];
-          const expectedValue = Math.max(0, Math.min(100, ((row[metric.key] - metric.min) / (metric.max - metric.min)) * 100));
-          const expectedMedian = Math.max(0, Math.min(100, ((comparison.benchmark[metric.key] - metric.min) / (metric.max - metric.min)) * 100));
-          const actualValue = parseFloat(metricElement.querySelector('.nets-rookies__track').style.getPropertyValue('--nets-value'));
-          const actualMedian = parseFloat(metricElement.querySelector('.nets-rookies__track').style.getPropertyValue('--nets-median'));
-          if (Math.abs(actualValue - expectedValue) > 0.001 || Math.abs(actualMedian - expectedMedian) > 0.001) {
-            positionErrors.push([row.playerId, metric.key, actualValue, expectedValue, actualMedian, expectedMedian]);
-          }
+          const row = rookieData.players[rowIndex];
+          const metric = rookieData.metrics[metricIndex];
+          const expected = Math.max(0, Math.min(100, ((row[metric.key] - metric.min) / (metric.max - metric.min)) * 100));
+          const actual = parseFloat(metricElement.querySelector('.nets-rookies__track').style.getPropertyValue('--nets-value'));
+          if (Math.abs(actual - expected) > 0.001) rookiePositionErrors.push([row.playerId, metric.key, actual, expected]);
         });
       });
-      const text = root.textContent.replace(/\s+/g, ' ').trim();
-      const tableText = root.querySelector('.nets-rookies__table').textContent.replace(/\s+/g, ' ').trim();
+      const mpjData = mpj.mpjComparison;
+      const mpjPositionErrors = [];
+      [...mpj.querySelectorAll('.mpj-shift__metric')].forEach((element, index) => {
+        const metric = [...mpjData.roleMetrics, ...mpjData.assistedMetrics][index];
+        const track = element.querySelector('.mpj-shift__track');
+        [mpjData.rows[0], mpjData.rows[1]].forEach((row, rowIndex) => {
+          const expected = Math.max(0, Math.min(100, ((row[metric.key] - metric.min) / (metric.max - metric.min)) * 100));
+          const property = rowIndex ? '--mpj-brooklyn' : '--mpj-denver';
+          const actual = parseFloat(track.style.getPropertyValue(property));
+          if (Math.abs(actual - expected) > 0.001) mpjPositionErrors.push([row.season, metric.key, actual, expected]);
+        });
+      });
       return {
-        cardOpen: card.open,
-        busy: root.getAttribute('aria-busy'),
-        rows: root.querySelectorAll('.nets-rookies__row').length,
-        metrics: root.querySelectorAll('.nets-rookies__metric').length,
-        tableRows: root.querySelectorAll('.nets-rookies__table tbody tr').length,
-        introParagraphs: intro?.querySelectorAll(':scope > p').length,
-        continuationParagraphs: continuation?.querySelectorAll(':scope > p').length,
-        placement: intro?.classList.contains('story--nets-intro') && continuation?.classList.contains('story--nets-continuation'),
-        identity: style.getPropertyValue('--team-identity').trim(),
-        surface: style.getPropertyValue('--team-surface').trim(),
-        text,
-        tableText,
-        positionErrors,
-        pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        open: card.open,
+        childClasses: children.map((node) => node.className),
+        storyGroups: [...card.querySelectorAll('.story--nets')].map((article) => article.querySelectorAll(':scope > p').length),
+        rookie: {
+          rows: rookie.querySelectorAll('.nets-rookies__row').length,
+          metrics: rookie.querySelectorAll('.nets-rookies__metric').length,
+          bars: rookie.querySelectorAll('.nets-rookies__bar').length,
+          dots: rookie.querySelectorAll('.nets-rookies__dot').length,
+          tableRows: rookie.querySelectorAll('tbody tr').length,
+          playerContext: [...rookie.querySelectorAll('.nets-rookies__player span')].map((node) => node.textContent.trim()),
+          positionErrors: rookiePositionErrors,
+        },
+        mpj: {
+          metrics: mpj.querySelectorAll('.mpj-shift__metric').length,
+          marks: mpj.querySelectorAll('.mpj-shift__mark').length,
+          tableRows: mpj.querySelectorAll('tbody tr').length,
+          context: mpj.querySelector('.mpj-shift__season-context').textContent.replace(/\\s+/g, ' ').trim(),
+          text: mpj.textContent.replace(/\\s+/g, ' ').trim(),
+          positionErrors: mpjPositionErrors,
+        },
+        theme: getComputedStyle(rookie).getPropertyValue('--team-identity').trim(),
+        overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       };
     })()`);
-    assert(desktop.cardOpen && desktop.busy === "false", "Nets card or chart was not ready.");
-    assert(desktop.rows === 5 && desktop.metrics === 20 && desktop.tableRows === 6, "Rendered chart/table counts were incorrect.");
-    assert(desktop.introParagraphs === 8 && desktop.continuationParagraphs === 6 && desktop.placement, "Chart was not placed at the intended story break.");
-    assert(desktop.identity.toLowerCase() === "#444444" && desktop.surface.toLowerCase() === "#e9e9e9", "Nets theme tokens were not inherited.");
-    ["Danny Wolf", "Egor Demin", "Nolan Traore", "Ben Saraf", "Drake Powell"].forEach((value) => assert(desktop.text.includes(value), `Chart was missing ${value}.`));
-    ["57", "20.8", "21.2", "5.3", "52", "25.2", "20.3", "6.5", "56.1%", "47.9%", "48.6%", "54.8%"].forEach((value) => assert(desktop.tableText.includes(value) || desktop.text.includes(value), `Rendered values were missing ${value}.`));
-    assert(desktop.positionErrors.length === 0, `Bar or benchmark positions were incorrect: ${JSON.stringify(desktop.positionErrors)}`);
-    assert(desktop.pageOverflow <= 1, `Desktop page overflowed by ${desktop.pageOverflow}px.`);
-    await captureElement(client, "nets-rookies-desktop.png");
+    assert(desktop.open, "Brooklyn did not expand at the active preview URL.");
+    assert(JSON.stringify(desktop.storyGroups) === JSON.stringify([6, 2, 6]), "Approved 14-paragraph story split changed.");
+    assert(desktop.childClasses[0].includes("story--nets-intro") && desktop.childClasses[1].includes("mpj-shift") && desktop.childClasses[2].includes("story--nets-prospects") && desktop.childClasses[3].includes("nets-rookies") && desktop.childClasses[4].includes("story--nets-continuation"), "Brooklyn charts are not at the intended story breaks.");
+    assert(desktop.rookie.rows === 5 && desktop.rookie.metrics === 20 && desktop.rookie.bars === 15 && desktop.rookie.dots === 5 && desktop.rookie.tableRows === 6, "Revised rookie matrix mark counts are incorrect.");
+    assert(desktop.rookie.playerContext.every((value) => /^\d+ games$/.test(value)), "Rookie name cells duplicate MPG or lack games labels.");
+    assert(desktop.rookie.positionErrors.length === 0, `Rookie positions disagree with data: ${JSON.stringify(desktop.rookie.positionErrors)}`);
+    assert(desktop.mpj.metrics === 7 && desktop.mpj.marks === 14 && desktop.mpj.tableRows === 2, "MPJ graphic mark/table counts are incorrect.");
+    ["25.9", "36.9", "20.2%", "30.5%", "3.1", "4.6", "1.9", "3.6", "61.7%", "59.5%", "74.0%", "65.3%", "92.2%", "85.8%"].forEach((value) => assert(desktop.mpj.text.includes(value), `MPJ graphic is missing ${value}.`));
+    assert(desktop.mpj.context.includes("77 games") && desktop.mpj.context.includes("52 games"), `MPJ games context is incomplete: ${desktop.mpj.context}`);
+    assert(desktop.mpj.positionErrors.length === 0, `MPJ positions disagree with data: ${JSON.stringify(desktop.mpj.positionErrors)}`);
+    assert(desktop.theme.toLowerCase() === "#444444" && desktop.overflow <= 1, "Desktop theme or page overflow check failed.");
+    assert(browserErrors.length === 0, `Browser errors: ${browserErrors.join(" | ")}`);
+    await captureElement(client, "[data-mpj-brooklyn-chart]", "nets-mpj-desktop.png");
+    await captureElement(client, "[data-nets-rookie-chart]", "nets-rookies-desktop.png");
 
     await client.send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await evaluate(client, `new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
     const mobile = await evaluate(client, `(() => {
-      const root = document.querySelector('[data-nets-rookie-chart]');
-      const rows = root.querySelector('.nets-rookies__rows');
-      const firstRow = root.querySelector('.nets-rookies__row');
-      const details = root.querySelector('.nets-rookies__table-details');
-      const summary = root.querySelector('.nets-rookies__table-toggle');
-      summary.focus();
-      summary.click();
-      return {
-        columns: getComputedStyle(rows).gridTemplateColumns.split(' ').filter(Boolean).length,
-        rowFits: firstRow.getBoundingClientRect().right <= root.getBoundingClientRect().right + 1,
-        detailsOpen: details.open,
-        focusVisible: document.activeElement === summary,
-        pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      const card = document.querySelector('#team-nets');
+      const rookie = card.querySelector('[data-nets-rookie-chart]');
+      const mpj = card.querySelector('[data-mpj-brooklyn-chart]');
+      const toggles = [rookie.querySelector('summary'), mpj.querySelector('summary')];
+      toggles.forEach((toggle) => { toggle.focus(); toggle.click(); });
+      const result = {
+        rookieColumns: getComputedStyle(rookie.querySelector('.nets-rookies__rows')).gridTemplateColumns.split(' ').length,
+        mpjRoleColumns: getComputedStyle(mpj.querySelector('.mpj-shift__role-grid')).gridTemplateColumns.split(' ').length,
+        mpjAssistedColumns: getComputedStyle(mpj.querySelector('.mpj-shift__assisted-grid')).gridTemplateColumns.split(' ').length,
+        tablesOpen: toggles.every((toggle) => toggle.parentElement.open),
+        overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        chartsFit: [rookie, mpj].every((root) => root.getBoundingClientRect().right <= document.documentElement.clientWidth + 1),
       };
+      toggles.forEach((toggle) => toggle.click());
+      card.open = false;
+      card.open = true;
+      result.reopenReady = rookie.netsRookieComparison.players.length === 5 && mpj.mpjComparison.rows.length === 2;
+      return result;
     })()`);
-    assert(mobile.columns === 1 && mobile.rowFits, "Mobile player cards did not stack into one readable column.");
-    assert(mobile.detailsOpen && mobile.focusVisible, "Accessible table toggle was not keyboard-focusable and operable.");
-    assert(mobile.pageOverflow <= 1, `Mobile page overflowed by ${mobile.pageOverflow}px.`);
-    await evaluate(client, `document.querySelector('.nets-rookies__table-details').open = false`);
-    await captureElement(client, "nets-rookies-mobile.png");
-    assert(chartErrors.length === 0, `Browser reported Nets chart errors: ${chartErrors.join(" | ")}`);
+    assert(mobile.rookieColumns === 1 && mobile.mpjRoleColumns === 1 && mobile.mpjAssistedColumns === 1, "Mobile chart grids did not stack.");
+    assert(mobile.tablesOpen && mobile.chartsFit && mobile.reopenReady && mobile.overflow <= 1, "Mobile accessibility, fit, reopen or overflow check failed.");
+    await captureElement(client, "[data-mpj-brooklyn-chart]", "nets-mpj-mobile.png");
+    await captureElement(client, "[data-nets-rookie-chart]", "nets-rookies-mobile.png");
 
-    console.log("Verified Nets rookie chart data, placement, theme, labels, benchmark positions, table, and publication status.");
-    console.log("Verified 1280px desktop and 390px mobile layouts without page overflow.");
-    console.log("Wrote artifacts/nets-rookies-desktop.png and artifacts/nets-rookies-mobile.png.");
+    console.log(`Verified active deployable preview: ${URL}`);
+    console.log("Verified Brooklyn publication state, story preservation, both charts, direct values, metric scales, keyboard tables, reopen behavior, and 1280px/390px layouts.");
   } finally {
     if (client) client.close();
     if (chrome.exitCode === null) {
@@ -283,13 +253,8 @@ async function run() {
   }
 }
 
-
-// Node 24 does not keep the experimental WebSocket connection alive while the
-// CDP handshake promise is pending, so retain one timer for the verifier run.
 const keepAlive = setInterval(() => {}, 1000);
-run()
-  .catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-  })
-  .finally(() => clearInterval(keepAlive));
+run().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+}).finally(() => clearInterval(keepAlive));

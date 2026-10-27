@@ -87,7 +87,7 @@
 }
 .nets-rookies__column-headings span:not(:first-child) { text-align: right; }
 .nets-rookies__column-headings i { display: block; margin-top: 2px; font-style: normal; letter-spacing: 0; text-transform: none; }
-.nets-rookies__row { min-height: 91px; padding: 13px 14px; border-bottom: 1px solid #dedede; }
+.nets-rookies__row { min-height: 74px; padding: 10px 14px; border-bottom: 1px solid #dedede; }
 .nets-rookies__row:last-child { border-bottom: 0; }
 .nets-rookies__player strong { display: block; color: var(--team-ink); font: 850 0.86rem/1.25 system-ui, sans-serif; }
 .nets-rookies__player span { display: block; margin-top: 4px; color: var(--team-muted); font: 700 0.7rem/1.3 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
@@ -112,6 +112,19 @@
   background: var(--team-ink);
   border-radius: inherit;
 }
+.nets-rookies__dot {
+  position: absolute;
+  top: 50%;
+  left: var(--nets-value);
+  width: 12px;
+  height: 12px;
+  background: var(--team-ink);
+  border: 2px solid var(--team-plot);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--team-ink);
+  transform: translate(-50%, -50%);
+}
+.nets-rookies__metric--dot .nets-rookies__track { height: 4px; margin-top: 10px; border-radius: 0; }
 .nets-rookies__median {
   position: absolute;
   top: -4px;

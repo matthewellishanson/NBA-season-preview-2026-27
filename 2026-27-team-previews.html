@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/clutch-shooting-chart.css" />
     <link rel="stylesheet" href="assets/css/celtics-wing-comparison.css" />
     <link rel="stylesheet" href="assets/css/nets-rookie-comparison.css" />
+    <link rel="stylesheet" href="assets/css/mpj-brooklyn-comparison.css" />
     <link rel="stylesheet" href="assets/css/mcdaniels-offense-chart.css" />
     <link rel="stylesheet" href="assets/css/duren-season-comparison.css" />
     <link rel="stylesheet" href="assets/css/edey-memphis-chart.css" />
@@ -1841,6 +1842,49 @@
                   <p>What a disappointing stretch for a guy who has done everything he can to prove his worth as a bona fide star in this league, after a career full of criticism about his ability to translate good stats into winning basketball.</p>
                   <p>There&rsquo;s not much else to say about Randle&rsquo;s presence on this roster besides lamenting his journey to get here. I don&rsquo;t know exactly what he was brought to Brooklyn to do without enough support around him to compete in a meaningful way, but hopefully he at least gets a few more solid prime seasons out of the sorry change of scenery &mdash; in basketball terms, not city-wise, of course. He&rsquo;s still a borderline All-Star whose bully-ball style should be good for 20 and 10 a night on a team this bad, even if it seems unlikely to lead Brooklyn anywhere with the rest of its current roster.</p>
                   <p>And actually, for all my grumbling about Porter &mdash; both about his alt-right himbo persona off the court and his unrealized potential and lack of off-the-dribble shot creation on it &mdash; he did have a career-best season last year. To do that after the team that drafted him and won a title with him, the Denver Nuggets, traded him to the Nets for a virtually identical player in Cam Johnson, who&rsquo;s also slightly older than Porter, deserves some recognition here. I&rsquo;m just not sure how much consideration it warrants when projecting whether he can help Brooklyn win this season.</p>
+                </article>
+                <figure
+                  class="team-graphic mpj-shift"
+                  data-mpj-brooklyn-chart
+                  data-source="assets/data/processed/mpj-denver-brooklyn-2024-2026.csv"
+                  data-team-theme="BKN"
+                  aria-busy="true"
+                  aria-labelledby="mpj-shift-title"
+                  aria-describedby="mpj-shift-description"
+                >
+                  <header>
+                    <p class="mpj-shift__eyebrow">Porter in Denver and Brooklyn &middot; Regular season</p>
+                    <h3 class="mpj-shift__title team-graphic__title" id="mpj-shift-title">Michael Porter Jr.: Denver to Brooklyn</h3>
+                    <p class="mpj-shift__subtitle">Michael Porter Jr.&rsquo;s final Denver season compared with his first in Brooklyn</p>
+                    <p class="mpj-shift__visually-hidden" id="mpj-shift-description">Two coordinated sections compare Porter&rsquo;s role, production, efficiency and the share of his made two- and three-point baskets credited as assisted in 2024-25 with Denver and 2025-26 with Brooklyn. Each metric uses its own labeled scale and direct values.</p>
+                  </header>
+                  <div class="mpj-shift__season-context" aria-label="Season and sample key"></div>
+                  <div class="team-graphic__plot mpj-shift__plot">
+                    <p class="mpj-shift__status">Loading Porter&rsquo;s two-season comparison&hellip;</p>
+                    <section class="mpj-shift__section" aria-labelledby="mpj-role-title">
+                      <h4 id="mpj-role-title">A. A bigger role, with tradeoffs</h4>
+                      <p class="mpj-shift__section-intro">Brooklyn asked Porter to use more possessions and create more offense. His scoring, assists and turnovers rose while his true shooting declined.</p>
+                      <div class="mpj-shift__role-grid"></div>
+                    </section>
+                    <section class="mpj-shift__section" aria-labelledby="mpj-assisted-title">
+                      <h4 id="mpj-assisted-title">B. How often his made shots were assisted</h4>
+                      <p class="mpj-shift__section-intro">Share of made two-pointers or made three-pointers credited to a teammate&rsquo;s assist.</p>
+                      <div class="mpj-shift__assisted-grid"></div>
+                    </section>
+                  </div>
+                  <p class="mpj-shift__caveat"><strong>Limits:</strong> The season comparison is descriptive and does not show that a larger role caused the efficiency changes. Assisted-make shares do not identify catch-and-shoot, pull-up or off-screen attempts and do not fully measure shot creation.</p>
+                  <details class="mpj-shift__table-details">
+                    <summary class="mpj-shift__table-toggle">View accessible comparison table</summary>
+                    <div class="mpj-shift__table-wrap"></div>
+                  </details>
+                  <figcaption class="mpj-shift__notes">
+                    <p><strong>Source:</strong> supplied Basketball Reference Per Game, Per 100 Possessions, Advanced and Shooting exports. Regular season only.</p>
+                    <p>Points, assists and turnovers are per 100 possessions. Usage rate is an estimate of possession-ending responsibility, not time of possession. True shooting includes field goals and free throws.</p>
+                    <p><a class="team-graphic__link" href="assets/data/processed/mpj-denver-brooklyn-2024-2026.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/mpj-denver-brooklyn-2024-2026.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="mpj-shift__status mpj-shift__status--error">This graphic requires JavaScript. The validated chart-ready CSV and preparation notes are linked above.</p></noscript>
+                </figure>
+                <article class="story story--nets story--nets-prospects">
                   <p>But enough about the veteran stars stranded on this aimless, rebuilding team. The more important story in Brooklyn continues to be what the Nets can make of their many recent draft picks and developing prospects, and which of those projects has any long-term potential here.</p>
                   <p>Brooklyn&rsquo;s five first-rounders from the 2025 draft all played a good amount last season, with varying degrees of success. But none of the five &mdash; Danny Wolf, Egor Demin, Nolan Traore, Ben Saraf and Drake Powell &mdash; looked like a clear future star as a rookie, despite the minutes promising young head coach Jordi Fernandez gave them to prove themselves. All five will be under careful scrutiny throughout their sophomore seasons, and each will be playing for a place in the Nets&rsquo; long-term plans.</p>
                 </article>` : ""}
@@ -2300,7 +2344,7 @@
                   </header>
                   <p class="nets-rookies__reading">Opportunity was fairly close: each rookie averaged between 20.8 and 25.2 minutes. Their scoring, playmaking and efficiency differed across distinct roles.</p>
                   <div class="nets-rookies__key" aria-label="Chart key">
-                    <span><i class="nets-rookies__key-bar" aria-hidden="true"></i>Player value</span>
+                    <span><i class="nets-rookies__key-bar" aria-hidden="true"></i>Player value (bar or dot)</span>
                     <span><i class="nets-rookies__key-median" aria-hidden="true"></i>Median of 138 qualified rookie player-seasons</span>
                   </div>
                   <div class="team-graphic__plot nets-rookies__plot">
@@ -2661,6 +2705,7 @@
     <script src="assets/js/clutch-shooting-chart.js"></script>
     <script src="assets/js/celtics-wing-comparison.js"></script>
     <script src="assets/js/nets-rookie-comparison.js"></script>
+    <script src="assets/js/mpj-brooklyn-comparison.js"></script>
     <script src="assets/js/mcdaniels-offense-chart.js"></script>
     <script src="assets/js/duren-season-comparison.js"></script>
     <script src="assets/js/edey-memphis-chart.js"></script>

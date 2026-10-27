@@ -15,7 +15,7 @@
     { key: "minutesPerGame", label: "Minutes/game", short: "MPG", min: 0, max: 36, format: oneDecimal },
     { key: "pointsPer100", label: "Points/100 poss.", short: "PTS/100", min: 0, max: 30, format: oneDecimal },
     { key: "assistsPer100", label: "Assists/100 poss.", short: "AST/100", min: 0, max: 10, format: oneDecimal },
-    { key: "trueShooting", label: "True shooting", short: "TS%", min: 0.4, max: 0.65, format: percent },
+    { key: "trueShooting", label: "True shooting", short: "TS%", min: 0.4, max: 0.65, format: percent, mark: "dot" },
   ];
 
   function escapeHtml(value) {
@@ -106,10 +106,10 @@
   function metricCell(row, benchmark, metric) {
     const value = metric.format(row[metric.key]);
     const benchmarkValue = metric.format(benchmark[metric.key]);
-    return `<div class="nets-rookies__metric" data-metric="${escapeHtml(metric.key)}">
+    return `<div class="nets-rookies__metric${metric.mark === "dot" ? " nets-rookies__metric--dot" : ""}" data-metric="${escapeHtml(metric.key)}">
       <div class="nets-rookies__metric-heading"><span>${escapeHtml(metric.short)}</span><strong>${escapeHtml(value)}</strong></div>
       <div class="nets-rookies__track" style="--nets-value:${position(row[metric.key], metric).toFixed(3)}%;--nets-median:${position(benchmark[metric.key], metric).toFixed(3)}%" aria-hidden="true">
-        <span class="nets-rookies__bar"></span><i class="nets-rookies__median"></i>
+        ${metric.mark === "dot" ? '<span class="nets-rookies__dot"></span>' : '<span class="nets-rookies__bar"></span>'}<i class="nets-rookies__median"></i>
       </div>
       <span class="nets-rookies__scale" aria-hidden="true"><i>${escapeHtml(metric.format(metric.min))}</i><i>${escapeHtml(metric.format(metric.max))}</i></span>
       <span class="nets-rookies__visually-hidden">${escapeHtml(metric.label)}: ${escapeHtml(value)}. Qualified rookie median: ${escapeHtml(benchmarkValue)}.</span>
@@ -143,17 +143,17 @@
     const benchmark = rows.find((row) => row.recordType === "benchmark_median");
     const plot = root.querySelector(".nets-rookies__plot");
     const playerRows = players.map((row) => `<article class="nets-rookies__row" role="listitem" aria-label="${escapeHtml(row.playerName)}: ${row.games.toFixed(0)} games, ${oneDecimal(row.minutesPerGame)} minutes per game, ${oneDecimal(row.pointsPer100)} points and ${oneDecimal(row.assistsPer100)} assists per 100 possessions, ${percent(row.trueShooting)} true shooting.">
-      <div class="nets-rookies__player"><strong>${escapeHtml(row.playerName)}</strong><span>${row.games.toFixed(0)} G <i aria-hidden="true">&middot;</i> ${oneDecimal(row.minutesPerGame)} MPG</span></div>
+      <div class="nets-rookies__player"><strong>${escapeHtml(row.playerName)}</strong><span>${row.games.toFixed(0)} games</span></div>
       ${METRICS.map((metric) => metricCell(row, benchmark, metric)).join("")}
     </article>`).join("");
     plot.innerHTML = `<div class="nets-rookies__column-headings" aria-hidden="true">
-      <span>Player <i>G &middot; MPG</i></span>
+      <span>Player <i>Games</i></span>
       ${METRICS.map((metric) => `<span>${escapeHtml(metric.label)}</span>`).join("")}
     </div>
     <div class="nets-rookies__rows" role="list">${playerRows}</div>
     <div class="nets-rookies__benchmark" aria-label="Median benchmark values">
-      <strong>138-season median</strong>
-      <span>${benchmark.games.toFixed(0)} G &middot; ${oneDecimal(benchmark.minutesPerGame)} MPG</span>
+      <strong>138-season median &middot; ${benchmark.games.toFixed(0)} G</strong>
+      <span>${oneDecimal(benchmark.minutesPerGame)} MPG</span>
       <span>${oneDecimal(benchmark.pointsPer100)} PTS/100</span>
       <span>${oneDecimal(benchmark.assistsPer100)} AST/100</span>
       <span>${percent(benchmark.trueShooting)} TS</span>
