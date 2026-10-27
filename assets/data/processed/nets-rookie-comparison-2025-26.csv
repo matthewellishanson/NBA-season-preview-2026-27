@@ -1,0 +1,7 @@
+record_type,player_id,player_name,season,team,games,minutes_per_game,points_per_100,assists_per_100,true_shooting_pct,turnovers_per_100,usage_pct,benchmark_population,advanced_source_row,per_100_source_row,per_game_source_row
+featured_player,wolfda01,Danny Wolf,2025-26,BRK,57,20.8,21.2,5.3,0.521,3.0,20.6,,Rookies_Adv_2023to26.csv:39,Rookies_P100P_2023to26.csv:40,Rookies_PerGame_2023to26.csv:40
+featured_player,demineg01,Egor Demin,2025-26,BRK,52,25.2,20.3,6.5,0.561,3.3,18.8,,Rookies_Adv_2023to26.csv:48,Rookies_P100P_2023to26.csv:49,Rookies_PerGame_2023to26.csv:49
+featured_player,traorno01,Nolan Traore,2025-26,BRK,56,22.2,19.9,8.5,0.479,5.1,22.8,,Rookies_Adv_2023to26.csv:53,Rookies_P100P_2023to26.csv:54,Rookies_PerGame_2023to26.csv:54
+featured_player,sarafbe01,Ben Saraf,2025-26,BRK,44,20.8,17.9,7.8,0.486,5.3,21.0,,Rookies_Adv_2023to26.csv:70,Rookies_P100P_2023to26.csv:71,Rookies_PerGame_2023to26.csv:71
+featured_player,poweldr01,Drake Powell,2025-26,BRK,63,21.0,15.3,3.4,0.521,2.2,14.9,,Rookies_Adv_2023to26.csv:109,Rookies_P100P_2023to26.csv:110,Rookies_PerGame_2023to26.csv:110
+benchmark_median,qualified_rookie_median_2023_26,Qualified rookie median,2023-24 through 2025-26,,57,20.3,17.9,4.05,0.548,2.4,16.6,"Median of 138 qualified rookie player-seasons, 2023-24 through 2025-26 (minimum 15 games and 10 minutes per game)",,,
