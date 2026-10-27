@@ -1,0 +1,402 @@
+.story-layout.story-layout--rockets {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.story--rockets,
+.vanvleet-chart {
+  max-width: 58rem;
+}
+
+.vanvleet-chart {
+  width: 100%;
+  margin: 8px 0 12px;
+  color: var(--team-text);
+}
+
+.vanvleet-chart__eyebrow {
+  margin: 0 0 5px;
+  color: var(--team-ink);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.vanvleet-chart__title {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(22px, 3.2vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.7px;
+}
+
+.vanvleet-chart__subtitle {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.vanvleet-chart__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.vanvleet-chart__reading {
+  max-width: 780px;
+  margin: 14px 0 12px;
+  padding: 11px 13px;
+  border-left: 4px solid var(--team-secondary);
+  background: var(--team-surface-strong);
+  color: var(--team-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.vanvleet-chart__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 10px;
+  color: var(--team-muted);
+  font-size: 11.5px;
+  font-weight: 750;
+}
+
+.vanvleet-chart__key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vanvleet-chart__key-mark {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  flex: none;
+}
+
+.vanvleet-chart__key-mark--on {
+  border-radius: 50%;
+  background: var(--team-ink);
+}
+
+.vanvleet-chart__key-mark--off {
+  border: 2px solid var(--team-comparison);
+  border-radius: 50%;
+  background: var(--team-plot);
+}
+
+.vanvleet-chart__key-mark--context {
+  width: 10px;
+  height: 10px;
+  background: var(--team-secondary);
+  transform: rotate(45deg);
+}
+
+.vanvleet-chart__plot {
+  padding: 12px;
+}
+
+.vanvleet-chart__panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.vanvleet-chart__panel {
+  min-width: 0;
+  padding: 12px 10px 8px;
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+  background: var(--team-plot);
+}
+
+.vanvleet-chart__panel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.vanvleet-chart__panel-title {
+  fill: var(--team-text);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.vanvleet-chart__panel-direction {
+  fill: var(--team-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.vanvleet-chart__grid,
+.vanvleet-chart__connector,
+.vanvleet-chart__context-divider,
+.vanvleet-chart__dot {
+  vector-effect: non-scaling-stroke;
+}
+
+.vanvleet-chart__grid {
+  stroke: #e4e1e2;
+  stroke-width: 1;
+}
+
+.vanvleet-chart__connector {
+  stroke: #a8a3a5;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.vanvleet-chart__context-divider {
+  stroke: var(--team-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.vanvleet-chart__dot--on {
+  fill: var(--team-ink);
+  stroke: var(--team-plot);
+  stroke-width: 2;
+}
+
+.vanvleet-chart__dot--off {
+  fill: var(--team-plot);
+  stroke: var(--team-comparison);
+  stroke-width: 2.5;
+}
+
+.vanvleet-chart__context-mark {
+  stroke: var(--team-plot);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.vanvleet-chart__tick,
+.vanvleet-chart__season,
+.vanvleet-chart__value,
+.vanvleet-chart__context-label {
+  paint-order: stroke;
+  stroke: var(--team-plot);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+.vanvleet-chart__tick,
+.vanvleet-chart__season {
+  fill: var(--team-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.vanvleet-chart__season--context {
+  fill: var(--team-text);
+  font-weight: 850;
+}
+
+.vanvleet-chart__value {
+  font-size: 9.5px;
+  font-weight: 850;
+}
+
+.vanvleet-chart__value--on {
+  fill: var(--team-ink);
+}
+
+.vanvleet-chart__value--off {
+  fill: var(--team-comparison);
+}
+
+.vanvleet-chart__value--context {
+  fill: var(--team-secondary);
+}
+
+.vanvleet-chart__context-label {
+  fill: var(--team-text);
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.vanvleet-chart__details-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 0.8fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 10px;
+  border-top: 1px solid var(--team-border);
+}
+
+.vanvleet-chart__methodology {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--team-secondary);
+  background: var(--team-surface-strong);
+  color: var(--team-muted);
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.vanvleet-chart__methodology p {
+  margin: 0;
+}
+
+.vanvleet-chart__methodology-title {
+  margin-bottom: 4px !important;
+  color: var(--team-ink);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.team-card .vanvleet-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  min-height: 44px;
+  padding: 12px 1px 5px;
+  border-left: 0;
+  background: transparent;
+  color: var(--team-ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  list-style: none;
+}
+
+.team-card .vanvleet-chart__table-toggle:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.vanvleet-chart__table-toggle::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.vanvleet-chart__table-details[open] .vanvleet-chart__table-toggle::before {
+  content: "\25BE";
+}
+
+.vanvleet-chart__table-wrap {
+  width: 100%;
+  margin-top: 7px;
+  overflow-x: auto;
+}
+
+.vanvleet-chart__table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  background: var(--team-plot);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.vanvleet-chart__table caption {
+  padding: 0 0 8px;
+  color: var(--team-muted);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.vanvleet-chart__table th,
+.vanvleet-chart__table td {
+  padding: 7px 6px;
+  border-bottom: 1px solid #e6dfe1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.vanvleet-chart__table th:first-child,
+.vanvleet-chart__table td:nth-child(2) {
+  text-align: left;
+}
+
+.vanvleet-chart__table thead th {
+  color: var(--team-text);
+  font-weight: 850;
+}
+
+.vanvleet-chart__table tr.is-context {
+  background: var(--team-surface-strong);
+}
+
+.vanvleet-chart__notes {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--team-border);
+  color: var(--team-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.vanvleet-chart__notes p {
+  margin: 5px 0;
+}
+
+.vanvleet-chart__status {
+  grid-column: 1 / -1;
+  margin: 8px 0;
+  padding: 18px 12px;
+  border: 1px dashed var(--team-border);
+  border-radius: 5px;
+  background: var(--team-plot);
+  color: var(--team-muted);
+  font-size: 12px;
+}
+
+.vanvleet-chart__status--error {
+  color: var(--team-negative);
+}
+
+@media (max-width: 720px) {
+  .vanvleet-chart__panels,
+  .vanvleet-chart__details-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vanvleet-chart__panels {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .vanvleet-chart {
+    padding: 16px 10px;
+  }
+
+  .vanvleet-chart__plot {
+    padding: 8px 4px;
+  }
+
+  .vanvleet-chart__panel {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  .vanvleet-chart__table-wrap {
+    max-width: calc(100vw - 80px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanvleet-chart *,
+  .vanvleet-chart *::before,
+  .vanvleet-chart *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

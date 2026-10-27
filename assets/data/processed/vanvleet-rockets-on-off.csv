@@ -1,0 +1,8 @@
+season,split,minutes,team_ortg,team_tov_pct,opponent_ortg,team_efg_pct,comparison_status,chart_included,ortg_on_minus_off,tov_on_minus_off_pp,source_file,source_row,source_provenance
+2023-24,on,2686,116.4,12.4,113.4,53.7,completed_on_off_comparison,true,4.3,-1.2,VanVleet_Rockets_OnOff.csv,2,"Basketball Reference team on/off tables, manually transcribed by the author"
+2023-24,off,1288,112.1,13.6,114.6,51.3,completed_on_off_comparison,true,4.3,-1.2,VanVleet_Rockets_OnOff.csv,3,"Basketball Reference team on/off tables, manually transcribed by the author"
+2024-25,on,2114,116.5,12.6,110.8,51.7,completed_on_off_comparison,true,1.6,-3.0,VanVleet_Rockets_OnOff.csv,4,"Basketball Reference team on/off tables, manually transcribed by the author"
+2024-25,off,1845,114.9,15.6,112.3,52.9,completed_on_off_comparison,true,1.6,-3.0,VanVleet_Rockets_OnOff.csv,5,"Basketball Reference team on/off tables, manually transcribed by the author"
+2025-26,team_full_season,,118.6,13.3,113.2,54.2,full_team_season_vanvleet_did_not_play,true,,,VanVleet_Rockets_OnOff.csv,6,"Basketball Reference team on/off tables, manually transcribed by the author"
+2026-27,on,61,127.0,14.8,109.2,60.0,incomplete_small_sample_future_use,false,4.6,-2.3,VanVleet_Rockets_OnOff.csv,7,"Basketball Reference team on/off tables, manually transcribed by the author"
+2026-27,off,83,122.4,17.1,114.0,56.7,incomplete_small_sample_future_use,false,4.6,-2.3,VanVleet_Rockets_OnOff.csv,8,"Basketball Reference team on/off tables, manually transcribed by the author"

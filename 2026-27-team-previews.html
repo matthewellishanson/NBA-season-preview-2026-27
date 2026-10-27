@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="assets/css/watson-cavaliers-chart.css" />
     <link rel="stylesheet" href="assets/css/jazz-charts.css" />
     <link rel="stylesheet" href="assets/css/curry-warriors-chart.css" />
+    <link rel="stylesheet" href="assets/css/vanvleet-rockets-chart.css" />
 
     <style>
       /* Design tokens */
@@ -772,7 +773,7 @@
           <p class="dek" id="rollout-explanation"></p>
           <div class="byline"><strong>By Matt Hanson</strong><span>Hanson Hoops</span></div>
           <div class="release-meta" aria-label="Publication status">
-            <span><strong id="completion-count">19 of 30</strong> previews complete</span>
+            <span><strong id="completion-count">21 of 30</strong> previews complete</span>
             <span>Last updated <time datetime="2026-10-22">October 22, 2026</time></span>
           </div>
           <div class="release-status">
@@ -923,8 +924,9 @@
           color: "#ce1141",
           slug: "rockets",
           powerRank: 9,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/RocketsLogo.png",
+          thesis: "VanVleet’s return gives Houston the steady hand it missed, but last season’s chemistry and spacing questions still need answers.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1272,8 +1274,64 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : ""}">
-                ${team.slug === "warriors" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+                ${team.slug === "rockets" ? `
+                <article class="story story--rockets story--rockets-intro">
+                  <p>A popular pick last preseason as a sleeper contender in the loaded Western Conference, the Houston Rockets instead had a rather disappointing 2025&ndash;26 campaign relative to the hype surrounding them. That hype followed the addition of future Hall of Famer Kevin Durant at the cost of one of their many talented young players, streaky but undeniably gifted scoring guard Jalen Green, plus veteran pest and proven winner Dillon Brooks, from a team that had been a surprise second seed the previous season.</p>
+                  <p>Houston still managed to finish fifth in the West after a regular season marred by key injuries, off-court drama and chemistry questions that hovered over its talented roster. But the Rockets capped off their bumpy, awkward season with a 4&ndash;2 first-round loss to a Lakers team that began the series without Luka Dončić and Austin Reaves. Even at 41, LeBron James found a way to lead the short-handed Lakers past the young Rockets, who were dealing with an injury to Durant. It was a disappointing end to a season that had seemed so ripe for title contention just a few months earlier.</p>
+                  <p>Things feel different at the start of this new season for the Rockets, Durant and their title hopes, largely thanks to the return of a single player: one whom few would call a star but many viewed as a key piece missing from last year&rsquo;s team. After missing all of 2025&ndash;26 with a torn ACL, veteran point guard and 2019 Finals hero Fred VanVleet has returned to a Houston rotation that sorely missed his steady hand at the head of a roster full of talent but short on experienced ball-handlers.</p>
+                  <p>Already, in his early appearances, VanVleet&rsquo;s presence has helped rejuvenate an offense that looks more fluid and capable with him directing it. With all due respect to promising young backup Reed Sheppard &mdash; who filled in as admirably as he could during VanVleet&rsquo;s absence but couldn&rsquo;t steer the offense consistently enough last season &mdash; this team desperately needed a more seasoned conductor at the helm to realize its contender potential.</p>
+                </article>
+                <figure
+                  class="team-graphic vanvleet-chart"
+                  data-vanvleet-rockets-chart
+                  data-source="assets/data/processed/vanvleet-rockets-on-off.csv"
+                  aria-busy="true"
+                  aria-labelledby="vanvleet-chart-title"
+                  aria-describedby="vanvleet-chart-description"
+                >
+                  <header>
+                    <p class="vanvleet-chart__eyebrow">Rockets offense &middot; Regular season</p>
+                    <h3 class="vanvleet-chart__title team-graphic__title" id="vanvleet-chart-title">Houston&rsquo;s offense with and without VanVleet</h3>
+                    <p class="vanvleet-chart__subtitle">Team offensive rating and turnover rate, before and during his injury absence</p>
+                    <p class="vanvleet-chart__visually-hidden" id="vanvleet-chart-description">Two coordinated panels compare Houston&rsquo;s offensive rating and turnover percentage with Fred VanVleet on court and off court in 2023-24 and 2024-25. Separate diamond markers show the 2025-26 full-team-season results, when VanVleet did not play.</p>
+                  </header>
+                  <p class="vanvleet-chart__reading">Houston scored 4.3 more points per 100 possessions with VanVleet on court in 2023&ndash;24 and 1.6 more in 2024&ndash;25. Its turnover rate was 3.0 percentage points lower with him on court in 2024&ndash;25. During the full season he missed, Houston posted a higher 118.6 offensive rating; that different-roster result is context, not a causal test.</p>
+                  <div class="vanvleet-chart__key" aria-label="Chart key">
+                    <span><i class="vanvleet-chart__key-mark vanvleet-chart__key-mark--on" aria-hidden="true"></i>VanVleet on court</span>
+                    <span><i class="vanvleet-chart__key-mark vanvleet-chart__key-mark--off" aria-hidden="true"></i>VanVleet off court</span>
+                    <span><i class="vanvleet-chart__key-mark vanvleet-chart__key-mark--context" aria-hidden="true"></i>Full-season context</span>
+                  </div>
+                  <div class="team-graphic__plot vanvleet-chart__plot">
+                    <div class="vanvleet-chart__panels">
+                      <div class="vanvleet-chart__panel"><p class="vanvleet-chart__status">Loading offensive rating&hellip;</p></div>
+                      <div class="vanvleet-chart__panel"><p class="vanvleet-chart__status">Loading turnover percentage&hellip;</p></div>
+                    </div>
+                  </div>
+                  <div class="vanvleet-chart__details-row">
+                    <details class="vanvleet-chart__table-details">
+                      <summary class="vanvleet-chart__table-toggle">View accessible chart data table</summary>
+                      <div class="vanvleet-chart__table-wrap"></div>
+                    </details>
+                    <aside class="vanvleet-chart__methodology" aria-label="Chart methodology">
+                      <p class="vanvleet-chart__methodology-title">Methodology</p>
+                      <p>On/off results reflect teammates, opponents, rotations and availability, not VanVleet&rsquo;s isolated effect. Available source notes do not establish whether &ldquo;VanVleet off court&rdquo; includes games he missed. The 2025&ndash;26 team had a different roster. Differences use displayed one-decimal rates; possessions are not reconstructed.</p>
+                    </aside>
+                  </div>
+                  <figcaption class="vanvleet-chart__notes">
+                    <p><strong>Minutes:</strong> 2023&ndash;24: 2,686 on / 1,288 off; 2024&ndash;25: 2,114 on / 1,845 off.</p>
+                    <p><strong>Source:</strong> Basketball Reference team on/off tables, manually transcribed by the author. The incomplete 2026&ndash;27 splits are retained in the cleaned data but excluded here because VanVleet had played only 61 on-court minutes.</p>
+                    <p><a class="team-graphic__link" href="assets/data/processed/vanvleet-rockets-on-off.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/vanvleet-rockets-on-off.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="vanvleet-chart__status vanvleet-chart__status--error">This graphic requires JavaScript. The validated chart-ready CSV and preparation notes are linked above.</p></noscript>
+                </figure>
+                <article class="story story--rockets story--rockets-continuation">
+                  <p>It&rsquo;s early, but the Rockets have jumped out to a 3&ndash;0 start with their key players looking healthy and more cohesive. VanVleet did sit out the second game of a back-to-back against Atlanta for knee management, giving Sheppard a chance to step in and help secure the win. Anything that happens in this league in October should be taken with a healthy dose of salt, but Houston&rsquo;s start also included a thrilling 114&ndash;110 road win over defending Western Conference champion San Antonio, highlighted by a candidate for block of the season when Amen Thompson rejected 7-foot-4 Victor Wembanyama&rsquo;s late shot to help seal the game.</p>
+                  <p>There&rsquo;s a lot to like about this team, from Thompson and fellow rising star, Turkish center Alperen Şengün, to Durant&rsquo;s timelessly efficient scoring even at 38 years old, to the athleticism, toughness and length throughout the rest of the rotation. The Rockets could easily prove last season was a setback and challenge the Spurs and Oklahoma City Thunder &mdash; and perhaps my Minnesota Timberwolves as well &mdash; for a top seed in the West, and maybe even more come the postseason.</p>
+                  <p>But as tempted as I am to get ahead of myself and go all in on Houston&rsquo;s title chances, I have to remember the questions raised last season that the Rockets, and especially Durant, Thompson and Şengün, still need to answer.</p>
+                  <p>The weird vibes surrounding screenshots of <a href="https://sports.yahoo.com/articles/kevin-durant-breaks-silence-alleged-221458600.html">group-chat messages allegedly linked to Durant</a>, some of which criticized his Rockets teammates, remain part of that uncertainty. The screenshots and their attribution haven&rsquo;t been independently verified, but the episode added to the questions about Houston&rsquo;s chemistry last season. I&rsquo;m not ruling out the possibility of those concerns resurfacing, even with the good vibes to start this year. The lingering deficits in spacing and ball-handling could also prove problematic over a long season, even with VanVleet back to help in both areas.</p>
+                  <p>Even with those caveats, I still think this Houston squad has a real shot at winning the West, whether that means claiming the top regular-season seed or representing the conference in the NBA Finals. At the very least, this feels like a better season to come for the Rockets, with a return to serious contention back in play after the setbacks of 2025&ndash;26.</p>
+                </article>` : team.slug === "warriors" ? `
                 <article class="story story--warriors story--warriors-intro">
                   <p>Many of these previews have focused on the dawning of new eras for NBA franchises, but in the Bay Area, we&rsquo;re entering the twilight of a historic and highly accomplished one, as the Golden State Warriors&rsquo; run behind the greatest shooter the game has ever seen, Stephen Curry, nears its end.</p>
                   <p>It&rsquo;s been a run for the ages for Curry, head coach Steve Kerr and Curry&rsquo;s longtime co-stars Draymond Green, still here, and Klay Thompson, now in Miami. They&rsquo;ve danced and rained threes all over the league for more than a decade, winning four NBA championships along the way.</p>
@@ -1565,6 +1623,9 @@
                 </figure>
                 <article class="story story--magic">
                   <p>That sounds crazy to say while also defending the talent and production of <em>both</em> those star players, but I really do like the games of both Banchero and Wagner. Both are legit superstar talents, still just 23 and 25, with proven pedigree and winning potential from college and international competition. Both can kind of do it all, but neither has supplied the consistent outside shooting that would make their overlapping games easier to fit together. And both would definitely fetch a nice price in players and/or picks should this front office decide to part with either to prioritize the other.</p>
+                  <p>According PBP Stats, the Magic have posted their best offensive and overall results with Franz playing without him, while the minutes with Paolo alone have been considerably rougher, suggesting, somewhat counter to popular opinion, that Wagner is the star to keep should Orlando decide it can only build around one of the two. But the idea of discarding a player like Banchero is almost unfathomable for me even so, given his build, all-around game and potential for two-way superstardom, so I’m not entirely out on these two together just yet. There’s a lot that Banchero in particular needs to show this season and the following season before I’d pull the trigger on trading either of them, if I was in charge of this team.</p>
+                  <p>But it’s also on the front office and new Head Coach Sean Sweeney to find ways to ease the two’s coexistence on the floor going forward. I can’t stomach another season of watching the two struggle to figure out how to mesh with each other and their teammates on offense, while also running almost zero sets that make sense for the challenge of combining their offensive talents in a cohesive offensive system. It’s been maddening to watch even as a completely neutral outside observer, and I can’t imagine the frustration fans and members of the organization must feel about it.</p>
+                  <p>Hopefully one or both of Wagner and Banchero can bring an improved jumpshot into this new season. Or maybe Black’s continued rise to stardom can cover up some of the offensive inefficiencies posed by the pairing of Orlando’s franchise stars. Or perhaps all it will take is a little bit of Bane, a little bit of Black, some better health from both Wagner and Banchero, but also crucially, team leader and frequently injured Jalen Suggs, for this Magic team to finally realize some of their ample potential this season. Whatever happens, I really want to see something change for this frustrating but tantalizingly talented group Orlando’s put together, whether that means a trade or progress in the regular season and particularly the playoffs. Orlando hasn’t been a serious threat in the Eastern Conference since the 2009 Dwight Howard Finals team, and it’s about time that changed given the ceiling of this roster.</p>
                 </article>` : team.slug === "hawks" ? `
                 <article class="story story--hawks story--hawks-intro">
                   <p>I don&rsquo;t recall liking such a strange collection of second-class stars, imperfect developing prospects and excellent role players as much as I do this Atlanta Hawks team. You might have to go all the way back to the early 2010s Grizzlies to find a team like this that felt this competitive without clear 1A star leadership, with respect to young Marc Gasol, young Mike Conley and big Zach Randolph. This is an odd team to project in light of that absence of a clear, established superstar &mdash; though look for Jalen Johnson, or perhaps even last year&rsquo;s Most Improved Player, Nickeil Alexander-Walker, better known by his amusing initials, NAW, to take a run at that role this season and beyond. There&rsquo;s a chance we look up in April and find this deep, balanced Hawks team cruising toward a top-four finish in a greatly improved East.</p>
@@ -2214,7 +2275,15 @@
                   <p>In a year that projects to be unusually short on potential tanking teams, the Sacramento Kings should be one of the few candidates to aim low in the standings in hopes of landing high in the 2027 draft. But most seasons, what this franchise should do and what it actually does have a funny way of being two very different things.</p>
                   <p>Let’s start with the positives, if only to be kind to any poor, traumatized Kings fans who may be reading this.</p>
                   <p>There are some quality prospects amid all the organizational malpractice that created this inauspicious and random roster, along with a pair of veteran stars whose trade value remains one of the central questions for the Kings’ 2026-27 season and perhaps their future beyond it.</p>
-                </article>` : team.slug === "wizards" ? "" : team.slug === "celtics" ? `
+                </article>` : team.slug === "wizards" ? `
+                <article class="story story--wizards">
+                  <p>It feels upside down to be ranking the Wizards anywhere outside the bottom five. It’s just been that long since Washington last felt at all relevant or competitive in this league. They last made the postseason in 2020-21, and you’d have to go back even further to the 2017-18 season to find a Wizards team with a winning record (43-39, eighth in the East, lost 4-2 to Toronto in the first round). In short, nothing good has happened for NBA basketball in the nation’s capital since the John Wall and Bradley Beal Wiz fell one win short of the Eastern Conference finals back in May 2017.</p>
+                  <p>So why do I have this year’s Wizards squad ranked above perennial postseason participants from the past decade like Golden State, Milwaukee and the Los Angeles Clippers? Despite clear setbacks to each of the other three teams over the summer, ranking the woebegone Wizards above them has as much to do with what Washington accomplished at last year’s trade deadline and over the summer as it does with what those more familiar contenders failed to do (or, in some cases, failed to cover up … cough, Kawhi Leonard, cough, Aspiration, cough, Steve Ballmer).</p>
+                  <p>Rarely does a team clearly tanking for lottery luck in any season also trade for a top-tier veteran superstar in that same season, let alone trade for <em>two</em> such stars amid such a losing campaign. But that’s just what Wizards GM Will Dawkins did in February when he moved a slew of prospects, picks and veterans to acquire both Trae Young <em>and</em> Anthony Davis from Atlanta and Dallas, respectively. Those moves alone sent a message to the rest of the league that Washington was done pissing away season after season for better draft odds — even if neither Washington nor its newly acquired stars seemed in much of a hurry to interrupt the tank, with Davis sitting out the rest of the season and Young only playing five games for the team post-deadline. In the process, they also all but guaranteed a better record for this year’s Wizards.</p>
+                  <p>And that was <em>before</em> they won the lottery and drafted their long-awaited franchise superstar, BYU freshman phenom AJ Dybantsa.</p>
+                  <p>Dybantsa looks every bit the real deal as the No. 1 overall pick from one of the more talented drafts the league has ever seen, at times resembling some kind of a 6-foot-10 DeMar DeRozan (or dare I say maybe even a Shai Gilgeous-Alexander?) with his jerky, slithery, midrange-happy isolation scoring. And that formidable player comparison actually feels like just the floor for Dybantsa’s potential, especially given the ample room for him to bulk up from 217 pounds and grow into more of a frontcourt force. There’s not much in his high school and college tape to suggest that’s a direction he’d like to take as he develops in the league, but at 6-foot-10 with length and a strong frame for his present wiry weight, one can’t help imagining the possibilities in the paint if he works on that part of his game. The same could be said for his defensive ceiling, similarly underrealized and underdeveloped relative to his scoring and playmaking polish.</p>
+                  <p>With plenty of talent coming right out of the gate from Dybantsa and quite a lot of room to grow from there, a sneaky amount of depth in previous lottery picks in the rotation alongside him, and the additions of Davis and Young as well as offseason pickups and somewhat declining veteran stars Deandre Ayton and Khris Middleton, this just isn’t the same Wizards team we’ve seen throughout the rest of this decade. They probably won’t amount to more than a play-in team at most, even so, but for this franchise in this decade, that alone would represent a huge leap forward. In a much improved East, however, it likely won’t get them past the first round at best – but that’s practically a championship to this franchise and fanbase after the last five seasons this team has had.</p>
+                </article>` : team.slug === "celtics" ? `
                 <figure
                   class="celtics-wings team-graphic"
                   data-celtics-wing-chart
@@ -2549,5 +2618,6 @@
     <script src="assets/js/watson-cavaliers-chart.js"></script>
     <script src="assets/js/jazz-charts.js"></script>
     <script src="assets/js/curry-warriors-chart.js"></script>
+    <script src="assets/js/vanvleet-rockets-chart.js"></script>
   </body>
 </html>
