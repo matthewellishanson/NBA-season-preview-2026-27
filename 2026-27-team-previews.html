@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/jazz-charts.css" />
     <link rel="stylesheet" href="assets/css/curry-warriors-chart.css" />
     <link rel="stylesheet" href="assets/css/vanvleet-rockets-chart.css" />
+    <link rel="stylesheet" href="assets/css/miller-hornets-chart.css" />
 
     <style>
       /* Design tokens */
@@ -1005,7 +1006,7 @@
           powerRank: 15,
           status: "published",
           logo: "assets/img/teamlogos/hawkslogo.svg",
-          thesis: "",
+          thesis: "Atlanta’s deep ensemble of emerging stars and quality role players has real upside, even without a proven primary scorer.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1016,8 +1017,9 @@
           color: "#00788c",
           slug: "hornets",
           powerRank: 16,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/hornets.jpg",
+          thesis: "Trading LaMelo Ball need not derail Charlotte’s rise if Brandon Miller and Kon Knueppel lead an offense sturdy enough to reach the playoffs.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1030,7 +1032,7 @@
           powerRank: 17,
           status: "published",
           logo: "assets/img/teamlogos/wizardslogo.png",
-          thesis: "",
+          thesis: "Trae Young, Anthony Davis and AJ Dybantsa should finally make Washington relevant again, even if the breakthrough stops at the play-in.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1156,7 +1158,7 @@
           powerRank: 27,
           status: "published",
           logo: "assets/img/teamlogos/nets.png",
-          thesis: "",
+          thesis: "Brooklyn’s direction remains murky, making another tanking season chiefly about discovering whether any of its many prospects can anchor the rebuild.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1203,6 +1205,10 @@
       const ordered = [...teams].sort((a, b) => a.powerRank - b.powerRank);
       const publishedTeams = ordered.filter((team) => team.status === "published");
       const upcomingTeams = ordered.filter((team) => team.status !== "published");
+      // Authors can inspect an unpublished card without changing publication state.
+      // Example: ?preview=hornets#team-hornets
+      const previewSlugs = new Set(new URLSearchParams(location.search).getAll("preview"));
+      const visibleTeams = ordered.filter((team) => team.status === "published" || previewSlugs.has(team.slug));
 
       document.getElementById("completion-count").textContent = `${publishedTeams.length} of ${teams.length}`;
       document.getElementById("rollout-explanation").textContent =
@@ -1259,13 +1265,13 @@
 
       // Shared markup for each expandable team preview.
       const cards = document.getElementById("cards");
-      cards.innerHTML = publishedTeams
+      cards.innerHTML = visibleTeams
         .map(
           (team) => `
           <details class="team-card" id="team-${team.slug}" data-team-theme="${team.code}" style="--team:${team.color}">
             <summary>
               <span class="rank" aria-label="Power rank ${team.powerRank}">${String(team.powerRank).padStart(2, "0")}</span>
-              <span class="team-logo-wrap"><img class="team-logo" src="${team.logo}" alt="" width="46" height="46" /></span>
+              ${team.logo ? `<span class="team-logo-wrap"><img class="team-logo" src="${team.logo}" alt="" width="46" height="46" /></span>` : ""}
               <div class="identity">
                 <h2>${escapeHtml(team.name)}</h2>
                 <p class="subhead">${escapeHtml(team.thesis || "2026–27 season preview")}</p>
@@ -1277,8 +1283,54 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
-                ${team.slug === "rockets" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+                ${team.slug === "hornets" ? `
+                <article class="story story--hornets story--hornets-intro">
+                  <p>It&rsquo;s been an intriguing calendar year for the Charlotte Hornets, to say the least. First, they blazed through the second half of last season en route to their first play-in appearance since 2021&ndash;22, going 33&ndash;16 after entering 2026 at 11&ndash;22 to finish 44&ndash;38. Perhaps even more eye-opening than all those wins was how the Hornets won: in dominant fashion, more often than not, while boasting the NBA&rsquo;s best offensive rating from Jan. 1 on.</p>
+                  <p>Not bad for the seventh-youngest team in the league, with an average age under 25 and very little veteran or postseason experience on the roster.</p>
+                  <p>In the end, the fact that the Hornets whimpered out of their hot second half with two losses in the play-in hardly seemed important relative to the major leap this team and franchise took last season. For the first time in my life, they looked on track to become a bona fide future contender. Heading into the summer, Charlotte&rsquo;s young core appeared to have not one but three possible future All-Stars, all of whom projected to fill different but compatible roles: virtuoso point guard and face of the franchise LaMelo Ball, whom Charlotte took third overall in 2020; an <a href="https://www.foxsports.com/stories/nba/brandon-miller-says-paul-george-is-basketball-goat-not-lebron-james-or-michael-jordan">aspirational Gen Z Paul George</a> with talent worthy of that goal in 2023 second overall pick Brandon Miller; and the newest emerging star, rookie sharpshooter and 2025&ndash;26 Rookie of the Year runner-up Kon Knueppel.</p>
+                  <p>With all this talent and that red-hot finish to the regular season, it felt like the Hornets finally had a clear path toward the top of the Eastern Conference in the seasons to come. After decades of dysfunction and disappointment, with a few winning seasons scattered here and there, that seemed more than enough reason for Charlotte&rsquo;s front office to avoid making major changes to its core over the offseason.</p>
+                  <p>But Hornets general manager Jeff Peterson went the other way, shocking fans and many around the league by trading Ball to the Minnesota Timberwolves for 2024 Sixth Man of the Year Naz Reid, an unprotected first-round pick in 2033, three first-round swaps and three second-round picks.</p>
+                  <p>It was a destiny-altering trade for both franchises, but as a Wolves fan and an admirer of both Reid and what Peterson&rsquo;s front office has been building in Charlotte, I came away impressed with how much the trade seemed to work for both sides. And for the Hornets this season, I don&rsquo;t actually believe losing Ball, as gifted and beloved by Charlotte fans as he has been, will significantly hurt their chances of making the 2027 postseason, or at least another play-in berth.</p>
+                  <p>For one, Miller and Knueppel are still here, and after last season should get the benefit of the doubt as they step in as the new leaders of an even younger Hornets roster. Meanwhile, Coby White, acquired from Chicago at the 2026 trade deadline, gives Charlotte another experienced backcourt scorer and ball-handler. He&rsquo;s played at times like a borderline All-Star in his seven NBA seasons. He won&rsquo;t replace everything a healthy Ball provided, but I think he can give this offense enough to get by, especially with his steadier, more predictable style compared with Ball&rsquo;s zany, often erratic approach.</p>
+                  <p>Reid should be a big help, too. He&rsquo;s been waiting years for his chance to start in this league and has more than earned this opportunity in Charlotte. He&rsquo;s a fluid, mobile scorer with deep range and, in my view, underrated defensive chops, despite his limitations as a true rim protector at the five.</p>
+                  <p>And while Knueppel &mdash; who has opened the season sidelined but should return soon &mdash; will certainly get chances to create more for this offense than he might have alongside Ball, the guy to watch going forward should be Miller. He&rsquo;s the clearest 1A option left in Charlotte post-LaMelo, and I think he looked ready last season to rise to that responsibility. He&rsquo;s long, athletic, capable of hurting opponents on both ends and still seems far from a finished product despite the grace with which he&rsquo;s already played in three seasons with the Hornets.</p>
+                </article>
+                <figure class="team-graphic miller-chart" data-miller-hornets-chart data-source="assets/data/processed/brandon-miller-hornets-2023-2026.csv" aria-busy="true" aria-labelledby="miller-chart-title" aria-describedby="miller-chart-description">
+                  <header>
+                    <p class="miller-chart__eyebrow">Brandon Miller &middot; regular season</p>
+                    <h3 class="miller-chart__title team-graphic__title" id="miller-chart-title">Miller&rsquo;s growing offensive responsibility</h3>
+                    <p class="miller-chart__subtitle">Three aligned panels use independent labeled scales. The teal square and shaded band identify 2025&ndash;26; the outlined second-season circle identifies the smaller 27-game sample.</p>
+                    <p class="miller-chart__visually-hidden" id="miller-chart-description">Three small-multiple line charts share the 2023-24 through 2025-26 season axis. They show points per 100 possessions, usage rate and true shooting. All values, games and minutes per game are directly labeled. The 27-game second season is identified as a smaller sample. True-shooting-plus labels provide league context.</p>
+                  </header>
+                  <p class="team-graphic__callout miller-chart__takeaway">His scoring per possession rose in each successive season, while his true shooting reached a career high in 2025&ndash;26 and approached league average.</p>
+                  <div class="team-graphic__plot miller-chart__panels"><p class="miller-chart__status">Loading Miller&rsquo;s three Charlotte seasons&hellip;</p></div>
+                  <details class="miller-chart__table-details">
+                    <summary class="miller-chart__table-toggle">View accessible chart data table</summary>
+                    <div class="miller-chart__table-wrap">
+                      <table class="team-graphic__table miller-chart__table">
+                        <caption>Brandon Miller regular-season production and sample context.</caption>
+                        <thead><tr><th scope="col">Season</th><th scope="col">G</th><th scope="col">MPG</th><th scope="col">Total min.</th><th scope="col">PTS/100</th><th scope="col">USG%</th><th scope="col">TS%</th><th scope="col">TS+</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row">2023&ndash;24</th><td>74</td><td>32.2</td><td>2,383</td><td>26.5</td><td>23.9%</td><td>55.2%</td><td>95</td></tr>
+                          <tr><th scope="row">2024&ndash;25</th><td>27</td><td>34.2</td><td>924</td><td>30.2</td><td>27.7%</td><td>54.0%</td><td>94</td></tr>
+                          <tr><th scope="row">2025&ndash;26</th><td>65</td><td>30.3</td><td>1,968</td><td>33.0</td><td>28.1%</td><td>57.4%</td><td>99</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="miller-chart__notes">
+                    <p><strong>Context:</strong> TS+ is a league-relative index where 100 is league average; it is not a percentage-point difference. No league-average TS% is reverse-engineered from the rounded index.</p>
+                    <p>These season totals do not isolate Miller&rsquo;s performance without LaMelo Ball, establish that increased usage caused efficiency changes or project production at a larger workload. <a class="team-graphic__link" href="assets/data/processed/brandon-miller-hornets-2023-2026.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/brandon-miller-hornets-2023-2026.notes.md">Preparation and provenance notes</a></p>
+                  </figcaption>
+                  <noscript><p class="miller-chart__status miller-chart__status--error">This chart requires JavaScript. The complete values remain available in the accessible table and linked CSV.</p></noscript>
+                </figure>
+                <article class="story story--hornets story--hornets-continuation">
+                  <p>Together, he and Knueppel have more than enough talent and the right competitive intangibles to lead this team, possibly better than Ball ever did once both have fully developed. With a solid supporting cast that goes surprisingly deep beyond White and Reid, and a young head coach I&rsquo;ve really liked so far in Charles Lee, it doesn&rsquo;t feel like Charlotte&rsquo;s prospects for an eventual rise to the top of the East took much of a hit even after trading its franchise star.</p>
+                  <p>There are still concerns to address this season and over the next few years as those stars develop. Most notably, the jury&rsquo;s out on whether the Hornets have the right frontcourt for their future, especially defensively. They&rsquo;ll rely on an interesting trio of talented bigs who have yet to fully prove they can anchor a solid NBA defense: the switchable but undersized Reid, sophomore 7-foot-1 shot blocker Ryan Kalkbrenner, and fearless, high-energy rebounder and fan favorite Moussa Diabate.</p>
+                  <p>All three will have to figure out how to control the boards and protect the paint for Charlotte to have real postseason success beyond simply making it there.</p>
+                  <p>All things considered, as shocking as the Ball trade was, this Hornets team &mdash; already off to a hot 3&ndash;1 start before Knueppel and White have made their season debuts &mdash; looks primed to reach the franchise&rsquo;s first full playoff series since 2015&ndash;16.</p>
+                </article>` : team.slug === "rockets" ? `
                 <article class="story story--rockets story--rockets-intro">
                   <p>A popular pick last preseason as a sleeper contender in the loaded Western Conference, the Houston Rockets instead had a rather disappointing 2025&ndash;26 campaign relative to the hype surrounding them. That hype followed the addition of future Hall of Famer Kevin Durant at the cost of one of their many talented young players, streaky but undeniably gifted scoring guard Jalen Green, plus veteran pest and proven winner Dillon Brooks, from a team that had been a surprise second seed the previous season.</p>
                   <p>Houston still managed to finish fifth in the West after a regular season marred by key injuries, off-court drama and chemistry questions that hovered over its talented roster. But the Rockets capped off their bumpy, awkward season with a 4&ndash;2 first-round loss to a Lakers team that began the series without Luka Dončić and Austin Reaves. Even at 41, LeBron James found a way to lead the short-handed Lakers past the young Rockets, who were dealing with an injury to Durant. It was a disappointing end to a season that had seemed so ripe for title contention just a few months earlier.</p>
@@ -2720,5 +2772,6 @@
     <script src="assets/js/jazz-charts.js"></script>
     <script src="assets/js/curry-warriors-chart.js"></script>
     <script src="assets/js/vanvleet-rockets-chart.js"></script>
+    <script src="assets/js/miller-hornets-chart.js"></script>
   </body>
 </html>

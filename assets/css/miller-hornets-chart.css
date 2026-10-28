@@ -1,0 +1,49 @@
+.story-layout.story-layout--hornets { grid-template-columns: 1fr; }
+.story--hornets, .miller-chart { max-width: 56rem; }
+.miller-chart { width: 100%; margin: 10px 0 14px; padding: clamp(18px, 3vw, 28px); background: var(--team-surface); border-color: var(--team-border); border-top-color: var(--team-identity); color: var(--team-text); }
+.miller-chart__eyebrow { margin: 0 0 5px; color: var(--team-ink); font-size: 11px; font-weight: 850; letter-spacing: 1.1px; text-transform: uppercase; }
+.miller-chart__title { margin: 0; color: var(--team-text); font-size: clamp(22px, 3vw, 31px); line-height: 1.12; letter-spacing: -.6px; }
+.miller-chart__subtitle { max-width: 49rem; margin: 8px 0 0; color: var(--team-muted); font-size: 13px; line-height: 1.5; }
+.miller-chart__takeaway { margin: 16px 0; padding: 12px 14px; background: var(--team-surface-strong); border-left: 4px solid var(--team-secondary); color: var(--team-text); font-size: 13px; line-height: 1.5; }
+.miller-chart__panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 11px; background: var(--team-plot); border-color: var(--team-border); }
+.miller-chart__panel { min-width: 0; overflow: hidden; border: 1px solid var(--team-border); border-radius: 7px; background: var(--team-plot); }
+.miller-chart__panel-title { min-height: 43px; margin: 0; padding: 10px 10px 7px; color: var(--team-text); font-size: 12px; font-weight: 850; line-height: 1.2; }
+.miller-chart__panel svg { display: block; width: 100%; height: auto; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; }
+.miller-chart__latest-band { fill: var(--team-surface-strong); }
+.miller-chart__gridline { stroke: #d9d8de; stroke-width: 1; }
+.miller-chart__line { fill: none; stroke: var(--team-ink); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.5; }
+.miller-chart__mark circle, .miller-chart__mark rect { fill: var(--team-plot); stroke: var(--team-ink); stroke-width: 2.5; }
+.miller-chart__mark.is-small-sample circle { stroke-dasharray: 2 2; stroke-width: 3; }
+.miller-chart__mark.is-latest rect { fill: var(--team-secondary); stroke: var(--team-ink); stroke-width: 3; }
+.miller-chart__value { fill: var(--team-text); font-size: 11px; font-weight: 780; }
+.miller-chart__mark.is-latest .miller-chart__value { fill: var(--team-ink); font-weight: 900; }
+.miller-chart__y-label { fill: var(--team-muted); font-size: 9.5px; }
+.miller-chart__season { fill: var(--team-text); font-size: 10px; font-weight: 760; }
+.miller-chart__sample, .miller-chart__ts-plus { fill: var(--team-muted); font-size: 8.5px; font-weight: 650; }
+.miller-chart__sample.is-warning { fill: var(--team-ink); font-weight: 850; }
+.miller-chart__ts-plus { fill: var(--team-ink); font-weight: 780; }
+.miller-chart__x-label.is-latest text { fill: var(--team-ink); font-weight: 900; }
+.miller-chart__table-details { margin-top: 13px; border-top: 1px solid var(--team-border); }
+.team-card .miller-chart__table-toggle { display: block; width: fit-content; min-height: 44px; padding: 11px 1px 5px; border-left: 0; background: transparent; color: var(--team-ink); cursor: pointer; font-size: 12px; font-weight: 780; list-style: none; }
+.team-card .miller-chart__table-toggle:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.miller-chart__table-toggle::before { content: "\25B8"; display: inline-block; margin-right: 5px; }
+.miller-chart__table-details[open] .miller-chart__table-toggle::before { content: "\25BE"; }
+.miller-chart__table-wrap { width: 100%; overflow-x: auto; }
+.miller-chart__table { width: 100%; min-width: 620px; border-collapse: collapse; background: var(--team-plot); color: var(--team-text); font-size: 11px; font-variant-numeric: tabular-nums; }
+.miller-chart__table caption { padding: 0 0 7px; color: var(--team-muted); line-height: 1.4; text-align: left; }
+.miller-chart__table th, .miller-chart__table td { padding: 8px 6px; border-bottom: 1px solid var(--team-border); text-align: right; white-space: nowrap; }
+.miller-chart__table th:first-child, .miller-chart__table td:first-child { text-align: left; }
+.miller-chart__table tbody tr:nth-child(2) th::after { content: " \00b7  smaller sample"; color: var(--team-ink); font-size: 9px; }
+.miller-chart__table tbody tr:last-child { background: var(--team-surface-strong); color: var(--team-ink); font-weight: 800; }
+.miller-chart__notes { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--team-border); color: var(--team-muted); font-size: 11px; line-height: 1.5; }
+.miller-chart__notes p { margin: 0 0 5px; }
+.miller-chart__status { grid-column: 1 / -1; margin: 0; padding: 24px 12px; color: var(--team-muted); font-size: 12px; }
+.miller-chart__status--error { color: var(--team-negative); font-weight: 700; }
+.miller-chart__visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 760px) {
+  .miller-chart { padding: 17px 12px; }
+  .miller-chart__panels { grid-template-columns: 1fr; gap: 12px; padding: 10px; }
+  .miller-chart__panel-title { min-height: 0; padding-bottom: 0; font-size: 13px; }
+  .miller-chart__panel svg { max-height: 300px; }
+}
+@media (prefers-reduced-motion: reduce) { .miller-chart *, .miller-chart *::before, .miller-chart *::after { animation: none !important; transition: none !important; } }
