@@ -133,7 +133,7 @@ try {
   assert(desktop.values.join("|") === "26.5|30.2|33.0|23.9%|27.7%|28.1%|55.2%|54.0%|57.4%", "Direct values differ from source data.");
   assert(desktop.tsPlus.join("|") === "TS+ 95|TS+ 94|TS+ 99", "TS+ labels are incomplete.");
   assert(desktop.samples.filter((value) => value.includes("27 G · smaller sample")).length === 3, "The 27-game sample warning is incomplete.");
-  assert(desktop.completion.trim() === "23 of 30" && !desktop.charlotteUpcoming, "Charlotte publication state changed.");
+  assert(desktop.completion.trim() === "24 of 30" && !desktop.charlotteUpcoming, "Charlotte publication state changed.");
   assert(desktop.identity.toLowerCase() === "#00788c" && desktop.surface !== "rgb(255, 255, 255)", "Charlotte theme roles are not applied.");
   assert(!desktop.bodyOverflow && desktop.errorStates === 0 && desktop.panelColumns === 3, "Desktop layout overflowed or entered an error state.");
 

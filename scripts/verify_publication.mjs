@@ -52,7 +52,7 @@ await Promise.all([send("Page.enable"), send("Runtime.enable"), send("Network.en
 await send("Network.setCacheDisabled", { cacheDisabled: true });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
 await send("Page.navigate", { url: pageUrl });
-await waitFor(`document.readyState === "complete" && document.querySelectorAll(".team-card").length === 23`);
+await waitFor(`document.readyState === "complete" && document.querySelectorAll(".team-card").length === 24`);
 
 const initial = await evaluate(`(() => ({
   title: document.title,
@@ -337,15 +337,15 @@ const report = { pageUrl, initial, expanded, magic, pacers, hawks, cleveland, ja
 console.log(JSON.stringify(report, null, 2));
 
 const expectedRanks = Array.from({ length: 30 }, (_, index) => index + 1);
-const passed = initial.cards === 23
+const passed = initial.cards === 24
   && initial.rankings === 30
-  && initial.completedLinks === 23
-  && initial.upcoming === 7
+  && initial.completedLinks === 24
+  && initial.upcoming === 6
   && initial.logos.every((logo) => logo.loaded)
   && JSON.stringify(initial.ranks) === JSON.stringify(expectedRanks)
   && !initial.draftLanguage
   && !initial.horizontalOverflow
-  && expanded.openCards === 23
+  && expanded.openCards === 24
   && expanded.charts >= 27
   && expanded.chartErrors.length === 0
   && !expanded.horizontalOverflow
