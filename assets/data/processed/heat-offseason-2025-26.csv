@@ -1,0 +1,8 @@
+group,player_id,player_name,team_2025_26,transaction,games,minutes_per_game,total_minutes,three_attempts_per_100,three_pct,assists_per_100,true_shooting_pct,role_note
+Departure,herroty01,Tyler Herro,MIA,Traded to Milwaukee,33,31.3,1033,10.0,.378,6.1,.602,Perimeter scoring and shooting
+Departure,jakucka01,Kasparas Jakučionis,MIA,Traded to Milwaukee,53,17.8,945,7.7,.423,6.7,.614,Developing guard creation and shooting
+Departure,wareke01,Kel'el Ware,MIA,Traded to Milwaukee,77,22.1,1704,6.3,.395,1.5,.616,"Rebounding, interior size and shooting"
+Departure,jaqueja01,Jaime Jaquez Jr.,MIA,Traded to Milwaukee,75,28.3,2121,4.0,.317,7.7,.570,Secondary creation
+Departure,powelno01,Norman Powell,MIA,Free-agent departure,58,29.6,1717,11.1,.380,3.9,.609,Perimeter scoring and shooting
+Arrival,antetgi01,Giannis Antetokounmpo,MIL,Arrived from Milwaukee,36,28.9,1039,2.1,.333,9.3,.658,High-usage interior scoring and creation
+Arrival,thompkl01,Klay Thompson,DAL,Separate addition,69,21.7,1497,16.6,.383,3.0,.541,High-volume three-point shooting
