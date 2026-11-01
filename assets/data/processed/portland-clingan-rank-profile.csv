@@ -1,0 +1,4 @@
+player_id,player_name,metric_key,metric_label,source_value,display_value,rank,rank_display,tie_count,valid_qualifiers,ranking_method
+clingdo01,Donovan Clingan,orb_pct,Offensive rebound percentage,17.6,17.6%,3,3,1,72,descending_competition_rank_strictly_higher
+clingdo01,Donovan Clingan,drb_pct,Defensive rebound percentage,27.6,27.6%,14,14,1,72,descending_competition_rank_strictly_higher
+clingdo01,Donovan Clingan,blk_pct,Block percentage,6.3,6.3%,7,T-7,2,72,descending_competition_rank_strictly_higher

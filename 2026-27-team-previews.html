@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/mcdaniels-offense-chart.css" />
     <link rel="stylesheet" href="assets/css/duren-season-comparison.css" />
     <link rel="stylesheet" href="assets/css/edey-memphis-chart.css" />
+    <link rel="stylesheet" href="assets/css/portland-preview-charts.css" />
     <link rel="stylesheet" href="assets/css/kawhi-production-availability.css" />
     <link rel="stylesheet" href="assets/css/kessler-lakers-chart.css" />
     <link rel="stylesheet" href="assets/css/holmgren-shared-games-chart.css" />
@@ -1108,8 +1109,9 @@
           color: "#c52d36",
           slug: "trail-blazers",
           powerRank: 23,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/Portland-Trail-Blazers-Symbol.png",
+          thesis: "The return of franchise icon Damian Lillard and the arrival of yet another superstar guard in Ja Morant have rejuvenated the contending hopes and chances of this young and ascendant Trail Blazers team.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1285,7 +1287,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
                 ${team.slug === "heat" ? `
                 <article class="story story--heat">
                   <p>After years of making eyes at each other across the Eastern Conference, the Miami Heat and former Milwaukee Bucks superstar Giannis Antetokounmpo finally made it Facebook official over the summer in a blockbuster trade several seasons in the making.</p>
@@ -1832,6 +1834,106 @@
                   <p>So what remains, now that the punishment has been dealt and the dust has settled, more or less?</p>
                   <p>Well, not as much as the team and its fans would like, given the steep team-building obstacles that lie ahead. It would be great if this coming era of diminished competitive chances at least began with a solid team this season, but that&rsquo;s far from the case. At best, this Clippers team would be lucky to make the play-in, and given the state of the roster and the mood around the team, even that would feel miraculous.</p>
                   <p>There&rsquo;s a young star to build around in former Cleveland point guard Darius Garland, if he can avoid further injuries after an early career frequently sidetracked by them. When healthy, he can be as dangerous a scoring point guard as the league has to offer, but it&rsquo;s difficult to count on that kind of health given his injury history, dating back to his freshman year at Vanderbilt, when he played just five games before tearing his meniscus. He&rsquo;s also only 6&rsquo;1&rdquo;, in a league that increasingly demands the utmost perfection from its shortest stars. Even healthy, I&rsquo;m not sold on his ability to lead a contender in this era of the NBA, regardless of how productive he can be &mdash; at least, not without a much stronger supporting cast, &agrave; la Jalen Brunson and the Knicks.</p>
+                </article>` : team.slug === "trail-blazers" ? `
+                <article class="story story--trail-blazers story--trail-blazers-intro">
+                  <p>After a feisty campaign that ended in a first-round gentleman&rsquo;s sweep &mdash; a 4&ndash;1 series loss &mdash; at the hands of the top-seeded and eventual Western Conference champion San Antonio Spurs, the Portland Trail Blazers seemed to be moving in the right direction. They had returned to the playoffs, their young players were improving, and first-time All-Star forward Deni Avdija had emerged as a possible franchise centerpiece.</p>
+                  <p>But even with Avdija&rsquo;s breakout, Portland still felt a ways from seriously threatening the West&rsquo;s elite. This was a promising roster that might eventually need another star to turn a good team into a potentially great one.</p>
+                  <p>The Blazers also had two veteran guards who seemed like ideal mentors for their young core. Two-time NBA champion Jrue Holiday had brought proven leadership and considerably more offensive production in his first Portland season than he&rsquo;d provided in his final year with Boston. Meanwhile, longtime face of the franchise Damian Lillard was preparing for a feel-good reunion after two seasons in Milwaukee and more than a year recovering from the Achilles tear he suffered in 2024&ndash;25.</p>
+                  <p>There was plenty to like, but the ceiling remained uncertain. Avdija had helped elevate Portland from a presumed lottery team to the eighth seed and a playoff series, perhaps sooner than many expected. His younger teammates had largely continued to develop, too. Still, I wondered whether this collection of promising prospects, above-average role players and B-list stars would eventually run into a ceiling short of true contention.</p>
+                  <p>So I wasn&rsquo;t surprised when Portland acquired another star over the summer. I was stunned by which star the front office chose.</p>
+                  <p>The Blazers sent veteran scoring wing Jerami Grant and young 3-and-D prospect Kris Murray to Memphis in a pennies-on-the-dollar deal for divisive, disgruntled superstar guard Ja Morant. Adding him to a roster already heavy on undersized guards left me struggling to understand the vision for this season and beyond.</p>
+                  <p>I expected too many defensive vulnerabilities, too many players needing the ball and, above all, too much collective injury risk among Lillard, Holiday, Morant and talented but still developing 2023 third overall pick Scoot Henderson. As much as I respected their individual abilities, I couldn&rsquo;t imagine how all four would coexist in the same rotation and keep Portland competitive in this year&rsquo;s West.</p>
+                  <p>After watching the Blazers&rsquo; 4&ndash;1 start, though, I&rsquo;m beginning to see the possibilities. Five games won&rsquo;t settle those concerns, but through the first four games (excluding Saturday afternoon&rsquo;s win over Utah) Portland sported the league&rsquo;s third-ranked offense, looking considerably more comfortable than I expected.</p>
+                  <p class="portland-story__data-note"><strong>Data note:</strong> Current-season statistics are through Portland&rsquo;s first four games, before its Oct. 31 win over Utah. The graphics use completed regular seasons.</p>
+                  <p>So what&rsquo;s working, and how much of it might last?</p>
+                  <p>First and most important, at least in the hearts of Trail Blazers fans, has to be the return of a healthy Lillard. He&rsquo;s not quite the superstar who last wore Portland&rsquo;s red, black and white, but he&rsquo;s looked encouragingly comfortable for a 36-year-old point guard returning from a major Achilles injury. His renewed leadership and galvanizing presence have reinvigorated both the fans and his teammates in a way you can feel watching this team. The vibes weren&rsquo;t bad last year, by any means, but there&rsquo;s a fresh air of optimism and competitive fire around the Blazers that seemed harder to find during Lillard&rsquo;s years away.</p>
+                  <p>On that front, the Morant we&rsquo;ve seen so far in Portland has also offered a welcome contrast to the frustrating final stretch of his Memphis tenure. He&rsquo;s been an additional spark plug and tone-setter alongside Lillard, bringing the competitive character and charisma that made him such an exciting young star in the first place. Whether that fresh start lasts is another question, but the early signs have been encouraging.</p>
+                  <p>Perhaps more importantly, he&rsquo;s done so while playing more efficiently within a reduced offensive role, one that makes sense given the depth of his new team&rsquo;s backcourt. Through four games, Morant&rsquo;s usage was down from 32.5% in Memphis last season to 22.2%, while his true shooting rose from 52.1% to 62.2%. He was scoring less, but also turning the ball over less frequently. Those numbers will move around considerably over the coming weeks, but if he can remain effective without needing to dominate every possession, the fit for Ja in Portland could be much better than I anticipated.</p>
+                  <p>Beyond those two, Avdija&rsquo;s leap last season has carried over into this one, with only a slight drop in scoring amid the added offensive talent around him. His ability to get into the paint and draw fouls gives Portland a source of offense that doesn&rsquo;t depend on its smaller guards manufacturing everything. Last season, he averaged 24.2 points and 6.7 assists while getting to the line 9.2 times per game, establishing himself as much more than a complementary scorer.</p>
+                  <p>He still needs to improve his shooting, especially beyond the arc, where he made just 31.8% of his attempts last season. But with more offensive firepower around him, that weakness feels less urgent than it did when Portland depended so heavily on him to create. His development as a scorer and playmaker remains central to whatever ceiling this group can reach.</p>
+                </article>
+
+                <figure class="team-graphic portland-chart deni-offense" data-deni-offense-chart data-source="assets/data/processed/portland-deni-offense-2023-2026.csv" aria-busy="true" aria-labelledby="deni-offense-title" aria-describedby="deni-offense-description">
+                  <header>
+                    <p class="portland-chart__eyebrow">Deni Avdija &middot; Completed regular seasons</p>
+                    <h3 class="portland-chart__title team-graphic__title" id="deni-offense-title">Deni&rsquo;s expanding offensive role</h3>
+                    <p class="portland-chart__subtitle">Creation and foul-drawing responsibility from his final Washington season through his first two Portland seasons.</p>
+                    <p class="portland-chart__visually-hidden" id="deni-offense-description">Three small multiples share a season axis and show usage percentage, assists per 100 possessions and free-throw attempts per 100 field-goal attempts. Each panel has an independent labeled scale and every value is directly labeled. A supporting row shows true shooting percentage, games and minutes per game.</p>
+                  </header>
+                  <p class="portland-chart__takeaway">His offensive role and foul drawing expanded sharply while his true shooting remained around 60%.</p>
+                  <div class="portland-chart__plot deni-offense__plot">
+                    <p class="portland-chart__status">Loading Avdija&rsquo;s completed-season progression&hellip;</p>
+                    <div class="deni-offense__panels"></div>
+                  </div>
+                  <h4 class="deni-offense__support-title" id="deni-offense-support-title">True shooting stayed near 60%</h4>
+                  <div class="deni-offense__support" aria-labelledby="deni-offense-support-title"></div>
+                  <details class="portland-chart__table-details">
+                    <summary class="portland-chart__table-toggle">View accessible chart data table</summary>
+                    <div class="portland-chart__table-wrap">
+                      <table class="portland-chart__table">
+                        <caption>Deni Avdija&rsquo;s completed-season offensive role, efficiency and sample context.</caption>
+                        <thead><tr><th scope="col">Season / team</th><th scope="col">G</th><th scope="col">MPG</th><th scope="col">USG%</th><th scope="col">AST/100</th><th scope="col">FTA/100 FGA</th><th scope="col">TS%</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row" data-label="Season / team">2023&ndash;24 WAS</th><td data-label="G">75</td><td data-label="MPG">30.1</td><td data-label="USG%">20.2%</td><td data-label="AST/100">5.9</td><td data-label="FTA/100 FGA">34.0</td><td data-label="TS%">59.7%</td></tr>
+                          <tr><th scope="row" data-label="Season / team">2024&ndash;25 POR</th><td data-label="G">72</td><td data-label="MPG">30.0</td><td data-label="USG%">23.2%</td><td data-label="AST/100">6.3</td><td data-label="FTA/100 FGA">44.1</td><td data-label="TS%">60.5%</td></tr>
+                          <tr><th scope="row" data-label="Season / team">2025&ndash;26 POR</th><td data-label="G">66</td><td data-label="MPG">33.3</td><td data-label="USG%">29.3%</td><td data-label="AST/100">9.6</td><td data-label="FTA/100 FGA">57.3</td><td data-label="TS%">60.0%</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="portland-chart__notes">
+                    <p><strong>How to read it:</strong> Usage estimates the share of team plays Avdija used while on the floor. Assists are adjusted to 100 possessions. Free-throw rate is FTA divided by FGA and is shown here as attempts per 100 field-goal attempts, not per 100 possessions.</p>
+                    <p><strong>Source and limits:</strong> Supplied Basketball Reference regular-season exports. These season totals do not prove that added responsibility caused Avdija&rsquo;s development, describe a particular foul-drawing technique or establish a league-wide foul-drawing rank. <a href="assets/data/processed/portland-deni-offense-2023-2026.csv">Chart-ready data</a> &middot; <a href="assets/data/processed/portland-preview-prep.notes.md">Preparation notes</a></p>
+                  </figcaption>
+                  <noscript><p class="portland-chart__status portland-chart__status--error">This chart requires JavaScript. The complete values remain available in the accessible table and linked CSV.</p></noscript>
+                </figure>
+
+                <article class="story story--trail-blazers story--trail-blazers-middle">
+                  <p>Two more questions hang over Portland&rsquo;s strong start, in the form of its most intriguing developing players: Henderson and third-year center Donovan Clingan.</p>
+                  <p>Henderson has had a bumpy start to his fourth NBA season after entering the league looking like one of the more promising point guard prospects of this decade. He struggled far more than most expected as a rookie, then gradually improved his scoring efficiency and reduced his turnover rate over the following two seasons. Even so, he still needs another significant leap if he&rsquo;s going to become Portland&rsquo;s point guard of the future, and his sluggish opening alongside the hot starts elsewhere in the rotation hasn&rsquo;t inspired much confidence yet.</p>
+                  <p>It&rsquo;s early, though, and I&rsquo;m in no hurry to give up on his season or long-term potential. Playing alongside Lillard, Holiday and Morant gives him an unusual wealth of experience to learn from, even if their presence also makes it harder to find the minutes and responsibility he needs to develop. How Portland balances those competing needs will be worth watching throughout the season.</p>
+                  <p>Finally, there&rsquo;s the tantalizing possibility of Clingan taking another step toward becoming the kind of center who could change this team&rsquo;s ceiling. His second season already brought considerable progress: 12.1 points and 11.6 rebounds per game, including 4.5 offensive boards, while starting all 77 games he played. He also expanded his shooting range, making 34.1% of his 3.2 three-point attempts per game, giving Portland reason to imagine more than a conventional paint-bound big.</p>
+                  <p>That shooting adds another dimension, but the biggest test of his potential will still come in the areas that made him so promising to begin with: rim protection and rebounding. If he can establish himself as one of the league&rsquo;s best defensive anchors while maintaining his work on the boards, I can see All-Defensive selections and perhaps even an All-Star appearance in his future. More importantly, that version of Clingan would give Portland a much stronger foundation for challenging the West&rsquo;s best teams.</p>
+                </article>
+
+                <figure class="team-graphic portland-chart clingan-centers" data-clingan-centers-chart data-peer-source="assets/data/processed/portland-centers-2024-2026.csv" data-profile-source="assets/data/processed/portland-clingan-rank-profile.csv" aria-busy="true" aria-labelledby="clingan-centers-title" aria-describedby="clingan-centers-description">
+                  <header>
+                    <p class="portland-chart__eyebrow">Donovan Clingan &middot; 2024&ndash;25 and 2025&ndash;26 combined</p>
+                    <h3 class="portland-chart__title team-graphic__title" id="clingan-centers-title">Clingan&rsquo;s place among NBA centers</h3>
+                    <p class="portland-chart__subtitle">Rebounding and shot-blocking rates across the 2024&ndash;25 and 2025&ndash;26 regular seasons.</p>
+                    <p class="clingan-centers__sample">Donovan Clingan &middot; 144 games &middot; 3,418 total minutes</p>
+                    <p class="portland-chart__visually-hidden" id="clingan-centers-description">Three horizontal distribution plots compare Donovan Clingan with 71 other qualifying centers and center-forwards in offensive rebound percentage, defensive rebound percentage and block percentage. His value and descending competition rank are directly labeled in each panel.</p>
+                  </header>
+                  <div class="portland-chart__plot clingan-centers__plot">
+                    <div class="clingan-centers__legend" aria-label="Distribution mark key"><span><i aria-hidden="true"></i>Qualified peer</span><span><i class="is-clingan" aria-hidden="true"></i>Donovan Clingan</span></div>
+                    <p class="portland-chart__status">Loading Clingan&rsquo;s center comparison&hellip;</p>
+                    <div class="clingan-centers__panels"></div>
+                  </div>
+                  <p class="portland-chart__takeaway">Clingan ranked third in offensive rebound percentage and tied for seventh in block percentage in this qualified two-season center cohort.</p>
+                  <details class="portland-chart__table-details">
+                    <summary class="portland-chart__table-toggle">View accessible rank table</summary>
+                    <div class="portland-chart__table-wrap">
+                      <table class="portland-chart__table">
+                        <caption>Donovan Clingan&rsquo;s source-aggregated values and descending competition ranks among 72 qualifiers.</caption>
+                        <thead><tr><th scope="col">Metric</th><th scope="col">Value</th><th scope="col">Rank</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row" data-label="Metric">Offensive rebound percentage<span class="portland-chart__table-definition">Estimated share of available offensive rebounds collected while on court</span></th><td data-label="Value">17.6%</td><td data-label="Rank">3rd of 72</td></tr>
+                          <tr><th scope="row" data-label="Metric">Defensive rebound percentage<span class="portland-chart__table-definition">Estimated share of available defensive rebounds collected while on court</span></th><td data-label="Value">27.6%</td><td data-label="Rank">14th of 72</td></tr>
+                          <tr><th scope="row" data-label="Metric">Block percentage<span class="portland-chart__table-definition">Estimated share of opponent two-point attempts blocked while on court</span></th><td data-label="Value">6.3%</td><td data-label="Rank">Tied 7th of 72</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="portland-chart__notes">
+                    <p><strong>Qualification:</strong> 2024&ndash;25 through 2025&ndash;26 regular seasons combined; Stathead&rsquo;s center or center/forward filter; minimum 1,000 total minutes. The source provides already-aggregated two-season rates.</p>
+                    <p><strong>How to read it:</strong> Rebound percentages estimate the share of available rebounds collected while playing. Block percentage estimates the share of opponent two-point attempts blocked; it is not a complete measure of defense, rim deterrence or wins caused. Ranks use source precision, descending competition rank and shared ranks for ties.</p>
+                    <p><a href="assets/data/processed/portland-centers-2024-2026.csv">Chart-ready cohort</a> &middot; <a href="assets/data/processed/portland-clingan-rank-profile.csv">Rank profile</a> &middot; <a href="assets/data/processed/portland-preview-prep.notes.md">Preparation notes</a></p>
+                  </figcaption>
+                  <noscript><p class="portland-chart__status portland-chart__status--error">This chart requires JavaScript. The complete values remain available in the accessible table and linked CSVs.</p></noscript>
+                </figure>
+
+                <article class="story story--trail-blazers story--trail-blazers-conclusion">
+                  <p>Five games haven&rsquo;t erased the questions about this roster&rsquo;s health, backcourt defense or long-term fit. But between Avdija&rsquo;s growth, Clingan&rsquo;s potential and the possibilities opened by a deeper group of creators, I&rsquo;m considerably more interested in finding out what these Blazers can become than I expected to be.</p>
                 </article>` : team.slug === "grizzlies" ? `
                 <article class="story story--grizzlies story--grizzlies-intro">
                   <p>It&rsquo;s a new era for the Memphis Grizzlies after dealing away all three members of their &ldquo;whoop dat&rdquo; big three &mdash; Ja Morant, Jaren Jackson Jr. and Desmond Bane &mdash; in roughly 16 months. But despite sending all that talent and star power out the door, this Memphis squad projects to be a thorn in the side of any opponent who takes it for granted as an easy win on the schedule.</p>
@@ -2841,6 +2943,7 @@
     <script src="assets/js/mcdaniels-offense-chart.js"></script>
     <script src="assets/js/duren-season-comparison.js"></script>
     <script src="assets/js/edey-memphis-chart.js"></script>
+    <script src="assets/js/portland-preview-charts.js"></script>
     <script src="assets/js/kawhi-production-availability.js"></script>
     <script src="assets/js/kessler-lakers-chart.js"></script>
     <script src="assets/js/holmgren-shared-games-chart.js"></script>
