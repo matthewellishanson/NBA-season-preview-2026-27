@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="assets/css/vanvleet-rockets-chart.css" />
     <link rel="stylesheet" href="assets/css/miller-hornets-chart.css" />
     <link rel="stylesheet" href="assets/css/heat-preview-charts.css" />
+    <link rel="stylesheet" href="assets/css/flagg-historical-scoring.css" />
 
     <style>
       /* Design tokens */
@@ -1059,8 +1060,9 @@
           color: "#00538c",
           slug: "mavericks",
           powerRank: 19,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/Dallas-Mavericks-Logo.png",
+          thesis: "A second year leap from 2025 Rookie of the Year Cooper Flagg and the return of a healthy Kyrie Irving might bring Dallas back to the Western Conference contender they were two seasons ago, before the infamous trade of Luka Doncic to the Lakers.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1287,7 +1289,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "mavericks" ? " story-layout--mavericks" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
                 ${team.slug === "heat" ? `
                 <article class="story story--heat">
                   <p>After years of making eyes at each other across the Eastern Conference, the Miami Heat and former Milwaukee Bucks superstar Giannis Antetokounmpo finally made it Facebook official over the summer in a blockbuster trade several seasons in the making.</p>
@@ -2068,6 +2070,72 @@
                   <p>Without that supporting structure, I can’t expect much from this team this season unless some big midseason acquisitions are coming. There’s just not enough talent and defensive insurance surrounding its two stars to inspire much confidence in the Lakers’ title chances as things stand.</p>
                   <p>Moreover, Kessler isn’t a guaranteed long-term answer. He played just five games last season before a shoulder injury ended his campaign, and he arrives after four seasons with Utah teams that never reached the playoffs. His ability to hold up through a meaningful postseason run remains untested.</p>
                   <p>He could be an ideal frontcourt partner for Dončić and Reaves if he stays healthy and provides enough offensively to complement his defensive strengths. But the combination of injury risk and an unproven playoff fit still leaves me hesitant to bet on him as the Lakers’ long-term solution at center.</p>
+                </article>` : team.slug === "mavericks" ? `
+                <article class="story story--mavericks story--mavericks-intro">
+                  <p>What a difference a few seasons can make in this league &mdash; or, in the Dallas Mavericks&rsquo; case, less than two years.</p>
+                  <p>The trade that sent Luka Doncic to the Los Angeles Lakers will remain inexplicable and inexcusable to me, regardless of everything I&rsquo;m about to praise about this team. Dallas dealt its homegrown franchise superstar just months after he led the Mavericks to their first NBA Finals since 2011, receiving an aging, notoriously injury-prone Anthony Davis, young guard Max Christie and a single 2029 Lakers first-round pick.</p>
+                  <p>The trade came like lightning out of a clear sky, and the return only looked worse the longer everyone had to digest it. The outrage among Mavericks fans was immediate and sustained, turning then-GM Nico Harrison&rsquo;s decision into a crisis of confidence in the organization. For a while, the mood around the franchise felt less like disappointment over a trade and more like basketball&rsquo;s version of a contested divorce, with nobody particularly interested in reconciliation.</p>
+                  <p>Then Dallas won the lottery with a 1.8% chance, receiving one of the greatest get-out-of-jail-free cards in professional sports history &mdash; and providing enough conspiracy fodder to keep NBA podcasts occupied until draft night.</p>
+                  <p>Enter &ldquo;<a href="https://www.theguardian.com/sport/2025/oct/17/cooper-flagg-great-white-hope-dallas-mavericks">the Great White Hope</a>&rdquo; (not my words, just quoting), better known as Cooper Flagg, the former Duke phenom and eventual 2025&ndash;26 Rookie of the Year who gave Mavericks fans a reason to believe in their team again.</p>
+                  <p>Flagg hasn&rsquo;t made the Doncic trade any more defensible. But he has made it considerably easier to imagine a bright future for the franchise that committed it.</p>
+                  <p>Through his first 75 NBA games, Flagg scored 1,607 points, placing him 34th in the supplied historical comparison. More importantly than any single scoring rank, he has looked like a bona fide future MVP while handling responsibilities few rookies are asked to shoulder.</p>
+                </article>
+
+                <figure
+                  class="team-graphic flagg-history"
+                  data-flagg-history-chart
+                  data-source="assets/data/processed/flagg-season-age-scoring.csv"
+                  aria-busy="true"
+                  aria-labelledby="flagg-history-title"
+                >
+                  <header class="flagg-history__header">
+                    <p class="flagg-history__eyebrow">Mavericks context &middot; completed regular seasons</p>
+                    <h3 class="flagg-history__title team-graphic__title" id="flagg-history-title">Flagg&rsquo;s rookie scoring in teenage company</h3>
+                    <p class="flagg-history__subtitle">Total points across seasons listed at age 19 or younger; games played vary.</p>
+                  </header>
+                  <p class="team-graphic__callout flagg-history__takeaway">Flagg scored 1,473 points in his rookie season, sixth in this historical comparison.</p>
+                  <div class="team-graphic__plot flagg-history__plot" aria-hidden="true">
+                    <p class="flagg-history__status">Loading the season-age scoring comparison&hellip;</p>
+                  </div>
+                  <details class="flagg-history__table-details">
+                    <summary class="flagg-history__table-toggle">View accessible chart data table</summary>
+                    <div class="flagg-history__table-wrap">
+                      <table class="team-graphic__table flagg-history__table">
+                        <caption>Top 10 total scorers in the supplied group of combined seasons listed at age 19 or younger.</caption>
+                        <thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Points</th><th scope="col">Games</th><th scope="col">Season span</th><th scope="col">Source age</th></tr></thead>
+                        <tbody>
+                          <tr><td>1</td><th scope="row">Kobe Bryant</th><td>1,759</td><td>150</td><td>1996&ndash;97 to 1997&ndash;98</td><td>18&ndash;19</td></tr>
+                          <tr><td>2</td><th scope="row">Carmelo Anthony</th><td>1,725</td><td>82</td><td>2003&ndash;04</td><td>19</td></tr>
+                          <tr><td>3</td><th scope="row">LeBron James</th><td>1,654</td><td>79</td><td>2003&ndash;04</td><td>19</td></tr>
+                          <tr><td>4</td><th scope="row">Kevin Durant</th><td>1,624</td><td>80</td><td>2007&ndash;08</td><td>19</td></tr>
+                          <tr><td>5</td><th scope="row">Luka Don&#269;i&#263;</th><td>1,526</td><td>72</td><td>2018&ndash;19</td><td>19</td></tr>
+                          <tr class="is-flagg"><td>6</td><th scope="row">Cooper Flagg</th><td>1,473</td><td>70</td><td>2025&ndash;26</td><td>19</td></tr>
+                          <tr><td>7</td><th scope="row">Anthony Edwards</th><td>1,392</td><td>72</td><td>2020&ndash;21</td><td>19</td></tr>
+                          <tr><td>8</td><th scope="row">Andrew Wiggins</th><td>1,387</td><td>82</td><td>2014&ndash;15</td><td>19</td></tr>
+                          <tr><td>9</td><th scope="row">Jeremiah Fears</th><td>1,169</td><td>82</td><td>2025&ndash;26</td><td>19</td></tr>
+                          <tr><td>10</td><th scope="row">Jalen Green</th><td>1,157</td><td>67</td><td>2021&ndash;22</td><td>19</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+                  <figcaption class="flagg-history__notes">
+                    <p><strong>Source:</strong> supplied Stathead/Basketball-Reference regular-season Advanced and Per 100 Possessions exports. <a class="team-graphic__link" href="assets/data/processed/flagg-season-age-scoring.csv">Chart-ready CSV</a> &middot; <a class="team-graphic__link" href="assets/data/processed/flagg-season-age-scoring.notes.md">Preparation and provenance notes</a></p>
+                    <p><strong>Age rule:</strong> the season-age selection is inferred from the exports and has not been independently reproduced. The files do not establish a game-date cutoff at each player&rsquo;s 20th birthday. The original query&rsquo;s broader coverage and filters are undocumented.</p>
+                    <p><strong>Window:</strong> Flagg&rsquo;s chart value is his completed 2025&ndash;26 rookie season. The separate first-75-games export has 1,607 points and a different rank because it uses a different population and time window; it is not plotted here.</p>
+                  </figcaption>
+                  <noscript><p class="flagg-history__status flagg-history__status--error">The bar chart requires JavaScript. All essential values remain available in the table above and in the linked chart-ready CSV.</p></noscript>
+                </figure>
+
+                <article class="story story--mavericks story--mavericks-continuation">
+                  <p>With Kyrie Irving recovering from the ACL injury he suffered shortly after the Luka trade, Flagg spent much of his rookie season operating as Dallas&rsquo; primary creator. Any rookie put in that position would be forgiven for struggling with the adjustment, especially while also taking on difficult defensive assignments.</p>
+                  <p>Flagg handled it remarkably well. He averaged 21.0 points, 6.7 rebounds and 4.5 assists, with an assist-to-turnover ratio close to 2-to-1, while showing the defensive versatility that helped make him the clear first pick in a promising draft class. It wasn&rsquo;t a flawless offensive debut &mdash; his shooting efficiency and three-point accuracy left room for improvement &mdash; but the combination of production, responsibility and two-way potential was extraordinary for a teenager.</p>
+                  <p>He edged former Duke teammate and Charlotte sharpshooter Kon Knueppel for Rookie of the Year, then came out looking ready for another leap. Dallas has opened this season 4&ndash;2, with Flagg increasing his scoring and playmaking and Irving back to give the offense another dependable creator.</p>
+                  <p>The individual statistics discussed here cover the first five games, before Dallas&rsquo; sixth result. Over that opening stretch, Flagg averaged 26.8 points, and his true shooting rose from 54.8% as a rookie to 65.1%. Five games won&rsquo;t establish his new level, but they&rsquo;ve offered plenty of reason to get excited.</p>
+                  <p>Irving&rsquo;s return could be just as important to making that progress sustainable. Through his first five games back, he averaged 21.4 points and 4.8 assists in 28.6 minutes, giving Dallas the smooth, inventive scoring it sorely missed during his absence. So far, so good &mdash; <em>knock on wood</em>.</p>
+                  <p>There are weaknesses elsewhere. The frontcourt has considerable size, but also overlapping roles and durability concerns, including the uncertain return of talented young center Dereck Lively II. The shooting around Flagg and Irving remains another question, particularly against the defenses Dallas would have to solve in a playoff series.</p>
+                  <p>Those concerns matter, even if the two stars make it tempting to look past them. Flagg&rsquo;s development can raise this team&rsquo;s ceiling, but getting back to serious contention will also require a supporting rotation that complements its creators and stays healthy enough to develop some continuity.</p>
+                  <p>Still, it&rsquo;s easy to get excited about the possibilities. Flagg continues to show why he was considered a generational two-way prospect, and Irving&rsquo;s return gives him a co-star capable of sharing the scoring and creation burden.</p>
+                  <p>There&rsquo;s more roster construction ahead before Dallas can confidently expect another Finals run. But after a trade that seemed to destroy the franchise&rsquo;s future overnight, the Mavericks have somehow found another player capable of giving them one. Mavs fans don&rsquo;t have to forget Luka to believe in Flagg.</p>
                 </article>` : team.slug === "nets" ? `
                 <article class="story story--nets story--nets-intro">
                   <p>One of the more rudderless and meandering teams in the league in recent seasons, the Brooklyn Nets are doing &hellip; something, I guess? I&rsquo;ve had a hard time assessing the ongoing rebuild GM Sean Marks and his front office have been working on for several years now. How do you identify the vision for the future of a franchise that drafted five players in the first round of the same draft, several of them playmakers with questions about their shooting and shot creation? What does one make of a team that does that, and then trades for both Michael Porter Jr. and Julius Randle in the same calendar year?</p>
@@ -2957,5 +3025,6 @@
     <script src="assets/js/vanvleet-rockets-chart.js"></script>
     <script src="assets/js/miller-hornets-chart.js"></script>
     <script src="assets/js/heat-preview-charts.js"></script>
+    <script src="assets/js/flagg-historical-scoring.js"></script>
   </body>
 </html>

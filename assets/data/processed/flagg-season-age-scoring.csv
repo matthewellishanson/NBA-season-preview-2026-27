@@ -1,0 +1,11 @@
+rank,player_id,player_name,total_points,games,season_from,season_to,season_span,age_designation,team,points_per_100
+1,bryanko01,Kobe Bryant,1759,150,1996-97,1997-98,1996-97–1997-98,18-19,LAL,28.8
+2,anthoca01,Carmelo Anthony,1725,82,2003-04,2003-04,2003-04,19,DEN,29.6
+3,jamesle01,LeBron James,1654,79,2003-04,2003-04,2003-04,19,CLE,28.0
+4,duranke01,Kevin Durant,1624,80,2007-08,2007-08,2007-08,19,SEA,29.2
+5,doncilu01,Luka Dončić,1526,72,2018-19,2018-19,2018-19,19,DAL,31.9
+6,flaggco01,Cooper Flagg,1473,70,2025-26,2025-26,2025-26,19,DAL,29.6
+7,edwaran01,Anthony Edwards,1392,72,2020-21,2020-21,2020-21,19,MIN,28.4
+8,wiggian01,Andrew Wiggins,1387,82,2014-15,2014-15,2014-15,19,MIN,23.8
+9,fearsje01,Jeremiah Fears,1169,82,2025-26,2025-26,2025-26,19,NOP,26.5
+10,greenja05,Jalen Green,1157,67,2021-22,2021-22,2021-22,19,HOU,25.8
