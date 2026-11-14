@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="assets/css/miller-hornets-chart.css" />
     <link rel="stylesheet" href="assets/css/heat-preview-charts.css" />
     <link rel="stylesheet" href="assets/css/flagg-historical-scoring.css" />
+    <link rel="stylesheet" href="assets/css/pelicans-preview-charts.css" />
 
     <style>
       /* Design tokens */
@@ -1150,8 +1151,9 @@
           color: "#0c2340",
           slug: "pelicans",
           powerRank: 26,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/pelicans-logo-transparent.png",
+          thesis: "Seven years into the Zion Williamson rebuild, the Pelicans remain as adrift as ever and in need of a shakeup.",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1289,7 +1291,7 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "mavericks" ? " story-layout--mavericks" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "mavericks" ? " story-layout--mavericks" : team.slug === "pelicans" ? " story-layout--pelicans" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
                 ${team.slug === "heat" ? `
                 <article class="story story--heat">
                   <p>After years of making eyes at each other across the Eastern Conference, the Miami Heat and former Milwaukee Bucks superstar Giannis Antetokounmpo finally made it Facebook official over the summer in a blockbuster trade several seasons in the making.</p>
@@ -2136,7 +2138,166 @@
                   <p>Those concerns matter, even if the two stars make it tempting to look past them. Flagg&rsquo;s development can raise this team&rsquo;s ceiling, but getting back to serious contention will also require a supporting rotation that complements its creators and stays healthy enough to develop some continuity.</p>
                   <p>Still, it&rsquo;s easy to get excited about the possibilities. Flagg continues to show why he was considered a generational two-way prospect, and Irving&rsquo;s return gives him a co-star capable of sharing the scoring and creation burden.</p>
                   <p>There&rsquo;s more roster construction ahead before Dallas can confidently expect another Finals run. But after a trade that seemed to destroy the franchise&rsquo;s future overnight, the Mavericks have somehow found another player capable of giving them one. Mavs fans don&rsquo;t have to forget Luka to believe in Flagg.</p>
-                </article>` : team.slug === "nets" ? `
+                </article>` : team.slug === "pelicans" ? `
+                <div class="pelicans-preview-package">
+                  <article class="story story--pelicans story--pelicans-intro">
+                    <p>Like fellow struggling teams Brooklyn and Sacramento, the New Orleans Pelicans feel like they&rsquo;ve been mired in mediocrity or worse all decade long. In reality, it&rsquo;s only been three seasons since this franchise&rsquo;s last playoff appearance, when they were quickly swept out by an Oklahoma City Thunder team just a year away from winning its first championship in Oklahoma City. In fact, much to my surprise, New Orleans actually has two winning seasons and two first-round series to show for its 2020s. But those modest successes get lost, for me at least, amid a decade more frequently marred by disappointment and dysfunction.</p>
+                    <p>The weird thing about all those losing seasons, at least since New Orleans&rsquo; turbulent 2019&mdash;when they traded 2012 first overall pick and franchise star Anthony Davis to the Lakers and landed another generational number one pick in Duke sensation Zion Williamson&mdash;is that this roster has never really felt short on talent at any point this decade.</p>
+                    <p>That trend of underperforming their roster has carried over into the Pelicans&rsquo; new season, as this group and new head coach Jamahl Mosley have again underwhelmed relative to their collective talent, kicking off what looks like another lottery-bound campaign with a 4&ndash;8 start. That might not seem so surprising given the understandably low expectations for this team, coming off back-to-back losing seasons with a combined record of 47&ndash;117 since its last playoff appearance. But beyond the box score, the eye test has often looked worse than New Orleans&rsquo; numbers and record suggest.</p>
+                    <p>What&rsquo;s wrong with this franchise? Or with the Pelicans&rsquo; young and seemingly potent core, which somehow never looks as good on the hardwood as on paper? As a data-first basketball blogger who admittedly has watched few Pelicans games in recent seasons besides those against my Timberwolves, I&rsquo;ve had a tricky time coming up with a proper answer while sitting down to write about this team. But after some closer examination of their stats and a cramming session with a sample of condensed games on NBA League Pass, both from this year and their previous two losing seasons, I think I can point to at least a few potential culprits.</p>
+                    <p>First, you have to take a good hard look at the disappointing career arc of the guy virtually every NBA fan and pundit once thought destined to revive this franchise after the Anthony Davis era fell so short of expectations. Williamson, better known by his first name, Zion, came into this organization as arguably the most highly anticipated, high-ceiling draft prospect since Davis himself, if not Kevin Durant in 2007 or even LeBron James way back in 2003.</p>
+                    <p>Zion had all the traits to make scouts and fans&mdash;not only in New Orleans but throughout the basketball community&mdash;salivate and fawn over what he seemed fated to become as a pro. Just watch his college tape for 30 seconds and you&rsquo;ll understand what everyone saw in him, and why so many believed him to be next in line for the highest level of NBA superstardom: the kind reserved for the LeBrons and Durants, the Currys and Wembanyamas, the truly generational stars of this league. Williamson was a Hulk of a teenager, powered by an otherworldly blend of strength, explosiveness, speed, verticality and all-around ball skills, and blessed with an ability to dominate the paint on both ends through sheer brute force and the relentless motor that made him a national sensation as a college freshman at Duke.</p>
+                    <p>With all this going for him, and a personality that seemed to inspire few concerns at the time he was drafted, Zion appeared too big to fail, too big to become a bust as a number one pick in what was and still is a very strong 2019 draft class. But as I reflect on the seven completed seasons since he entered amid all that hype, I&rsquo;m struggling to call his career to date anything other than a pretty major disappointment, if not quite a total bust&mdash;not yet, at least.</p>
+                    <p>What went wrong with Zion can be viewed as a useful microcosm for the Pelicans&rsquo; failures and struggles this decade, and it&rsquo;s why I&rsquo;ve devoted such a big chunk of this preview to him. Much of what has hindered his rise to a winning franchise superstar feels intertwined with a broken basketball culture around this franchise. Injuries and <a href="https://www.nola.com/sports/pelicans/zion-williamsons-conditioning-is-a-massive-problem-for-pelicans/article_3121affc-95e4-11ee-8f1b-fbd16c405c70.html">recurring concerns about his conditioning</a>, alongside a string of coaches and front-office executives whose competing visions have hardly encouraged consistent progress, have complicated both Zion&rsquo;s career and the team&rsquo;s attempts to build around him.</p>
+                  </article>
+
+                  <figure
+                    class="team-graphic pelicans-chart pelicans-zion"
+                    data-pelicans-zion-chart
+                    data-source="assets/data/processed/pelicans-zion-role-2019-2027.csv"
+                    aria-busy="true"
+                    aria-labelledby="pelicans-zion-title"
+                    aria-describedby="pelicans-zion-description"
+                  >
+                    <header class="pelicans-chart__header">
+                      <p class="pelicans-chart__eyebrow">Zion Williamson &middot; Regular season</p>
+                      <h3 class="pelicans-chart__title team-graphic__title" id="pelicans-zion-title">Zion&rsquo;s role has shrunk. His efficiency hasn&rsquo;t.</h3>
+                      <p class="pelicans-chart__subtitle">His usage and assists have fallen from the 30-game 2024&ndash;25 peak, while his true shooting has risen. The current result remains an 11-appearance snapshot inside New Orleans&rsquo; first 12 team games.</p>
+                      <p class="pelicans-chart__visually-hidden" id="pelicans-zion-description">Three vertically aligned panels show Zion Williamson's usage, assists per 100 possessions and true shooting percentage across six completed played seasons since 2019-20. A separate summary lists his current 2026-27 values. Williamson missed 2021-22. A compact dumbbell compares the current New Orleans team offensive rating with Zion on and off the court.</p>
+                    </header>
+                    <p class="pelicans-chart__takeaway"><strong>Changing responsibility, continuing importance:</strong> Zion&rsquo;s usage moved from 34.7% in 2024&ndash;25 to 25.7% last season and 22.8% now. New Orleans has still scored 119.2 points per 100 possessions with him on the court, versus 104.2 with him off.</p>
+                    <section class="pelicans-zion__career-section" aria-labelledby="pelicans-zion-career-title">
+                      <h4 id="pelicans-zion-career-title">A. Career role and scoring efficiency</h4>
+                      <p>Regular-season offensive role and scoring efficiency</p>
+                      <div class="pelicans-zion__career-layout">
+                        <div class="team-graphic__plot pelicans-zion__career-plot">
+                          <p class="pelicans-chart__status">Loading Zion&rsquo;s career role and efficiency&hellip;</p>
+                        </div>
+                        <aside class="pelicans-zion__current-summary" aria-label="2026-27 current snapshot"></aside>
+                      </div>
+                      <p class="pelicans-zion__played-note">Played seasons shown; Williamson missed 2021&ndash;22.</p>
+                    </section>
+                    <section class="pelicans-zion__onoff-section" aria-labelledby="pelicans-zion-onoff-title">
+                      <h4 id="pelicans-zion-onoff-title">B. Current New Orleans team offense with and without Zion</h4>
+                      <p>2026&ndash;27 &middot; first 12 team games</p>
+                      <p class="pelicans-zion__onoff-definition">Offensive rating is team points per 100 possessions.</p>
+                      <div class="pelicans-zion__onoff-plot"></div>
+                    </section>
+                    <p class="pelicans-chart__caveat"><strong>On/off limit:</strong> 119.2 on court (360 minutes) and 104.2 off court (231 minutes) are observed team offensive ratings. They are unadjusted for teammates, opponents and rotation context and do not isolate Zion&rsquo;s causal impact. Higher usage is not inherently better, and usage does not measure every kind of offensive involvement.</p>
+                    <details class="pelicans-chart__table-details">
+                      <summary class="pelicans-chart__table-toggle">View Zion career and on/off data table</summary>
+                      <div class="pelicans-chart__table-wrap pelicans-zion__table-wrap"></div>
+                    </details>
+                    <figcaption class="pelicans-chart__notes">
+                      <p><strong>Source:</strong> supplied Zion Advanced, Per 100 Possessions, Per Game, Play-by-Play, Shooting and 2026&ndash;27 on/off exports. Assisted-two-point percentage remains in the table but is not promoted to a fourth trend panel.</p>
+                      <p><a href="assets/data/processed/pelicans-zion-role-2019-2027.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/pelicans-preview-prep.notes.md">Preparation, provenance and limitations</a></p>
+                    </figcaption>
+                    <noscript><p class="pelicans-chart__status pelicans-chart__status--error">This graphic requires JavaScript. The chart-ready CSV and methods are linked above.</p></noscript>
+                  </figure>
+
+                  <article class="story story--pelicans story--pelicans-team-context">
+                    <p>Like Zion&rsquo;s career arc, there&rsquo;s been a confused aimlessness to this franchise&rsquo;s ongoing rebuild. The result is an offense highly dependent on interior scoring, without enough floor spacing or dependable defense to make that approach work. Through 12 games, New Orleans ranks last in three-point attempt rate and 28th in defensive rating.</p>
+                  </article>
+
+                  <article class="story story--pelicans story--pelicans-rookie-context">
+                    <p>Take a look at the brightest young talents around Williamson: Derik Queen and Jeremiah Fears. The two second-year players were arguably the brightest spots of New Orleans&rsquo; dud of a 2025&ndash;26 season, and neither, in my view, projects as a playable long-term starter next to Williamson without substantial development. Fears has a more realistic chance of becoming a point guard who would pair well with Zion, even if his inconsistent jump shooting and defensive limitations make him a questionable backcourt fit at this moment.</p>
+                    <p>But Queen, who flashed some stat-stuffing upside as a playmaking big in his rookie campaign, is another interior-oriented scorer who has yet to establish the outside shooting or defense that a frontcourt partner next to Zion would need to cover for Williamson&rsquo;s deficiencies in those areas. And as for rebounding, it&rsquo;s not really a good sign that Fears has almost the same rebounds per 100 possessions as Williamson&mdash;7.5 to 7.6&mdash;despite the considerable difference in their size.</p>
+                  </article>
+
+                  <figure
+                    class="team-graphic pelicans-chart pelicans-rookies"
+                    data-pelicans-rookie-chart
+                    data-source="assets/data/processed/pelicans-rookie-context-2023-2026.csv"
+                    aria-busy="true"
+                    aria-labelledby="pelicans-rookies-title"
+                    aria-describedby="pelicans-rookies-description"
+                  >
+                    <header class="pelicans-chart__header">
+                      <p class="pelicans-chart__eyebrow">Recent rookie context &middot; 2023&ndash;24 through 2025&ndash;26</p>
+                      <h3 class="pelicans-chart__title team-graphic__title" id="pelicans-rookies-title">Two promising rookies, different development questions</h3>
+                      <p class="pelicans-chart__subtitle">Fears produced more points per possession; Queen recorded more assists and higher true shooting. Both panels show the same 138 qualifying rookie seasons.</p>
+                      <p class="pelicans-chart__visually-hidden" id="pelicans-rookies-description">Two aligned scatterplots compare 138 rookies with at least 15 games and 10 minutes per game across three seasons. The first plots points per 100 possessions against true shooting percentage. The second plots assists against turnovers per 100 possessions, where rightward and downward are favorable directions. Jeremiah Fears is a navy circle and Derik Queen is a gold diamond.</p>
+                    </header>
+                    <div class="pelicans-chart__samples" aria-label="Highlighted rookie values">
+                      <span class="pelicans-chart__sample is-fears"><i aria-hidden="true"></i><strong>Jeremiah Fears</strong> 2025&ndash;26 rookie &middot; 82 G &middot; 2,112 min</span>
+                      <span class="pelicans-chart__sample is-queen"><i aria-hidden="true"></i><strong>Derik Queen</strong> 2025&ndash;26 rookie &middot; 81 G &middot; 2,023 min</span>
+                    </div>
+                    <div class="team-graphic__plot pelicans-rookies__panels">
+                      <p class="pelicans-chart__status">Loading the three-season rookie comparison&hellip;</p>
+                      <section class="pelicans-rookies__panel" data-rookie-panel="scoring">
+                        <h4>A. Scoring volume and efficiency</h4>
+                        <p>Higher and farther right indicate more scoring efficiency and volume.</p>
+                      </section>
+                      <section class="pelicans-rookies__panel" data-rookie-panel="creation">
+                        <h4>B. Assists and turnovers</h4>
+                        <p class="pelicans-rookies__direction"><span>More assists &rarr;</span><span>Fewer turnovers &darr;</span></p>
+                      </section>
+                    </div>
+                    <p class="pelicans-chart__caveat"><strong>How to read:</strong> These are descriptive comparisons across positions, roles and three rookie classes, not forecasts of future stardom. Turnovers include more than failed passes, so Panel B is not a measure of &ldquo;passing efficiency.&rdquo;</p>
+                    <details class="pelicans-chart__table-details">
+                      <summary class="pelicans-chart__table-toggle">View all 138 rookie player-seasons</summary>
+                      <div class="pelicans-chart__table-wrap pelicans-rookies__table-wrap"></div>
+                    </details>
+                    <figcaption class="pelicans-chart__notes">
+                      <p><strong>Source:</strong> supplied Basketball-Reference rookie Advanced, Per 100 Possessions and Per Game exports. Qualification: at least 15 games and 10 minutes per game. Total minutes in the highlighted labels come from the separate supplied player tables.</p>
+                      <p><a href="assets/data/processed/pelicans-rookie-context-2023-2026.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/pelicans-preview-prep.notes.md">Preparation, provenance and limitations</a></p>
+                    </figcaption>
+                    <noscript><p class="pelicans-chart__status pelicans-chart__status--error">This scatterplot requires JavaScript. The complete chart-ready CSV and methods are linked above.</p></noscript>
+                  </figure>
+
+                  <article class="story story--pelicans story--pelicans-conclusion">
+                    <p>There are other quality pieces around Zion and the two sophomores that feel similarly clunky as fits on this roster. Trey Murphy III is a much-needed floor spacer who feels wasted amid a sea of non-shooters, and is arguably a more straightforward trade piece than the complicated Zion at this point. Dejounte Murray has never looked quite like the rising star he was for the Spurs since leaving San Antonio, with injuries further complicating his career along the way. Bennedict Mathurin felt like a nice flyer for this front office to take after showing promise early in his career in Indiana, but his early-season performance has done little to inspire confidence in his long-term fit here.</p>
+                    <p>Apart from these players, there isn&rsquo;t much else I feel compelled to highlight. Saddiq Bey was a nice pickup who has at least done his best to help with the spacing issues, but he&rsquo;s not really a prospect or a guy to build around. Jordan Poole and Herb Jones remain part of the picture, too, though neither has offered much offensive help to start this season.</p>
+                  </article>
+
+                  <figure
+                    class="team-graphic pelicans-chart pelicans-team"
+                    data-pelicans-team-chart
+                    data-source="assets/data/processed/pelicans-team-style-2025-2027.csv"
+                    aria-busy="true"
+                    aria-labelledby="pelicans-team-title"
+                    aria-describedby="pelicans-team-description"
+                  >
+                    <header class="pelicans-chart__header">
+                      <p class="pelicans-chart__eyebrow">New Orleans team profile &middot; completed season vs. 12-game snapshot</p>
+                      <h3 class="pelicans-chart__title team-graphic__title" id="pelicans-team-title">Little perimeter volume, little defensive margin</h3>
+                      <p class="pelicans-chart__subtitle">The completed 82-game season is compared with the current 12-game, 4&ndash;8 snapshot.</p>
+                      <p class="pelicans-chart__visually-hidden" id="pelicans-team-description">Four aligned rank comparisons show offensive rating, defensive rating, opponent two-point percentage and defensive rebound percentage for 2025-26 and the first 12 games of 2026-27, using a 1-best to 30-worst quality scale. A separate offensive-style section compares three-point attempt rate and free-throw attempt rate without treating volume as quality.</p>
+                    </header>
+                    <p class="pelicans-chart__takeaway">New Orleans remains short on three-point volume while allowing exceptionally efficient two-point shooting.</p>
+                    <div class="pelicans-chart__samples" aria-label="Season marker key">
+                      <span class="pelicans-chart__sample is-completed"><i aria-hidden="true"></i><strong>2025&ndash;26</strong> 82 G &middot; 26&ndash;56</span>
+                      <span class="pelicans-chart__sample is-current"><i aria-hidden="true"></i><strong>2026&ndash;27</strong> 12 G &middot; 4&ndash;8</span>
+                    </div>
+                    <div class="pelicans-team__main">
+                      <section class="pelicans-team__section" aria-labelledby="pelicans-team-results-title">
+                        <header><h4 id="pelicans-team-results-title">A. Results and defensive pressure points</h4><p>Supplied league ranks &middot; 1 = best, 30 = worst</p></header>
+                        <p class="pelicans-chart__status">Loading the team rank comparison&hellip;</p>
+                        <div class="pelicans-team__rank-rows"></div>
+                        <p class="pelicans-team__rank-note">Ranks are relative to each season&rsquo;s league; a better rank does not necessarily mean a better raw result.</p>
+                      </section>
+                      <section class="pelicans-team__section" aria-labelledby="pelicans-team-style-title">
+                        <header><h4 id="pelicans-team-style-title">B. Where the shots come from</h4></header>
+                        <div class="pelicans-team__style-rows"></div>
+                      </section>
+                    </div>
+                    <p class="pelicans-chart__caveat"><strong>Definitions:</strong> 3PAr is the share of all field-goal attempts taken from three. FTr is free-throw attempts per field-goal attempt, so .367 equals 36.7 FTA per 100 FGA; neither measure is per 100 possessions. Opponent 2P% includes every two-point attempt, not only rim or paint shots, and these team results do not assign responsibility to a specific defender.</p>
+                    <details class="pelicans-chart__table-details">
+                      <summary class="pelicans-chart__table-toggle">View team comparison data table</summary>
+                      <div class="pelicans-chart__table-wrap pelicans-team__table-wrap"></div>
+                    </details>
+                    <figcaption class="pelicans-chart__notes">
+                      <p><strong>Source:</strong> supplied New Orleans Team Four Factors and Team Basic exports for 2025&ndash;26 and 2026&ndash;27. The opponent 2P% source rank is verified as defensive quality (lower allowed percentage is better); it is not inverted.</p>
+                      <p><a href="assets/data/processed/pelicans-team-style-2025-2027.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/pelicans-preview-prep.notes.md">Preparation, provenance and limitations</a></p>
+                    </figcaption>
+                    <noscript><p class="pelicans-chart__status pelicans-chart__status--error">This graphic requires JavaScript. The chart-ready CSV and methods are linked above.</p></noscript>
+                  </figure>
+
+                  <article class="story story--pelicans story--pelicans-final">
+                    <p>The big picture isn&rsquo;t very kind to these Pelicans, but a lot of the problems this roster faces could be addressed within the next two calendar years, as I see it. First, I think they need to part with either or both of Williamson and Murphy and get as much as they can for whichever they decide to deal. Then this front office would have a clearer path forward around a younger core of Queen, Fears, 2024&ndash;25 standout rookie center Yves Missi and future draft picks.</p>
+                    <p>But perhaps most important is for the next phase of Pelicans rebuilding to focus on a specific style of basketball and players who fit the pieces involved. That&rsquo;s been the clear failure of this past decade around Zion, and the reason this team remains such a confused mess of talented players who simply don&rsquo;t fit with one another. Find pieces that can play and find success together over the long term, rather than simply accruing and hoarding quality prospects whose strengths don&rsquo;t complement one another. That&rsquo;s the only reliable path out of the NBA basement for this organization&mdash;and yes, in my view, it probably requires a painful Zion and/or Murphy trade this season.</p>
+                  </article>
+                </div>` : team.slug === "nets" ? `
                 <article class="story story--nets story--nets-intro">
                   <p>One of the more rudderless and meandering teams in the league in recent seasons, the Brooklyn Nets are doing &hellip; something, I guess? I&rsquo;ve had a hard time assessing the ongoing rebuild GM Sean Marks and his front office have been working on for several years now. How do you identify the vision for the future of a franchise that drafted five players in the first round of the same draft, several of them playmakers with questions about their shooting and shot creation? What does one make of a team that does that, and then trades for both Michael Porter Jr. and Julius Randle in the same calendar year?</p>
                   <p>Honestly, the jury&rsquo;s still out in my book on whether there&rsquo;s a clear vision for the team Marks and the Nets are trying to build. But there&rsquo;s enough youth on this roster, and more than enough uncertainty about those young players, for the Nets to at least be an interesting watch this season. Not much chance of them actually competing in any real capacity, mind you, but the developmental arcs of a team with so many recent first-round picks make for a fun storyline to follow over 82 games.</p>
@@ -3026,5 +3187,6 @@
     <script src="assets/js/miller-hornets-chart.js"></script>
     <script src="assets/js/heat-preview-charts.js"></script>
     <script src="assets/js/flagg-historical-scoring.js"></script>
+    <script src="assets/js/pelicans-preview-charts.js"></script>
   </body>
 </html>

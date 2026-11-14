@@ -1,0 +1,3 @@
+season,sample_status,games,wins,losses,offensive_rating,offensive_rating_rank,defensive_rating,defensive_rating_rank,opponent_two_point_pct,opponent_two_point_defensive_rank,defensive_rebound_pct,defensive_rebound_pct_rank,three_point_attempt_rate,three_point_attempt_rate_most_rank,free_throw_attempt_rate,free_throw_attempt_rate_most_rank,opponent_rank_basis
+2025-26,completed,82,26,56,114.4,21,118.9,25,.578,29,71.4,28,.355,26,.284,8,Source ranks lower opponent 2P% as better defensive quality (1 = lowest allowed).
+2026-27,current_12_games,12,4,8,113.4,17,120.5,28,.606,30,72.3,18,.328,30,.367,1,Source ranks lower opponent 2P% as better defensive quality (1 = lowest allowed).

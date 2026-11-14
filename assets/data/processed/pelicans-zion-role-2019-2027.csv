@@ -1,0 +1,9 @@
+season,season_start,sample_status,games,total_minutes,minutes_per_game,usage_pct,assists_per_100,true_shooting_pct,assisted_two_pct,play_by_play_on_court_net_per_100,team_ortg_on,team_ortg_on_minutes,team_ortg_off,team_ortg_off_minutes
+2019-20,2019,completed,24,668,27.8,30.5,3.5,.616,.755,4.7,,,,
+2020-21,2020,completed,61,2026,33.2,29.8,5.3,.649,.553,1.7,,,,
+2021-22,2021,did_not_play,0,0,,,,,,,,,,
+2022-23,2022,completed,29,956,33.0,30.4,6.7,.652,.457,7.3,,,,
+2023-24,2023,completed,70,2207,31.5,29.7,7.8,.610,.474,2.4,,,,
+2024-25,2024,completed,30,857,28.6,34.7,9.0,.600,.460,-3.1,,,,
+2025-26,2025,completed,62,1841,29.7,25.7,5.2,.644,.524,-2.6,,,,
+2026-27,2026,current_12_team_games,11,360,32.7,22.8,3.8,.691,.638,-1.8,119.2,360,104.2,231

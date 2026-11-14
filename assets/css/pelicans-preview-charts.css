@@ -1,0 +1,307 @@
+.story-layout.story-layout--pelicans { grid-template-columns: minmax(0, 1fr); }
+.pelicans-preview-package { display: grid; gap: 24px; min-width: 0; width: 100%; }
+
+.pelicans-chart {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 24px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border: 1px solid var(--team-border);
+  border-top: 5px solid var(--team-identity);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(12, 35, 64, 0.09);
+}
+.pelicans-chart__header { max-width: 900px; }
+.pelicans-chart__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .pelicans-chart__title {
+  margin: 0;
+  color: var(--team-secondary);
+  font: 850 clamp(1.35rem, 2.8vw, 2rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.pelicans-chart__subtitle {
+  margin: 8px 0 0;
+  max-width: 820px;
+  color: var(--team-muted);
+  font: 650 0.9rem/1.45 system-ui, sans-serif;
+}
+.pelicans-chart__takeaway {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  background: var(--team-surface-strong);
+  border-left: 4px solid var(--team-secondary);
+  border-radius: 5px;
+  font-size: 0.88rem;
+  line-height: 1.48;
+}
+.pelicans-chart__plot {
+  min-width: 0;
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--team-plot);
+  border: 1px solid color-mix(in srgb, var(--team-border) 70%, white);
+  border-radius: 7px;
+}
+.pelicans-chart__axis text {
+  fill: var(--team-muted);
+  font: 650 10.5px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.pelicans-chart__axis path,
+.pelicans-chart__axis line { stroke: #9298a0; stroke-width: 0.75; shape-rendering: crispEdges; }
+.pelicans-chart__grid line { stroke: #dfe2e6; stroke-width: 0.75; stroke-dasharray: 2 3; shape-rendering: crispEdges; }
+.pelicans-chart__axis-title { fill: var(--team-muted); font: 750 11px/1 system-ui, sans-serif; }
+.pelicans-chart__status { margin: 18px; color: var(--team-muted); font-size: 0.84rem; }
+.pelicans-chart__status--error { color: var(--team-negative); font-weight: 800; }
+
+.pelicans-chart__samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+.pelicans-chart__sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 7px 10px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+.pelicans-chart__sample i { display: inline-block; width: 10px; height: 10px; flex: 0 0 auto; }
+.pelicans-chart__sample.is-fears i { background: var(--team-secondary); border-radius: 50%; }
+.pelicans-chart__sample.is-queen i { background: var(--team-identity); border: 1px solid var(--team-ink); transform: rotate(45deg); }
+.pelicans-chart__sample.is-completed i { background: var(--team-comparison); }
+.pelicans-chart__sample.is-current i { background: var(--team-identity); border: 1px solid var(--team-ink); border-radius: 50%; }
+
+.pelicans-rookies__panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0; background: transparent; border: 0; }
+.pelicans-rookies__panel {
+  position: relative;
+  min-width: 0;
+  padding: 13px 10px 5px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+}
+.pelicans-rookies__panel h4 { margin: 0 4px; color: var(--team-secondary); font: 850 0.94rem/1.3 system-ui, sans-serif; }
+.pelicans-rookies__panel p { margin: 3px 4px 0; color: var(--team-muted); font-size: 0.72rem; line-height: 1.4; }
+.pelicans-rookies__direction { display: flex; flex-wrap: wrap; gap: 4px 10px; font-weight: 800; }
+.pelicans-rookies__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pelicans-rookies__peer { fill: #9ca2a9; fill-opacity: 0.56; stroke: #fff; stroke-width: 0.7; }
+.pelicans-rookies__featured { stroke-width: 2; }
+.pelicans-rookies__direct-label {
+  fill: var(--team-secondary);
+  stroke: var(--team-plot);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font: 850 11.5px/1 system-ui, sans-serif;
+}
+.pelicans-rookies__direct-label.is-queen { fill: var(--team-ink); }
+.pelicans-rookies__hit { fill: transparent; pointer-events: all; touch-action: pan-y; cursor: crosshair; }
+.pelicans-rookies__hit:focus { stroke: var(--team-focus); stroke-width: 3px; outline: none; }
+.pelicans-rookies__inspection {
+  position: absolute;
+  top: 62px;
+  right: 12px;
+  z-index: 2;
+  display: none;
+  max-width: min(230px, calc(100% - 24px));
+  padding: 7px 9px;
+  color: var(--team-text);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--team-border);
+  border-radius: 5px;
+  box-shadow: 0 4px 14px rgba(12, 35, 64, 0.13);
+  pointer-events: none;
+  font: 700 0.68rem/1.35 system-ui, sans-serif;
+}
+.pelicans-rookies__inspection.is-visible { display: grid; gap: 1px; }
+.pelicans-rookies__inspection span { color: var(--team-muted); }
+
+.pelicans-zion__career-plot { padding: 8px 10px 2px; }
+.pelicans-zion__career-section { margin-top: 14px; padding: 14px 14px 0; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+.pelicans-zion__career-section h4 { margin: 0; color: var(--team-secondary); font: 850 0.94rem/1.3 system-ui, sans-serif; }
+.pelicans-zion__career-section > p { margin: 4px 0 0; color: var(--team-muted); font-size: 0.75rem; line-height: 1.45; }
+.pelicans-zion__career-layout { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 10px; align-items: stretch; margin-top: 6px; }
+.pelicans-zion__career-section .pelicans-zion__career-plot { margin-top: 0; border: 0; }
+.pelicans-zion__career-svg,
+.pelicans-zion__onoff-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pelicans-zion__current-summary { position: relative; min-width: 0; min-height: 100%; background: var(--team-surface); border-left: 1px solid var(--team-border); border-radius: 5px; }
+.pelicans-zion__current-summary h5 { position: absolute; top: 9px; left: 10px; right: 10px; z-index: 1; margin: 0; color: var(--team-ink); font: 850 0.75rem/1.3 system-ui, sans-serif; }
+.pelicans-zion__current-values { position: absolute; inset: 0; box-sizing: border-box; display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 26px; padding: 32px 10px 72px; }
+.pelicans-zion__current-values p { display: flex; flex-direction: column; justify-content: center; gap: 3px; margin: 0; border-top: 1px solid color-mix(in srgb, var(--team-border) 58%, white); }
+.pelicans-zion__current-values span { color: var(--team-muted); font-size: 0.65rem; font-weight: 750; }
+.pelicans-zion__current-values strong { color: var(--team-ink); font: 850 1.12rem/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.pelicans-zion__panel-title { fill: var(--team-secondary); font: 850 11.5px/1 system-ui, sans-serif; }
+.pelicans-zion__career-line { fill: none; stroke: var(--team-secondary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pelicans-zion__career-point { stroke-width: 2.25; }
+.pelicans-zion__career-value {
+  fill: var(--team-secondary);
+  stroke: var(--team-plot);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font: 850 9.5px/1 system-ui, sans-serif;
+}
+.pelicans-zion__season-axis text { fill: var(--team-text); font-weight: 800; }
+.pelicans-zion__games-label { fill: var(--team-muted); font-size: 9px; font-weight: 700; }
+.pelicans-zion__played-axis-title { font-size: 10px; }
+.pelicans-zion__played-note { margin: 2px 10px 10px !important; }
+.pelicans-zion__onoff-section { margin-top: 14px; padding: 14px; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+.pelicans-zion__onoff-section h4 { margin: 0; color: var(--team-secondary); font: 850 0.94rem/1.3 system-ui, sans-serif; }
+.pelicans-zion__onoff-section > p { margin: 4px 0 0; color: var(--team-muted); font-size: 0.75rem; line-height: 1.45; }
+.pelicans-zion__onoff-section > .pelicans-zion__onoff-definition { margin-top: 1px; font-size: 0.68rem; }
+.pelicans-zion__onoff-plot { margin-top: 7px; }
+.pelicans-zion__onoff-connector { stroke: var(--team-border); stroke-width: 3; }
+.pelicans-zion__onoff-mark.is-on { fill: var(--team-secondary); stroke: var(--team-plot); stroke-width: 1.5; }
+.pelicans-zion__onoff-mark.is-off { fill: var(--team-comparison); }
+.pelicans-zion__onoff-label {
+  fill: var(--team-text);
+  stroke: var(--team-plot);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font: 850 11px/1 system-ui, sans-serif;
+}
+.pelicans-zion__onoff-difference { fill: var(--team-muted); font: 800 10px/1 system-ui, sans-serif; }
+
+.pelicans-team__main { display: grid; gap: 12px; margin-top: 14px; }
+.pelicans-team__section { padding: 15px; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+.pelicans-team__section > header h4 { margin: 0; color: var(--team-secondary); font: 850 1rem/1.3 system-ui, sans-serif; }
+.pelicans-team__section > header p { margin: 4px 0 0; color: var(--team-muted); font-size: 0.75rem; line-height: 1.45; }
+.pelicans-team__rank-rows { display: grid; gap: 13px; margin-top: 13px; }
+.pelicans-team__rank-row { padding-top: 12px; border-top: 1px solid #e1e3e7; }
+.pelicans-team__rank-row:first-child { padding-top: 0; border-top: 0; }
+.pelicans-team__rank-row > header { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.pelicans-team__rank-row h5,
+.pelicans-team__style-row h5 { margin: 0; color: var(--team-text); font: 850 0.84rem/1.3 system-ui, sans-serif; }
+.pelicans-team__rank-row header p { margin: 0; color: var(--team-muted); font-size: 0.68rem; text-align: right; }
+.pelicans-team__rank-geometry { margin-top: 9px; }
+.pelicans-team__rank-scale { position: relative; height: 14px; margin: 0 7px 4px; color: var(--team-muted); font-size: 0.61rem; font-weight: 750; }
+.pelicans-team__rank-scale span { position: absolute; transform: translateX(-50%); }
+.pelicans-team__rank-scale span:nth-child(1) { left: 0; transform: none; }
+.pelicans-team__rank-scale span:nth-child(2) { left: 31.034%; }
+.pelicans-team__rank-scale span:nth-child(3) { left: 65.517%; }
+.pelicans-team__rank-scale span:nth-child(4) { right: 0; transform: none; }
+.pelicans-team__track,
+.pelicans-team__style-track { position: relative; display: block; height: 3px; background: #d9dde1; border-radius: 3px; }
+.pelicans-team__track { margin: 0 7px; }
+.pelicans-team__track::before,
+.pelicans-team__track::after,
+.pelicans-team__style-track::before,
+.pelicans-team__style-track::after { position: absolute; top: -4px; width: 1px; height: 11px; background: #c6cbd0; content: ""; }
+.pelicans-team__track::before,
+.pelicans-team__style-track::before { left: 0; }
+.pelicans-team__track::after,
+.pelicans-team__style-track::after { right: 0; }
+.pelicans-team__rank-marker,
+.pelicans-team__style-track i { position: absolute; top: 50%; left: var(--rank-position, var(--style-position)); width: 11px; height: 11px; background: var(--team-comparison); border: 2px solid var(--team-plot); box-shadow: 0 0 0 1px var(--team-comparison); transform: translate(-50%, -50%); }
+.pelicans-team__rank-marker.is-current,
+.pelicans-team__style-season.is-current i { z-index: 1; background: var(--team-identity); border-radius: 50%; box-shadow: 0 0 0 1px var(--team-ink); }
+.pelicans-team__rank-values { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 18px; margin-top: 11px; }
+.pelicans-team__rank-values p { display: inline-flex; align-items: center; gap: 5px; margin: 0; color: var(--team-muted); font-size: 0.7rem; font-variant-numeric: tabular-nums; }
+.pelicans-team__rank-values p.is-current { color: var(--team-ink); }
+.pelicans-team__marker-key { width: 9px; height: 9px; flex: 0 0 auto; background: var(--team-comparison); }
+.pelicans-team__rank-values p.is-current .pelicans-team__marker-key { background: var(--team-identity); border: 1px solid var(--team-ink); border-radius: 50%; }
+.pelicans-team__rank-note { margin: 13px 0 0; color: var(--team-muted); font-size: 0.7rem; line-height: 1.45; }
+.pelicans-team__season-label { color: var(--team-muted); font-size: 0.7rem; font-weight: 800; }
+.pelicans-team__style-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 13px; }
+.pelicans-team__style-row { min-width: 0; padding: 13px; background: var(--team-surface); border-radius: 6px; }
+.pelicans-team__style-row > header { min-height: 42px; }
+.pelicans-team__style-row > header p { margin: 2px 0 0; color: var(--team-muted); font-size: 0.68rem; }
+.pelicans-team__style-scale { display: flex; justify-content: space-between; margin: 7px 126px 2px 68px; color: var(--team-muted); font-size: 0.61rem; font-weight: 750; }
+.pelicans-team__style-season { display: grid; grid-template-columns: 60px minmax(80px, 1fr) 118px; align-items: center; gap: 8px; min-height: 43px; }
+.pelicans-team__style-value { display: grid; gap: 1px; }
+.pelicans-team__style-value strong { color: var(--team-text); font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+.pelicans-team__style-season.is-current .pelicans-team__style-value strong { color: var(--team-ink); }
+.pelicans-team__style-value small { color: var(--team-muted); font-size: 0.61rem; font-weight: 750; line-height: 1.2; }
+
+.pelicans-chart__caveat { margin: 14px 0 0; color: var(--team-muted); font-size: 0.76rem; line-height: 1.52; }
+.pelicans-chart__table-details { margin-top: 12px; }
+.team-card .pelicans-chart__table-toggle {
+  display: block;
+  width: fit-content;
+  min-height: 44px;
+  padding: 11px 0 5px;
+  color: var(--team-ink);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 850;
+  list-style: none;
+}
+.team-card .pelicans-chart__table-toggle:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.pelicans-chart__table-toggle::-webkit-details-marker { display: none; }
+.pelicans-chart__table-toggle::before { display: inline-block; margin-right: 6px; content: "\25B8"; }
+.pelicans-chart__table-details[open] .pelicans-chart__table-toggle::before { content: "\25BE"; }
+.pelicans-chart__table-wrap { margin-top: 8px; overflow: auto; max-height: 500px; border: 1px solid var(--team-border); border-radius: 6px; background: var(--team-plot); }
+.pelicans-chart__table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+.pelicans-chart__table caption { padding: 9px; color: var(--team-muted); text-align: left; font-size: 0.7rem; }
+.pelicans-chart__table th,
+.pelicans-chart__table td { padding: 7px 8px; border-bottom: 1px solid #e4e5e8; text-align: right; white-space: nowrap; }
+.pelicans-chart__table th:first-child,
+.pelicans-chart__table td:first-child,
+.pelicans-chart__table th:nth-child(2),
+.pelicans-chart__table td:nth-child(2) { text-align: left; }
+.pelicans-chart__table thead th { position: sticky; top: 0; z-index: 1; color: var(--team-text); background: var(--team-surface-strong); }
+.pelicans-chart__table tbody tr.is-featured { background: var(--team-surface); font-weight: 800; }
+.pelicans-chart__notes { margin-top: 15px; color: var(--team-muted); font-size: 0.72rem; line-height: 1.55; }
+.pelicans-chart__notes p { margin: 6px 0 0; }
+.pelicans-chart__notes a { color: var(--team-ink); font-weight: 850; }
+.pelicans-chart__table-toggle:focus-visible,
+.pelicans-chart__notes a:focus-visible { outline: 3px solid var(--team-focus); outline-offset: 3px; }
+.pelicans-chart__visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .pelicans-chart { padding: 17px 12px; }
+  .pelicans-rookies__panels,
+  .pelicans-team__style-rows { grid-template-columns: 1fr; }
+  .pelicans-rookies__panel { padding-inline: 4px; }
+  .pelicans-zion__career-layout { grid-template-columns: 1fr; gap: 7px; }
+  .pelicans-zion__current-summary { min-height: 0; border-top: 1px solid var(--team-border); border-left: 0; }
+  .pelicans-zion__current-summary h5 { position: static; padding: 9px 10px 0; }
+  .pelicans-zion__current-values { position: static; grid-template: 1fr / repeat(3, minmax(0, 1fr)); gap: 0; padding: 8px 10px 10px; }
+  .pelicans-zion__current-values p { min-height: 56px; padding: 0 8px; border-top: 0; border-left: 1px solid color-mix(in srgb, var(--team-border) 58%, white); }
+  .pelicans-zion__current-values p:first-child { padding-left: 0; border-left: 0; }
+  .pelicans-team__rank-row > header { display: block; }
+  .pelicans-team__rank-row header p { margin-top: 2px; text-align: left; }
+}
+
+@media (max-width: 430px) {
+  .pelicans-chart__plot { padding: 7px 2px; }
+  .pelicans-chart__sample { width: 100%; border-radius: 6px; }
+  .pelicans-zion__onoff-section { padding-inline: 7px; }
+  .pelicans-zion__career-section { padding-inline: 7px; }
+  .pelicans-team__section { padding: 12px 8px; }
+  .pelicans-team__season-label { font-size: 0.65rem; }
+  .pelicans-team__style-row { padding-inline: 8px; }
+  .pelicans-team__style-season { grid-template-columns: 50px minmax(72px, 1fr) 100px; gap: 5px; min-height: 46px; }
+  .pelicans-team__style-scale { margin-left: 55px; margin-right: 105px; }
+  .pelicans-team__style-value small { font-size: 0.58rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pelicans-chart *,
+  .pelicans-chart *::before,
+  .pelicans-chart *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
