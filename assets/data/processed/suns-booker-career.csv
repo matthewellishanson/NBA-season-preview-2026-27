@@ -1,0 +1,9 @@
+season,sample_status,team,games,total_minutes,minutes_per_game,points_per_100,assists_per_100,true_shooting_pct,true_shooting_plus,adjusted_source_line,advanced_source_line,per100_source_line,per_game_source_line
+2019-20,completed,PHO,70,2512,35.9,35.1,8.6,.618,109,7,6,6,6
+2020-21,completed,PHO,67,2270,33.9,37.2,6.3,.587,103,8,7,7,7
+2021-22,completed,PHO,68,2345,34.5,37.4,6.8,.576,102,9,8,8,8
+2022-23,completed,PHO,53,1835,34.6,39.2,7.8,.601,103,10,9,9,9
+2023-24,completed,PHO,68,2447,36.0,36.7,9.4,.611,105,11,10,10,10
+2024-25,completed,PHO,75,2795,37.3,34.0,9.4,.589,102,12,11,11,11
+2025-26,completed,PHO,64,2146,33.5,38.4,8.9,.585,101,13,12,12,12
+2026-27,current_13_games,PHO,13,439,33.8,35.3,7.8,.605,105,14,13,13,13

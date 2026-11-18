@@ -1,0 +1,282 @@
+.story-layout.story-layout--suns { grid-template-columns: minmax(0, 1fr); }
+.suns-preview-package { display: grid; gap: 24px; min-width: 0; width: 100%; }
+.story--suns ul { margin: 0 0 1.2em; padding-left: 1.35em; }
+.story--suns li + li { margin-top: 0.55em; }
+
+.suns-chart {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 24px;
+  color: var(--team-text);
+  background: var(--team-surface);
+  border: 1px solid var(--team-border);
+  border-top: 5px solid var(--team-identity);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(29, 17, 96, 0.09);
+}
+.suns-chart__header { max-width: 880px; }
+.suns-chart__eyebrow {
+  margin: 0 0 7px;
+  color: var(--team-ink);
+  font: 850 0.7rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.team-card .suns-chart__title {
+  margin: 0;
+  color: var(--team-secondary);
+  font: 850 clamp(1.35rem, 2.8vw, 2rem)/1.08 system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.suns-chart__subtitle {
+  max-width: 820px;
+  margin: 8px 0 0;
+  color: var(--team-muted);
+  font: 650 0.9rem/1.45 system-ui, sans-serif;
+}
+.suns-chart__takeaway {
+  margin: 16px 0 0;
+  padding: 11px 14px;
+  background: var(--team-surface-strong);
+  border-left: 4px solid var(--team-secondary);
+  border-radius: 5px;
+  font-size: 0.88rem;
+  line-height: 1.48;
+}
+.suns-chart__plot {
+  min-width: 0;
+  margin-top: 14px;
+  padding: 10px;
+  background: var(--team-plot);
+  border: 1px solid color-mix(in srgb, var(--team-border) 72%, white);
+  border-radius: 7px;
+}
+.suns-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.suns-chart svg:focus-visible { outline: 3px solid var(--team-focus); outline-offset: 2px; border-radius: 3px; }
+.suns-chart__axis text {
+  fill: var(--team-muted);
+  font: 650 10.5px/1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.suns-chart__axis path,
+.suns-chart__axis line { stroke: #9298a0; stroke-width: 0.75; shape-rendering: crispEdges; }
+.suns-chart__grid line { stroke: #dfe2e6; stroke-width: 0.75; stroke-dasharray: 2 3; shape-rendering: crispEdges; }
+.suns-chart__axis-title,
+.suns-chart__panel-title { fill: var(--team-muted); font: 800 11px/1 system-ui, sans-serif; }
+.suns-chart__zero { stroke: #5f6470; stroke-width: 1.25; stroke-dasharray: 4 3; shape-rendering: crispEdges; }
+.suns-chart__status { margin: 18px; color: var(--team-muted); font-size: 0.84rem; }
+.suns-chart__status--error { color: var(--team-negative); font-weight: 800; }
+.suns-chart__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.suns-chart__inspection {
+  min-height: 44px;
+  margin: 12px 0 0;
+  padding: 9px 11px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 5px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+.suns-chart__inspection strong { color: var(--team-secondary); }
+.suns-chart__notes { margin-top: 14px; color: var(--team-muted); font-size: 0.78rem; line-height: 1.5; }
+.suns-chart__notes p { margin: 0; }
+.suns-chart__notes p + p { margin-top: 6px; }
+.suns-chart__notes a { color: var(--team-ink); font-weight: 800; text-underline-offset: 2px; }
+.suns-chart__table-details { margin-top: 12px; border-top: 1px solid var(--team-border); }
+.team-card .suns-chart .suns-chart__table-details > summary {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  min-height: 44px;
+  padding: 10px 5px;
+  grid-template-columns: none;
+  gap: 8px;
+  color: var(--team-secondary);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 850;
+  list-style: none;
+}
+.team-card .suns-chart .suns-chart__table-details > summary::-webkit-details-marker { display: none; }
+.team-card .suns-chart .suns-chart__table-details > summary::before {
+  content: "›";
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  color: var(--team-plot);
+  background: var(--team-ink);
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 120ms ease-out;
+}
+.team-card .suns-chart .suns-chart__table-details[open] > summary::before { transform: rotate(90deg); }
+.suns-chart__table-wrap { max-width: 100%; overflow-x: auto; padding-bottom: 4px; }
+.suns-chart__table-wrap + .suns-chart__table-wrap { margin-top: 18px; }
+.suns-chart__table-title { margin: 4px 0 7px; color: var(--team-secondary); font-size: 0.88rem; }
+.suns-chart__table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: var(--team-plot);
+  font-size: 0.73rem;
+  font-variant-numeric: tabular-nums;
+}
+.suns-chart__table caption { padding: 0 0 7px; text-align: left; color: var(--team-muted); }
+.suns-chart__table th,
+.suns-chart__table td { padding: 7px 8px; border-bottom: 1px solid #e4e5e8; text-align: right; white-space: nowrap; }
+.suns-chart__table th:first-child,
+.suns-chart__table td:first-child { text-align: left; }
+.suns-chart__table thead th { color: var(--team-secondary); background: var(--team-surface); font-weight: 850; }
+.suns-chart__table tbody th { font-weight: 750; }
+.suns-chart__table tr.is-highlight { background: var(--team-surface-strong); }
+
+.suns-green__change-plot { position: relative; padding: 6px; }
+.suns-green__name { fill: var(--team-text); font: 680 11.5px/1 system-ui, sans-serif; }
+.suns-green__name.is-highlight { fill: var(--team-secondary); font-weight: 900; }
+.suns-green__row-guide { stroke: #ececef; stroke-width: 0.75; shape-rendering: crispEdges; }
+.suns-green__peer { fill: #8f949d; stroke: #fff; stroke-width: 1; }
+.suns-green__highlight { fill: var(--team-identity); stroke: var(--team-secondary); stroke-width: 1.8; }
+.suns-green__value-label {
+  fill: var(--team-secondary);
+  stroke: var(--team-plot);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font: 900 10.5px/1 system-ui, sans-serif;
+}
+.suns-green__selected-band { fill: var(--team-surface-strong); opacity: 0.75; pointer-events: none; }
+.suns-green__mobile-metric { fill: var(--team-muted); font: 800 9.5px/1 system-ui, sans-serif; }
+.suns-green__scatter-axis-title { fill: var(--team-muted); font: 750 10.5px/1 system-ui, sans-serif; }
+.suns-green__direction-label { fill: var(--team-secondary); font: 850 10.5px/1 system-ui, sans-serif; }
+.suns-green__leader { stroke: var(--team-muted); stroke-width: 0.9; vector-effect: non-scaling-stroke; }
+.suns-green__peer-label {
+  fill: var(--team-text);
+  stroke: var(--team-plot);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font: 780 10.5px/1 system-ui, sans-serif;
+}
+.suns-green__peer-label.is-highlight { fill: var(--team-secondary); font-weight: 900; }
+.suns-chart__tooltip {
+  position: absolute;
+  z-index: 2;
+  width: min(255px, calc(100% - 16px));
+  padding: 9px 10px;
+  color: var(--team-text);
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-left: 4px solid var(--team-identity);
+  border-radius: 5px;
+  box-shadow: 0 5px 16px rgba(29, 17, 96, 0.16);
+  pointer-events: none;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+.suns-chart__tooltip[hidden] { display: none; }
+.suns-chart__tooltip strong { display: block; margin-bottom: 3px; color: var(--team-secondary); font-size: 0.78rem; }
+.suns-chart__tooltip span { display: block; }
+.suns-chart__tooltip span + span { margin-top: 3px; }
+.suns-green__career-section {
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 7px;
+}
+.suns-green__career-section h4,
+.suns-booker__history h4,
+.suns-team__metric-label { margin: 0; color: var(--team-secondary); font: 850 0.96rem/1.3 system-ui, sans-serif; }
+.suns-green__career-section > p,
+.suns-booker__history > p { margin: 4px 0 0; color: var(--team-muted); font-size: 0.76rem; line-height: 1.45; }
+.suns-green__career-layout,
+.suns-booker__career-layout { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 9px; align-items: stretch; margin-top: 8px; }
+.suns-green__career-history,
+.suns-booker__history-plot { min-width: 0; padding: 4px; }
+.suns-chart__current-summary {
+  display: grid;
+  align-content: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 14px;
+  background: var(--team-surface);
+  border-left: 3px solid var(--team-identity);
+  border-radius: 5px;
+}
+.suns-chart__current-summary h5 { margin: 0; color: var(--team-secondary); font: 900 0.83rem/1.25 system-ui, sans-serif; }
+.suns-chart__current-summary p { margin: 0; color: var(--team-muted); font-size: 0.72rem; line-height: 1.25; }
+.suns-chart__current-summary strong { display: block; margin-top: 2px; color: var(--team-ink); font-size: 1.22rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.suns-green__career-line,
+.suns-booker__line { fill: none; stroke: var(--team-secondary); stroke-width: 2.25; vector-effect: non-scaling-stroke; }
+.suns-green__career-point,
+.suns-booker__point { fill: var(--team-plot); stroke: var(--team-secondary); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.suns-chart__league-average { stroke: var(--team-identity); stroke-width: 1.25; stroke-dasharray: 5 4; }
+.suns-chart__league-label { fill: var(--team-ink); font: 800 10px/1 system-ui, sans-serif; }
+.suns-chart__point-label { fill: var(--team-secondary); font: 850 10px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.suns-chart__games-label { fill: var(--team-muted); font: 700 9.5px/1 system-ui, sans-serif; }
+
+.suns-booker__history { margin-top: 14px; padding: 14px; background: var(--team-plot); border: 1px solid var(--team-border); border-radius: 7px; }
+.suns-booker__career-layout { grid-template-columns: minmax(0, 1fr) 170px; margin-top: 0; }
+.suns-booker__panel-label { fill: var(--team-secondary); font: 900 11.5px/1 system-ui, sans-serif; }
+.suns-booker__current-values { display: grid; gap: 10px; }
+
+.suns-team__samples { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0 0; }
+.suns-team__sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 7px 10px;
+  background: var(--team-plot);
+  border: 1px solid var(--team-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.suns-team__sample i { display: inline-block; width: 10px; height: 10px; }
+.suns-team__sample.is-completed i { background: var(--team-comparison); }
+.suns-team__sample.is-current i { background: var(--team-identity); border: 1px solid var(--team-secondary); border-radius: 50%; }
+.suns-team__track { stroke: #c6c9ce; stroke-width: 3; stroke-linecap: round; }
+.suns-team__connector { stroke: var(--team-secondary); stroke-width: 2; }
+.suns-team__completed-mark { fill: var(--team-comparison); }
+.suns-team__current-mark { fill: var(--team-identity); stroke: var(--team-secondary); stroke-width: 1.5; }
+.suns-team__mark-label { fill: var(--team-text); font: 850 10.5px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.suns-team__rank-label { fill: var(--team-muted); font: 700 9.5px/1 system-ui, sans-serif; }
+.suns-team__direction { fill: var(--team-muted); font: 750 10px/1 system-ui, sans-serif; }
+
+@media (max-width: 760px) {
+  .suns-preview-package { gap: 18px; }
+  .suns-chart { padding: 18px; }
+  .suns-chart__plot { padding: 6px; }
+  .suns-green__career-layout,
+  .suns-booker__career-layout { grid-template-columns: minmax(0, 1fr); }
+  .suns-chart__current-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); border-left: 0; border-top: 3px solid var(--team-identity); }
+  .suns-booker .suns-chart__current-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .suns-chart__current-summary h5 { grid-column: 1 / -1; }
+  .suns-chart__current-summary strong { font-size: 1.08rem; }
+}
+
+@media (max-width: 480px) {
+  .suns-chart { padding: 15px 13px; border-radius: 8px; }
+  .team-card .suns-chart__title { font-size: 1.28rem; }
+  .suns-chart__subtitle { font-size: 0.82rem; }
+  .suns-chart__takeaway { font-size: 0.8rem; }
+  .suns-chart__current-summary { gap: 8px; padding: 12px 10px; }
+  .suns-chart__current-summary p { font-size: 0.68rem; }
+  .suns-chart__table { font-size: 0.7rem; }
+}

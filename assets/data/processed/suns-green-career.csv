@@ -1,0 +1,7 @@
+season,sample_status,team,games,total_minutes,true_shooting_pct,true_shooting_plus,points_per_100,adjusted_source_line,advanced_source_line,per100_source_line
+2021-22,completed,HOU,67,2138,.547,97,25.8,3,2,2
+2022-23,completed,HOU,76,2602,.538,93,31.4,4,3,3
+2023-24,completed,HOU,82,2601,.541,93,30.0,5,4,4
+2024-25,completed,HOU,82,2697,.544,94,31.1,6,5,5
+2025-26,completed,PHO,32,828,.516,89,33.9,7,6,6
+2026-27,current_13_games,PHO,13,346,.499,87,21.8,8,7,7

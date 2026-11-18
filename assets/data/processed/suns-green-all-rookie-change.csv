@@ -1,0 +1,31 @@
+player_id,player_name,rookie_season,comparison_season,rookie_team,comparison_team,rookie_games,comparison_games,rookie_minutes_per_game,comparison_minutes_per_game,rookie_points_per_game,comparison_points_per_game,points_per_game_change,rookie_true_shooting_pct,comparison_true_shooting_pct,true_shooting_pct_point_change,is_jalen_green,rookie_source_line,comparison_source_line
+edwaran01,Anthony Edwards,2020-21,2023-24,MIN,MIN,72,79,32.1,35.1,19.3,25.9,6.6,.523,.575,5.2,false,8,266
+dosunay01,Ayo Dosunmu,2021-22,2024-25,CHI,CHI,77,46,27.4,30.3,8.8,12.3,3.5,.596,.585,-1.1,false,59,237
+mathube01,Bennedict Mathurin,2022-23,2025-26,IND,INDLAC,78,54,28.5,30.0,16.7,17.6,0.9,.566,.575,0.9,false,9,632
+hylanbo01,Bones Hyland,2021-22,2024-25,DEN,LACMIN,69,24,19.0,10.0,10.1,6.2,-3.9,.558,.576,1.8,false,16,435
+cunnica01,Cade Cunningham,2021-22,2024-25,DET,DET,64,70,32.6,35.0,17.4,26.1,8.7,.504,.565,6.1,false,17,196
+duartch01,Chris Duarte,2021-22,2024-25,IND,CHI,55,17,28.0,4.4,13.1,2.1,-11.0,.537,.610,7.3,false,26,247
+banede01,Desmond Bane,2020-21,2023-24,MEM,MEM,68,42,22.3,34.4,9.2,23.7,14.5,.600,.589,-1.1,false,44,50
+mobleev01,Evan Mobley,2021-22,2024-25,CLE,CLE,69,71,33.8,30.5,15.0,18.5,3.5,.549,.633,8.4,false,30,699
+wagnefr01,Franz Wagner,2021-22,2024-25,ORL,ORL,79,60,30.7,33.7,15.2,24.2,9.0,.559,.558,-0.1,false,23,1070
+joneshe01,Herbert Jones,2021-22,2024-25,NOP,NOP,78,20,29.9,32.4,9.5,10.3,0.8,.573,.541,-3.2,false,60,500
+quickim01,Immanuel Quickley,2020-21,2023-24,NYK,NYKTOR,64,68,19.4,29.2,11.4,17.0,5.6,.557,.577,2.0,false,5,835
+okorois01,Isaac Okoro,2020-21,2023-24,CLE,CLE,67,69,32.4,27.3,9.6,9.4,-0.2,.514,.599,8.5,false,62,767
+stewais01,Isaiah Stewart,2020-21,2023-24,DET,DET,68,46,21.4,30.9,7.9,10.9,3.0,.597,.600,0.3,false,51,989
+smithja05,Jabari Smith Jr.,2022-23,2025-26,HOU,HOU,79,77,31.0,35.1,12.8,15.8,3.0,.514,.570,5.6,false,42,956
+iveyja01,Jaden Ivey,2022-23,2025-26,DET,CHIDET,74,37,31.1,18.1,16.3,8.5,-7.8,.528,.571,4.3,false,19,443
+tateja01,Jae'Sean Tate,2020-21,2023-24,HOU,HOU,70,65,29.2,15.9,11.3,4.1,-7.2,.576,.538,-3.8,false,50,1003
+durenja01,Jalen Duren,2022-23,2025-26,DET,DET,67,70,24.9,28.2,9.1,19.5,10.4,.655,.688,3.3,false,53,255
+greenja05,Jalen Green,2021-22,2024-25,HOU,HOU,67,82,31.9,32.9,17.3,21.0,3.7,.547,.544,-0.3,true,18,347
+willija06,Jalen Williams,2022-23,2025-26,OKC,OKC,75,33,30.3,28.4,14.1,17.1,3.0,.601,.560,-4.1,false,32,1144
+sochaje01,Jeremy Sochan,2022-23,2025-26,SAS,NYKSAS,56,44,26.0,10.7,11.0,3.6,-7.4,.509,.563,5.4,false,43,972
+giddejo01,Josh Giddey,2021-22,2024-25,OKC,CHI,54,70,31.5,30.2,12.5,14.6,2.1,.478,.570,9.2,false,46,321
+murrake02,Keegan Murray,2022-23,2025-26,SAC,SAC,80,23,29.8,34.5,12.2,14.0,1.8,.597,.499,-9.8,false,45,724
+ballla01,LaMelo Ball,2020-21,2023-24,CHO,CHO,51,22,28.8,32.3,15.7,23.9,8.2,.539,.561,2.2,false,12,41
+banchpa01,Paolo Banchero,2022-23,2025-26,ORL,ORL,72,72,33.8,34.8,20.0,22.2,2.2,.529,.566,3.7,false,7,46
+willipa01,Patrick Williams,2020-21,2023-24,CHI,CHI,71,43,27.9,27.3,9.2,10.0,0.8,.562,.553,-0.9,false,56,1158
+beysa01,Saddiq Bey,2020-21,2023-24,DET,ATL,70,63,27.3,32.7,12.2,13.7,1.5,.567,.549,-1.8,false,33,81
+barnesc01,Scottie Barnes,2021-22,2024-25,TOR,TOR,74,65,35.4,32.8,15.3,19.3,4.0,.552,.523,-2.9,false,34,62
+easonta01,Tari Eason,2022-23,2025-26,HOU,HOU,82,60,21.5,25.8,9.3,10.5,1.2,.525,.514,-1.1,false,38,259
+halibty01,Tyrese Haliburton,2020-21,2023-24,SAC,IND,58,69,30.1,32.2,13.0,20.1,7.1,.585,.605,2.0,false,39,367
+kesslwa01,Walker Kessler,2022-23,2025-26,UTA,UTA,74,5,23.0,30.8,9.2,14.4,5.2,.702,.786,8.4,false,47,530

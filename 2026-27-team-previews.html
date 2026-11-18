@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="assets/css/heat-preview-charts.css" />
     <link rel="stylesheet" href="assets/css/flagg-historical-scoring.css" />
     <link rel="stylesheet" href="assets/css/pelicans-preview-charts.css" />
+    <link rel="stylesheet" href="assets/css/suns-preview-charts.css" />
 
     <style>
       /* Design tokens */
@@ -1087,8 +1088,9 @@
           color: "#a64417",
           slug: "suns",
           powerRank: 21,
-          status: "outline",
-          thesis: "",
+          status: "published",
+          logo: "assets/img/teamlogos/Suns.png",
+          thesis: "A team that began the decade with a Finals run and a bounty of prospects and picks now faces a bleak decade without much room for growth. What comes next for the Phoenix Suns?",
           previousRecord: null,
           projectedWins: null,
           charts: [],
@@ -1291,8 +1293,136 @@
             </summary>
             <div class="team-body">
               <p class="section-kicker">No. ${team.powerRank} · ${escapeHtml(team.name)}</p>
-              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "mavericks" ? " story-layout--mavericks" : team.slug === "pelicans" ? " story-layout--pelicans" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
-                ${team.slug === "heat" ? `
+              <div class="story-layout${team.slug === "wizards" || team.slug === "kings" ? " story-layout--chart" : team.slug === "thunder" ? " story-layout--thunder" : team.slug === "spurs" ? " story-layout--wemby" : team.slug === "nuggets" ? " story-layout--nuggets" : team.slug === "sixers" ? " story-layout--maxey" : team.slug === "celtics" ? " story-layout--celtics" : team.slug === "timberwolves" ? " story-layout--timberwolves" : team.slug === "knicks" ? " story-layout--knicks" : team.slug === "pistons" ? " story-layout--pistons" : team.slug === "trail-blazers" ? " story-layout--trail-blazers" : team.slug === "grizzlies" ? " story-layout--grizzlies" : team.slug === "raptors" ? " story-layout--raptors" : team.slug === "clippers" ? " story-layout--clippers" : team.slug === "lakers" ? " story-layout--lakers" : team.slug === "mavericks" ? " story-layout--mavericks" : team.slug === "pelicans" ? " story-layout--pelicans" : team.slug === "suns" ? " story-layout--suns" : team.slug === "nets" ? " story-layout--nets" : team.slug === "magic" ? " story-layout--magic" : team.slug === "hawks" ? " story-layout--hawks" : team.slug === "hornets" ? " story-layout--hornets" : team.slug === "heat" ? " story-layout--heat" : team.slug === "pacers" ? " story-layout--pacers" : team.slug === "cavaliers" ? " story-layout--cavaliers" : team.slug === "jazz" ? " story-layout--jazz" : team.slug === "warriors" ? " story-layout--warriors" : team.slug === "rockets" ? " story-layout--rockets" : ""}">
+                ${team.slug === "suns" ? `
+                <div class="suns-preview-package">
+                  <article class="story story--suns story--suns-intro">
+                    <p>If you wanted to speedrun the transition of an NBA team, from an ascendant title contender with a &ldquo;<a href="https://open.spotify.com/episode/1VjG0TMRI6iCW2YDtBoI1i">bright future</a>&rdquo; to a play-in team with a hopeless near-to-long-term outlook on its horizon, I&rsquo;m not sure how you could do it more efficiently or completely than the Phoenix Suns have in the half decade since their 2021 NBA Finals loss to the Milwaukee Bucks.</p>
+                    <p>The speed with which new owner Mat Ishbia and his front office have destroyed a promising young contender since he acquired the Suns in 2022, while consistently aiming to contend for championships every season since that 2021 run, has been far more disastrously reminiscent of the dysfunctional NBA I grew up with than the smart, analytically-guided, perpetually scrutinized GM-ing of this era of the league. It&rsquo;s hard to imagine anyone achieving this level of contender deconstruction without actively trying for it in today&rsquo;s NBA landscape, which is why even five years into the Ishbia regime, almost every discussion of this franchise has to begin with its mismanagement since that Finals run.</p>
+                    <p>Without getting too into the weeds of how we got here &ndash; a disappointing 6-7 start to the current season that&rsquo;s looked much uglier on the court than the record implies &ndash; from that regular season juggernaut Suns squad that blew a 2-0 lead in that Finals matchup with Milwaukee, here&rsquo;s a quick summary of all the main moronic moves this team has made since that series:</p>
+                    <ul class="suns-transaction-list">
+                      <li><em>Feb. 9, 2023</em> &mdash; <strong>The Durant gamble:</strong> Traded key 2021 starters Mikal Bridges and Cameron Johnson, along with Jae Crowder, <em>four</em> unprotected first-round picks and a 2028 first-round swap for Kevin Durant and T.J. Warren.</li>
+                      <li><em>June 23, 2023</em> &mdash; <strong>The Beal original sin:</strong> Traded Chris Paul, Landry Shamet, six second-round picks, four first-round swap rights and cash for Bradley Beal, Jordan Goodwin and Isaiah Todd.</li>
+                      <li><em>Sept. 27, 2023</em> &mdash; <strong>The Ayton&ndash;Camara exit:</strong> Traded 2018 no. 1 overall pick and 2021 Finals standout Deandre Ayton, and rookie Toumani Camara, who has blossomed into an elite defender across all five spots in Portland, for Jusuf Nurki&#263;, Grayson Allen, Nassir Little and Keon Johnson.</li>
+                      <li><em>July 6, 2025</em> &mdash; <strong>Unwinding the Durant gamble:</strong> Traded Durant for a package headlined by Jalen Green, Dillon Brooks and the rights to No. 10 pick Khaman Maluach.</li>
+                      <li><em>July 16, 2025</em> &mdash; <strong>The Beal disaster&rsquo;s final, enduring cost:</strong> Waived and stretched Beal, leaving roughly $96.9 million in dead money spread across five seasons through 2029&ndash;30&mdash;about $19.4 million annually, using your supplied figure.</li>
+                      <li><em>July 13, 2026</em> &mdash; <strong>Trading quality role players for controversial third scorer Bridges:</strong> Traded Grayson Allen, Royce O&rsquo;Neale and their 2033 first-round pick for Miles Bridges and a 2027 second-rounder.</li>
+                    </ul>
+                    <p>After all that, the Suns still managed to surprise most fans and media with a plucky run to the playoffs as an eight seed in last year&rsquo;s fiercely competitive Western Conference, building most of their regular season success under first-time head coach Jordan Ott and a roster full of hard-working overachievers and little-known names, before getting swept in the first round by the decade&rsquo;s lone enduring superteam, Oklahoma City.</p>
+                    <p>It was a promising rebuke to those who had jumped on the bandwagon of critics lamenting the Suns post-Finals teambuilding mistakes, and calling theirs one of the bleakest futures of any franchise in the league. Ott looked like a genius most of the season and players like Brooks and Booker reclaimed their primacy as go-to guys in this league, if not the caliber that lead to wins. And perhaps more tantalizingly, the bulk of the team&rsquo;s success hinged on a deep rotation of cheap, young players that outplayed their projections and contracts as a unit, implying a bright glimmer of hope for a team that faces bleak financial and draft prospects for the next 5 to 10 seasons.</p>
+                    <p>Coming off that kind of season, it was only fitting for many of the Suns&rsquo; critics from the prior preseason and offseason to change their tunes heading into this new regular season, with significantly more media members and fans picking this team for the playoffs and the play-in going into this season than there were the same time last year.</p>
+                    <p>But somewhere between that sweep in the first round and the start of this new campaign, the Suns&rsquo; plucky fortunes seem to have turned for the worse. With most of the same pieces in place from last season, apart from Allen and O&rsquo;Neale and the injured Mark Williams, this year&rsquo;s Suns opened their season 1-5 before climbing back to just short of .500 with a 6-7 record as of this writing. At times, their play has looked even uglier than that record suggests, with this roster flashing very little of the intangibles, competitive grit or knack for outworking better opponents for upset wins, that last season&rsquo;s group displayed all season long.</p>
+                    <p>So what&rsquo;s the outlook for the rest of this season in Phoenix, and what does that do for the bleaker long-term prospects this front office should be weighing against any present-day playoff aspirations?</p>
+                  </article>
+
+                  <article class="story story--suns story--suns-team-context">
+                    <p>I&rsquo;ll give them this much: I do think this front office has done a sneakily excellent job of building on the margins around its massively mistaken big moves, and the result is still a group of go-getters and overachievers and scrappers up and down this rotation that you&rsquo;ve mostly never heard of. With that group, I do expect a continuation of their recent turnaround from that 1-5 start, and for the Suns to remain in the hunt for the play-in most of the remaining regular season.</p>
+                    <p>That said, the Suns still have yet to find the right balance and chemistry between their B-and-C-level new stars &ndash; Brooks, Green and Bridges &ndash; and their longtime face of the franchise Booker, and their frontcourt in the absence of Williams has looked by far the worst in the league to open the season, and seems unlikely to improve much even if 2025 lottery pick Khaman Maluach finds his way to even a passable level of play as a starting center over the remainder of his second NBA season.</p>
+                  </article>
+
+                  <figure class="team-graphic suns-chart suns-team" data-suns-team-chart data-source="assets/data/processed/suns-team-defense-rebounding.csv" aria-busy="true" aria-labelledby="suns-team-title" aria-describedby="suns-team-description">
+                    <header class="suns-chart__header">
+                      <p class="suns-chart__eyebrow">Phoenix team results &middot; regular season</p>
+                      <h3 class="suns-chart__title team-graphic__title" id="suns-team-title">Phoenix&rsquo;s defensive margin has disappeared</h3>
+                      <p class="suns-chart__subtitle">2025&ndash;26 versus the first 13 games of 2026&ndash;27.</p>
+                      <p class="suns-chart__visually-hidden" id="suns-team-description">Three paired-dot tracks compare defensive rating, defensive rebound percentage and offensive rebound percentage. The current 13-game values are worse on all three measures; the table provides exact values and league ranks.</p>
+                    </header>
+                    <p class="suns-chart__takeaway">Phoenix is allowing more points per possession and collecting a smaller share of rebounds at both ends.</p>
+                    <div class="suns-team__samples" aria-label="Season marker key">
+                      <span class="suns-team__sample is-completed"><i aria-hidden="true"></i>2025&ndash;26 &middot; 82 G &middot; 45&ndash;37</span>
+                      <span class="suns-team__sample is-current"><i aria-hidden="true"></i>2026&ndash;27 &middot; 13 G &middot; 6&ndash;7</span>
+                    </div>
+                    <div class="suns-chart__plot suns-team__plot"><p class="suns-chart__status">Loading the team comparison&hellip;</p></div>
+                    <details class="suns-chart__table-details">
+                      <summary>View accessible team data table</summary>
+                      <div class="suns-chart__table-wrap suns-team__table"></div>
+                    </details>
+                    <figcaption class="suns-chart__notes">
+                      <p>Defensive rating is points allowed per 100 possessions; lower is better. DRB% and ORB% are the shares of available defensive and offensive rebounds collected; higher is better. Ranks are relative to each season&rsquo;s league, so rank changes and raw-value changes are different comparisons.</p>
+                      <p>The 13-game results are an early snapshot. The current source also lists the third-hardest schedule and 15th-ranked SRS. These team results do not assign responsibility to one player. <a href="assets/data/processed/suns-team-defense-rebounding.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/suns-preview-prep.notes.md">Preparation and provenance</a></p>
+                    </figcaption>
+                    <noscript><p class="suns-chart__status suns-chart__status--error">This chart requires JavaScript; the linked CSV remains available.</p></noscript>
+                  </figure>
+
+                  <article class="story story--suns story--suns-booker-context">
+                    <p>But perhaps most concerning of all has been the signs of gradual decline Booker&rsquo;s shown, both last season and through the start of this one. He no longer looks like a guy who you can build a contender around, and at the ripening age of 30, does not project much better in the seasons to come. He just doesn&rsquo;t feel like a good fit for where this team stands today, and going forward, even if he does pick up his production from what it&rsquo;s been through his first 13 games this season. In my view, he&rsquo;s still a capable second fiddle that could really help a better team than this one, and I really think this front office should be looking to trade him for max value while he can still fetch a great haul to help their bleak impending rebuild.</p>
+                  </article>
+
+                  <figure class="team-graphic suns-chart suns-booker" data-suns-booker-chart data-source="assets/data/processed/suns-booker-career.csv" aria-busy="true" aria-labelledby="suns-booker-title" aria-describedby="suns-booker-description">
+                    <header class="suns-chart__header">
+                      <p class="suns-chart__eyebrow">Devin Booker &middot; regular season</p>
+                      <h3 class="suns-chart__title team-graphic__title" id="suns-booker-title">How much of Booker&rsquo;s peak remains?</h3>
+                      <p class="suns-chart__subtitle">Scoring, playmaking and league-relative efficiency across seven completed seasons.</p>
+                      <p class="suns-chart__visually-hidden" id="suns-booker-description">Three aligned line panels show Devin Booker's completed-season points and assists per 100 possessions and TS plus. The current 13-game snapshot appears separately, with lower scoring and assist volume than 2025-26 but higher league-relative efficiency.</p>
+                    </header>
+                    <p class="suns-chart__takeaway">Booker&rsquo;s current scoring and assist rates are below last season&rsquo;s, while his league-relative shooting efficiency has improved.</p>
+                    <section class="suns-booker__history" aria-label="Booker completed-season career panels">
+                      <div class="suns-booker__career-layout">
+                        <div class="suns-booker__history-plot"><p class="suns-chart__status">Loading Booker&rsquo;s completed seasons&hellip;</p></div>
+                        <aside class="suns-chart__current-summary" aria-label="Booker 2026-27 snapshot">
+                          <h5>2026&ndash;27 &middot; 13 games</h5>
+                          <p>Points per 100<strong>35.3</strong></p>
+                          <p>Assists per 100<strong>7.8</strong></p>
+                          <p>TS+<strong>105</strong></p>
+                          <p>True shooting<strong>60.5%</strong></p>
+                        </aside>
+                      </div>
+                    </section>
+                    <details class="suns-chart__table-details">
+                      <summary>View accessible Booker data table</summary>
+                      <div class="suns-chart__table-wrap suns-booker__table"></div>
+                    </details>
+                    <figcaption class="suns-chart__notes">
+                      <p>PTS/100 and AST/100 are per 100 possessions. TS+ is a league-relative index with 100 as league average, not percentage points above or below average. The current snapshot is not connected to the completed-season lines.</p>
+                      <p><a href="assets/data/processed/suns-booker-career.csv">Chart-ready CSV</a> &middot; <a href="assets/data/processed/suns-preview-prep.notes.md">Preparation and provenance</a></p>
+                    </figcaption>
+                    <noscript><p class="suns-chart__status suns-chart__status--error">This chart requires JavaScript; the linked CSV remains available.</p></noscript>
+                  </figure>
+
+                  <article class="story story--suns story--suns-green-context">
+                    <p>But the real test of this Suns season will hinge on their ability to right the sinking ship that is 2021 number two overall pick Green, who has shown alarming signs of stagnation if not outright regression from a promising early career in Houston since joining Phoenix via the Durant trade.</p>
+                    <p>Green has yet to exceed his rookie true-shooting percentage in any subsequent season, and despite some progress as a playmaker and scorer, has fared very poorly since his rookie season relative to his very strong rookie class peers such as Cade Cunningham and Scottie Barnes. He&rsquo;s the key to this team having any sort of upside this year and in the near future, if you ask me, and needs to find a higher consistency and reliability as a secondary star scorer next to Booker and co., for this team to even have a shot at playoff contention in whatever remains of their Booker era. His shot, his playmaking and his level of effort have all disappointed and wavered greatly from night to night throughout his six seasons in the league, however, so I&rsquo;m not sold on his chances of turning things around as a guy who is undeniably more talented than his production suggests.</p>
+                  </article>
+
+                  <figure class="team-graphic suns-chart suns-green" data-suns-green-chart data-cohort-source="assets/data/processed/suns-green-all-rookie-change.csv" data-career-source="assets/data/processed/suns-green-career.csv" aria-busy="true" aria-labelledby="suns-green-title" aria-describedby="suns-green-description">
+                    <header class="suns-chart__header">
+                      <p class="suns-chart__eyebrow">Jalen Green &middot; All-Rookie context</p>
+                      <h3 class="suns-chart__title team-graphic__title" id="suns-green-title">Green&rsquo;s scoring grew. His efficiency didn&rsquo;t.</h3>
+                      <p class="suns-chart__subtitle">Change from each player&rsquo;s rookie season to three seasons later, among 30 All-Rookie selections.</p>
+                      <p class="suns-chart__visually-hidden" id="suns-green-description">A scatterplot compares points-per-game and true-shooting percentage-point changes for 30 players. Jalen Green added 3.7 points per game but lost 0.3 true-shooting percentage points. A supporting line chart shows his completed-season TS plus below league average.</p>
+                    </header>
+                    <p class="suns-chart__takeaway">Green added 3.7 points per game while losing 0.3 true-shooting percentage points. The cohort medians were +3.0 PPG and +1.9 TS percentage points.</p>
+                    <div class="suns-chart__plot suns-green__change-plot"><p class="suns-chart__status">Loading the All-Rookie comparison&hellip;</p></div>
+                    <section class="suns-green__career-section" aria-label="Jalen Green career TS plus">
+                      <h4>Green&rsquo;s completed-season TS+</h4>
+                      <p>TS+ is a league-relative index; 100 is league average.</p>
+                      <div class="suns-green__career-layout">
+                        <div class="suns-green__career-history"><p class="suns-chart__status">Loading Green&rsquo;s career efficiency&hellip;</p></div>
+                        <aside class="suns-chart__current-summary" aria-label="Jalen Green 2026-27 snapshot">
+                          <h5>2026&ndash;27 &middot; 13 games</h5>
+                          <p>TS+<strong>87</strong></p>
+                          <p>True shooting<strong>49.9%</strong></p>
+                          <p>Points per 100<strong>21.8</strong></p>
+                        </aside>
+                      </div>
+                    </section>
+                    <details class="suns-chart__table-details">
+                      <summary>View accessible cohort and career tables</summary>
+                      <div class="suns-chart__table-wrap suns-green__cohort-table"></div>
+                      <div class="suns-chart__table-wrap suns-green__career-table"></div>
+                    </details>
+                    <figcaption class="suns-chart__notes">
+                      <p>Changes reflect opportunity, roles, age and team context as well as development. Raw TS is not league-adjusted, and lower initial efficiency can leave more room to improve. The comparison uses calendar seasons, not independently verified active-season experience.</p>
+                      <p><a href="assets/data/processed/suns-green-all-rookie-change.csv">All-Rookie chart-ready CSV</a> &middot; <a href="assets/data/processed/suns-green-career.csv">Green career CSV</a> &middot; <a href="assets/data/processed/suns-preview-prep.notes.md">Preparation and provenance</a></p>
+                    </figcaption>
+                    <noscript><p class="suns-chart__status suns-chart__status--error">This chart requires JavaScript; the linked CSVs remain available.</p></noscript>
+                  </figure>
+
+                  <article class="story story--suns story--suns-conclusion">
+                    <p>It&rsquo;s tough to not have many good answers for a team that was so likeable in 2025-26, but that&rsquo;s sort of where I stand with this Suns roster at this point, and their near-empty draft arsenal in the decade to come. I hope Booker and the Suns can turn things around while he still has the juice to compete even modestly in the West. But if they can&rsquo;t do so quickly, it&rsquo;s high time this organization started shopping for Booker trades to recoup as much value from their superstar as they can get, ideally in draft picks and younger, cheaper prospects to rebuild around.</p>
+                  </article>
+                </div>
+                ` : team.slug === "heat" ? `
                 <article class="story story--heat">
                   <p>After years of making eyes at each other across the Eastern Conference, the Miami Heat and former Milwaukee Bucks superstar Giannis Antetokounmpo finally made it Facebook official over the summer in a blockbuster trade several seasons in the making.</p>
                   <p>Heat fans and many in the media were quick to call the trade a coup for Miami, another example of the franchise&rsquo;s geographically assisted knack for attracting superstars. Sometimes that comes through a trade demand, as with Giannis asking out of Milwaukee and more or less dictating his destination. Other times, it happens in free agency, as when Miami famously signed both LeBron James and Chris Bosh in the summer of 2010.</p>
@@ -3188,5 +3318,6 @@
     <script src="assets/js/heat-preview-charts.js"></script>
     <script src="assets/js/flagg-historical-scoring.js"></script>
     <script src="assets/js/pelicans-preview-charts.js"></script>
+    <script src="assets/js/suns-preview-charts.js"></script>
   </body>
 </html>
